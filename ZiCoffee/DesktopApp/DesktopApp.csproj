@@ -61,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\FormBusiness.resx">
+      <DependentUpon>FormBusiness.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +94,7 @@
     <Content Include="GUI\Assets\Icon\Close.png" />
     <Content Include="GUI\Assets\Icon\hide.png" />
     <Content Include="GUI\Assets\Icon\Logo.png" />
+    <Content Include="GUI\Assets\Icon\Maximize.png" />
     <Content Include="GUI\Assets\Icon\Minimize.png" />
     <Content Include="GUI\Assets\Icon\Password.png" />
     <Content Include="GUI\Assets\Icon\show.png" />

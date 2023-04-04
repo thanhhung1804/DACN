@@ -10,11 +10,31 @@ using System.Windows.Forms;
 
 namespace DesktopApp.GUI
 {
-    public partial class FormBusiness : Form
+    public partial class formBusiness : Form
     {
-        public FormBusiness()
+        public formBusiness()
         {
             InitializeComponent();
+        }
+
+        private void picMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void picMaximize_Click(object sender, EventArgs e)
+        {
+            FormWindowState state = FormWindowState.Normal;
+            if (WindowState == FormWindowState.Normal)
+            {
+                state = FormWindowState.Maximized;
+            }
+            WindowState = state;
         }
     }
 }
