@@ -148,6 +148,8 @@
   },
   "active": "ba9fcf0b1ee8610c",
   "lastOpenFiles": [
+    "ZiCoffee/DesktopApp/obj/Release/DesktopApp.csproj.AssemblyReference.cache",
+    "ZiCoffee/DesktopApp/obj/Release",
     "ZiCoffee/DesktopApp/GUI/FormBusiness.Designer.cs",
     "ZiCoffee/DesktopApp/GUI/FormBusiness.cs",
     "ZiCoffee/DesktopApp/GUI/Assets/Logo/Logo.ico",
@@ -167,8 +169,6 @@
     "ZiCoffee/DesktopApp/GUI/Assets",
     "ZiCoffee/DesktopApp/Assets/Icon",
     "ZiCoffee/DesktopApp/Assets",
-    "ZiCoffee/DesktopApp/obj/Debug/DesktopApp.GUI.formLogin.resources",
-    "ZiCoffee/DesktopApp/GUI/FormLogin.resx",
     "ZiCoffee/DesktopApp/GUI/GUI Design.md"
   ]
 }
