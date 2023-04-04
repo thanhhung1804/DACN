@@ -30,21 +30,30 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formBusiness));
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lbProgramName = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.picMinimize = new System.Windows.Forms.PictureBox();
             this.picMaximize = new System.Windows.Forms.PictureBox();
-            this.lbProgramName = new System.Windows.Forms.Label();
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.lbCopyright = new System.Windows.Forms.Label();
-            this.TotalTable = new System.Windows.Forms.Label();
-            this.lbUsingTable = new System.Windows.Forms.Label();
-            this.lbReadyTable = new System.Windows.Forms.Label();
             this.lbPendingTable = new System.Windows.Forms.Label();
+            this.lbReadyTable = new System.Windows.Forms.Label();
+            this.lbUsingTable = new System.Windows.Forms.Label();
+            this.TotalTable = new System.Windows.Forms.Label();
+            this.lbCopyright = new System.Windows.Forms.Label();
+            this.pnlAccount = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.picAvatar = new System.Windows.Forms.PictureBox();
+            this.pnlSwitch = new System.Windows.Forms.Panel();
+            this.picSwitch = new System.Windows.Forms.PictureBox();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMaximize)).BeginInit();
             this.pnlFooter.SuspendLayout();
+            this.pnlAccount.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
+            this.pnlSwitch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picSwitch)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -60,6 +69,17 @@
             this.pnlHeader.Size = new System.Drawing.Size(1200, 50);
             this.pnlHeader.TabIndex = 0;
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+            // 
+            // lbProgramName
+            // 
+            this.lbProgramName.AutoSize = true;
+            this.lbProgramName.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbProgramName.Location = new System.Drawing.Point(12, 9);
+            this.lbProgramName.Name = "lbProgramName";
+            this.lbProgramName.Size = new System.Drawing.Size(105, 27);
+            this.lbProgramName.TabIndex = 0;
+            this.lbProgramName.Text = "ZiCoffee";
+            this.lbProgramName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
             // 
             // picClose
             // 
@@ -100,17 +120,6 @@
             this.picMaximize.TabStop = false;
             this.picMaximize.Click += new System.EventHandler(this.picMaximize_Click);
             // 
-            // lbProgramName
-            // 
-            this.lbProgramName.AutoSize = true;
-            this.lbProgramName.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProgramName.Location = new System.Drawing.Point(12, 9);
-            this.lbProgramName.Name = "lbProgramName";
-            this.lbProgramName.Size = new System.Drawing.Size(105, 27);
-            this.lbProgramName.TabIndex = 0;
-            this.lbProgramName.Text = "ZiCoffee";
-            this.lbProgramName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
-            // 
             // pnlFooter
             // 
             this.pnlFooter.Controls.Add(this.lbPendingTable);
@@ -125,42 +134,18 @@
             this.pnlFooter.Size = new System.Drawing.Size(1200, 30);
             this.pnlFooter.TabIndex = 0;
             // 
-            // lbCopyright
+            // lbPendingTable
             // 
-            this.lbCopyright.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbCopyright.AutoSize = true;
-            this.lbCopyright.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCopyright.Location = new System.Drawing.Point(1070, -2);
-            this.lbCopyright.Name = "lbCopyright";
-            this.lbCopyright.Size = new System.Drawing.Size(118, 20);
-            this.lbCopyright.TabIndex = 0;
-            this.lbCopyright.Text = "ZiCoffee©Copyright";
-            this.lbCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // TotalTable
-            // 
-            this.TotalTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TotalTable.AutoSize = true;
-            this.TotalTable.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalTable.Location = new System.Drawing.Point(12, 1);
-            this.TotalTable.Name = "TotalTable";
-            this.TotalTable.Size = new System.Drawing.Size(108, 17);
-            this.TotalTable.TabIndex = 0;
-            this.TotalTable.Text = "Total Table: 100";
-            this.TotalTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbUsingTable
-            // 
-            this.lbUsingTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbUsingTable.AutoSize = true;
-            this.lbUsingTable.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbUsingTable.ForeColor = System.Drawing.Color.OrangeRed;
-            this.lbUsingTable.Location = new System.Drawing.Point(126, 1);
-            this.lbUsingTable.Name = "lbUsingTable";
-            this.lbUsingTable.Size = new System.Drawing.Size(115, 17);
-            this.lbUsingTable.TabIndex = 0;
-            this.lbUsingTable.Text = "Using Table: 100";
-            this.lbUsingTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbPendingTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbPendingTable.AutoSize = true;
+            this.lbPendingTable.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPendingTable.ForeColor = System.Drawing.Color.Yellow;
+            this.lbPendingTable.Location = new System.Drawing.Point(373, 1);
+            this.lbPendingTable.Name = "lbPendingTable";
+            this.lbPendingTable.Size = new System.Drawing.Size(131, 17);
+            this.lbPendingTable.TabIndex = 0;
+            this.lbPendingTable.Text = "Pending Table: 100";
+            this.lbPendingTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbReadyTable
             // 
@@ -175,18 +160,97 @@
             this.lbReadyTable.Text = "Ready Table: 100";
             this.lbReadyTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lbPendingTable
+            // lbUsingTable
             // 
-            this.lbPendingTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbPendingTable.AutoSize = true;
-            this.lbPendingTable.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPendingTable.ForeColor = System.Drawing.Color.Yellow;
-            this.lbPendingTable.Location = new System.Drawing.Point(373, 1);
-            this.lbPendingTable.Name = "lbPendingTable";
-            this.lbPendingTable.Size = new System.Drawing.Size(131, 17);
-            this.lbPendingTable.TabIndex = 0;
-            this.lbPendingTable.Text = "Pending Table: 100";
-            this.lbPendingTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbUsingTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbUsingTable.AutoSize = true;
+            this.lbUsingTable.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsingTable.ForeColor = System.Drawing.Color.OrangeRed;
+            this.lbUsingTable.Location = new System.Drawing.Point(126, 1);
+            this.lbUsingTable.Name = "lbUsingTable";
+            this.lbUsingTable.Size = new System.Drawing.Size(115, 17);
+            this.lbUsingTable.TabIndex = 0;
+            this.lbUsingTable.Text = "Using Table: 100";
+            this.lbUsingTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // TotalTable
+            // 
+            this.TotalTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TotalTable.AutoSize = true;
+            this.TotalTable.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TotalTable.Location = new System.Drawing.Point(12, 1);
+            this.TotalTable.Name = "TotalTable";
+            this.TotalTable.Size = new System.Drawing.Size(108, 17);
+            this.TotalTable.TabIndex = 0;
+            this.TotalTable.Text = "Total Table: 100";
+            this.TotalTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbCopyright
+            // 
+            this.lbCopyright.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbCopyright.AutoSize = true;
+            this.lbCopyright.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCopyright.Location = new System.Drawing.Point(1070, -2);
+            this.lbCopyright.Name = "lbCopyright";
+            this.lbCopyright.Size = new System.Drawing.Size(118, 20);
+            this.lbCopyright.TabIndex = 0;
+            this.lbCopyright.Text = "ZiCoffee©Copyright";
+            this.lbCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pnlAccount
+            // 
+            this.pnlAccount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.pnlAccount.Controls.Add(this.label5);
+            this.pnlAccount.Controls.Add(this.picAvatar);
+            this.pnlAccount.Controls.Add(this.pnlSwitch);
+            this.pnlAccount.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlAccount.Location = new System.Drawing.Point(0, 50);
+            this.pnlAccount.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlAccount.Name = "pnlAccount";
+            this.pnlAccount.Size = new System.Drawing.Size(300, 720);
+            this.pnlAccount.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(64, 288);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 27);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "ZiCoffee";
+            // 
+            // picAvatar
+            // 
+            this.picAvatar.Image = global::DesktopApp.Properties.Resources.Logo;
+            this.picAvatar.Location = new System.Drawing.Point(81, 57);
+            this.picAvatar.Name = "picAvatar";
+            this.picAvatar.Size = new System.Drawing.Size(150, 150);
+            this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picAvatar.TabIndex = 2;
+            this.picAvatar.TabStop = false;
+            // 
+            // pnlSwitch
+            // 
+            this.pnlSwitch.Controls.Add(this.picSwitch);
+            this.pnlSwitch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSwitch.Location = new System.Drawing.Point(0, 0);
+            this.pnlSwitch.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlSwitch.Name = "pnlSwitch";
+            this.pnlSwitch.Size = new System.Drawing.Size(300, 50);
+            this.pnlSwitch.TabIndex = 0;
+            // 
+            // picSwitch
+            // 
+            this.picSwitch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picSwitch.Image = global::DesktopApp.Properties.Resources.close;
+            this.picSwitch.Location = new System.Drawing.Point(12, 7);
+            this.picSwitch.Name = "picSwitch";
+            this.picSwitch.Size = new System.Drawing.Size(35, 35);
+            this.picSwitch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picSwitch.TabIndex = 0;
+            this.picSwitch.TabStop = false;
+            this.picSwitch.Click += new System.EventHandler(this.picSwitch_Click);
             // 
             // formBusiness
             // 
@@ -194,6 +258,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
             this.ClientSize = new System.Drawing.Size(1200, 800);
+            this.Controls.Add(this.pnlAccount);
             this.Controls.Add(this.pnlFooter);
             this.Controls.Add(this.pnlHeader);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -211,6 +276,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.picMaximize)).EndInit();
             this.pnlFooter.ResumeLayout(false);
             this.pnlFooter.PerformLayout();
+            this.pnlAccount.ResumeLayout(false);
+            this.pnlAccount.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
+            this.pnlSwitch.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picSwitch)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -228,5 +298,10 @@
         private System.Windows.Forms.Label lbReadyTable;
         private System.Windows.Forms.Label lbUsingTable;
         private System.Windows.Forms.Label TotalTable;
+        private System.Windows.Forms.Panel pnlAccount;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox picAvatar;
+        private System.Windows.Forms.Panel pnlSwitch;
+        private System.Windows.Forms.PictureBox picSwitch;
     }
 }

@@ -50,5 +50,17 @@ namespace DesktopApp.GUI
             ReleaseCapture();
             SendMessage(Handle, 0x112, 0xf012, 0);
         }
+
+        private void picSwitch_Click(object sender, EventArgs e)
+        {
+            if (pnlAccount.Size.Width == 54)
+            {
+                pnlAccount.Size = new Size(300, 720);
+            }    
+            else
+            {
+                pnlAccount.Size = new Size(54, 720);
+            }
+        }
     }
 }
