@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DesktopApp.GUI
 {
-    public partial class FormChangePassword : Form
+    public partial class formChangePassword : Form
     {
-        public FormChangePassword()
+        public formChangePassword()
         {
             InitializeComponent();
         }

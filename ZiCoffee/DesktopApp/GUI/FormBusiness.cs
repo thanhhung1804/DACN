@@ -67,7 +67,7 @@ namespace DesktopApp.GUI
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            FormChangePassword formChangePassword = new FormChangePassword();
+            formChangePassword formChangePassword = new formChangePassword();
             formChangePassword.Show();
         }
 

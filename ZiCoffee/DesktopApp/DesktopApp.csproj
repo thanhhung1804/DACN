@@ -82,6 +82,9 @@
     <EmbeddedResource Include="GUI\FormBusiness.resx">
       <DependentUpon>FormBusiness.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormChangePassword.resx">
+      <DependentUpon>FormChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
