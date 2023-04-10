@@ -3,9 +3,10 @@ C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\bin\Debug\DesktopApp
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\bin\Debug\DesktopApp.pdb
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.csproj.AssemblyReference.cache
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.formBusiness.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.formLogin.resources
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.Properties.Resources.resources
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.csproj.GenerateResource.cache
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.csproj.CoreCompileInputs.cache
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.exe
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.pdb
-C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.formLogin.resources
