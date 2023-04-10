@@ -51,16 +51,36 @@ namespace DesktopApp.GUI
             SendMessage(Handle, 0x112, 0xf012, 0);
         }
 
-        private void picSwitch_Click(object sender, EventArgs e)
+        private void picShowAccount_Click(object sender, EventArgs e)
         {
-            if (pnlAccount.Size.Width == 54)
-            {
-                pnlAccount.Size = new Size(300, 720);
-            }    
-            else
-            {
-                pnlAccount.Size = new Size(54, 720);
-            }
+            pnlAccountSideBar.Size = new Size(300, pnlAccountSideBar.Size.Height);
+            picShowAccount.Hide();
+            picHideAccount.Show();
+        }
+
+        private void picHideAccount_Click(object sender, EventArgs e)
+        {
+            pnlAccountSideBar.Size = new Size(60, pnlAccountSideBar.Size.Height);
+            picShowAccount.Show();
+            picHideAccount.Hide();
+        }
+
+        private void btnChangePassword_Click(object sender, EventArgs e)
+        {
+            FormChangePassword formChangePassword = new FormChangePassword();
+            formChangePassword.Show();
+        }
+
+        private void btnOrder_Click(object sender, EventArgs e)
+        {
+            FormOrder formOrder = new FormOrder();
+            formOrder.Show();
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            FormCheckOut formCheckOut = new FormCheckOut();
+            formCheckOut.Show();
         }
     }
 }
