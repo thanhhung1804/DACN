@@ -70,7 +70,10 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1200, 50);
             this.pnlHeader.TabIndex = 0;
+<<<<<<< HEAD
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+=======
+>>>>>>> f7c49a7f130190077a3e4aacdc6855585b21589c
             // 
             // picClose
             // 
@@ -278,7 +281,10 @@
             this.lbTableName.Size = new System.Drawing.Size(134, 27);
             this.lbTableName.TabIndex = 0;
             this.lbTableName.Text = "TableName";
+<<<<<<< HEAD
             this.lbTableName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+=======
+>>>>>>> f7c49a7f130190077a3e4aacdc6855585b21589c
             // 
             // formOrder
             // 
