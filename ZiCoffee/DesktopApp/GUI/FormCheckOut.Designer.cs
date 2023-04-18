@@ -271,6 +271,7 @@
             this.Name = "formCheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCheckOut";
+            this.Load += new System.EventHandler(this.formCheckOut_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();

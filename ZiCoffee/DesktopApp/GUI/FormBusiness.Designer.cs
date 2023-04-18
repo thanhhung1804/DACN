@@ -555,6 +555,7 @@
             this.Name = "formBusiness";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBusiness";
+            this.Load += new System.EventHandler(this.formBusiness_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();

@@ -30,16 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formOrder));
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lbTableName = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.picMinimize = new System.Windows.Forms.PictureBox();
             this.picMaximize = new System.Windows.Forms.PictureBox();
             this.pnlFooter = new System.Windows.Forms.Panel();
+            this.btnOrder = new System.Windows.Forms.Button();
+            this.txbTotal = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.pnlBill = new System.Windows.Forms.Panel();
-            this.txbTotal = new System.Windows.Forms.TextBox();
             this.lsvBill = new System.Windows.Forms.ListView();
             this.columnHeaderSeviceName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -48,8 +50,6 @@
             this.pnlSeparation = new System.Windows.Forms.Panel();
             this.fpnlService = new System.Windows.Forms.FlowLayoutPanel();
             this.fpnlCategory = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnOrder = new System.Windows.Forms.Button();
-            this.lbTableName = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
@@ -71,6 +71,17 @@
             this.pnlHeader.Size = new System.Drawing.Size(1200, 50);
             this.pnlHeader.TabIndex = 0;
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+            // 
+            // lbTableName
+            // 
+            this.lbTableName.AutoSize = true;
+            this.lbTableName.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTableName.Location = new System.Drawing.Point(12, 12);
+            this.lbTableName.Name = "lbTableName";
+            this.lbTableName.Size = new System.Drawing.Size(134, 27);
+            this.lbTableName.TabIndex = 0;
+            this.lbTableName.Text = "TableName";
+            this.lbTableName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
             // 
             // picClose
             // 
@@ -124,6 +135,37 @@
             this.pnlFooter.Size = new System.Drawing.Size(1200, 78);
             this.pnlFooter.TabIndex = 0;
             // 
+            // btnOrder
+            // 
+            this.btnOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOrder.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnOrder.FlatAppearance.BorderSize = 3;
+            this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrder.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrder.Location = new System.Drawing.Point(991, 9);
+            this.btnOrder.Name = "btnOrder";
+            this.btnOrder.Size = new System.Drawing.Size(152, 50);
+            this.btnOrder.TabIndex = 0;
+            this.btnOrder.Text = "Order";
+            this.btnOrder.UseVisualStyleBackColor = true;
+            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
+            // 
+            // txbTotal
+            // 
+            this.txbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbTotal.Cursor = System.Windows.Forms.Cursors.No;
+            this.txbTotal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbTotal.ForeColor = System.Drawing.Color.Red;
+            this.txbTotal.Location = new System.Drawing.Point(750, 19);
+            this.txbTotal.MaxLength = 20;
+            this.txbTotal.Name = "txbTotal";
+            this.txbTotal.ReadOnly = true;
+            this.txbTotal.Size = new System.Drawing.Size(216, 30);
+            this.txbTotal.TabIndex = 0;
+            this.txbTotal.Text = "0";
+            this.txbTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
@@ -169,21 +211,6 @@
             this.pnlBill.Name = "pnlBill";
             this.pnlBill.Size = new System.Drawing.Size(400, 672);
             this.pnlBill.TabIndex = 0;
-            // 
-            // txbTotal
-            // 
-            this.txbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbTotal.Cursor = System.Windows.Forms.Cursors.No;
-            this.txbTotal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTotal.ForeColor = System.Drawing.Color.Red;
-            this.txbTotal.Location = new System.Drawing.Point(750, 19);
-            this.txbTotal.MaxLength = 20;
-            this.txbTotal.Name = "txbTotal";
-            this.txbTotal.ReadOnly = true;
-            this.txbTotal.Size = new System.Drawing.Size(216, 30);
-            this.txbTotal.TabIndex = 0;
-            this.txbTotal.Text = "0";
-            this.txbTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lsvBill
             // 
@@ -253,33 +280,6 @@
             this.fpnlCategory.Size = new System.Drawing.Size(680, 200);
             this.fpnlCategory.TabIndex = 0;
             // 
-            // btnOrder
-            // 
-            this.btnOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOrder.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOrder.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnOrder.FlatAppearance.BorderSize = 3;
-            this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrder.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.Location = new System.Drawing.Point(991, 9);
-            this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(152, 50);
-            this.btnOrder.TabIndex = 0;
-            this.btnOrder.Text = "Order";
-            this.btnOrder.UseVisualStyleBackColor = true;
-            this.btnOrder.Click += new System.EventHandler(this.btnOrder_Click);
-            // 
-            // lbTableName
-            // 
-            this.lbTableName.AutoSize = true;
-            this.lbTableName.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTableName.Location = new System.Drawing.Point(12, 12);
-            this.lbTableName.Name = "lbTableName";
-            this.lbTableName.Size = new System.Drawing.Size(134, 27);
-            this.lbTableName.TabIndex = 0;
-            this.lbTableName.Text = "TableName";
-            this.lbTableName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
-            // 
             // formOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -302,6 +302,7 @@
             this.Name = "formOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormOrder";
+            this.Load += new System.EventHandler(this.formOrder_Load);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();

@@ -306,6 +306,7 @@
             this.Name = "formChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormChangePasswork";
+            this.Load += new System.EventHandler(this.formChangePasswordLoad);
             ((System.ComponentModel.ISupportInitialize)(this.picEyeOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEyeNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEyeReenter)).EndInit();
