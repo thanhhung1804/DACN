@@ -73,7 +73,7 @@ namespace DesktopApp.GUI
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            FormOrder formOrder = new FormOrder();
+            formOrder formOrder = new formOrder();
             formOrder.Show();
         }
 
