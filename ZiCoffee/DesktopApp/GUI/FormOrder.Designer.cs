@@ -60,6 +60,7 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlHeader.Controls.Add(this.lbTableName);
             this.pnlHeader.Controls.Add(this.picClose);
             this.pnlHeader.Controls.Add(this.picMinimize);
@@ -124,6 +125,7 @@
             // 
             // pnlFooter
             // 
+            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlFooter.Controls.Add(this.btnOrder);
             this.pnlFooter.Controls.Add(this.txbTotal);
             this.pnlFooter.Controls.Add(this.panel2);
@@ -168,6 +170,7 @@
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -177,6 +180,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel1.Location = new System.Drawing.Point(1150, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -186,6 +190,7 @@
             // 
             // pnlRight
             // 
+            this.pnlRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlRight.Location = new System.Drawing.Point(1150, 50);
             this.pnlRight.Margin = new System.Windows.Forms.Padding(4);
@@ -195,6 +200,7 @@
             // 
             // pnlLeft
             // 
+            this.pnlLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 50);
             this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
@@ -214,7 +220,7 @@
             // 
             // lsvBill
             // 
-            this.lsvBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.lsvBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.lsvBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lsvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderSeviceName,
@@ -257,6 +263,7 @@
             // 
             // pnlSeparation
             // 
+            this.pnlSeparation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlSeparation.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlSeparation.Location = new System.Drawing.Point(730, 50);
             this.pnlSeparation.Margin = new System.Windows.Forms.Padding(4);
@@ -284,7 +291,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.fpnlService);
             this.Controls.Add(this.fpnlCategory);

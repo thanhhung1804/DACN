@@ -65,6 +65,7 @@
             this.txbSelectingTable = new System.Windows.Forms.TextBox();
             this.fpnlArea = new System.Windows.Forms.FlowLayoutPanel();
             this.fpnlTable = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
@@ -77,10 +78,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picShowAccount)).BeginInit();
             this.pnlBusinessSideBar.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlHeader.Controls.Add(this.lbProgramName);
             this.pnlHeader.Controls.Add(this.picClose);
             this.pnlHeader.Controls.Add(this.picMinimize);
@@ -145,6 +148,7 @@
             // 
             // pnlFooter
             // 
+            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlFooter.Controls.Add(this.lbPendingTable);
             this.pnlFooter.Controls.Add(this.lbReadyTable);
             this.pnlFooter.Controls.Add(this.lbUsingTable);
@@ -222,7 +226,7 @@
             // 
             // pnlAccountSideBar
             // 
-            this.pnlAccountSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.pnlAccountSideBar.BackColor = System.Drawing.Color.Transparent;
             this.pnlAccountSideBar.Controls.Add(this.txbRole);
             this.pnlAccountSideBar.Controls.Add(this.btnLogOut);
             this.pnlAccountSideBar.Controls.Add(this.btnChangePassword);
@@ -333,6 +337,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 274);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -376,6 +381,7 @@
             // 
             // pnlMarginLeft
             // 
+            this.pnlMarginLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlMarginLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMarginLeft.Location = new System.Drawing.Point(0, 0);
             this.pnlMarginLeft.Margin = new System.Windows.Forms.Padding(4);
@@ -385,8 +391,8 @@
             // 
             // pnlSwitch
             // 
+            this.pnlSwitch.Controls.Add(this.panel2);
             this.pnlSwitch.Controls.Add(this.picHideAccount);
-            this.pnlSwitch.Controls.Add(this.picShowAccount);
             this.pnlSwitch.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSwitch.Location = new System.Drawing.Point(0, 0);
             this.pnlSwitch.Margin = new System.Windows.Forms.Padding(4);
@@ -421,7 +427,7 @@
             // 
             // pnlBusinessSideBar
             // 
-            this.pnlBusinessSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.pnlBusinessSideBar.BackColor = System.Drawing.Color.Transparent;
             this.pnlBusinessSideBar.Controls.Add(this.btnLockTable);
             this.pnlBusinessSideBar.Controls.Add(this.btnMoveTable);
             this.pnlBusinessSideBar.Controls.Add(this.btnMergeTable);
@@ -521,6 +527,7 @@
             // 
             // fpnlArea
             // 
+            this.fpnlArea.BackColor = System.Drawing.Color.Transparent;
             this.fpnlArea.Dock = System.Windows.Forms.DockStyle.Top;
             this.fpnlArea.Location = new System.Drawing.Point(300, 50);
             this.fpnlArea.Name = "fpnlArea";
@@ -529,17 +536,29 @@
             // 
             // fpnlTable
             // 
+            this.fpnlTable.BackColor = System.Drawing.Color.Transparent;
             this.fpnlTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnlTable.Location = new System.Drawing.Point(300, 250);
             this.fpnlTable.Name = "fpnlTable";
             this.fpnlTable.Size = new System.Drawing.Size(600, 520);
             this.fpnlTable.TabIndex = 0;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.panel2.Controls.Add(this.picShowAccount);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(60, 50);
+            this.panel2.TabIndex = 0;
+            // 
             // formBusiness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.fpnlTable);
             this.Controls.Add(this.fpnlArea);
@@ -572,6 +591,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picShowAccount)).EndInit();
             this.pnlBusinessSideBar.ResumeLayout(false);
             this.pnlBusinessSideBar.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -614,5 +634,6 @@
         private System.Windows.Forms.TextBox txbSelectingTable;
         private System.Windows.Forms.FlowLayoutPanel fpnlArea;
         private System.Windows.Forms.FlowLayoutPanel fpnlTable;
+        private System.Windows.Forms.Panel panel2;
     }
 }
