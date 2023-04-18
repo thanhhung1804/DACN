@@ -79,7 +79,7 @@ namespace DesktopApp.GUI
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            FormCheckOut formCheckOut = new FormCheckOut();
+            formCheckOut formCheckOut = new formCheckOut();
             formCheckOut.Show();
         }
     }
