@@ -226,7 +226,7 @@
             // 
             // pnlAccountSideBar
             // 
-            this.pnlAccountSideBar.BackColor = System.Drawing.Color.Transparent;
+            this.pnlAccountSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlAccountSideBar.Controls.Add(this.txbRole);
             this.pnlAccountSideBar.Controls.Add(this.btnLogOut);
             this.pnlAccountSideBar.Controls.Add(this.btnChangePassword);
@@ -427,7 +427,7 @@
             // 
             // pnlBusinessSideBar
             // 
-            this.pnlBusinessSideBar.BackColor = System.Drawing.Color.Transparent;
+            this.pnlBusinessSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlBusinessSideBar.Controls.Add(this.btnLockTable);
             this.pnlBusinessSideBar.Controls.Add(this.btnMoveTable);
             this.pnlBusinessSideBar.Controls.Add(this.btnMergeTable);
