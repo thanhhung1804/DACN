@@ -81,19 +81,19 @@ namespace DesktopApp.GUI
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             formChangePassword formChangePassword = new formChangePassword();
-            formChangePassword.Show();
+            formChangePassword.ShowDialog();
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
             formOrder formOrder = new formOrder();
-            formOrder.Show();
+            formOrder.ShowDialog();
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
             formCheckOut formCheckOut = new formCheckOut();
-            formCheckOut.Show();
+            formCheckOut.ShowDialog();
         }
 
         private void formBusiness_Load(object sender, EventArgs e)
