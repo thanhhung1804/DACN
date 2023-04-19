@@ -310,6 +310,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormOrder";
             this.Load += new System.EventHandler(this.formOrder_Load);
+            this.SizeChanged += new System.EventHandler(this.formOrder_SizeChanged);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();

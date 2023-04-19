@@ -203,6 +203,7 @@
             this.txbTotal.ReadOnly = true;
             this.txbTotal.Size = new System.Drawing.Size(486, 30);
             this.txbTotal.TabIndex = 0;
+            this.txbTotal.TabStop = false;
             this.txbTotal.Text = "0";
             this.txbTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -287,6 +288,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCheckOut";
             this.Load += new System.EventHandler(this.formCheckOut_Load);
+            this.SizeChanged += new System.EventHandler(this.formCheckOut_SizeChanged);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();

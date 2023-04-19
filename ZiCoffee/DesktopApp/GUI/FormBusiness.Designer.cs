@@ -54,8 +54,9 @@
             this.picAvatar = new System.Windows.Forms.PictureBox();
             this.pnlMarginLeft = new System.Windows.Forms.Panel();
             this.pnlSwitch = new System.Windows.Forms.Panel();
-            this.picHideAccount = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.picShowAccount = new System.Windows.Forms.PictureBox();
+            this.picHideAccount = new System.Windows.Forms.PictureBox();
             this.pnlBusinessSideBar = new System.Windows.Forms.Panel();
             this.btnLockTable = new System.Windows.Forms.Button();
             this.btnMoveTable = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@
             this.txbSelectingTable = new System.Windows.Forms.TextBox();
             this.fpnlArea = new System.Windows.Forms.FlowLayoutPanel();
             this.fpnlTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
@@ -75,10 +75,10 @@
             this.pnlAvatar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.pnlSwitch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picShowAccount)).BeginInit();
-            this.pnlBusinessSideBar.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picShowAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).BeginInit();
+            this.pnlBusinessSideBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
@@ -400,17 +400,16 @@
             this.pnlSwitch.Size = new System.Drawing.Size(300, 50);
             this.pnlSwitch.TabIndex = 0;
             // 
-            // picHideAccount
+            // panel2
             // 
-            this.picHideAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picHideAccount.Image = global::DesktopApp.Properties.Resources.left_arrow;
-            this.picHideAccount.Location = new System.Drawing.Point(250, 7);
-            this.picHideAccount.Name = "picHideAccount";
-            this.picHideAccount.Size = new System.Drawing.Size(35, 35);
-            this.picHideAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHideAccount.TabIndex = 8;
-            this.picHideAccount.TabStop = false;
-            this.picHideAccount.Click += new System.EventHandler(this.picHideAccount_Click);
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.panel2.Controls.Add(this.picShowAccount);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(60, 50);
+            this.panel2.TabIndex = 0;
             // 
             // picShowAccount
             // 
@@ -424,6 +423,18 @@
             this.picShowAccount.TabStop = false;
             this.picShowAccount.Visible = false;
             this.picShowAccount.Click += new System.EventHandler(this.picShowAccount_Click);
+            // 
+            // picHideAccount
+            // 
+            this.picHideAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picHideAccount.Image = global::DesktopApp.Properties.Resources.left_arrow;
+            this.picHideAccount.Location = new System.Drawing.Point(250, 7);
+            this.picHideAccount.Name = "picHideAccount";
+            this.picHideAccount.Size = new System.Drawing.Size(35, 35);
+            this.picHideAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHideAccount.TabIndex = 8;
+            this.picHideAccount.TabStop = false;
+            this.picHideAccount.Click += new System.EventHandler(this.picHideAccount_Click);
             // 
             // pnlBusinessSideBar
             // 
@@ -543,17 +554,6 @@
             this.fpnlTable.Size = new System.Drawing.Size(600, 520);
             this.fpnlTable.TabIndex = 0;
             // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
-            this.panel2.Controls.Add(this.picShowAccount);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(60, 50);
-            this.panel2.TabIndex = 0;
-            // 
             // formBusiness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -575,6 +575,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBusiness";
             this.Load += new System.EventHandler(this.formBusiness_Load);
+            this.SizeChanged += new System.EventHandler(this.formBusiness_SizeChanged);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
@@ -587,11 +588,11 @@
             this.pnlAvatar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.pnlSwitch.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picShowAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).EndInit();
             this.pnlBusinessSideBar.ResumeLayout(false);
             this.pnlBusinessSideBar.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
