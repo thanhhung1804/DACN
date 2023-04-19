@@ -247,6 +247,7 @@
             // 
             // txbRole
             // 
+            this.txbRole.Cursor = System.Windows.Forms.Cursors.No;
             this.txbRole.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbRole.Location = new System.Drawing.Point(60, 341);
             this.txbRole.MaxLength = 20;
@@ -254,6 +255,7 @@
             this.txbRole.ReadOnly = true;
             this.txbRole.Size = new System.Drawing.Size(240, 30);
             this.txbRole.TabIndex = 0;
+            this.txbRole.TabStop = false;
             this.txbRole.Text = "Admin";
             this.txbRole.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -289,6 +291,7 @@
             // 
             // txbAddress
             // 
+            this.txbAddress.Cursor = System.Windows.Forms.Cursors.No;
             this.txbAddress.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbAddress.Location = new System.Drawing.Point(60, 550);
             this.txbAddress.MaxLength = 20;
@@ -296,11 +299,13 @@
             this.txbAddress.ReadOnly = true;
             this.txbAddress.Size = new System.Drawing.Size(240, 30);
             this.txbAddress.TabIndex = 0;
+            this.txbAddress.TabStop = false;
             this.txbAddress.Text = "441/42D Điện Biên Phủ, P24, Q.Bình Thạnh";
             this.txbAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txbPhone
             // 
+            this.txbPhone.Cursor = System.Windows.Forms.Cursors.No;
             this.txbPhone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPhone.Location = new System.Drawing.Point(60, 500);
             this.txbPhone.MaxLength = 20;
@@ -308,11 +313,13 @@
             this.txbPhone.ReadOnly = true;
             this.txbPhone.Size = new System.Drawing.Size(240, 30);
             this.txbPhone.TabIndex = 0;
+            this.txbPhone.TabStop = false;
             this.txbPhone.Text = "0797972243";
             this.txbPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txbCitizenId
             // 
+            this.txbCitizenId.Cursor = System.Windows.Forms.Cursors.No;
             this.txbCitizenId.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbCitizenId.Location = new System.Drawing.Point(60, 446);
             this.txbCitizenId.MaxLength = 20;
@@ -320,11 +327,13 @@
             this.txbCitizenId.ReadOnly = true;
             this.txbCitizenId.Size = new System.Drawing.Size(240, 30);
             this.txbCitizenId.TabIndex = 0;
+            this.txbCitizenId.TabStop = false;
             this.txbCitizenId.Text = "273640209";
             this.txbCitizenId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txbBirthday
             // 
+            this.txbBirthday.Cursor = System.Windows.Forms.Cursors.No;
             this.txbBirthday.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbBirthday.Location = new System.Drawing.Point(60, 392);
             this.txbBirthday.MaxLength = 20;
@@ -332,6 +341,7 @@
             this.txbBirthday.ReadOnly = true;
             this.txbBirthday.Size = new System.Drawing.Size(240, 30);
             this.txbBirthday.TabIndex = 0;
+            this.txbBirthday.TabStop = false;
             this.txbBirthday.Text = "18/04/1998";
             this.txbBirthday.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -347,6 +357,7 @@
             // 
             // txbFullName
             // 
+            this.txbFullName.Cursor = System.Windows.Forms.Cursors.No;
             this.txbFullName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbFullName.Location = new System.Drawing.Point(60, 289);
             this.txbFullName.MaxLength = 20;
@@ -354,6 +365,7 @@
             this.txbFullName.ReadOnly = true;
             this.txbFullName.Size = new System.Drawing.Size(240, 30);
             this.txbFullName.TabIndex = 0;
+            this.txbFullName.TabStop = false;
             this.txbFullName.Text = "Lý Thanh Hùng";
             this.txbFullName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -526,6 +538,7 @@
             // 
             // txbSelectingTable
             // 
+            this.txbSelectingTable.Cursor = System.Windows.Forms.Cursors.No;
             this.txbSelectingTable.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbSelectingTable.Location = new System.Drawing.Point(0, 12);
             this.txbSelectingTable.MaxLength = 20;
@@ -533,6 +546,7 @@
             this.txbSelectingTable.ReadOnly = true;
             this.txbSelectingTable.Size = new System.Drawing.Size(300, 30);
             this.txbSelectingTable.TabIndex = 0;
+            this.txbSelectingTable.TabStop = false;
             this.txbSelectingTable.Text = "No Selected Table";
             this.txbSelectingTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
