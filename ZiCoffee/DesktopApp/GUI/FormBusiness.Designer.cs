@@ -54,8 +54,9 @@
             this.picAvatar = new System.Windows.Forms.PictureBox();
             this.pnlMarginLeft = new System.Windows.Forms.Panel();
             this.pnlSwitch = new System.Windows.Forms.Panel();
-            this.picHideAccount = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.picShowAccount = new System.Windows.Forms.PictureBox();
+            this.picHideAccount = new System.Windows.Forms.PictureBox();
             this.pnlBusinessSideBar = new System.Windows.Forms.Panel();
             this.btnLockTable = new System.Windows.Forms.Button();
             this.btnMoveTable = new System.Windows.Forms.Button();
@@ -74,13 +75,15 @@
             this.pnlAvatar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.pnlSwitch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShowAccount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).BeginInit();
             this.pnlBusinessSideBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlHeader.Controls.Add(this.lbProgramName);
             this.pnlHeader.Controls.Add(this.picClose);
             this.pnlHeader.Controls.Add(this.picMinimize);
@@ -145,6 +148,7 @@
             // 
             // pnlFooter
             // 
+            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlFooter.Controls.Add(this.lbPendingTable);
             this.pnlFooter.Controls.Add(this.lbReadyTable);
             this.pnlFooter.Controls.Add(this.lbUsingTable);
@@ -222,7 +226,7 @@
             // 
             // pnlAccountSideBar
             // 
-            this.pnlAccountSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.pnlAccountSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlAccountSideBar.Controls.Add(this.txbRole);
             this.pnlAccountSideBar.Controls.Add(this.btnLogOut);
             this.pnlAccountSideBar.Controls.Add(this.btnChangePassword);
@@ -243,6 +247,7 @@
             // 
             // txbRole
             // 
+            this.txbRole.Cursor = System.Windows.Forms.Cursors.No;
             this.txbRole.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbRole.Location = new System.Drawing.Point(60, 341);
             this.txbRole.MaxLength = 20;
@@ -250,6 +255,7 @@
             this.txbRole.ReadOnly = true;
             this.txbRole.Size = new System.Drawing.Size(240, 30);
             this.txbRole.TabIndex = 0;
+            this.txbRole.TabStop = false;
             this.txbRole.Text = "Admin";
             this.txbRole.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -285,6 +291,7 @@
             // 
             // txbAddress
             // 
+            this.txbAddress.Cursor = System.Windows.Forms.Cursors.No;
             this.txbAddress.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbAddress.Location = new System.Drawing.Point(60, 550);
             this.txbAddress.MaxLength = 20;
@@ -292,11 +299,13 @@
             this.txbAddress.ReadOnly = true;
             this.txbAddress.Size = new System.Drawing.Size(240, 30);
             this.txbAddress.TabIndex = 0;
+            this.txbAddress.TabStop = false;
             this.txbAddress.Text = "441/42D Điện Biên Phủ, P24, Q.Bình Thạnh";
             this.txbAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txbPhone
             // 
+            this.txbPhone.Cursor = System.Windows.Forms.Cursors.No;
             this.txbPhone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbPhone.Location = new System.Drawing.Point(60, 500);
             this.txbPhone.MaxLength = 20;
@@ -304,11 +313,13 @@
             this.txbPhone.ReadOnly = true;
             this.txbPhone.Size = new System.Drawing.Size(240, 30);
             this.txbPhone.TabIndex = 0;
+            this.txbPhone.TabStop = false;
             this.txbPhone.Text = "0797972243";
             this.txbPhone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txbCitizenId
             // 
+            this.txbCitizenId.Cursor = System.Windows.Forms.Cursors.No;
             this.txbCitizenId.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbCitizenId.Location = new System.Drawing.Point(60, 446);
             this.txbCitizenId.MaxLength = 20;
@@ -316,11 +327,13 @@
             this.txbCitizenId.ReadOnly = true;
             this.txbCitizenId.Size = new System.Drawing.Size(240, 30);
             this.txbCitizenId.TabIndex = 0;
+            this.txbCitizenId.TabStop = false;
             this.txbCitizenId.Text = "273640209";
             this.txbCitizenId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txbBirthday
             // 
+            this.txbBirthday.Cursor = System.Windows.Forms.Cursors.No;
             this.txbBirthday.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbBirthday.Location = new System.Drawing.Point(60, 392);
             this.txbBirthday.MaxLength = 20;
@@ -328,11 +341,13 @@
             this.txbBirthday.ReadOnly = true;
             this.txbBirthday.Size = new System.Drawing.Size(240, 30);
             this.txbBirthday.TabIndex = 0;
+            this.txbBirthday.TabStop = false;
             this.txbBirthday.Text = "18/04/1998";
             this.txbBirthday.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 274);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
@@ -342,6 +357,7 @@
             // 
             // txbFullName
             // 
+            this.txbFullName.Cursor = System.Windows.Forms.Cursors.No;
             this.txbFullName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbFullName.Location = new System.Drawing.Point(60, 289);
             this.txbFullName.MaxLength = 20;
@@ -349,6 +365,7 @@
             this.txbFullName.ReadOnly = true;
             this.txbFullName.Size = new System.Drawing.Size(240, 30);
             this.txbFullName.TabIndex = 0;
+            this.txbFullName.TabStop = false;
             this.txbFullName.Text = "Lý Thanh Hùng";
             this.txbFullName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -376,6 +393,7 @@
             // 
             // pnlMarginLeft
             // 
+            this.pnlMarginLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlMarginLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMarginLeft.Location = new System.Drawing.Point(0, 0);
             this.pnlMarginLeft.Margin = new System.Windows.Forms.Padding(4);
@@ -385,8 +403,8 @@
             // 
             // pnlSwitch
             // 
+            this.pnlSwitch.Controls.Add(this.panel2);
             this.pnlSwitch.Controls.Add(this.picHideAccount);
-            this.pnlSwitch.Controls.Add(this.picShowAccount);
             this.pnlSwitch.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSwitch.Location = new System.Drawing.Point(0, 0);
             this.pnlSwitch.Margin = new System.Windows.Forms.Padding(4);
@@ -394,17 +412,16 @@
             this.pnlSwitch.Size = new System.Drawing.Size(300, 50);
             this.pnlSwitch.TabIndex = 0;
             // 
-            // picHideAccount
+            // panel2
             // 
-            this.picHideAccount.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picHideAccount.Image = global::DesktopApp.Properties.Resources.left_arrow;
-            this.picHideAccount.Location = new System.Drawing.Point(250, 7);
-            this.picHideAccount.Name = "picHideAccount";
-            this.picHideAccount.Size = new System.Drawing.Size(35, 35);
-            this.picHideAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picHideAccount.TabIndex = 8;
-            this.picHideAccount.TabStop = false;
-            this.picHideAccount.Click += new System.EventHandler(this.picHideAccount_Click);
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.panel2.Controls.Add(this.picShowAccount);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(60, 50);
+            this.panel2.TabIndex = 0;
             // 
             // picShowAccount
             // 
@@ -419,9 +436,21 @@
             this.picShowAccount.Visible = false;
             this.picShowAccount.Click += new System.EventHandler(this.picShowAccount_Click);
             // 
+            // picHideAccount
+            // 
+            this.picHideAccount.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picHideAccount.Image = global::DesktopApp.Properties.Resources.left_arrow;
+            this.picHideAccount.Location = new System.Drawing.Point(250, 7);
+            this.picHideAccount.Name = "picHideAccount";
+            this.picHideAccount.Size = new System.Drawing.Size(35, 35);
+            this.picHideAccount.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picHideAccount.TabIndex = 8;
+            this.picHideAccount.TabStop = false;
+            this.picHideAccount.Click += new System.EventHandler(this.picHideAccount_Click);
+            // 
             // pnlBusinessSideBar
             // 
-            this.pnlBusinessSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.pnlBusinessSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlBusinessSideBar.Controls.Add(this.btnLockTable);
             this.pnlBusinessSideBar.Controls.Add(this.btnMoveTable);
             this.pnlBusinessSideBar.Controls.Add(this.btnMergeTable);
@@ -509,6 +538,7 @@
             // 
             // txbSelectingTable
             // 
+            this.txbSelectingTable.Cursor = System.Windows.Forms.Cursors.No;
             this.txbSelectingTable.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbSelectingTable.Location = new System.Drawing.Point(0, 12);
             this.txbSelectingTable.MaxLength = 20;
@@ -516,11 +546,13 @@
             this.txbSelectingTable.ReadOnly = true;
             this.txbSelectingTable.Size = new System.Drawing.Size(300, 30);
             this.txbSelectingTable.TabIndex = 0;
+            this.txbSelectingTable.TabStop = false;
             this.txbSelectingTable.Text = "No Selected Table";
             this.txbSelectingTable.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // fpnlArea
             // 
+            this.fpnlArea.BackColor = System.Drawing.Color.Transparent;
             this.fpnlArea.Dock = System.Windows.Forms.DockStyle.Top;
             this.fpnlArea.Location = new System.Drawing.Point(300, 50);
             this.fpnlArea.Name = "fpnlArea";
@@ -529,6 +561,7 @@
             // 
             // fpnlTable
             // 
+            this.fpnlTable.BackColor = System.Drawing.Color.Transparent;
             this.fpnlTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnlTable.Location = new System.Drawing.Point(300, 250);
             this.fpnlTable.Name = "fpnlTable";
@@ -539,7 +572,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.fpnlTable);
             this.Controls.Add(this.fpnlArea);
@@ -555,6 +588,8 @@
             this.Name = "formBusiness";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormBusiness";
+            this.Load += new System.EventHandler(this.formBusiness_Load);
+            this.SizeChanged += new System.EventHandler(this.formBusiness_SizeChanged);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
@@ -567,8 +602,9 @@
             this.pnlAvatar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
             this.pnlSwitch.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).EndInit();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picShowAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picHideAccount)).EndInit();
             this.pnlBusinessSideBar.ResumeLayout(false);
             this.pnlBusinessSideBar.PerformLayout();
             this.ResumeLayout(false);
@@ -613,5 +649,6 @@
         private System.Windows.Forms.TextBox txbSelectingTable;
         private System.Windows.Forms.FlowLayoutPanel fpnlArea;
         private System.Windows.Forms.FlowLayoutPanel fpnlTable;
+        private System.Windows.Forms.Panel panel2;
     }
 }

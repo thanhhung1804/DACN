@@ -49,6 +49,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbErrorUsername = new System.Windows.Forms.Label();
+            this.lbErrorPassword = new System.Windows.Forms.Label();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
@@ -72,6 +74,7 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(500, 50);
             this.pnlHeader.TabIndex = 0;
+            this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
             // 
             // picMinimize
             // 
@@ -137,6 +140,8 @@
             // 
             // pnlInput
             // 
+            this.pnlInput.Controls.Add(this.lbErrorPassword);
+            this.pnlInput.Controls.Add(this.lbErrorUsername);
             this.pnlInput.Controls.Add(this.panel1);
             this.pnlInput.Controls.Add(this.pnlUserUnderline);
             this.pnlInput.Controls.Add(this.txbPassword);
@@ -282,12 +287,36 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // lbErrorUsername
+            // 
+            this.lbErrorUsername.AutoSize = true;
+            this.lbErrorUsername.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorUsername.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorUsername.Location = new System.Drawing.Point(7, 72);
+            this.lbErrorUsername.Name = "lbErrorUsername";
+            this.lbErrorUsername.Size = new System.Drawing.Size(184, 19);
+            this.lbErrorUsername.TabIndex = 0;
+            this.lbErrorUsername.Text = "Username is not valid !!!";
+            this.lbErrorUsername.Visible = false;
+            // 
+            // lbErrorPassword
+            // 
+            this.lbErrorPassword.AutoSize = true;
+            this.lbErrorPassword.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbErrorPassword.ForeColor = System.Drawing.Color.Red;
+            this.lbErrorPassword.Location = new System.Drawing.Point(7, 150);
+            this.lbErrorPassword.Name = "lbErrorPassword";
+            this.lbErrorPassword.Size = new System.Drawing.Size(181, 19);
+            this.lbErrorPassword.TabIndex = 0;
+            this.lbErrorPassword.Text = "Password is not valid !!!";
+            this.lbErrorPassword.Visible = false;
+            // 
             // formLogin
             // 
             this.AcceptButton = this.btnLogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(500, 600);
             this.Controls.Add(this.pnlButton);
@@ -306,6 +335,7 @@
             this.Opacity = 0.9D;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLogin";
+            this.Load += new System.EventHandler(this.formLogin_Load);
             this.pnlHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
@@ -345,5 +375,7 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lbCopyright;
+        private System.Windows.Forms.Label lbErrorPassword;
+        private System.Windows.Forms.Label lbErrorUsername;
     }
 }

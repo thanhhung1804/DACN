@@ -48,6 +48,7 @@
             this.lbCommentNewPassword = new System.Windows.Forms.Label();
             this.lbCommentReenterPassword = new System.Windows.Forms.Label();
             this.lbCommentOldPassword = new System.Windows.Forms.Label();
+            this.pnlFooter = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picEyeOld)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEyeNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEyeReenter)).BeginInit();
@@ -157,6 +158,7 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlHeader.Controls.Add(this.picMinimize);
             this.pnlHeader.Controls.Add(this.picClose);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -165,6 +167,7 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(500, 50);
             this.pnlHeader.TabIndex = 0;
+            this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
             // 
             // picMinimize
             // 
@@ -192,6 +195,7 @@
             // 
             // pnlLeft
             // 
+            this.pnlLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 50);
             this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
@@ -201,6 +205,7 @@
             // 
             // pnlRight
             // 
+            this.pnlRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlRight.Location = new System.Drawing.Point(450, 50);
             this.pnlRight.Margin = new System.Windows.Forms.Padding(4);
@@ -274,12 +279,23 @@
             this.lbCommentOldPassword.Text = "Old password is not valid !!!";
             this.lbCommentOldPassword.Visible = false;
             // 
+            // pnlFooter
+            // 
+            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlFooter.Location = new System.Drawing.Point(50, 390);
+            this.pnlFooter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlFooter.Name = "pnlFooter";
+            this.pnlFooter.Size = new System.Drawing.Size(400, 20);
+            this.pnlFooter.TabIndex = 0;
+            // 
             // formChangePassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(500, 410);
+            this.Controls.Add(this.pnlFooter);
             this.Controls.Add(this.lbCommentOldPassword);
             this.Controls.Add(this.lbCommentReenterPassword);
             this.Controls.Add(this.lbCommentNewPassword);
@@ -305,6 +321,7 @@
             this.Name = "formChangePassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormChangePasswork";
+            this.Load += new System.EventHandler(this.formChangePasswordLoad);
             ((System.ComponentModel.ISupportInitialize)(this.picEyeOld)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEyeNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picEyeReenter)).EndInit();
@@ -337,5 +354,6 @@
         private System.Windows.Forms.Label lbCommentNewPassword;
         private System.Windows.Forms.Label lbCommentReenterPassword;
         private System.Windows.Forms.Label lbCommentOldPassword;
+        private System.Windows.Forms.Panel pnlFooter;
     }
 }

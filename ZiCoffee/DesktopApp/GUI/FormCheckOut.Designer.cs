@@ -45,6 +45,7 @@
             this.btnPay = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.pnlFooter = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
@@ -54,6 +55,7 @@
             // 
             // pnlHeader
             // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlHeader.Controls.Add(this.lbTableName);
             this.pnlHeader.Controls.Add(this.picClose);
             this.pnlHeader.Controls.Add(this.picMinimize);
@@ -118,6 +120,7 @@
             // 
             // pnlRight
             // 
+            this.pnlRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.pnlRight.Location = new System.Drawing.Point(550, 50);
             this.pnlRight.Margin = new System.Windows.Forms.Padding(4);
@@ -127,6 +130,7 @@
             // 
             // pnlLeft
             // 
+            this.pnlLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeft.Location = new System.Drawing.Point(0, 50);
             this.pnlLeft.Margin = new System.Windows.Forms.Padding(4);
@@ -146,7 +150,7 @@
             // 
             // lsvBill
             // 
-            this.lsvBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.lsvBill.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.lsvBill.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lsvBill.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderSeviceName,
@@ -199,6 +203,7 @@
             this.txbTotal.ReadOnly = true;
             this.txbTotal.Size = new System.Drawing.Size(486, 30);
             this.txbTotal.TabIndex = 0;
+            this.txbTotal.TabStop = false;
             this.txbTotal.Text = "0";
             this.txbTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -250,12 +255,23 @@
             this.btnPrint.UseVisualStyleBackColor = true;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // pnlFooter
+            // 
+            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlFooter.Location = new System.Drawing.Point(50, 780);
+            this.pnlFooter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlFooter.Name = "pnlFooter";
+            this.pnlFooter.Size = new System.Drawing.Size(500, 20);
+            this.pnlFooter.TabIndex = 0;
+            // 
             // formCheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(49)))), ((int)(((byte)(61)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(600, 800);
+            this.Controls.Add(this.pnlFooter);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnPay);
@@ -271,6 +287,8 @@
             this.Name = "formCheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormCheckOut";
+            this.Load += new System.EventHandler(this.formCheckOut_Load);
+            this.SizeChanged += new System.EventHandler(this.formCheckOut_SizeChanged);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
@@ -301,5 +319,6 @@
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Panel pnlFooter;
     }
 }

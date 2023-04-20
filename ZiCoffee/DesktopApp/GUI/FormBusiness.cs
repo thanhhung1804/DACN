@@ -20,6 +20,19 @@ namespace DesktopApp.GUI
         private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
         #endregion
 
+        #region Form Round Corners
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // x-coordinate of upper-left corner
+            int nTopRect,      // y-coordinate of upper-left corner
+            int nRightRect,    // x-coordinate of lower-right corner
+            int nBottomRect,   // y-coordinate of lower-right corner
+            int nWidthEllipse, // height of ellipse
+            int nHeightEllipse // width of ellipse
+        );
+        #endregion
+
         public formBusiness()
         {
             InitializeComponent();
@@ -68,19 +81,36 @@ namespace DesktopApp.GUI
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
             formChangePassword formChangePassword = new formChangePassword();
-            formChangePassword.Show();
+            formChangePassword.ShowDialog();
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
             formOrder formOrder = new formOrder();
-            formOrder.Show();
+            formOrder.ShowDialog();
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
             formCheckOut formCheckOut = new formCheckOut();
-            formCheckOut.Show();
+            formCheckOut.ShowDialog();
+        }
+
+        private void formBusiness_Load(object sender, EventArgs e)
+        {
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        private void formBusiness_SizeChanged(object sender, EventArgs e)
+        {
+            if(WindowState == FormWindowState.Maximized)
+            {
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
+            }
+            else
+            {
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            }
         }
     }
 }
