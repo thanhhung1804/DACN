@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopApp.GUI.SubGUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace DesktopApp.GUI
 {
-    public partial class formBusiness : Form
+    public partial class formManage : Form
     {
         #region Form Move (Keep and move form on screen)
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
@@ -33,9 +34,26 @@ namespace DesktopApp.GUI
         );
         #endregion
 
-        public formBusiness()
+        public formManage()
         {
             InitializeComponent();
+        }
+
+        private void formManage_Load(object sender, EventArgs e)
+        {
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        private void formManage_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
+            }
+            else
+            {
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            }
         }
 
         private void picMinimize_Click(object sender, EventArgs e)
@@ -58,65 +76,62 @@ namespace DesktopApp.GUI
             WindowState = state;
         }
 
+        private void picToggle_Click(object sender, EventArgs e)
+        {
+            if (pnlNavBar.Width > 0) 
+            {
+                pnlNavBar.Size = new Size(0, pnlNavBar.Height);
+            }
+            else
+            {
+                pnlNavBar.Size = new Size(200, pnlNavBar.Height);
+            }
+        }
+
         private void pnlHeader_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(Handle, 0x112, 0xf012, 0);
         }
 
-        private void picShowAccount_Click(object sender, EventArgs e)
+        private void btnRevenue_Click(object sender, EventArgs e)
         {
-            pnlAccountSideBar.Size = new Size(300, pnlAccountSideBar.Size.Height);
-            picShowAccount.Hide();
-            picHideAccount.Show();
+            formRevenue subform = new formRevenue();
+            subform.Dock = DockStyle.Fill;
+            subform.TopLevel = false;
+            subform.AutoScroll = true;
+            pnlBody.Controls.Add(subform);
+            subform.Show();
         }
 
-        private void picHideAccount_Click(object sender, EventArgs e)
+        private void btnUser_Click(object sender, EventArgs e)
         {
-            pnlAccountSideBar.Size = new Size(60, pnlAccountSideBar.Size.Height);
-            picShowAccount.Show();
-            picHideAccount.Hide();
+
         }
 
-        private void btnChangePassword_Click(object sender, EventArgs e)
+        private void btnRole_Click(object sender, EventArgs e)
         {
-            formChangePassword formChangePassword = new formChangePassword();
-            formChangePassword.ShowDialog();
+
         }
 
-        private void btnOrder_Click(object sender, EventArgs e)
+        private void btnArea_Click(object sender, EventArgs e)
         {
-            formOrder formOrder = new formOrder();
-            formOrder.ShowDialog();
+
         }
 
-        private void btnPay_Click(object sender, EventArgs e)
+        private void btnTable_Click(object sender, EventArgs e)
         {
-            formCheckOut formCheckOut = new formCheckOut();
-            formCheckOut.ShowDialog();
+
         }
 
-        private void formBusiness_Load(object sender, EventArgs e)
+        private void btnCategory_Click(object sender, EventArgs e)
         {
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
         }
 
-        private void formBusiness_SizeChanged(object sender, EventArgs e)
+        private void btnService_Click(object sender, EventArgs e)
         {
-            if(WindowState == FormWindowState.Maximized)
-            {
-                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
-            }
-            else
-            {
-                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            }
-        }
 
-        private void btnManage_Click(object sender, EventArgs e)
-        {
-            formManage form = new formManage();
-            form.ShowDialog();
         }
     }
 }
