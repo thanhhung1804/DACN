@@ -112,5 +112,11 @@ namespace DesktopApp.GUI
                 Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             }
         }
+
+        private void btnManage_Click(object sender, EventArgs e)
+        {
+            formManage form = new formManage();
+            form.ShowDialog();
+        }
     }
 }

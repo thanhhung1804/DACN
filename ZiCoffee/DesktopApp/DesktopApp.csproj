@@ -71,11 +71,59 @@
     <Compile Include="GUI\FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\FormManage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\FormManage.Designer.cs">
+      <DependentUpon>FormManage.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\FormOrder.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\FormOrder.Designer.cs">
       <DependentUpon>FormOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormArea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormArea.Designer.cs">
+      <DependentUpon>FormArea.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormCategory.Designer.cs">
+      <DependentUpon>FormCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormRevenue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormRevenue.Designer.cs">
+      <DependentUpon>FormRevenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormRole.Designer.cs">
+      <DependentUpon>FormRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormService.Designer.cs">
+      <DependentUpon>FormService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormTable.Designer.cs">
+      <DependentUpon>FormTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\SubGUI\FormUser.Designer.cs">
+      <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,8 +139,32 @@
     <EmbeddedResource Include="GUI\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\FormManage.resx">
+      <DependentUpon>FormManage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\FormOrder.resx">
       <DependentUpon>FormOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SubGUI\FormArea.resx">
+      <DependentUpon>FormArea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SubGUI\FormCategory.resx">
+      <DependentUpon>FormCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SubGUI\FormRevenue.resx">
+      <DependentUpon>FormRevenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SubGUI\FormRole.resx">
+      <DependentUpon>FormRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SubGUI\FormService.resx">
+      <DependentUpon>FormService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SubGUI\FormTable.resx">
+      <DependentUpon>FormTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\SubGUI\FormUser.resx">
+      <DependentUpon>FormUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -131,5 +203,6 @@
     <None Include="Resources\right-arrow.png" />
     <None Include="Resources\left-arrow.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

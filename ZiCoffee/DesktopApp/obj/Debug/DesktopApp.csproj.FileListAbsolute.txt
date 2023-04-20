@@ -13,3 +13,11 @@ C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.formChangePassword.resources
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.formOrder.resources
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.formCheckOut.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.formManage.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.SubGUI.formRevenue.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.SubGUI.formUser.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.SubGUI.formArea.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.SubGUI.formCategory.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.SubGUI.formRole.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.SubGUI.formService.resources
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.SubGUI.formTable.resources
