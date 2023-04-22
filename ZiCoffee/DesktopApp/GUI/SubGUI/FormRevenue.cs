@@ -30,12 +30,12 @@ namespace DesktopApp.GUI.SubGUI
         private void txbCashierName_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-        }
+    }
 
         private void txbTableName_KeyPress(object sender, KeyPressEventArgs e)
         {
 
-        }
+}
 
         private void btnExport_Click(object sender, EventArgs e)
         {
