@@ -41,6 +41,7 @@
             this.TotalTable = new System.Windows.Forms.Label();
             this.lbCopyright = new System.Windows.Forms.Label();
             this.pnlAccountSideBar = new System.Windows.Forms.Panel();
+            this.btnManage = new System.Windows.Forms.Button();
             this.txbRole = new System.Windows.Forms.TextBox();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
@@ -66,7 +67,6 @@
             this.txbSelectingTable = new System.Windows.Forms.TextBox();
             this.fpnlArea = new System.Windows.Forms.FlowLayoutPanel();
             this.fpnlTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnManage = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
@@ -246,6 +246,21 @@
             this.pnlAccountSideBar.Name = "pnlAccountSideBar";
             this.pnlAccountSideBar.Size = new System.Drawing.Size(300, 720);
             this.pnlAccountSideBar.TabIndex = 0;
+            // 
+            // btnManage
+            // 
+            this.btnManage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManage.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnManage.FlatAppearance.BorderSize = 3;
+            this.btnManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManage.Location = new System.Drawing.Point(60, 561);
+            this.btnManage.Name = "btnManage";
+            this.btnManage.Size = new System.Drawing.Size(240, 50);
+            this.btnManage.TabIndex = 0;
+            this.btnManage.Text = "Manage";
+            this.btnManage.UseVisualStyleBackColor = true;
+            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
             // txbRole
             // 
@@ -569,21 +584,6 @@
             this.fpnlTable.Name = "fpnlTable";
             this.fpnlTable.Size = new System.Drawing.Size(600, 520);
             this.fpnlTable.TabIndex = 0;
-            // 
-            // btnManage
-            // 
-            this.btnManage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnManage.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnManage.FlatAppearance.BorderSize = 3;
-            this.btnManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManage.Location = new System.Drawing.Point(60, 561);
-            this.btnManage.Name = "btnManage";
-            this.btnManage.Size = new System.Drawing.Size(240, 50);
-            this.btnManage.TabIndex = 0;
-            this.btnManage.Text = "Manage";
-            this.btnManage.UseVisualStyleBackColor = true;
-            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
             // formBusiness
             // 
