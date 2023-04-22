@@ -191,11 +191,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="GUI\Assets\Icon\Close.png" />
+    <Content Include="GUI\Assets\Icon\Delete.png" />
+    <Content Include="GUI\Assets\Icon\Edit.png" />
     <Content Include="GUI\Assets\Icon\hide.png" />
     <Content Include="GUI\Assets\Icon\Logo.png" />
     <Content Include="GUI\Assets\Icon\Maximize.png" />
+    <Content Include="GUI\Assets\Icon\Menu.png" />
     <Content Include="GUI\Assets\Icon\Minimize.png" />
     <Content Include="GUI\Assets\Icon\Password.png" />
+    <Content Include="GUI\Assets\Icon\Plus.png" />
+    <Content Include="GUI\Assets\Icon\Quit.png" />
+    <Content Include="GUI\Assets\Icon\Remove.png" />
+    <Content Include="GUI\Assets\Icon\Search.png" />
     <Content Include="GUI\Assets\Icon\show.png" />
     <Content Include="GUI\Assets\Icon\User.png" />
     <Content Include="GUI\Assets\Logo\Logo.ico" />

@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formManage));
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.picToggle = new System.Windows.Forms.PictureBox();
             this.lbManage = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.picMinimize = new System.Windows.Forms.PictureBox();
             this.picMaximize = new System.Windows.Forms.PictureBox();
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.picToggle = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnlNavBar = new System.Windows.Forms.Panel();
             this.btnCategory = new System.Windows.Forms.Button();
@@ -48,10 +48,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picToggle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMaximize)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picToggle)).BeginInit();
             this.pnlNavBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,6 +70,18 @@
             this.pnlHeader.Size = new System.Drawing.Size(1200, 50);
             this.pnlHeader.TabIndex = 0;
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+            // 
+            // picToggle
+            // 
+            this.picToggle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picToggle.Image = global::DesktopApp.Properties.Resources.minimize;
+            this.picToggle.Location = new System.Drawing.Point(12, 12);
+            this.picToggle.Name = "picToggle";
+            this.picToggle.Size = new System.Drawing.Size(30, 30);
+            this.picToggle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picToggle.TabIndex = 3;
+            this.picToggle.TabStop = false;
+            this.picToggle.Click += new System.EventHandler(this.picToggle_Click);
             // 
             // lbManage
             // 
@@ -130,18 +142,6 @@
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(1200, 30);
             this.pnlFooter.TabIndex = 0;
-            // 
-            // picToggle
-            // 
-            this.picToggle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picToggle.Image = global::DesktopApp.Properties.Resources.minimize;
-            this.picToggle.Location = new System.Drawing.Point(12, 12);
-            this.picToggle.Name = "picToggle";
-            this.picToggle.Size = new System.Drawing.Size(30, 30);
-            this.picToggle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picToggle.TabIndex = 3;
-            this.picToggle.TabStop = false;
-            this.picToggle.Click += new System.EventHandler(this.picToggle_Click);
             // 
             // panel1
             // 
@@ -308,7 +308,7 @@
             // 
             // pnlBody
             // 
-            this.pnlBody.BackColor = System.Drawing.Color.Transparent;
+            this.pnlBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(220, 50);
             this.pnlBody.Name = "pnlBody";
@@ -331,7 +331,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formManage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
@@ -339,10 +339,10 @@
             this.SizeChanged += new System.EventHandler(this.formManage_SizeChanged);
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picToggle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMaximize)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picToggle)).EndInit();
             this.pnlNavBar.ResumeLayout(false);
             this.ResumeLayout(false);
 

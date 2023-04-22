@@ -32,14 +32,14 @@
             this.dtpTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpTimeStart = new System.Windows.Forms.DateTimePicker();
             this.pnlFillter = new System.Windows.Forms.Panel();
+            this.lbTableName = new System.Windows.Forms.Label();
+            this.lbCashierName = new System.Windows.Forms.Label();
             this.txbTableName = new System.Windows.Forms.TextBox();
             this.txbCashierName = new System.Windows.Forms.TextBox();
-            this.lbCashierName = new System.Windows.Forms.Label();
-            this.lbTableName = new System.Windows.Forms.Label();
             this.pnlFooter = new System.Windows.Forms.Panel();
-            this.txbTotalRevenue = new System.Windows.Forms.TextBox();
-            this.lbTotalRevenue = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
+            this.lbTotalRevenue = new System.Windows.Forms.Label();
+            this.txbTotalRevenue = new System.Windows.Forms.TextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgRevenue = new System.Windows.Forms.DataGridView();
             this.pnlHeader.SuspendLayout();
@@ -51,7 +51,7 @@
             // 
             // pnlHeader
             // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlHeader.Controls.Add(this.dtpTimeEnd);
             this.pnlHeader.Controls.Add(this.dtpTimeStart);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -80,7 +80,7 @@
             // 
             // pnlFillter
             // 
-            this.pnlFillter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.pnlFillter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlFillter.Controls.Add(this.lbTableName);
             this.pnlFillter.Controls.Add(this.lbCashierName);
             this.pnlFillter.Controls.Add(this.txbTableName);
@@ -91,6 +91,27 @@
             this.pnlFillter.Name = "pnlFillter";
             this.pnlFillter.Size = new System.Drawing.Size(800, 76);
             this.pnlFillter.TabIndex = 0;
+            // 
+            // lbTableName
+            // 
+            this.lbTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbTableName.AutoSize = true;
+            this.lbTableName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTableName.Location = new System.Drawing.Point(484, 7);
+            this.lbTableName.Name = "lbTableName";
+            this.lbTableName.Size = new System.Drawing.Size(114, 23);
+            this.lbTableName.TabIndex = 0;
+            this.lbTableName.Text = "Table Name";
+            // 
+            // lbCashierName
+            // 
+            this.lbCashierName.AutoSize = true;
+            this.lbCashierName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCashierName.Location = new System.Drawing.Point(8, 7);
+            this.lbCashierName.Name = "lbCashierName";
+            this.lbCashierName.Size = new System.Drawing.Size(134, 23);
+            this.lbCashierName.TabIndex = 0;
+            this.lbCashierName.Text = "Cashier Name";
             // 
             // txbTableName
             // 
@@ -113,30 +134,9 @@
             this.txbCashierName.TabIndex = 0;
             this.txbCashierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCashierName_KeyPress);
             // 
-            // lbCashierName
-            // 
-            this.lbCashierName.AutoSize = true;
-            this.lbCashierName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCashierName.Location = new System.Drawing.Point(8, 7);
-            this.lbCashierName.Name = "lbCashierName";
-            this.lbCashierName.Size = new System.Drawing.Size(134, 23);
-            this.lbCashierName.TabIndex = 0;
-            this.lbCashierName.Text = "Cashier Name";
-            // 
-            // lbTableName
-            // 
-            this.lbTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbTableName.AutoSize = true;
-            this.lbTableName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTableName.Location = new System.Drawing.Point(484, 7);
-            this.lbTableName.Name = "lbTableName";
-            this.lbTableName.Size = new System.Drawing.Size(114, 23);
-            this.lbTableName.TabIndex = 0;
-            this.lbTableName.Text = "Table Name";
-            // 
             // pnlFooter
             // 
-            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
+            this.pnlFooter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlFooter.Controls.Add(this.btnExport);
             this.pnlFooter.Controls.Add(this.lbTotalRevenue);
             this.pnlFooter.Controls.Add(this.txbTotalRevenue);
@@ -146,32 +146,6 @@
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(800, 75);
             this.pnlFooter.TabIndex = 0;
-            // 
-            // txbTotalRevenue
-            // 
-            this.txbTotalRevenue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txbTotalRevenue.Cursor = System.Windows.Forms.Cursors.No;
-            this.txbTotalRevenue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTotalRevenue.ForeColor = System.Drawing.Color.Red;
-            this.txbTotalRevenue.Location = new System.Drawing.Point(148, 23);
-            this.txbTotalRevenue.MaxLength = 20;
-            this.txbTotalRevenue.Name = "txbTotalRevenue";
-            this.txbTotalRevenue.ReadOnly = true;
-            this.txbTotalRevenue.Size = new System.Drawing.Size(164, 30);
-            this.txbTotalRevenue.TabIndex = 0;
-            this.txbTotalRevenue.Text = "0";
-            this.txbTotalRevenue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbTotalRevenue
-            // 
-            this.lbTotalRevenue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbTotalRevenue.AutoSize = true;
-            this.lbTotalRevenue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalRevenue.Location = new System.Drawing.Point(8, 26);
-            this.lbTotalRevenue.Name = "lbTotalRevenue";
-            this.lbTotalRevenue.Size = new System.Drawing.Size(134, 23);
-            this.lbTotalRevenue.TabIndex = 0;
-            this.lbTotalRevenue.Text = "Total Revenue";
             // 
             // btnExport
             // 
@@ -188,6 +162,32 @@
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // lbTotalRevenue
+            // 
+            this.lbTotalRevenue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbTotalRevenue.AutoSize = true;
+            this.lbTotalRevenue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalRevenue.Location = new System.Drawing.Point(8, 26);
+            this.lbTotalRevenue.Name = "lbTotalRevenue";
+            this.lbTotalRevenue.Size = new System.Drawing.Size(134, 23);
+            this.lbTotalRevenue.TabIndex = 0;
+            this.lbTotalRevenue.Text = "Total Revenue";
+            // 
+            // txbTotalRevenue
+            // 
+            this.txbTotalRevenue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txbTotalRevenue.Cursor = System.Windows.Forms.Cursors.No;
+            this.txbTotalRevenue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbTotalRevenue.ForeColor = System.Drawing.Color.Red;
+            this.txbTotalRevenue.Location = new System.Drawing.Point(148, 23);
+            this.txbTotalRevenue.MaxLength = 20;
+            this.txbTotalRevenue.Name = "txbTotalRevenue";
+            this.txbTotalRevenue.ReadOnly = true;
+            this.txbTotalRevenue.Size = new System.Drawing.Size(164, 30);
+            this.txbTotalRevenue.TabIndex = 0;
+            this.txbTotalRevenue.Text = "0";
+            this.txbTotalRevenue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pnlBody
             // 
@@ -225,6 +225,7 @@
             this.Name = "formRevenue";
             this.Text = "FormRevenue";
             this.Load += new System.EventHandler(this.formRevenue_Load);
+            this.SizeChanged += new System.EventHandler(this.formRevenue_SizeChanged);
             this.pnlHeader.ResumeLayout(false);
             this.pnlFillter.ResumeLayout(false);
             this.pnlFillter.PerformLayout();

@@ -16,5 +16,45 @@ namespace DesktopApp.GUI.SubGUI
         {
             InitializeComponent();
         }
+
+        private void picSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picNew_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picClose_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picAvatar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbGenderFilter_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

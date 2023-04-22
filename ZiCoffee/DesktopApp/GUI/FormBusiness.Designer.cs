@@ -67,7 +67,6 @@
             this.txbSelectingTable = new System.Windows.Forms.TextBox();
             this.fpnlArea = new System.Windows.Forms.FlowLayoutPanel();
             this.fpnlTable = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnManage = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMinimize)).BeginInit();
