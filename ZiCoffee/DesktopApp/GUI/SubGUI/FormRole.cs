@@ -36,5 +36,10 @@ namespace DesktopApp.GUI.SubGUI
         {
 
         }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
