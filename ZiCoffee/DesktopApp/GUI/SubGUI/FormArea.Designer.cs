@@ -114,7 +114,7 @@
             this.btnDone.Location = new System.Drawing.Point(16, 276);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(356, 50);
-            this.btnDone.TabIndex = 11;
+            this.btnDone.TabIndex = 3;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
