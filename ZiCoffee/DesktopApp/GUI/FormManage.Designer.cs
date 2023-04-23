@@ -74,7 +74,7 @@
             // picToggle
             // 
             this.picToggle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picToggle.Image = global::DesktopApp.Properties.Resources.minimize;
+            this.picToggle.Image = global::DesktopApp.Properties.Resources.Menu;
             this.picToggle.Location = new System.Drawing.Point(12, 12);
             this.picToggle.Name = "picToggle";
             this.picToggle.Size = new System.Drawing.Size(30, 30);
