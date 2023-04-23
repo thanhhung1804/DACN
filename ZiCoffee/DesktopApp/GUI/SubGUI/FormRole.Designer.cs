@@ -59,7 +59,7 @@
             this.pnlBody.Location = new System.Drawing.Point(0, 0);
             this.pnlBody.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(400, 556);
+            this.pnlBody.Size = new System.Drawing.Size(455, 556);
             this.pnlBody.TabIndex = 0;
             // 
             // dgRole
@@ -70,7 +70,7 @@
             this.dgRole.Name = "dgRole";
             this.dgRole.RowHeadersWidth = 51;
             this.dgRole.RowTemplate.Height = 24;
-            this.dgRole.Size = new System.Drawing.Size(400, 497);
+            this.dgRole.Size = new System.Drawing.Size(455, 497);
             this.dgRole.TabIndex = 0;
             // 
             // pnlHeader
@@ -82,7 +82,7 @@
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(6);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(400, 59);
+            this.pnlHeader.Size = new System.Drawing.Size(455, 59);
             this.pnlHeader.TabIndex = 0;
             // 
             // picDelete
@@ -90,7 +90,7 @@
             this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picDelete.Image = global::DesktopApp.Properties.Resources.Remove;
-            this.picDelete.Location = new System.Drawing.Point(364, 12);
+            this.picDelete.Location = new System.Drawing.Point(419, 12);
             this.picDelete.Name = "picDelete";
             this.picDelete.Size = new System.Drawing.Size(30, 30);
             this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -103,7 +103,7 @@
             this.picNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picNew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picNew.Image = global::DesktopApp.Properties.Resources.Plus;
-            this.picNew.Location = new System.Drawing.Point(328, 12);
+            this.picNew.Location = new System.Drawing.Point(383, 12);
             this.picNew.Name = "picNew";
             this.picNew.Size = new System.Drawing.Size(30, 30);
             this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -133,10 +133,10 @@
             this.pnlDetail.Controls.Add(this.txbName);
             this.pnlDetail.Controls.Add(this.lbName);
             this.pnlDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDetail.Location = new System.Drawing.Point(400, 0);
+            this.pnlDetail.Location = new System.Drawing.Point(455, 0);
             this.pnlDetail.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDetail.Name = "pnlDetail";
-            this.pnlDetail.Size = new System.Drawing.Size(455, 556);
+            this.pnlDetail.Size = new System.Drawing.Size(400, 556);
             this.pnlDetail.TabIndex = 0;
             // 
             // btnDone
@@ -150,7 +150,7 @@
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.Location = new System.Drawing.Point(13, 283);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(434, 50);
+            this.btnDone.Size = new System.Drawing.Size(379, 50);
             this.btnDone.TabIndex = 17;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxbDescription.Location = new System.Drawing.Point(13, 119);
             this.rtxbDescription.Name = "rtxbDescription";
-            this.rtxbDescription.Size = new System.Drawing.Size(434, 158);
+            this.rtxbDescription.Size = new System.Drawing.Size(379, 158);
             this.rtxbDescription.TabIndex = 16;
             this.rtxbDescription.Text = "";
             // 
@@ -196,7 +196,7 @@
             this.txbName.Location = new System.Drawing.Point(13, 40);
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(434, 30);
+            this.txbName.Size = new System.Drawing.Size(379, 30);
             this.txbName.TabIndex = 15;
             // 
             // lbName

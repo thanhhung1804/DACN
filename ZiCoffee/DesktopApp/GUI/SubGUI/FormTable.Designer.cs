@@ -81,10 +81,10 @@
             this.pnlDetail.Controls.Add(this.lbName);
             this.pnlDetail.Controls.Add(this.picClose);
             this.pnlDetail.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDetail.Location = new System.Drawing.Point(642, 0);
+            this.pnlDetail.Location = new System.Drawing.Point(700, 0);
             this.pnlDetail.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDetail.Name = "pnlDetail";
-            this.pnlDetail.Size = new System.Drawing.Size(458, 647);
+            this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
             // 
             // btnDone
@@ -98,7 +98,7 @@
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.Location = new System.Drawing.Point(14, 483);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(432, 50);
+            this.btnDone.Size = new System.Drawing.Size(374, 50);
             this.btnDone.TabIndex = 5;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
@@ -110,7 +110,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxbDescription.Location = new System.Drawing.Point(14, 319);
             this.rtxbDescription.Name = "rtxbDescription";
-            this.rtxbDescription.Size = new System.Drawing.Size(431, 158);
+            this.rtxbDescription.Size = new System.Drawing.Size(373, 158);
             this.rtxbDescription.TabIndex = 4;
             this.rtxbDescription.Text = "";
             // 
@@ -145,7 +145,7 @@
             this.cbArea.Location = new System.Drawing.Point(14, 239);
             this.cbArea.Margin = new System.Windows.Forms.Padding(4);
             this.cbArea.Name = "cbArea";
-            this.cbArea.Size = new System.Drawing.Size(431, 31);
+            this.cbArea.Size = new System.Drawing.Size(373, 31);
             this.cbArea.TabIndex = 3;
             // 
             // lbArea
@@ -179,7 +179,7 @@
             this.cbStatusSelector.Location = new System.Drawing.Point(14, 158);
             this.cbStatusSelector.Margin = new System.Windows.Forms.Padding(4);
             this.cbStatusSelector.Name = "cbStatusSelector";
-            this.cbStatusSelector.Size = new System.Drawing.Size(431, 31);
+            this.cbStatusSelector.Size = new System.Drawing.Size(373, 31);
             this.cbStatusSelector.TabIndex = 2;
             // 
             // lbStatus
@@ -212,7 +212,7 @@
             this.txbName.Location = new System.Drawing.Point(13, 78);
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(432, 30);
+            this.txbName.Size = new System.Drawing.Size(374, 30);
             this.txbName.TabIndex = 1;
             // 
             // lbName
@@ -230,7 +230,7 @@
             this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
-            this.picClose.Location = new System.Drawing.Point(416, 13);
+            this.picClose.Location = new System.Drawing.Point(358, 13);
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(30, 30);
             this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -253,14 +253,15 @@
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(6);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(642, 131);
+            this.pnlHeader.Size = new System.Drawing.Size(700, 131);
             this.pnlHeader.TabIndex = 0;
             // 
             // lbStatusFilter
             // 
+            this.lbStatusFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbStatusFilter.AutoSize = true;
             this.lbStatusFilter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStatusFilter.Location = new System.Drawing.Point(334, 51);
+            this.lbStatusFilter.Location = new System.Drawing.Point(488, 51);
             this.lbStatusFilter.Name = "lbStatusFilter";
             this.lbStatusFilter.Size = new System.Drawing.Size(66, 23);
             this.lbStatusFilter.TabIndex = 0;
@@ -278,12 +279,13 @@
             // 
             // cbStatusFilter
             // 
+            this.cbStatusFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStatusFilter.FormattingEnabled = true;
-            this.cbStatusFilter.Location = new System.Drawing.Point(338, 78);
+            this.cbStatusFilter.Location = new System.Drawing.Point(492, 78);
             this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbStatusFilter.Name = "cbStatusFilter";
-            this.cbStatusFilter.Size = new System.Drawing.Size(296, 31);
+            this.cbStatusFilter.Size = new System.Drawing.Size(200, 31);
             this.cbStatusFilter.TabIndex = 0;
             this.cbStatusFilter.SelectedValueChanged += new System.EventHandler(this.cbStatusFilter_SelectedValueChanged);
             // 
@@ -292,7 +294,7 @@
             this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picDelete.Image = global::DesktopApp.Properties.Resources.Remove;
-            this.picDelete.Location = new System.Drawing.Point(606, 12);
+            this.picDelete.Location = new System.Drawing.Point(664, 12);
             this.picDelete.Name = "picDelete";
             this.picDelete.Size = new System.Drawing.Size(30, 30);
             this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -305,7 +307,7 @@
             this.picNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picNew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picNew.Image = global::DesktopApp.Properties.Resources.Plus;
-            this.picNew.Location = new System.Drawing.Point(570, 12);
+            this.picNew.Location = new System.Drawing.Point(628, 12);
             this.picNew.Name = "picNew";
             this.picNew.Size = new System.Drawing.Size(30, 30);
             this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -315,9 +317,10 @@
             // 
             // picSearch
             // 
+            this.picSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picSearch.Image = global::DesktopApp.Properties.Resources.Search;
-            this.picSearch.Location = new System.Drawing.Point(300, 13);
+            this.picSearch.Location = new System.Drawing.Point(454, 13);
             this.picSearch.Name = "picSearch";
             this.picSearch.Size = new System.Drawing.Size(30, 30);
             this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -327,22 +330,26 @@
             // 
             // cbAreaFilter
             // 
+            this.cbAreaFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAreaFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAreaFilter.FormattingEnabled = true;
             this.cbAreaFilter.Location = new System.Drawing.Point(13, 78);
             this.cbAreaFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbAreaFilter.Name = "cbAreaFilter";
-            this.cbAreaFilter.Size = new System.Drawing.Size(317, 31);
+            this.cbAreaFilter.Size = new System.Drawing.Size(471, 31);
             this.cbAreaFilter.TabIndex = 0;
             this.cbAreaFilter.SelectedValueChanged += new System.EventHandler(this.cbAreaFilter_SelectedValueChanged);
             // 
             // txbSearch
             // 
+            this.txbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbSearch.Location = new System.Drawing.Point(13, 13);
             this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(317, 30);
+            this.txbSearch.Size = new System.Drawing.Size(471, 30);
             this.txbSearch.TabIndex = 0;
             this.txbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSearch_KeyPress);
             // 
@@ -353,7 +360,7 @@
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 131);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(642, 516);
+            this.pnlBody.Size = new System.Drawing.Size(700, 516);
             this.pnlBody.TabIndex = 0;
             // 
             // dgTable
@@ -364,7 +371,7 @@
             this.dgTable.Name = "dgTable";
             this.dgTable.RowHeadersWidth = 51;
             this.dgTable.RowTemplate.Height = 24;
-            this.dgTable.Size = new System.Drawing.Size(642, 516);
+            this.dgTable.Size = new System.Drawing.Size(700, 516);
             this.dgTable.TabIndex = 0;
             // 
             // formTable

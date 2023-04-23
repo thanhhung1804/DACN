@@ -57,7 +57,7 @@
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(6);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(716, 59);
+            this.pnlHeader.Size = new System.Drawing.Size(700, 59);
             this.pnlHeader.TabIndex = 0;
             // 
             // picDelete
@@ -65,7 +65,7 @@
             this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picDelete.Image = global::DesktopApp.Properties.Resources.Remove;
-            this.picDelete.Location = new System.Drawing.Point(674, 12);
+            this.picDelete.Location = new System.Drawing.Point(658, 12);
             this.picDelete.Name = "picDelete";
             this.picDelete.Size = new System.Drawing.Size(30, 30);
             this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -78,7 +78,7 @@
             this.picNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picNew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picNew.Image = global::DesktopApp.Properties.Resources.Plus;
-            this.picNew.Location = new System.Drawing.Point(638, 12);
+            this.picNew.Location = new System.Drawing.Point(622, 12);
             this.picNew.Name = "picNew";
             this.picNew.Size = new System.Drawing.Size(30, 30);
             this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,10 +96,10 @@
             this.pnlDetail.Controls.Add(this.txbName);
             this.pnlDetail.Controls.Add(this.lbName);
             this.pnlDetail.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDetail.Location = new System.Drawing.Point(716, 0);
+            this.pnlDetail.Location = new System.Drawing.Point(700, 0);
             this.pnlDetail.Margin = new System.Windows.Forms.Padding(6);
             this.pnlDetail.Name = "pnlDetail";
-            this.pnlDetail.Size = new System.Drawing.Size(384, 647);
+            this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
             // 
             // btnDone
@@ -113,7 +113,7 @@
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.Location = new System.Drawing.Point(16, 276);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(356, 50);
+            this.btnDone.Size = new System.Drawing.Size(372, 50);
             this.btnDone.TabIndex = 3;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxbDescription.Location = new System.Drawing.Point(16, 112);
             this.rtxbDescription.Name = "rtxbDescription";
-            this.rtxbDescription.Size = new System.Drawing.Size(356, 158);
+            this.rtxbDescription.Size = new System.Drawing.Size(372, 158);
             this.rtxbDescription.TabIndex = 2;
             this.rtxbDescription.Text = "";
             // 
@@ -159,7 +159,7 @@
             this.txbName.Location = new System.Drawing.Point(16, 33);
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(356, 30);
+            this.txbName.Size = new System.Drawing.Size(372, 30);
             this.txbName.TabIndex = 1;
             // 
             // lbName
@@ -207,7 +207,7 @@
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formCategory";
             this.Text = "FormCategory";
             this.Load += new System.EventHandler(this.formCategory_Load);

@@ -67,6 +67,7 @@
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgUser = new System.Windows.Forms.DataGridView();
+            this.lbGenderFilter = new System.Windows.Forms.Label();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
@@ -113,10 +114,10 @@
             this.pnlDetail.Controls.Add(this.lbUsername);
             this.pnlDetail.Controls.Add(this.picClose);
             this.pnlDetail.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDetail.Location = new System.Drawing.Point(595, 0);
+            this.pnlDetail.Location = new System.Drawing.Point(700, 0);
             this.pnlDetail.Margin = new System.Windows.Forms.Padding(4);
             this.pnlDetail.Name = "pnlDetail";
-            this.pnlDetail.Size = new System.Drawing.Size(505, 866);
+            this.pnlDetail.Size = new System.Drawing.Size(400, 866);
             this.pnlDetail.TabIndex = 0;
             // 
             // btnDone
@@ -130,7 +131,7 @@
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.Location = new System.Drawing.Point(14, 777);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(479, 50);
+            this.btnDone.Size = new System.Drawing.Size(374, 50);
             this.btnDone.TabIndex = 10;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
@@ -141,7 +142,7 @@
             this.picAvatar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picAvatar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picAvatar.Image = global::DesktopApp.Properties.Resources.Avatar;
-            this.picAvatar.Location = new System.Drawing.Point(342, 621);
+            this.picAvatar.Location = new System.Drawing.Point(237, 621);
             this.picAvatar.Name = "picAvatar";
             this.picAvatar.Size = new System.Drawing.Size(150, 150);
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -266,7 +267,7 @@
             this.cbRole.Location = new System.Drawing.Point(13, 717);
             this.cbRole.Margin = new System.Windows.Forms.Padding(4);
             this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(322, 31);
+            this.cbRole.Size = new System.Drawing.Size(217, 31);
             this.cbRole.TabIndex = 9;
             // 
             // lbRole
@@ -287,7 +288,7 @@
             this.txbEmail.Location = new System.Drawing.Point(13, 637);
             this.txbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmail.Name = "txbEmail";
-            this.txbEmail.Size = new System.Drawing.Size(322, 30);
+            this.txbEmail.Size = new System.Drawing.Size(217, 30);
             this.txbEmail.TabIndex = 8;
             // 
             // lbEmail
@@ -308,7 +309,7 @@
             this.txbPhone.Location = new System.Drawing.Point(13, 557);
             this.txbPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txbPhone.Name = "txbPhone";
-            this.txbPhone.Size = new System.Drawing.Size(479, 30);
+            this.txbPhone.Size = new System.Drawing.Size(374, 30);
             this.txbPhone.TabIndex = 7;
             // 
             // lbPhone
@@ -329,7 +330,7 @@
             this.txbCitizenId.Location = new System.Drawing.Point(13, 477);
             this.txbCitizenId.Margin = new System.Windows.Forms.Padding(4);
             this.txbCitizenId.Name = "txbCitizenId";
-            this.txbCitizenId.Size = new System.Drawing.Size(479, 30);
+            this.txbCitizenId.Size = new System.Drawing.Size(374, 30);
             this.txbCitizenId.TabIndex = 6;
             // 
             // lbCitizenId
@@ -350,7 +351,7 @@
             this.txbAddress.Location = new System.Drawing.Point(13, 397);
             this.txbAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txbAddress.Name = "txbAddress";
-            this.txbAddress.Size = new System.Drawing.Size(479, 30);
+            this.txbAddress.Size = new System.Drawing.Size(374, 30);
             this.txbAddress.TabIndex = 5;
             // 
             // lbAddress
@@ -370,7 +371,7 @@
             this.dtpBirthday.CustomFormat = "dd/MM/yyyy";
             this.dtpBirthday.Location = new System.Drawing.Point(13, 318);
             this.dtpBirthday.Name = "dtpBirthday";
-            this.dtpBirthday.Size = new System.Drawing.Size(479, 30);
+            this.dtpBirthday.Size = new System.Drawing.Size(374, 30);
             this.dtpBirthday.TabIndex = 4;
             // 
             // lbBirthday
@@ -392,7 +393,7 @@
             this.cbGenderSelector.Location = new System.Drawing.Point(13, 238);
             this.cbGenderSelector.Margin = new System.Windows.Forms.Padding(4);
             this.cbGenderSelector.Name = "cbGenderSelector";
-            this.cbGenderSelector.Size = new System.Drawing.Size(479, 31);
+            this.cbGenderSelector.Size = new System.Drawing.Size(374, 31);
             this.cbGenderSelector.TabIndex = 3;
             // 
             // lbGender
@@ -413,7 +414,7 @@
             this.txbName.Location = new System.Drawing.Point(13, 158);
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(479, 30);
+            this.txbName.Size = new System.Drawing.Size(374, 30);
             this.txbName.TabIndex = 2;
             // 
             // lbName
@@ -434,7 +435,7 @@
             this.txbUsername.Location = new System.Drawing.Point(13, 78);
             this.txbUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txbUsername.Name = "txbUsername";
-            this.txbUsername.Size = new System.Drawing.Size(479, 30);
+            this.txbUsername.Size = new System.Drawing.Size(374, 30);
             this.txbUsername.TabIndex = 1;
             // 
             // lbUsername
@@ -452,7 +453,7 @@
             this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
-            this.picClose.Location = new System.Drawing.Point(463, 13);
+            this.picClose.Location = new System.Drawing.Point(358, 13);
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(30, 30);
             this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -463,6 +464,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlHeader.Controls.Add(this.lbGenderFilter);
             this.pnlHeader.Controls.Add(this.picDelete);
             this.pnlHeader.Controls.Add(this.picNew);
             this.pnlHeader.Controls.Add(this.picSearch);
@@ -472,7 +474,7 @@
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(6);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(595, 59);
+            this.pnlHeader.Size = new System.Drawing.Size(700, 119);
             this.pnlHeader.TabIndex = 0;
             // 
             // picDelete
@@ -480,7 +482,7 @@
             this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picDelete.Image = global::DesktopApp.Properties.Resources.Remove;
-            this.picDelete.Location = new System.Drawing.Point(559, 12);
+            this.picDelete.Location = new System.Drawing.Point(664, 12);
             this.picDelete.Name = "picDelete";
             this.picDelete.Size = new System.Drawing.Size(30, 30);
             this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -493,7 +495,7 @@
             this.picNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picNew.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picNew.Image = global::DesktopApp.Properties.Resources.Plus;
-            this.picNew.Location = new System.Drawing.Point(523, 12);
+            this.picNew.Location = new System.Drawing.Point(628, 12);
             this.picNew.Name = "picNew";
             this.picNew.Size = new System.Drawing.Size(30, 30);
             this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -503,9 +505,10 @@
             // 
             // picSearch
             // 
+            this.picSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picSearch.Image = global::DesktopApp.Properties.Resources.Search;
-            this.picSearch.Location = new System.Drawing.Point(204, 12);
+            this.picSearch.Location = new System.Drawing.Point(476, 12);
             this.picSearch.Name = "picSearch";
             this.picSearch.Size = new System.Drawing.Size(30, 30);
             this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -515,22 +518,26 @@
             // 
             // cbGenderFilter
             // 
+            this.cbGenderFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbGenderFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGenderFilter.FormattingEnabled = true;
-            this.cbGenderFilter.Location = new System.Drawing.Point(241, 12);
+            this.cbGenderFilter.Location = new System.Drawing.Point(13, 77);
             this.cbGenderFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbGenderFilter.Name = "cbGenderFilter";
-            this.cbGenderFilter.Size = new System.Drawing.Size(221, 31);
+            this.cbGenderFilter.Size = new System.Drawing.Size(250, 31);
             this.cbGenderFilter.TabIndex = 0;
             this.cbGenderFilter.SelectedValueChanged += new System.EventHandler(this.cbGenderFilter_SelectedValueChanged);
             // 
             // txbSearch
             // 
+            this.txbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbSearch.Location = new System.Drawing.Point(13, 13);
             this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(221, 30);
+            this.txbSearch.Size = new System.Drawing.Size(493, 30);
             this.txbSearch.TabIndex = 0;
             this.txbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSearch_KeyPress);
             // 
@@ -539,9 +546,9 @@
             this.pnlBody.BackColor = System.Drawing.Color.Transparent;
             this.pnlBody.Controls.Add(this.dgUser);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 59);
+            this.pnlBody.Location = new System.Drawing.Point(0, 119);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(595, 807);
+            this.pnlBody.Size = new System.Drawing.Size(700, 747);
             this.pnlBody.TabIndex = 0;
             // 
             // dgUser
@@ -552,8 +559,18 @@
             this.dgUser.Name = "dgUser";
             this.dgUser.RowHeadersWidth = 51;
             this.dgUser.RowTemplate.Height = 24;
-            this.dgUser.Size = new System.Drawing.Size(595, 807);
+            this.dgUser.Size = new System.Drawing.Size(700, 747);
             this.dgUser.TabIndex = 0;
+            // 
+            // lbGenderFilter
+            // 
+            this.lbGenderFilter.AutoSize = true;
+            this.lbGenderFilter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGenderFilter.Location = new System.Drawing.Point(9, 51);
+            this.lbGenderFilter.Name = "lbGenderFilter";
+            this.lbGenderFilter.Size = new System.Drawing.Size(76, 23);
+            this.lbGenderFilter.TabIndex = 0;
+            this.lbGenderFilter.Text = "Gender";
             // 
             // formUser
             // 
@@ -628,5 +645,6 @@
         private System.Windows.Forms.Label lbUsernameError;
         private System.Windows.Forms.PictureBox picAvatar;
         private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.Label lbGenderFilter;
     }
 }

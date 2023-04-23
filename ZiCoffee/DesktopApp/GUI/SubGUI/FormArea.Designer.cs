@@ -96,10 +96,10 @@
             this.pnlDetail.Controls.Add(this.txbName);
             this.pnlDetail.Controls.Add(this.lbName);
             this.pnlDetail.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlDetail.Location = new System.Drawing.Point(716, 59);
+            this.pnlDetail.Location = new System.Drawing.Point(700, 59);
             this.pnlDetail.Margin = new System.Windows.Forms.Padding(6);
             this.pnlDetail.Name = "pnlDetail";
-            this.pnlDetail.Size = new System.Drawing.Size(384, 588);
+            this.pnlDetail.Size = new System.Drawing.Size(400, 588);
             this.pnlDetail.TabIndex = 0;
             // 
             // btnDone
@@ -113,7 +113,7 @@
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDone.Location = new System.Drawing.Point(16, 276);
             this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(356, 50);
+            this.btnDone.Size = new System.Drawing.Size(372, 50);
             this.btnDone.TabIndex = 3;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtxbDescription.Location = new System.Drawing.Point(16, 112);
             this.rtxbDescription.Name = "rtxbDescription";
-            this.rtxbDescription.Size = new System.Drawing.Size(356, 158);
+            this.rtxbDescription.Size = new System.Drawing.Size(372, 158);
             this.rtxbDescription.TabIndex = 2;
             this.rtxbDescription.Text = "";
             // 
@@ -159,7 +159,7 @@
             this.txbName.Location = new System.Drawing.Point(16, 33);
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(356, 30);
+            this.txbName.Size = new System.Drawing.Size(372, 30);
             this.txbName.TabIndex = 1;
             // 
             // lbName
@@ -181,7 +181,7 @@
             this.pnlBody.Location = new System.Drawing.Point(0, 59);
             this.pnlBody.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(716, 588);
+            this.pnlBody.Size = new System.Drawing.Size(700, 588);
             this.pnlBody.TabIndex = 0;
             // 
             // dgArea
@@ -192,7 +192,7 @@
             this.dgArea.Name = "dgArea";
             this.dgArea.RowHeadersWidth = 51;
             this.dgArea.RowTemplate.Height = 24;
-            this.dgArea.Size = new System.Drawing.Size(716, 588);
+            this.dgArea.Size = new System.Drawing.Size(700, 588);
             this.dgArea.TabIndex = 0;
             // 
             // formArea
