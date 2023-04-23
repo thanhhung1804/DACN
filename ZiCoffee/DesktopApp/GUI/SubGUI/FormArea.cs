@@ -16,5 +16,30 @@ namespace DesktopApp.GUI.SubGUI
         {
             InitializeComponent();
         }
+
+        private void formArea_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void formArea_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picNew_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void picDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
