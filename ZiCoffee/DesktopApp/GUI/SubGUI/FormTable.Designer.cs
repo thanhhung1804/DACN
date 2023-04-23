@@ -99,7 +99,7 @@
             this.btnDone.Location = new System.Drawing.Point(14, 483);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(432, 50);
-            this.btnDone.TabIndex = 11;
+            this.btnDone.TabIndex = 5;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
@@ -166,7 +166,7 @@
             this.lbStatusError.Location = new System.Drawing.Point(10, 193);
             this.lbStatusError.Name = "lbStatusError";
             this.lbStatusError.Size = new System.Drawing.Size(117, 19);
-            this.lbStatusError.TabIndex = 5;
+            this.lbStatusError.TabIndex = 0;
             this.lbStatusError.Text = "Error message";
             this.lbStatusError.Visible = false;
             // 
