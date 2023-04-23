@@ -56,25 +56,29 @@
             this.pnlHeader.Controls.Add(this.dtpTimeStart);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(800, 50);
+            this.pnlHeader.Size = new System.Drawing.Size(1200, 63);
             this.pnlHeader.TabIndex = 0;
             // 
             // dtpTimeEnd
             // 
             this.dtpTimeEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpTimeEnd.Location = new System.Drawing.Point(488, 12);
+            this.dtpTimeEnd.CustomFormat = "dd/MM/yyyy";
+            this.dtpTimeEnd.Location = new System.Drawing.Point(739, 13);
+            this.dtpTimeEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpTimeEnd.Name = "dtpTimeEnd";
-            this.dtpTimeEnd.Size = new System.Drawing.Size(300, 22);
+            this.dtpTimeEnd.Size = new System.Drawing.Size(448, 30);
             this.dtpTimeEnd.TabIndex = 0;
             this.dtpTimeEnd.ValueChanged += new System.EventHandler(this.dtpTimeEnd_ValueChanged);
             // 
             // dtpTimeStart
             // 
-            this.dtpTimeStart.Location = new System.Drawing.Point(12, 12);
+            this.dtpTimeStart.CustomFormat = "dd/MM/yyyy";
+            this.dtpTimeStart.Location = new System.Drawing.Point(13, 13);
+            this.dtpTimeStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpTimeStart.Name = "dtpTimeStart";
-            this.dtpTimeStart.Size = new System.Drawing.Size(300, 22);
+            this.dtpTimeStart.Size = new System.Drawing.Size(448, 30);
             this.dtpTimeStart.TabIndex = 0;
             this.dtpTimeStart.ValueChanged += new System.EventHandler(this.dtpTimeStart_ValueChanged);
             // 
@@ -86,10 +90,10 @@
             this.pnlFillter.Controls.Add(this.txbTableName);
             this.pnlFillter.Controls.Add(this.txbCashierName);
             this.pnlFillter.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlFillter.Location = new System.Drawing.Point(0, 50);
-            this.pnlFillter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlFillter.Location = new System.Drawing.Point(0, 63);
+            this.pnlFillter.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlFillter.Name = "pnlFillter";
-            this.pnlFillter.Size = new System.Drawing.Size(800, 76);
+            this.pnlFillter.Size = new System.Drawing.Size(1200, 84);
             this.pnlFillter.TabIndex = 0;
             // 
             // lbTableName
@@ -97,7 +101,8 @@
             this.lbTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbTableName.AutoSize = true;
             this.lbTableName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTableName.Location = new System.Drawing.Point(484, 7);
+            this.lbTableName.Location = new System.Drawing.Point(735, 6);
+            this.lbTableName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTableName.Name = "lbTableName";
             this.lbTableName.Size = new System.Drawing.Size(114, 23);
             this.lbTableName.TabIndex = 0;
@@ -107,7 +112,8 @@
             // 
             this.lbCashierName.AutoSize = true;
             this.lbCashierName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCashierName.Location = new System.Drawing.Point(8, 7);
+            this.lbCashierName.Location = new System.Drawing.Point(9, 10);
+            this.lbCashierName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbCashierName.Name = "lbCashierName";
             this.lbCashierName.Size = new System.Drawing.Size(134, 23);
             this.lbCashierName.TabIndex = 0;
@@ -117,20 +123,20 @@
             // 
             this.txbTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txbTableName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTableName.Location = new System.Drawing.Point(488, 36);
-            this.txbTableName.MaxLength = 20;
+            this.txbTableName.Location = new System.Drawing.Point(739, 37);
+            this.txbTableName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbTableName.Name = "txbTableName";
-            this.txbTableName.Size = new System.Drawing.Size(300, 30);
+            this.txbTableName.Size = new System.Drawing.Size(448, 30);
             this.txbTableName.TabIndex = 0;
             this.txbTableName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTableName_KeyPress);
             // 
             // txbCashierName
             // 
             this.txbCashierName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbCashierName.Location = new System.Drawing.Point(12, 36);
-            this.txbCashierName.MaxLength = 20;
+            this.txbCashierName.Location = new System.Drawing.Point(13, 37);
+            this.txbCashierName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbCashierName.Name = "txbCashierName";
-            this.txbCashierName.Size = new System.Drawing.Size(300, 30);
+            this.txbCashierName.Size = new System.Drawing.Size(448, 30);
             this.txbCashierName.TabIndex = 0;
             this.txbCashierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCashierName_KeyPress);
             // 
@@ -141,10 +147,10 @@
             this.pnlFooter.Controls.Add(this.lbTotalRevenue);
             this.pnlFooter.Controls.Add(this.txbTotalRevenue);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlFooter.Location = new System.Drawing.Point(0, 375);
-            this.pnlFooter.Margin = new System.Windows.Forms.Padding(4);
+            this.pnlFooter.Location = new System.Drawing.Point(0, 599);
+            this.pnlFooter.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pnlFooter.Name = "pnlFooter";
-            this.pnlFooter.Size = new System.Drawing.Size(800, 75);
+            this.pnlFooter.Size = new System.Drawing.Size(1200, 76);
             this.pnlFooter.TabIndex = 0;
             // 
             // btnExport
@@ -155,9 +161,10 @@
             this.btnExport.FlatAppearance.BorderSize = 3;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExport.Location = new System.Drawing.Point(488, 13);
+            this.btnExport.Location = new System.Drawing.Point(737, 13);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(300, 50);
+            this.btnExport.Size = new System.Drawing.Size(450, 50);
             this.btnExport.TabIndex = 0;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -168,7 +175,8 @@
             this.lbTotalRevenue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTotalRevenue.AutoSize = true;
             this.lbTotalRevenue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotalRevenue.Location = new System.Drawing.Point(8, 26);
+            this.lbTotalRevenue.Location = new System.Drawing.Point(9, 26);
+            this.lbTotalRevenue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbTotalRevenue.Name = "lbTotalRevenue";
             this.lbTotalRevenue.Size = new System.Drawing.Size(134, 23);
             this.lbTotalRevenue.TabIndex = 0;
@@ -180,11 +188,12 @@
             this.txbTotalRevenue.Cursor = System.Windows.Forms.Cursors.No;
             this.txbTotalRevenue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTotalRevenue.ForeColor = System.Drawing.Color.Red;
-            this.txbTotalRevenue.Location = new System.Drawing.Point(148, 23);
+            this.txbTotalRevenue.Location = new System.Drawing.Point(151, 23);
+            this.txbTotalRevenue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbTotalRevenue.MaxLength = 20;
             this.txbTotalRevenue.Name = "txbTotalRevenue";
             this.txbTotalRevenue.ReadOnly = true;
-            this.txbTotalRevenue.Size = new System.Drawing.Size(164, 30);
+            this.txbTotalRevenue.Size = new System.Drawing.Size(310, 30);
             this.txbTotalRevenue.TabIndex = 0;
             this.txbTotalRevenue.Text = "0";
             this.txbTotalRevenue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -194,9 +203,10 @@
             this.pnlBody.BackColor = System.Drawing.Color.Transparent;
             this.pnlBody.Controls.Add(this.dgRevenue);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 126);
+            this.pnlBody.Location = new System.Drawing.Point(0, 147);
+            this.pnlBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(800, 249);
+            this.pnlBody.Size = new System.Drawing.Size(1200, 452);
             this.pnlBody.TabIndex = 1;
             // 
             // dgRevenue
@@ -204,24 +214,27 @@
             this.dgRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgRevenue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgRevenue.Location = new System.Drawing.Point(0, 0);
+            this.dgRevenue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgRevenue.Name = "dgRevenue";
             this.dgRevenue.RowHeadersWidth = 51;
             this.dgRevenue.RowTemplate.Height = 24;
-            this.dgRevenue.Size = new System.Drawing.Size(800, 249);
+            this.dgRevenue.Size = new System.Drawing.Size(1200, 452);
             this.dgRevenue.TabIndex = 0;
             // 
             // formRevenue
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 675);
             this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlFooter);
             this.Controls.Add(this.pnlFillter);
             this.Controls.Add(this.pnlHeader);
+            this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "formRevenue";
             this.Text = "FormRevenue";
             this.Load += new System.EventHandler(this.formRevenue_Load);
