@@ -56,5 +56,15 @@ namespace DesktopApp.GUI.SubGUI
         {
 
         }
+
+        private void formUser_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void formUser_SizeChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
