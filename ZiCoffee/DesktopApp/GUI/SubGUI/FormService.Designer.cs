@@ -415,7 +415,7 @@
             // 
             this.picImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picImage.Image = global::DesktopApp.Properties.Resources.Avatar;
+            this.picImage.Image = global::DesktopApp.Properties.Resources.User;
             this.picImage.Location = new System.Drawing.Point(295, 397);
             this.picImage.Name = "picImage";
             this.picImage.Size = new System.Drawing.Size(150, 150);
