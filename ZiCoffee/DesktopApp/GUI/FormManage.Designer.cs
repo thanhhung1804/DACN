@@ -197,7 +197,7 @@
             this.btnService.FlatAppearance.BorderSize = 3;
             this.btnService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnService.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnService.Location = new System.Drawing.Point(12, 355);
+            this.btnService.Location = new System.Drawing.Point(12, 343);
             this.btnService.Name = "btnService";
             this.btnService.Size = new System.Drawing.Size(175, 50);
             this.btnService.TabIndex = 0;
