@@ -33,12 +33,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void dtpTimeStart_ValueChanged(object sender, EventArgs e)
         {
-            //Load data
+            //Reload data
         }
 
         private void dtpTimeEnd_ValueChanged(object sender, EventArgs e)
         {
-            //Load data
+            //Reload data
         }
 
         private void txbCashierName_KeyPress(object sender, KeyPressEventArgs e)
@@ -46,8 +46,7 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                //Load data
-                MessageBox.Show("dsgfd");
+                //Reload data
             }
         }
 
@@ -56,7 +55,7 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                //Load data
+                //Reload data
             }
         }
 

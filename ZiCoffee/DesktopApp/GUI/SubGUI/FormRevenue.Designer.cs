@@ -69,7 +69,7 @@
             this.dtpTimeEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpTimeEnd.Name = "dtpTimeEnd";
             this.dtpTimeEnd.Size = new System.Drawing.Size(448, 30);
-            this.dtpTimeEnd.TabIndex = 0;
+            this.dtpTimeEnd.TabIndex = 2;
             this.dtpTimeEnd.ValueChanged += new System.EventHandler(this.dtpTimeEnd_ValueChanged);
             // 
             // dtpTimeStart
@@ -79,7 +79,7 @@
             this.dtpTimeStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dtpTimeStart.Name = "dtpTimeStart";
             this.dtpTimeStart.Size = new System.Drawing.Size(448, 30);
-            this.dtpTimeStart.TabIndex = 0;
+            this.dtpTimeStart.TabIndex = 1;
             this.dtpTimeStart.ValueChanged += new System.EventHandler(this.dtpTimeStart_ValueChanged);
             // 
             // pnlFillter
@@ -127,7 +127,7 @@
             this.txbTableName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbTableName.Name = "txbTableName";
             this.txbTableName.Size = new System.Drawing.Size(448, 30);
-            this.txbTableName.TabIndex = 0;
+            this.txbTableName.TabIndex = 4;
             this.txbTableName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbTableName_KeyPress);
             // 
             // txbCashierName
@@ -137,7 +137,7 @@
             this.txbCashierName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbCashierName.Name = "txbCashierName";
             this.txbCashierName.Size = new System.Drawing.Size(448, 30);
-            this.txbCashierName.TabIndex = 0;
+            this.txbCashierName.TabIndex = 3;
             this.txbCashierName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCashierName_KeyPress);
             // 
             // pnlFooter
@@ -165,7 +165,7 @@
             this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(450, 50);
-            this.btnExport.TabIndex = 0;
+            this.btnExport.TabIndex = 5;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
@@ -207,7 +207,7 @@
             this.pnlBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(1200, 452);
-            this.pnlBody.TabIndex = 1;
+            this.pnlBody.TabIndex = 0;
             // 
             // dgRevenue
             // 
