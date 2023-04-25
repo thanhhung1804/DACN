@@ -60,6 +60,7 @@
             this.lbUsername = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.lbGenderFilter = new System.Windows.Forms.Label();
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picNew = new System.Windows.Forms.PictureBox();
             this.picSearch = new System.Windows.Forms.PictureBox();
@@ -67,7 +68,6 @@
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgUser = new System.Windows.Forms.DataGridView();
-            this.lbGenderFilter = new System.Windows.Forms.Label();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
@@ -132,7 +132,7 @@
             this.btnDone.Location = new System.Drawing.Point(14, 777);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(374, 50);
-            this.btnDone.TabIndex = 10;
+            this.btnDone.TabIndex = 12;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
@@ -146,7 +146,7 @@
             this.picAvatar.Name = "picAvatar";
             this.picAvatar.Size = new System.Drawing.Size(150, 150);
             this.picAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picAvatar.TabIndex = 10;
+            this.picAvatar.TabIndex = 0;
             this.picAvatar.TabStop = false;
             this.picAvatar.Click += new System.EventHandler(this.picAvatar_Click);
             // 
@@ -268,7 +268,7 @@
             this.cbRole.Margin = new System.Windows.Forms.Padding(4);
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(217, 31);
-            this.cbRole.TabIndex = 9;
+            this.cbRole.TabIndex = 11;
             // 
             // lbRole
             // 
@@ -289,7 +289,7 @@
             this.txbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(217, 30);
-            this.txbEmail.TabIndex = 8;
+            this.txbEmail.TabIndex = 10;
             // 
             // lbEmail
             // 
@@ -310,7 +310,7 @@
             this.txbPhone.Margin = new System.Windows.Forms.Padding(4);
             this.txbPhone.Name = "txbPhone";
             this.txbPhone.Size = new System.Drawing.Size(374, 30);
-            this.txbPhone.TabIndex = 7;
+            this.txbPhone.TabIndex = 9;
             // 
             // lbPhone
             // 
@@ -331,7 +331,7 @@
             this.txbCitizenId.Margin = new System.Windows.Forms.Padding(4);
             this.txbCitizenId.Name = "txbCitizenId";
             this.txbCitizenId.Size = new System.Drawing.Size(374, 30);
-            this.txbCitizenId.TabIndex = 6;
+            this.txbCitizenId.TabIndex = 8;
             // 
             // lbCitizenId
             // 
@@ -352,7 +352,7 @@
             this.txbAddress.Margin = new System.Windows.Forms.Padding(4);
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.Size = new System.Drawing.Size(374, 30);
-            this.txbAddress.TabIndex = 5;
+            this.txbAddress.TabIndex = 7;
             // 
             // lbAddress
             // 
@@ -372,7 +372,7 @@
             this.dtpBirthday.Location = new System.Drawing.Point(13, 318);
             this.dtpBirthday.Name = "dtpBirthday";
             this.dtpBirthday.Size = new System.Drawing.Size(374, 30);
-            this.dtpBirthday.TabIndex = 4;
+            this.dtpBirthday.TabIndex = 6;
             // 
             // lbBirthday
             // 
@@ -394,7 +394,7 @@
             this.cbGenderSelector.Margin = new System.Windows.Forms.Padding(4);
             this.cbGenderSelector.Name = "cbGenderSelector";
             this.cbGenderSelector.Size = new System.Drawing.Size(374, 31);
-            this.cbGenderSelector.TabIndex = 3;
+            this.cbGenderSelector.TabIndex = 5;
             // 
             // lbGender
             // 
@@ -415,7 +415,7 @@
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(374, 30);
-            this.txbName.TabIndex = 2;
+            this.txbName.TabIndex = 4;
             // 
             // lbName
             // 
@@ -436,7 +436,7 @@
             this.txbUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txbUsername.Name = "txbUsername";
             this.txbUsername.Size = new System.Drawing.Size(374, 30);
-            this.txbUsername.TabIndex = 1;
+            this.txbUsername.TabIndex = 3;
             // 
             // lbUsername
             // 
@@ -457,7 +457,7 @@
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(30, 30);
             this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClose.TabIndex = 4;
+            this.picClose.TabIndex = 0;
             this.picClose.TabStop = false;
             this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
@@ -477,6 +477,16 @@
             this.pnlHeader.Size = new System.Drawing.Size(700, 119);
             this.pnlHeader.TabIndex = 0;
             // 
+            // lbGenderFilter
+            // 
+            this.lbGenderFilter.AutoSize = true;
+            this.lbGenderFilter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGenderFilter.Location = new System.Drawing.Point(9, 51);
+            this.lbGenderFilter.Name = "lbGenderFilter";
+            this.lbGenderFilter.Size = new System.Drawing.Size(76, 23);
+            this.lbGenderFilter.TabIndex = 0;
+            this.lbGenderFilter.Text = "Gender";
+            // 
             // picDelete
             // 
             this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -486,7 +496,7 @@
             this.picDelete.Name = "picDelete";
             this.picDelete.Size = new System.Drawing.Size(30, 30);
             this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDelete.TabIndex = 4;
+            this.picDelete.TabIndex = 0;
             this.picDelete.TabStop = false;
             this.picDelete.Click += new System.EventHandler(this.picDelete_Click);
             // 
@@ -499,7 +509,7 @@
             this.picNew.Name = "picNew";
             this.picNew.Size = new System.Drawing.Size(30, 30);
             this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNew.TabIndex = 3;
+            this.picNew.TabIndex = 0;
             this.picNew.TabStop = false;
             this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
@@ -512,7 +522,7 @@
             this.picSearch.Name = "picSearch";
             this.picSearch.Size = new System.Drawing.Size(30, 30);
             this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSearch.TabIndex = 2;
+            this.picSearch.TabIndex = 0;
             this.picSearch.TabStop = false;
             this.picSearch.Click += new System.EventHandler(this.picSearch_Click);
             // 
@@ -526,7 +536,7 @@
             this.cbGenderFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbGenderFilter.Name = "cbGenderFilter";
             this.cbGenderFilter.Size = new System.Drawing.Size(250, 31);
-            this.cbGenderFilter.TabIndex = 0;
+            this.cbGenderFilter.TabIndex = 2;
             this.cbGenderFilter.SelectedValueChanged += new System.EventHandler(this.cbGenderFilter_SelectedValueChanged);
             // 
             // txbSearch
@@ -538,7 +548,7 @@
             this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(493, 30);
-            this.txbSearch.TabIndex = 0;
+            this.txbSearch.TabIndex = 1;
             this.txbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSearch_KeyPress);
             // 
             // pnlBody
@@ -561,16 +571,6 @@
             this.dgUser.RowTemplate.Height = 24;
             this.dgUser.Size = new System.Drawing.Size(700, 747);
             this.dgUser.TabIndex = 0;
-            // 
-            // lbGenderFilter
-            // 
-            this.lbGenderFilter.AutoSize = true;
-            this.lbGenderFilter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbGenderFilter.Location = new System.Drawing.Point(9, 51);
-            this.lbGenderFilter.Name = "lbGenderFilter";
-            this.lbGenderFilter.Size = new System.Drawing.Size(76, 23);
-            this.lbGenderFilter.TabIndex = 0;
-            this.lbGenderFilter.Text = "Gender";
             // 
             // formUser
             // 
