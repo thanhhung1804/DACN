@@ -119,6 +119,7 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(400, 866);
             this.pnlDetail.TabIndex = 0;
+            this.pnlDetail.Visible = false;
             // 
             // btnDone
             // 
