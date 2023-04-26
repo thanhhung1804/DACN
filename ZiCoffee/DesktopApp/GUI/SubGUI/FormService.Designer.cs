@@ -78,7 +78,7 @@
             this.picDelete.Name = "picDelete";
             this.picDelete.Size = new System.Drawing.Size(30, 30);
             this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDelete.TabIndex = 4;
+            this.picDelete.TabIndex = 0;
             this.picDelete.TabStop = false;
             this.picDelete.Click += new System.EventHandler(this.picDelete_Click);
             // 
@@ -104,7 +104,7 @@
             this.cbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(373, 31);
-            this.cbCategory.TabIndex = 3;
+            this.cbCategory.TabIndex = 6;
             // 
             // lbCategory
             // 
@@ -137,7 +137,7 @@
             this.picSearch.Name = "picSearch";
             this.picSearch.Size = new System.Drawing.Size(30, 30);
             this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSearch.TabIndex = 2;
+            this.picSearch.TabIndex = 0;
             this.picSearch.TabStop = false;
             this.picSearch.Click += new System.EventHandler(this.picSearch_Click);
             // 
@@ -151,7 +151,7 @@
             this.cbCategoryFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbCategoryFilter.Name = "cbCategoryFilter";
             this.cbCategoryFilter.Size = new System.Drawing.Size(471, 31);
-            this.cbCategoryFilter.TabIndex = 0;
+            this.cbCategoryFilter.TabIndex = 2;
             this.cbCategoryFilter.SelectedValueChanged += new System.EventHandler(this.cbCategoryFilter_SelectedValueChanged);
             // 
             // txbSearch
@@ -163,7 +163,7 @@
             this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(471, 30);
-            this.txbSearch.TabIndex = 0;
+            this.txbSearch.TabIndex = 1;
             this.txbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSearch_KeyPress);
             // 
             // cbStatusSelector
@@ -176,7 +176,7 @@
             this.cbStatusSelector.Margin = new System.Windows.Forms.Padding(4);
             this.cbStatusSelector.Name = "cbStatusSelector";
             this.cbStatusSelector.Size = new System.Drawing.Size(373, 31);
-            this.cbStatusSelector.TabIndex = 2;
+            this.cbStatusSelector.TabIndex = 5;
             // 
             // lbStatus
             // 
@@ -209,7 +209,7 @@
             this.picNew.Name = "picNew";
             this.picNew.Size = new System.Drawing.Size(30, 30);
             this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNew.TabIndex = 3;
+            this.picNew.TabIndex = 0;
             this.picNew.TabStop = false;
             this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
@@ -222,7 +222,7 @@
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(374, 30);
-            this.txbName.TabIndex = 1;
+            this.txbName.TabIndex = 4;
             // 
             // dgService
             // 
@@ -293,7 +293,7 @@
             this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbStatusFilter.Name = "cbStatusFilter";
             this.cbStatusFilter.Size = new System.Drawing.Size(200, 31);
-            this.cbStatusFilter.TabIndex = 0;
+            this.cbStatusFilter.TabIndex = 3;
             this.cbStatusFilter.SelectedValueChanged += new System.EventHandler(this.cbStatusFilter_SelectedValueChanged);
             // 
             // picClose
@@ -305,7 +305,7 @@
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(30, 30);
             this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClose.TabIndex = 4;
+            this.picClose.TabIndex = 0;
             this.picClose.TabStop = false;
             this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
@@ -346,6 +346,7 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
+            this.pnlDetail.Visible = false;
             // 
             // picImage
             // 
@@ -356,7 +357,7 @@
             this.picImage.Name = "picImage";
             this.picImage.Size = new System.Drawing.Size(150, 150);
             this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picImage.TabIndex = 11;
+            this.picImage.TabIndex = 0;
             this.picImage.TabStop = false;
             this.picImage.Click += new System.EventHandler(this.picImage_Click);
             // 
@@ -372,7 +373,7 @@
             this.btnDone.Location = new System.Drawing.Point(13, 553);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(374, 50);
-            this.btnDone.TabIndex = 6;
+            this.btnDone.TabIndex = 9;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
@@ -384,7 +385,7 @@
             this.rtxbDescription.Location = new System.Drawing.Point(13, 397);
             this.rtxbDescription.Name = "rtxbDescription";
             this.rtxbDescription.Size = new System.Drawing.Size(218, 150);
-            this.rtxbDescription.TabIndex = 5;
+            this.rtxbDescription.TabIndex = 8;
             this.rtxbDescription.Text = "";
             // 
             // lbDescription
@@ -421,7 +422,7 @@
             0});
             this.nudPrice.Name = "nudPrice";
             this.nudPrice.Size = new System.Drawing.Size(373, 30);
-            this.nudPrice.TabIndex = 4;
+            this.nudPrice.TabIndex = 7;
             // 
             // lbPrice
             // 
