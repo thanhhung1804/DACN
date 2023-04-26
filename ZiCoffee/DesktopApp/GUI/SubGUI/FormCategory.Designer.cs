@@ -32,6 +32,7 @@
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picNew = new System.Windows.Forms.PictureBox();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.picClose = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
             this.lbDescription = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).BeginInit();
             this.pnlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).BeginInit();
             this.SuspendLayout();
@@ -69,7 +71,7 @@
             this.picDelete.Name = "picDelete";
             this.picDelete.Size = new System.Drawing.Size(30, 30);
             this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDelete.TabIndex = 4;
+            this.picDelete.TabIndex = 0;
             this.picDelete.TabStop = false;
             this.picDelete.Click += new System.EventHandler(this.picDelete_Click);
             // 
@@ -82,13 +84,14 @@
             this.picNew.Name = "picNew";
             this.picNew.Size = new System.Drawing.Size(30, 30);
             this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNew.TabIndex = 3;
+            this.picNew.TabIndex = 0;
             this.picNew.TabStop = false;
             this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
             // pnlDetail
             // 
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlDetail.Controls.Add(this.picClose);
             this.pnlDetail.Controls.Add(this.btnDone);
             this.pnlDetail.Controls.Add(this.rtxbDescription);
             this.pnlDetail.Controls.Add(this.lbDescription);
@@ -101,6 +104,20 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
+            this.pnlDetail.Visible = false;
+            // 
+            // picClose
+            // 
+            this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
+            this.picClose.Location = new System.Drawing.Point(358, 12);
+            this.picClose.Name = "picClose";
+            this.picClose.Size = new System.Drawing.Size(30, 30);
+            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picClose.TabIndex = 0;
+            this.picClose.TabStop = false;
+            this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
             // btnDone
             // 
@@ -111,7 +128,7 @@
             this.btnDone.FlatAppearance.BorderSize = 3;
             this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.Location = new System.Drawing.Point(16, 276);
+            this.btnDone.Location = new System.Drawing.Point(16, 328);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(372, 50);
             this.btnDone.TabIndex = 3;
@@ -123,7 +140,7 @@
             // 
             this.rtxbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.rtxbDescription.Location = new System.Drawing.Point(16, 112);
+            this.rtxbDescription.Location = new System.Drawing.Point(16, 164);
             this.rtxbDescription.Name = "rtxbDescription";
             this.rtxbDescription.Size = new System.Drawing.Size(372, 158);
             this.rtxbDescription.TabIndex = 2;
@@ -133,7 +150,7 @@
             // 
             this.lbDescription.AutoSize = true;
             this.lbDescription.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescription.Location = new System.Drawing.Point(12, 86);
+            this.lbDescription.Location = new System.Drawing.Point(12, 138);
             this.lbDescription.Name = "lbDescription";
             this.lbDescription.Size = new System.Drawing.Size(108, 23);
             this.lbDescription.TabIndex = 0;
@@ -144,7 +161,7 @@
             this.lbNameError.AutoSize = true;
             this.lbNameError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNameError.ForeColor = System.Drawing.Color.Red;
-            this.lbNameError.Location = new System.Drawing.Point(12, 67);
+            this.lbNameError.Location = new System.Drawing.Point(12, 119);
             this.lbNameError.Name = "lbNameError";
             this.lbNameError.Size = new System.Drawing.Size(117, 19);
             this.lbNameError.TabIndex = 0;
@@ -156,7 +173,7 @@
             this.txbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbName.Location = new System.Drawing.Point(16, 33);
+            this.txbName.Location = new System.Drawing.Point(16, 85);
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(372, 30);
@@ -166,7 +183,7 @@
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(12, 6);
+            this.lbName.Location = new System.Drawing.Point(12, 58);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(61, 23);
             this.lbName.TabIndex = 0;
@@ -217,6 +234,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.pnlBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).EndInit();
             this.ResumeLayout(false);
@@ -237,5 +255,6 @@
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Panel pnlBody;
         private System.Windows.Forms.DataGridView dgCategory;
+        private System.Windows.Forms.PictureBox picClose;
     }
 }

@@ -86,6 +86,7 @@
             this.pnlDetail.Name = "pnlDetail";
             this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
+            this.pnlDetail.Visible = false;
             // 
             // btnDone
             // 
@@ -99,7 +100,7 @@
             this.btnDone.Location = new System.Drawing.Point(14, 483);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(374, 50);
-            this.btnDone.TabIndex = 5;
+            this.btnDone.TabIndex = 8;
             this.btnDone.Text = "Done";
             this.btnDone.UseVisualStyleBackColor = true;
             this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
@@ -111,7 +112,7 @@
             this.rtxbDescription.Location = new System.Drawing.Point(14, 319);
             this.rtxbDescription.Name = "rtxbDescription";
             this.rtxbDescription.Size = new System.Drawing.Size(373, 158);
-            this.rtxbDescription.TabIndex = 4;
+            this.rtxbDescription.TabIndex = 7;
             this.rtxbDescription.Text = "";
             // 
             // lbDescription
@@ -146,7 +147,7 @@
             this.cbArea.Margin = new System.Windows.Forms.Padding(4);
             this.cbArea.Name = "cbArea";
             this.cbArea.Size = new System.Drawing.Size(373, 31);
-            this.cbArea.TabIndex = 3;
+            this.cbArea.TabIndex = 6;
             // 
             // lbArea
             // 
@@ -180,7 +181,7 @@
             this.cbStatusSelector.Margin = new System.Windows.Forms.Padding(4);
             this.cbStatusSelector.Name = "cbStatusSelector";
             this.cbStatusSelector.Size = new System.Drawing.Size(373, 31);
-            this.cbStatusSelector.TabIndex = 2;
+            this.cbStatusSelector.TabIndex = 5;
             // 
             // lbStatus
             // 
@@ -213,7 +214,7 @@
             this.txbName.Margin = new System.Windows.Forms.Padding(4);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(374, 30);
-            this.txbName.TabIndex = 1;
+            this.txbName.TabIndex = 4;
             // 
             // lbName
             // 
@@ -234,7 +235,7 @@
             this.picClose.Name = "picClose";
             this.picClose.Size = new System.Drawing.Size(30, 30);
             this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClose.TabIndex = 4;
+            this.picClose.TabIndex = 0;
             this.picClose.TabStop = false;
             this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
@@ -286,7 +287,7 @@
             this.cbStatusFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbStatusFilter.Name = "cbStatusFilter";
             this.cbStatusFilter.Size = new System.Drawing.Size(200, 31);
-            this.cbStatusFilter.TabIndex = 0;
+            this.cbStatusFilter.TabIndex = 3;
             this.cbStatusFilter.SelectedValueChanged += new System.EventHandler(this.cbStatusFilter_SelectedValueChanged);
             // 
             // picDelete
@@ -298,7 +299,7 @@
             this.picDelete.Name = "picDelete";
             this.picDelete.Size = new System.Drawing.Size(30, 30);
             this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDelete.TabIndex = 4;
+            this.picDelete.TabIndex = 0;
             this.picDelete.TabStop = false;
             this.picDelete.Click += new System.EventHandler(this.picDelete_Click);
             // 
@@ -311,7 +312,7 @@
             this.picNew.Name = "picNew";
             this.picNew.Size = new System.Drawing.Size(30, 30);
             this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNew.TabIndex = 3;
+            this.picNew.TabIndex = 0;
             this.picNew.TabStop = false;
             this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
@@ -338,7 +339,7 @@
             this.cbAreaFilter.Margin = new System.Windows.Forms.Padding(4);
             this.cbAreaFilter.Name = "cbAreaFilter";
             this.cbAreaFilter.Size = new System.Drawing.Size(471, 31);
-            this.cbAreaFilter.TabIndex = 0;
+            this.cbAreaFilter.TabIndex = 2;
             this.cbAreaFilter.SelectedValueChanged += new System.EventHandler(this.cbAreaFilter_SelectedValueChanged);
             // 
             // txbSearch
@@ -350,7 +351,7 @@
             this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(471, 30);
-            this.txbSearch.TabIndex = 0;
+            this.txbSearch.TabIndex = 1;
             this.txbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSearch_KeyPress);
             // 
             // pnlBody
