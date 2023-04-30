@@ -96,6 +96,7 @@ namespace DesktopApp.GUI
 
         private void btnRevenue_Click(object sender, EventArgs e)
         {
+            ChangeBackcolorNavbarButtons(sender);
             formRevenue subform = new formRevenue();
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
@@ -107,6 +108,7 @@ namespace DesktopApp.GUI
 
         private void btnUser_Click(object sender, EventArgs e)
         {
+            ChangeBackcolorNavbarButtons(sender);
             formUser subform = new formUser();
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
@@ -118,6 +120,7 @@ namespace DesktopApp.GUI
 
         private void btnRole_Click(object sender, EventArgs e)
         {
+            ChangeBackcolorNavbarButtons(sender);
             formRole subform = new formRole();
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
@@ -129,6 +132,7 @@ namespace DesktopApp.GUI
 
         private void btnArea_Click(object sender, EventArgs e)
         {
+            ChangeBackcolorNavbarButtons(sender);
             formArea subform = new formArea();
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
@@ -140,6 +144,7 @@ namespace DesktopApp.GUI
 
         private void btnTable_Click(object sender, EventArgs e)
         {
+            ChangeBackcolorNavbarButtons(sender);
             formTable subform = new formTable();
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
@@ -151,6 +156,7 @@ namespace DesktopApp.GUI
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
+            ChangeBackcolorNavbarButtons(sender);
             formCategory subform = new formCategory();
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
@@ -162,6 +168,7 @@ namespace DesktopApp.GUI
 
         private void btnService_Click(object sender, EventArgs e)
         {
+            ChangeBackcolorNavbarButtons(sender);
             formService subform = new formService();
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
@@ -169,6 +176,18 @@ namespace DesktopApp.GUI
             pnlBody.Controls.Clear();
             pnlBody.Controls.Add(subform);
             subform.Show();
+        }
+
+        private void ChangeBackcolorNavbarButtons(object sender)
+        {
+            foreach (Control control in pnlNavBar.Controls)
+            {
+                if (control is Button)
+                {
+                    (control as Button).BackColor = Color.FromArgb(38, 38, 38);
+                }
+            }
+            (sender as Button).BackColor = Color.DeepSkyBlue;
         }
     }
 }

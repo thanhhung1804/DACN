@@ -177,6 +177,7 @@
             this.btnCategory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCategory.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCategory.FlatAppearance.BorderSize = 3;
+            this.btnCategory.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCategory.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCategory.Location = new System.Drawing.Point(12, 287);
@@ -195,6 +196,7 @@
             this.btnService.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnService.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnService.FlatAppearance.BorderSize = 3;
+            this.btnService.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnService.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnService.Location = new System.Drawing.Point(12, 343);
@@ -213,6 +215,7 @@
             this.btnRevenue.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRevenue.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnRevenue.FlatAppearance.BorderSize = 3;
+            this.btnRevenue.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnRevenue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRevenue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRevenue.Location = new System.Drawing.Point(12, 7);
@@ -229,8 +232,9 @@
             this.btnUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnUser.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnUser.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnUser.FlatAppearance.BorderSize = 3;
+            this.btnUser.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUser.Location = new System.Drawing.Point(12, 63);
@@ -249,6 +253,7 @@
             this.btnRole.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRole.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnRole.FlatAppearance.BorderSize = 3;
+            this.btnRole.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnRole.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRole.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRole.Location = new System.Drawing.Point(12, 119);
@@ -267,6 +272,7 @@
             this.btnArea.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnArea.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnArea.FlatAppearance.BorderSize = 3;
+            this.btnArea.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnArea.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArea.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnArea.Location = new System.Drawing.Point(12, 175);
@@ -285,6 +291,7 @@
             this.btnTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTable.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnTable.FlatAppearance.BorderSize = 3;
+            this.btnTable.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTable.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTable.Location = new System.Drawing.Point(12, 231);
