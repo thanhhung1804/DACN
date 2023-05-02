@@ -41,6 +41,7 @@
             this.TotalTable = new System.Windows.Forms.Label();
             this.lbCopyright = new System.Windows.Forms.Label();
             this.pnlAccountSideBar = new System.Windows.Forms.Panel();
+            this.btnManage = new System.Windows.Forms.Button();
             this.txbRole = new System.Windows.Forms.TextBox();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnChangePassword = new System.Windows.Forms.Button();
@@ -227,6 +228,7 @@
             // pnlAccountSideBar
             // 
             this.pnlAccountSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlAccountSideBar.Controls.Add(this.btnManage);
             this.pnlAccountSideBar.Controls.Add(this.txbRole);
             this.pnlAccountSideBar.Controls.Add(this.btnLogOut);
             this.pnlAccountSideBar.Controls.Add(this.btnChangePassword);
@@ -245,11 +247,26 @@
             this.pnlAccountSideBar.Size = new System.Drawing.Size(300, 720);
             this.pnlAccountSideBar.TabIndex = 0;
             // 
+            // btnManage
+            // 
+            this.btnManage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManage.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnManage.FlatAppearance.BorderSize = 3;
+            this.btnManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManage.Location = new System.Drawing.Point(60, 561);
+            this.btnManage.Name = "btnManage";
+            this.btnManage.Size = new System.Drawing.Size(240, 50);
+            this.btnManage.TabIndex = 0;
+            this.btnManage.Text = "Manage";
+            this.btnManage.UseVisualStyleBackColor = true;
+            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
+            // 
             // txbRole
             // 
             this.txbRole.Cursor = System.Windows.Forms.Cursors.No;
             this.txbRole.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbRole.Location = new System.Drawing.Point(60, 341);
+            this.txbRole.Location = new System.Drawing.Point(60, 325);
             this.txbRole.MaxLength = 20;
             this.txbRole.Name = "txbRole";
             this.txbRole.ReadOnly = true;
@@ -266,7 +283,7 @@
             this.btnLogOut.FlatAppearance.BorderSize = 3;
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogOut.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogOut.Location = new System.Drawing.Point(60, 660);
+            this.btnLogOut.Location = new System.Drawing.Point(60, 617);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(240, 50);
             this.btnLogOut.TabIndex = 0;
@@ -281,7 +298,7 @@
             this.btnChangePassword.FlatAppearance.BorderSize = 3;
             this.btnChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnChangePassword.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChangePassword.Location = new System.Drawing.Point(60, 604);
+            this.btnChangePassword.Location = new System.Drawing.Point(60, 505);
             this.btnChangePassword.Name = "btnChangePassword";
             this.btnChangePassword.Size = new System.Drawing.Size(240, 50);
             this.btnChangePassword.TabIndex = 0;
@@ -293,7 +310,7 @@
             // 
             this.txbAddress.Cursor = System.Windows.Forms.Cursors.No;
             this.txbAddress.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbAddress.Location = new System.Drawing.Point(60, 550);
+            this.txbAddress.Location = new System.Drawing.Point(60, 469);
             this.txbAddress.MaxLength = 20;
             this.txbAddress.Name = "txbAddress";
             this.txbAddress.ReadOnly = true;
@@ -307,7 +324,7 @@
             // 
             this.txbPhone.Cursor = System.Windows.Forms.Cursors.No;
             this.txbPhone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbPhone.Location = new System.Drawing.Point(60, 500);
+            this.txbPhone.Location = new System.Drawing.Point(60, 433);
             this.txbPhone.MaxLength = 20;
             this.txbPhone.Name = "txbPhone";
             this.txbPhone.ReadOnly = true;
@@ -321,7 +338,7 @@
             // 
             this.txbCitizenId.Cursor = System.Windows.Forms.Cursors.No;
             this.txbCitizenId.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbCitizenId.Location = new System.Drawing.Point(60, 446);
+            this.txbCitizenId.Location = new System.Drawing.Point(60, 397);
             this.txbCitizenId.MaxLength = 20;
             this.txbCitizenId.Name = "txbCitizenId";
             this.txbCitizenId.ReadOnly = true;
@@ -335,7 +352,7 @@
             // 
             this.txbBirthday.Cursor = System.Windows.Forms.Cursors.No;
             this.txbBirthday.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbBirthday.Location = new System.Drawing.Point(60, 392);
+            this.txbBirthday.Location = new System.Drawing.Point(60, 361);
             this.txbBirthday.MaxLength = 20;
             this.txbBirthday.Name = "txbBirthday";
             this.txbBirthday.ReadOnly = true;
@@ -568,6 +585,21 @@
             this.fpnlTable.Size = new System.Drawing.Size(600, 520);
             this.fpnlTable.TabIndex = 0;
             // 
+            // btnManage
+            // 
+            this.btnManage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnManage.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnManage.FlatAppearance.BorderSize = 3;
+            this.btnManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnManage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnManage.Location = new System.Drawing.Point(60, 561);
+            this.btnManage.Name = "btnManage";
+            this.btnManage.Size = new System.Drawing.Size(240, 50);
+            this.btnManage.TabIndex = 0;
+            this.btnManage.Text = "Manage";
+            this.btnManage.UseVisualStyleBackColor = true;
+            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
+            // 
             // formBusiness
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -650,5 +682,6 @@
         private System.Windows.Forms.FlowLayoutPanel fpnlArea;
         private System.Windows.Forms.FlowLayoutPanel fpnlTable;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btnManage;
     }
 }
