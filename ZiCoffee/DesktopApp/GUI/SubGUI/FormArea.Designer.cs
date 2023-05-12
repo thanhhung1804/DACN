@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.picClose = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
             this.lbDescription = new System.Windows.Forms.Label();
@@ -36,18 +37,17 @@
             this.txbName = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
             this.pnlBody = new System.Windows.Forms.Panel();
+            this.dgArea = new System.Windows.Forms.DataGridView();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picNew = new System.Windows.Forms.PictureBox();
-            this.dgArea = new System.Windows.Forms.DataGridView();
-            this.picClose = new System.Windows.Forms.PictureBox();
             this.pnlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgArea)).BeginInit();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgArea)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlDetail
@@ -67,6 +67,19 @@
             this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
             this.pnlDetail.Visible = false;
+            // 
+            // picClose
+            // 
+            this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
+            this.picClose.Location = new System.Drawing.Point(358, 12);
+            this.picClose.Name = "picClose";
+            this.picClose.Size = new System.Drawing.Size(30, 30);
+            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picClose.TabIndex = 0;
+            this.picClose.TabStop = false;
+            this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
             // btnDone
             // 
@@ -151,6 +164,20 @@
             this.pnlBody.Size = new System.Drawing.Size(700, 647);
             this.pnlBody.TabIndex = 0;
             // 
+            // dgArea
+            // 
+            this.dgArea.AllowUserToAddRows = false;
+            this.dgArea.AllowUserToDeleteRows = false;
+            this.dgArea.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgArea.ColumnHeadersHeight = 29;
+            this.dgArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgArea.Location = new System.Drawing.Point(0, 59);
+            this.dgArea.Name = "dgArea";
+            this.dgArea.RowHeadersWidth = 51;
+            this.dgArea.RowTemplate.Height = 24;
+            this.dgArea.Size = new System.Drawing.Size(700, 588);
+            this.dgArea.TabIndex = 0;
+            // 
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -189,30 +216,6 @@
             this.picNew.TabStop = false;
             this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
-            // dgArea
-            // 
-            this.dgArea.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgArea.Location = new System.Drawing.Point(0, 59);
-            this.dgArea.Name = "dgArea";
-            this.dgArea.RowHeadersWidth = 51;
-            this.dgArea.RowTemplate.Height = 24;
-            this.dgArea.Size = new System.Drawing.Size(700, 588);
-            this.dgArea.TabIndex = 0;
-            // 
-            // picClose
-            // 
-            this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
-            this.picClose.Location = new System.Drawing.Point(358, 12);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(30, 30);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClose.TabIndex = 0;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
             // formArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -231,12 +234,12 @@
             this.SizeChanged += new System.EventHandler(this.formArea_SizeChanged);
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.pnlBody.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgArea)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgArea)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.ResumeLayout(false);
 
         }

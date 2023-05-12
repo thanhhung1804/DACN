@@ -564,6 +564,9 @@
             // 
             // dgUser
             // 
+            this.dgUser.AllowUserToAddRows = false;
+            this.dgUser.AllowUserToDeleteRows = false;
+            this.dgUser.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgUser.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgUser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgUser.Location = new System.Drawing.Point(0, 0);

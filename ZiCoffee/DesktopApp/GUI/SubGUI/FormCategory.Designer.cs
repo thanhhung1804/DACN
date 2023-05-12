@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.picDelete = new System.Windows.Forms.PictureBox();
-            this.picNew = new System.Windows.Forms.PictureBox();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
@@ -39,54 +36,19 @@
             this.lbNameError = new System.Windows.Forms.Label();
             this.txbName = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.picDelete = new System.Windows.Forms.PictureBox();
+            this.picNew = new System.Windows.Forms.PictureBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgCategory = new System.Windows.Forms.DataGridView();
+            this.pnlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).BeginInit();
-            this.pnlDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pnlHeader
-            // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pnlHeader.Controls.Add(this.picDelete);
-            this.pnlHeader.Controls.Add(this.picNew);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(6);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(700, 59);
-            this.pnlHeader.TabIndex = 0;
-            // 
-            // picDelete
-            // 
-            this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picDelete.Image = global::DesktopApp.Properties.Resources.Remove;
-            this.picDelete.Location = new System.Drawing.Point(658, 12);
-            this.picDelete.Name = "picDelete";
-            this.picDelete.Size = new System.Drawing.Size(30, 30);
-            this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDelete.TabIndex = 0;
-            this.picDelete.TabStop = false;
-            this.picDelete.Click += new System.EventHandler(this.picDelete_Click);
-            // 
-            // picNew
-            // 
-            this.picNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picNew.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picNew.Image = global::DesktopApp.Properties.Resources.Plus;
-            this.picNew.Location = new System.Drawing.Point(622, 12);
-            this.picNew.Name = "picNew";
-            this.picNew.Size = new System.Drawing.Size(30, 30);
-            this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNew.TabIndex = 0;
-            this.picNew.TabStop = false;
-            this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
             // pnlDetail
             // 
@@ -189,27 +151,68 @@
             this.lbName.TabIndex = 0;
             this.lbName.Text = "Name";
             // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlHeader.Controls.Add(this.picDelete);
+            this.pnlHeader.Controls.Add(this.picNew);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(6);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(700, 59);
+            this.pnlHeader.TabIndex = 0;
+            // 
+            // picDelete
+            // 
+            this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picDelete.Image = global::DesktopApp.Properties.Resources.Remove;
+            this.picDelete.Location = new System.Drawing.Point(658, 12);
+            this.picDelete.Name = "picDelete";
+            this.picDelete.Size = new System.Drawing.Size(30, 30);
+            this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picDelete.TabIndex = 0;
+            this.picDelete.TabStop = false;
+            this.picDelete.Click += new System.EventHandler(this.picDelete_Click);
+            // 
+            // picNew
+            // 
+            this.picNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picNew.Image = global::DesktopApp.Properties.Resources.Plus;
+            this.picNew.Location = new System.Drawing.Point(622, 12);
+            this.picNew.Name = "picNew";
+            this.picNew.Size = new System.Drawing.Size(30, 30);
+            this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picNew.TabIndex = 0;
+            this.picNew.TabStop = false;
+            this.picNew.Click += new System.EventHandler(this.picNew_Click);
+            // 
             // pnlBody
             // 
             this.pnlBody.AutoScroll = true;
             this.pnlBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.pnlBody.Controls.Add(this.dgCategory);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 0);
+            this.pnlBody.Location = new System.Drawing.Point(0, 59);
             this.pnlBody.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(1100, 647);
+            this.pnlBody.Size = new System.Drawing.Size(700, 588);
             this.pnlBody.TabIndex = 0;
             // 
             // dgCategory
             // 
+            this.dgCategory.AllowUserToAddRows = false;
+            this.dgCategory.AllowUserToDeleteRows = false;
+            this.dgCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCategory.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgCategory.Location = new System.Drawing.Point(0, 0);
             this.dgCategory.Name = "dgCategory";
             this.dgCategory.RowHeadersWidth = 51;
             this.dgCategory.RowTemplate.Height = 24;
-            this.dgCategory.Size = new System.Drawing.Size(1100, 647);
+            this.dgCategory.Size = new System.Drawing.Size(700, 588);
             this.dgCategory.TabIndex = 0;
             // 
             // formCategory
@@ -218,9 +221,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.ClientSize = new System.Drawing.Size(1100, 647);
+            this.Controls.Add(this.pnlBody);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlDetail);
-            this.Controls.Add(this.pnlBody);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -229,12 +232,12 @@
             this.Text = "FormCategory";
             this.Load += new System.EventHandler(this.formCategory_Load);
             this.SizeChanged += new System.EventHandler(this.formCategory_SizeChanged);
-            this.pnlHeader.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
+            this.pnlHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
             this.pnlBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgCategory)).EndInit();
             this.ResumeLayout(false);
@@ -243,18 +246,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlHeader;
-        private System.Windows.Forms.PictureBox picDelete;
-        private System.Windows.Forms.PictureBox picNew;
         private System.Windows.Forms.Panel pnlDetail;
+        private System.Windows.Forms.PictureBox picClose;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.RichTextBox rtxbDescription;
         private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.Label lbNameError;
         private System.Windows.Forms.TextBox txbName;
         private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Panel pnlHeader;
+        private System.Windows.Forms.PictureBox picDelete;
+        private System.Windows.Forms.PictureBox picNew;
         private System.Windows.Forms.Panel pnlBody;
         private System.Windows.Forms.DataGridView dgCategory;
-        private System.Windows.Forms.PictureBox picClose;
     }
 }

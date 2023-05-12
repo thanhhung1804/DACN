@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DesktopApp.DAO;
+using DesktopApp.DTO;
+using DesktopApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,7 +36,7 @@ namespace DesktopApp.GUI.SubGUI
 
         private void formService_Load(object sender, EventArgs e)
         {
-            //firstload data
+            LoadData();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
 
@@ -47,13 +50,13 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                //reload data
+                LoadData();
             }
         }
 
         private void picSearch_Click(object sender, EventArgs e)
         {
-            //reload data
+            LoadData();
         }
 
         private void picNew_Click(object sender, EventArgs e)
@@ -76,18 +79,18 @@ namespace DesktopApp.GUI.SubGUI
             //check selected item
             //delete record in database
             //Notify
-            //reload data
+            LoadData();
             pnlDetail.Visible = false;
         }
 
         private void cbCategoryFilter_SelectedValueChanged(object sender, EventArgs e)
         {
-            //reload data
+            LoadData();
         }
 
         private void cbStatusFilter_SelectedValueChanged(object sender, EventArgs e)
         {
-            //reload data
+            LoadData();
         }
 
         private void picClose_Click(object sender, EventArgs e)
@@ -100,13 +103,20 @@ namespace DesktopApp.GUI.SubGUI
             //valid datafield
             //insert or update data
             //Notify
-            //reload data
+            LoadData();
             pnlDetail.Visible = false;
         }
 
         private void picImage_Click(object sender, EventArgs e)
         {
             //upload Image
+        }
+
+        private void LoadData()
+        {
+            ServiceDAO serviceDAO = new ServiceDAO();
+            List<ServiceDTO> services = serviceDAO.GetAll();
+            dgService.DataSource = services;
         }
     }
 }

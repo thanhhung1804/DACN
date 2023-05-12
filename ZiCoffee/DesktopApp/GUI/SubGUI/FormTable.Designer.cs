@@ -366,6 +366,9 @@
             // 
             // dgTable
             // 
+            this.dgTable.AllowUserToAddRows = false;
+            this.dgTable.AllowUserToDeleteRows = false;
+            this.dgTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgTable.Location = new System.Drawing.Point(0, 0);

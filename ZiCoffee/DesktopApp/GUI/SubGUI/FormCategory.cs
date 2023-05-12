@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DesktopApp.DAO;
+using DesktopApp.DTO;
+using DesktopApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +37,7 @@ namespace DesktopApp.GUI.SubGUI
         private void formCategory_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            //First load data
+            LoadData();
         }
 
         private void formCategory_SizeChanged(object sender, EventArgs e)
@@ -54,7 +57,7 @@ namespace DesktopApp.GUI.SubGUI
             //check selected item
             //delete record in database
             //Notify result
-            //reload data
+            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -63,13 +66,20 @@ namespace DesktopApp.GUI.SubGUI
             //validate field
             //update database
             //notify result
-            //reload data
+            LoadData();
             pnlDetail.Visible = false;
         }
 
         private void picClose_Click(object sender, EventArgs e)
         {
             pnlDetail.Visible = false;
+        }
+
+        private void LoadData()
+        {
+            CategoryDAO categoryDAO = new CategoryDAO();
+            List<CategoryDTO> categories = categoryDAO.GetAll();
+            dgCategory.DataSource = categories;
         }
     }
 }
