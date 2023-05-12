@@ -56,7 +56,7 @@
             this.pnlHeader.Controls.Add(this.dtpTimeStart);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeader.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlHeader.Margin = new System.Windows.Forms.Padding(6);
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(1200, 63);
             this.pnlHeader.TabIndex = 0;
@@ -66,7 +66,7 @@
             this.dtpTimeEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpTimeEnd.CustomFormat = "dd/MM/yyyy";
             this.dtpTimeEnd.Location = new System.Drawing.Point(739, 13);
-            this.dtpTimeEnd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpTimeEnd.Margin = new System.Windows.Forms.Padding(4);
             this.dtpTimeEnd.Name = "dtpTimeEnd";
             this.dtpTimeEnd.Size = new System.Drawing.Size(448, 30);
             this.dtpTimeEnd.TabIndex = 2;
@@ -76,7 +76,7 @@
             // 
             this.dtpTimeStart.CustomFormat = "dd/MM/yyyy";
             this.dtpTimeStart.Location = new System.Drawing.Point(13, 13);
-            this.dtpTimeStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpTimeStart.Margin = new System.Windows.Forms.Padding(4);
             this.dtpTimeStart.Name = "dtpTimeStart";
             this.dtpTimeStart.Size = new System.Drawing.Size(448, 30);
             this.dtpTimeStart.TabIndex = 1;
@@ -91,7 +91,7 @@
             this.pnlFillter.Controls.Add(this.txbCashierName);
             this.pnlFillter.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlFillter.Location = new System.Drawing.Point(0, 63);
-            this.pnlFillter.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlFillter.Margin = new System.Windows.Forms.Padding(6);
             this.pnlFillter.Name = "pnlFillter";
             this.pnlFillter.Size = new System.Drawing.Size(1200, 84);
             this.pnlFillter.TabIndex = 0;
@@ -124,7 +124,7 @@
             this.txbTableName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txbTableName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTableName.Location = new System.Drawing.Point(739, 37);
-            this.txbTableName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbTableName.Margin = new System.Windows.Forms.Padding(4);
             this.txbTableName.Name = "txbTableName";
             this.txbTableName.Size = new System.Drawing.Size(448, 30);
             this.txbTableName.TabIndex = 4;
@@ -134,7 +134,7 @@
             // 
             this.txbCashierName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbCashierName.Location = new System.Drawing.Point(13, 37);
-            this.txbCashierName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbCashierName.Margin = new System.Windows.Forms.Padding(4);
             this.txbCashierName.Name = "txbCashierName";
             this.txbCashierName.Size = new System.Drawing.Size(448, 30);
             this.txbCashierName.TabIndex = 3;
@@ -148,7 +148,7 @@
             this.pnlFooter.Controls.Add(this.txbTotalRevenue);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooter.Location = new System.Drawing.Point(0, 599);
-            this.pnlFooter.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.pnlFooter.Margin = new System.Windows.Forms.Padding(6);
             this.pnlFooter.Name = "pnlFooter";
             this.pnlFooter.Size = new System.Drawing.Size(1200, 76);
             this.pnlFooter.TabIndex = 0;
@@ -162,7 +162,7 @@
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExport.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExport.Location = new System.Drawing.Point(737, 13);
-            this.btnExport.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExport.Margin = new System.Windows.Forms.Padding(4);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(450, 50);
             this.btnExport.TabIndex = 5;
@@ -189,7 +189,7 @@
             this.txbTotalRevenue.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTotalRevenue.ForeColor = System.Drawing.Color.Red;
             this.txbTotalRevenue.Location = new System.Drawing.Point(151, 23);
-            this.txbTotalRevenue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txbTotalRevenue.Margin = new System.Windows.Forms.Padding(4);
             this.txbTotalRevenue.MaxLength = 20;
             this.txbTotalRevenue.Name = "txbTotalRevenue";
             this.txbTotalRevenue.ReadOnly = true;
@@ -204,17 +204,22 @@
             this.pnlBody.Controls.Add(this.dgRevenue);
             this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlBody.Location = new System.Drawing.Point(0, 147);
-            this.pnlBody.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlBody.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(1200, 452);
             this.pnlBody.TabIndex = 0;
             // 
             // dgRevenue
             // 
-            this.dgRevenue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRevenue.AllowUserToAddRows = false;
+            this.dgRevenue.AllowUserToDeleteRows = false;
+            this.dgRevenue.AllowUserToOrderColumns = true;
+            this.dgRevenue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgRevenue.ColumnHeadersHeight = 29;
             this.dgRevenue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgRevenue.Location = new System.Drawing.Point(0, 0);
-            this.dgRevenue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgRevenue.Margin = new System.Windows.Forms.Padding(4);
+            this.dgRevenue.MultiSelect = false;
             this.dgRevenue.Name = "dgRevenue";
             this.dgRevenue.RowHeadersWidth = 51;
             this.dgRevenue.RowTemplate.Height = 24;
@@ -234,7 +239,7 @@
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "formRevenue";
             this.Text = "FormRevenue";
             this.Load += new System.EventHandler(this.formRevenue_Load);

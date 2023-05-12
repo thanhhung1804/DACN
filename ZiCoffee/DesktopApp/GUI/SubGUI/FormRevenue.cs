@@ -1,4 +1,8 @@
-﻿using System;
+﻿using DesktopApp.DAO;
+using DesktopApp.Database;
+using DesktopApp.Model;
+using Org.BouncyCastle.Cms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,12 +37,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void dtpTimeStart_ValueChanged(object sender, EventArgs e)
         {
-            //Reload data
+            LoadData();
         }
 
         private void dtpTimeEnd_ValueChanged(object sender, EventArgs e)
         {
-            //Reload data
+            LoadData();
         }
 
         private void txbCashierName_KeyPress(object sender, KeyPressEventArgs e)
@@ -46,7 +50,7 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                //Reload data
+                LoadData();
             }
         }
 
@@ -55,7 +59,7 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                //Reload data
+                LoadData();
             }
         }
 
@@ -77,6 +81,41 @@ namespace DesktopApp.GUI.SubGUI
         private void formRevenue_SizeChanged(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+        }
+
+        private void LoadData()
+        {
+            BillDAO billDAO = new BillDAO();
+            List<BillDTO> bills = billDAO.GetAll();
+            dgRevenue.AutoGenerateColumns = false;
+            dgRevenue.DataSource = bills;
+
+            dgRevenue.Columns.Clear();
+
+            DataGridViewTextBoxColumn createdDateColumn = new DataGridViewTextBoxColumn();
+            createdDateColumn.DataPropertyName = "CreatedDate";
+            createdDateColumn.HeaderText = "Created date";
+            dgRevenue.Columns.Add(createdDateColumn);
+
+            DataGridViewTextBoxColumn totalColumn = new DataGridViewTextBoxColumn();
+            totalColumn.DataPropertyName = "Total";
+            totalColumn.HeaderText = "Total";
+            dgRevenue.Columns.Add(totalColumn);
+
+            DataGridViewTextBoxColumn statusColumn = new DataGridViewTextBoxColumn();
+            statusColumn.DataPropertyName = "Status";
+            statusColumn.HeaderText = "Status";
+            dgRevenue.Columns.Add(statusColumn);
+
+            DataGridViewTextBoxColumn tableNameColumn = new DataGridViewTextBoxColumn();
+            tableNameColumn.DataPropertyName = "TableName";
+            tableNameColumn.HeaderText = "Table";
+            dgRevenue.Columns.Add(tableNameColumn);
+
+            DataGridViewTextBoxColumn usernameColumn = new DataGridViewTextBoxColumn();
+            usernameColumn.DataPropertyName = "Username";
+            usernameColumn.HeaderText = "Cashier";
+            dgRevenue.Columns.Add(usernameColumn);
         }
     }
 }

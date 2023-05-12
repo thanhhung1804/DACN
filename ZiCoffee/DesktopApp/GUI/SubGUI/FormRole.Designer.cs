@@ -193,6 +193,9 @@
             // 
             // dgRole
             // 
+            this.dgRole.AllowUserToAddRows = false;
+            this.dgRole.AllowUserToDeleteRows = false;
+            this.dgRole.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgRole.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgRole.Location = new System.Drawing.Point(0, 59);

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using DesktopApp.DAO;
+using DesktopApp.DTO;
+using DesktopApp.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +37,7 @@ namespace DesktopApp.GUI.SubGUI
         private void formTable_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            //First load data
+            LoadData();
         }
 
         private void formTable_SizeChanged(object sender, EventArgs e)
@@ -47,13 +50,13 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                //reload data
+                LoadData();
             }
         }
 
         private void picSearch_Click(object sender, EventArgs e)
         {
-            //Reload data
+            LoadData();
         }
 
         private void picNew_Click(object sender, EventArgs e)
@@ -74,18 +77,18 @@ namespace DesktopApp.GUI.SubGUI
             //check selected item
             //delete record in database
             //Notify
-            //reload data
+            LoadData();
             pnlDetail.Visible = false;
         }
 
         private void cbAreaFilter_SelectedValueChanged(object sender, EventArgs e)
         {
-            //reload data
+            LoadData();
         }
 
         private void cbStatusFilter_SelectedValueChanged(object sender, EventArgs e)
         {
-            //reload data
+            LoadData();
         }
 
         private void picClose_Click(object sender, EventArgs e)
@@ -98,8 +101,15 @@ namespace DesktopApp.GUI.SubGUI
             //valid datafield
             //insert or update data
             //Notify
-            //reload data
+            LoadData();
             pnlDetail.Visible = false;
+        }
+
+        private void LoadData()
+        {
+            TableDAO tableDAO = new TableDAO();
+            List<TableDTO> tables = tableDAO.GetAll();
+            dgTable.DataSource = tables;
         }
     }
 }

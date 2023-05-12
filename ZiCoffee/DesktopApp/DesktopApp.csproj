@@ -87,10 +87,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BillStatus.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="DAO\AreaDAO.cs" />
+    <Compile Include="DAO\BillDAO.cs" />
+    <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\RoleDAO.cs" />
+    <Compile Include="DAO\ServiceDAO.cs" />
+    <Compile Include="DAO\TableDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Database\Database.cs" />
     <Compile Include="Database\IDatabase.cs" />
     <Compile Include="Database\MySqlDatabase.cs" />
     <Compile Include="Database\SqlServerDatabase.cs" />
+    <Compile Include="DTO\AreaDTO.cs" />
+    <Compile Include="DTO\CategoryDTO.cs" />
+    <Compile Include="DTO\RoleDTO.cs" />
+    <Compile Include="DTO\ServiceDTO.cs" />
+    <Compile Include="DTO\TableDTO.cs" />
+    <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="GUI\FormBusiness.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +184,7 @@
     <Compile Include="GUI\SubGUI\FormUser.Designer.cs">
       <DependentUpon>FormUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="DTO\BillDTO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\FormBusiness.resx">
