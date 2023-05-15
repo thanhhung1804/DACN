@@ -77,6 +77,7 @@ namespace DesktopApp.Database
                     }
                 }
             }
+            string a = command.CommandText;
             //Build adapter object as object allowed 2 different things work togeter
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             //Build an empty datatable

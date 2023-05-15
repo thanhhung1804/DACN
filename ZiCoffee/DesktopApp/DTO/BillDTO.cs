@@ -17,6 +17,7 @@ namespace DesktopApp.Model
         public BillStatus Status { get; set; }
         public Guid TableId { get; set; }
         public Guid UserId { get; set; }
+
         public string TableName { get; set; }
         public string Username { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopApp.Common;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,13 +15,15 @@ namespace DesktopApp.DTO
         public string Password { get; set; }
         public string Avatar { get; set; }
         public string Name { get; set; }
-        public int Gender { get; set; }
+        public Gender Gender { get; set; }
         public DateTime Birthday { get; set; }
         public string Address { get; set; }
         public string CitizenId { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public Guid RoleId { get; set; }
+
+        public string RoleName { get; set; }
 
         public UserDTO(DataRow row) 
         {
@@ -31,11 +34,11 @@ namespace DesktopApp.DTO
             Name = row["Name"].ToString();
             if (int.TryParse(row["Gender"].ToString(), out int gender))
             {
-                Gender = gender;
+                Gender = (Gender)gender;
             }
             else
             {
-                Gender = 0;
+                Gender = Gender.Male;
             }
             Birthday = DateTime.Parse(row["Birthday"].ToString());
             Address = row["Address"].ToString();
@@ -43,6 +46,7 @@ namespace DesktopApp.DTO
             Phone = row["Phone"].ToString();
             Email = row["Email"].ToString();
             RoleId = Guid.Parse(row["RoleId"].ToString());
+            RoleName = row["RoleName"].ToString();
         }
     }
 }
