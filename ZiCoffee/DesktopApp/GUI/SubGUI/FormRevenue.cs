@@ -41,13 +41,23 @@ namespace DesktopApp.GUI.SubGUI
         private void dtpTimeStart_ValueChanged(object sender, EventArgs e)
         {
             CheckDateTimePickerValid();
-            LoadData(dtpTimeStart.Value, dtpTimeEnd.Value, txbTableName.Text, txbCashierName.Text);
+            LoadData(
+                startTime: dtpTimeStart.Value,
+                endTime: dtpTimeEnd.Value,
+                tableName: txbTableName.Text,
+                username: txbCashierName.Text
+            );
         }
 
         private void dtpTimeEnd_ValueChanged(object sender, EventArgs e)
         {
             CheckDateTimePickerValid();
-            LoadData(dtpTimeStart.Value, dtpTimeEnd.Value, txbTableName.Text, txbCashierName.Text);
+            LoadData(
+                startTime: dtpTimeStart.Value,
+                endTime: dtpTimeEnd.Value,
+                tableName: txbTableName.Text,
+                username: txbCashierName.Text
+            );
         }
 
         private void CheckDateTimePickerValid()
@@ -57,7 +67,12 @@ namespace DesktopApp.GUI.SubGUI
             int compareResult = DateTime.Compare(startDate, endDate);
             if (compareResult > 0)
             {
-                MessageBox.Show("Start date can not greater than end date", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    text: "Start date can not greater than end date", 
+                    caption: "Notification", 
+                    buttons: MessageBoxButtons.OK, 
+                    icon: MessageBoxIcon.Information
+                );
             }
         }
 
@@ -66,7 +81,12 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                LoadData(dtpTimeStart.Value, dtpTimeEnd.Value, txbTableName.Text, txbCashierName.Text);
+                LoadData(
+                    startTime: dtpTimeStart.Value,
+                    endTime: dtpTimeEnd.Value,
+                    tableName: txbTableName.Text,
+                    username: txbCashierName.Text
+                );
             }
         }
 
@@ -75,7 +95,12 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                LoadData(dtpTimeStart.Value, dtpTimeEnd.Value, txbTableName.Text, txbCashierName.Text);
+                LoadData(
+                    startTime: dtpTimeStart.Value,
+                    endTime: dtpTimeEnd.Value,
+                    tableName: txbTableName.Text,
+                    username: txbCashierName.Text
+                );
             }
         }
 
@@ -83,41 +108,101 @@ namespace DesktopApp.GUI.SubGUI
         {
             if (dgRevenue.Rows.Count <= 0)
             {
-                MessageBox.Show("No data", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    text: "No data to export",
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information
+                );
                 return;
             }
             ExportToExcel();
         }
 
+        private void ExportToExcel()
+        {
+            // Create a new Excel workbook and worksheet
+            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Add();
+            Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.Sheets.Add();
+
+            // Populate the worksheet with data from the DataGridView's DataSource
+            for (int i = 0; i < dgRevenue.Rows.Count; i++)
+            {
+                for (int j = 0; j < dgRevenue.Columns.Count; j++)
+                {
+                    excelWorksheet.Cells[i + 1, j + 1] = dgRevenue.Rows[i].Cells[j].Value.ToString();
+                }
+            }
+
+            // Add a row at the end of the worksheet and calculate the total value
+            int lastRowIndex = dgRevenue.Rows.Count - 1;
+            for (int j = 0; j < dgRevenue.Columns.Count; j++)
+            {
+                if (dgRevenue.Columns[j].ValueType == typeof(decimal))
+                {
+                    decimal cellValue = Convert.ToDecimal(dgRevenue.Rows[lastRowIndex].Cells[j].Value);
+                }
+            }
+            excelWorksheet.Cells[lastRowIndex + 1, 1] = "Total";
+            excelWorksheet.Cells[lastRowIndex + 1, dgRevenue.Columns.Count] = txbTotalRevenue.Text;
+
+            // Prompt the user for a save location using a SaveFileDialog
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+            saveFileDialog.FileName = "ExportedData.xlsx";
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Save the workbook to the selected location
+                string filePath = saveFileDialog.FileName;
+                excelWorkbook.SaveAs(filePath);
+                excelWorkbook.Close();
+                excelApp.Quit();
+                MessageBox.Show(
+                    text: "Export successful!",
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information
+                );
+            }
+        }
+
         private void formRevenue_Load(object sender, EventArgs e)
         {
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+
             dtpTimeStart.Format = dtpTimeEnd.Format = DateTimePickerFormat.Custom;
             dtpTimeStart.CustomFormat = dtpTimeEnd.CustomFormat = "dd/MM/yyyy";
+
             DateTime currentDateTime = DateTime.Now;
             dtpTimeStart.Value = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 0, 0, 0);
             dtpTimeEnd.Value = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 23, 59, 59);
-
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            dgRevenue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgRevenue.Width, dgRevenue.Height, 20, 20));
-
-            dgRevenue.ForeColor = Color.Black;
         }
 
         private void formRevenue_SizeChanged(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            dgRevenue.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgRevenue.Width, dgRevenue.Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
+        private void pnlBody_SizeChanged(object sender, EventArgs e)
+        {
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
         }
 
         private void LoadData(DateTime startTime, DateTime endTime, string tableName, string username)
         {
             BillDAO billDAO = new BillDAO();
             Tuple<List<BillDTO>, float> result = billDAO.GetRevenue(startTime, endTime, tableName, username);
-            List<BillDTO> bills = result.Item1;
+
             float revenueTotal = result.Item2;
-            dgRevenue.AutoGenerateColumns = false;
+            txbTotalRevenue.Text = revenueTotal.ToString();
+
+            List<BillDTO> bills = result.Item1;
             dgRevenue.DataSource = bills;
 
+            dgRevenue.AutoGenerateColumns = false;
             dgRevenue.Columns.Clear();
 
             DataGridViewTextBoxColumn createdDateColumn = new DataGridViewTextBoxColumn();
@@ -161,51 +246,6 @@ namespace DesktopApp.GUI.SubGUI
             usernameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             usernameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgRevenue.Columns.Add(usernameColumn);
-
-            txbTotalRevenue.Text = revenueTotal.ToString();
-        }
-
-        private void ExportToExcel()
-        {
-            // Create a new Excel workbook and worksheet
-            Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
-            Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Add();
-            Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.Sheets.Add();
-
-            // Populate the worksheet with data from the DataGridView's DataSource
-            for (int i = 0; i < dgRevenue.Rows.Count; i++)
-            {
-                for (int j = 0; j < dgRevenue.Columns.Count; j++)
-                {
-                    excelWorksheet.Cells[i + 1, j + 1] = dgRevenue.Rows[i].Cells[j].Value.ToString();
-                }
-            }
-
-            // Add a row at the end of the worksheet and calculate the total value
-            int lastRowIndex = dgRevenue.Rows.Count - 1;
-            for (int j = 0; j < dgRevenue.Columns.Count; j++)
-            {
-                if (dgRevenue.Columns[j].ValueType == typeof(decimal))
-                {
-                    decimal cellValue = Convert.ToDecimal(dgRevenue.Rows[lastRowIndex].Cells[j].Value);
-                }
-            }
-            excelWorksheet.Cells[lastRowIndex + 1, 1] = "Total";
-            excelWorksheet.Cells[lastRowIndex + 1, dgRevenue.Columns.Count] = txbTotalRevenue.Text;
-
-            // Prompt the user for a save location using a SaveFileDialog
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
-            saveFileDialog.FileName = "ExportedData.xlsx";
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                // Save the workbook to the selected location
-                string filePath = saveFileDialog.FileName;
-                excelWorkbook.SaveAs(filePath);
-                excelWorkbook.Close();
-                excelApp.Quit();
-                MessageBox.Show("Export successful!", "Notification", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
     }
 }
