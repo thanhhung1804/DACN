@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlDetail = new System.Windows.Forms.Panel();
-            this.lbActions = new System.Windows.Forms.Label();
-            this.pnlActions = new System.Windows.Forms.Panel();
-            this.picClose = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
+            this.fpnlActions = new System.Windows.Forms.FlowLayoutPanel();
+            this.lbActions = new System.Windows.Forms.Label();
+            this.picClose = new System.Windows.Forms.PictureBox();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
             this.lbDescription = new System.Windows.Forms.Label();
             this.lbNameError = new System.Windows.Forms.Label();
@@ -43,7 +44,9 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picNew = new System.Windows.Forms.PictureBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.pnlDetail.SuspendLayout();
+            this.fpnlActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlBody.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgRole)).BeginInit();
@@ -56,10 +59,10 @@
             // 
             this.pnlDetail.AutoScroll = true;
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pnlDetail.Controls.Add(this.lbActions);
-            this.pnlDetail.Controls.Add(this.pnlActions);
-            this.pnlDetail.Controls.Add(this.picClose);
             this.pnlDetail.Controls.Add(this.btnDone);
+            this.pnlDetail.Controls.Add(this.fpnlActions);
+            this.pnlDetail.Controls.Add(this.lbActions);
+            this.pnlDetail.Controls.Add(this.picClose);
             this.pnlDetail.Controls.Add(this.rtxbDescription);
             this.pnlDetail.Controls.Add(this.lbDescription);
             this.pnlDetail.Controls.Add(this.lbNameError);
@@ -73,6 +76,36 @@
             this.pnlDetail.TabIndex = 0;
             this.pnlDetail.Visible = false;
             // 
+            // btnDone
+            // 
+            this.btnDone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDone.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDone.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnDone.FlatAppearance.BorderSize = 3;
+            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDone.Location = new System.Drawing.Point(13, 494);
+            this.btnDone.Name = "btnDone";
+            this.btnDone.Size = new System.Drawing.Size(374, 50);
+            this.btnDone.TabIndex = 3;
+            this.btnDone.Text = "Done";
+            this.btnDone.UseVisualStyleBackColor = true;
+            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
+            // 
+            // fpnlActions
+            // 
+            this.fpnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fpnlActions.AutoScroll = true;
+            this.fpnlActions.Controls.Add(this.checkBox1);
+            this.fpnlActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.fpnlActions.Location = new System.Drawing.Point(13, 306);
+            this.fpnlActions.Name = "fpnlActions";
+            this.fpnlActions.Size = new System.Drawing.Size(374, 182);
+            this.fpnlActions.TabIndex = 0;
+            // 
             // lbActions
             // 
             this.lbActions.AutoSize = true;
@@ -82,18 +115,6 @@
             this.lbActions.Size = new System.Drawing.Size(74, 23);
             this.lbActions.TabIndex = 0;
             this.lbActions.Text = "Actions";
-            // 
-            // pnlActions
-            // 
-            this.pnlActions.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlActions.AutoScroll = true;
-            this.pnlActions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pnlActions.Location = new System.Drawing.Point(13, 307);
-            this.pnlActions.Margin = new System.Windows.Forms.Padding(4);
-            this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(374, 164);
-            this.pnlActions.TabIndex = 0;
             // 
             // picClose
             // 
@@ -107,23 +128,6 @@
             this.picClose.TabIndex = 0;
             this.picClose.TabStop = false;
             this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
-            // btnDone
-            // 
-            this.btnDone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDone.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnDone.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnDone.FlatAppearance.BorderSize = 3;
-            this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.Location = new System.Drawing.Point(13, 478);
-            this.btnDone.Name = "btnDone";
-            this.btnDone.Size = new System.Drawing.Size(374, 50);
-            this.btnDone.TabIndex = 3;
-            this.btnDone.Text = "Done";
-            this.btnDone.UseVisualStyleBackColor = true;
-            this.btnDone.Click += new System.EventHandler(this.btnDone_Click);
             // 
             // rtxbDescription
             // 
@@ -190,20 +194,47 @@
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(755, 556);
             this.pnlBody.TabIndex = 0;
+            this.pnlBody.SizeChanged += new System.EventHandler(this.pnlBody_SizeChanged);
             // 
             // dgRole
             // 
             this.dgRole.AllowUserToAddRows = false;
             this.dgRole.AllowUserToDeleteRows = false;
             this.dgRole.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgRole.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgRole.BackgroundColor = System.Drawing.Color.White;
+            this.dgRole.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgRole.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgRole.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgRole.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgRole.ColumnHeadersHeight = 29;
             this.dgRole.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgRole.EnableHeadersVisualStyles = false;
+            this.dgRole.GridColor = System.Drawing.Color.White;
             this.dgRole.Location = new System.Drawing.Point(0, 59);
+            this.dgRole.MultiSelect = false;
             this.dgRole.Name = "dgRole";
+            this.dgRole.ReadOnly = true;
+            this.dgRole.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgRole.RowHeadersVisible = false;
             this.dgRole.RowHeadersWidth = 51;
-            this.dgRole.RowTemplate.Height = 24;
+            this.dgRole.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgRole.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgRole.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgRole.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgRole.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgRole.RowTemplate.DividerHeight = 2;
+            this.dgRole.RowTemplate.Height = 40;
+            this.dgRole.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgRole.Size = new System.Drawing.Size(755, 497);
             this.dgRole.TabIndex = 0;
+            this.dgRole.SelectionChanged += new System.EventHandler(this.dgRole_SelectionChanged);
             // 
             // pnlHeader
             // 
@@ -243,6 +274,16 @@
             this.picNew.TabStop = false;
             this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(3, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(127, 27);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // formRole
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -261,6 +302,8 @@
             this.SizeChanged += new System.EventHandler(this.formRole_SizeChanged);
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
+            this.fpnlActions.ResumeLayout(false);
+            this.fpnlActions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.pnlBody.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgRole)).EndInit();
@@ -273,7 +316,6 @@
 
         #endregion
         private System.Windows.Forms.Panel pnlDetail;
-        private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.RichTextBox rtxbDescription;
         private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.Label lbNameError;
@@ -285,7 +327,9 @@
         private System.Windows.Forms.PictureBox picDelete;
         private System.Windows.Forms.PictureBox picNew;
         private System.Windows.Forms.Label lbActions;
-        private System.Windows.Forms.Panel pnlActions;
         private System.Windows.Forms.PictureBox picClose;
+        private System.Windows.Forms.FlowLayoutPanel fpnlActions;
+        private System.Windows.Forms.Button btnDone;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

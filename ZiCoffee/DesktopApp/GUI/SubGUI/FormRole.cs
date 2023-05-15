@@ -1,6 +1,8 @@
-﻿using DesktopApp.DAO;
+﻿using DesktopApp.Common;
+using DesktopApp.DAO;
 using DesktopApp.DTO;
 using DesktopApp.Model;
+using MySqlX.XDevAPI.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,25 +30,57 @@ namespace DesktopApp.GUI.SubGUI
             int nHeightEllipse // width of ellipse
         );
         #endregion
-        
+
+        private RoleDTO currentSelectedRole;
+
         public formRole()
         {
             InitializeComponent();
+            currentSelectedRole = null;
         }
 
         private void picNew_Click(object sender, EventArgs e)
         {
+            currentSelectedRole = null;
+
             pnlDetail.Visible = true;
+            btnDone.Text = "Add";
+
             txbName.Text = string.Empty;
             rtxbDescription.Text = string.Empty;
+
             //reload action
+            LoadActions();
         }
 
         private void picDelete_Click(object sender, EventArgs e)
         {
             //check selected item
+            if (currentSelectedRole == null)
+            {
+                MessageBox.Show(
+                    text: "Please choose an role",
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.None
+                );
+                return;
+            }
+            //confirmation
+            var choosen = MessageBox.Show(
+                text: "Are you sure that you want to delete this role",
+                caption: "Confirmation",
+                buttons: MessageBoxButtons.OKCancel,
+                icon: MessageBoxIcon.Question
+            );
+            if (choosen == DialogResult.Cancel)
+            {
+                return;
+            }
             //delete record in database
-            //Notify result
+            bool result = new RoleDAO().Delete(roleId: currentSelectedRole.RoleId);
+            //notification
+            Notify(actionType: "Delete", isSucceed: result);
             LoadData();
             pnlDetail.Visible = false;
         }
@@ -54,21 +88,167 @@ namespace DesktopApp.GUI.SubGUI
         private void formRole_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            dgRole.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgRole.Width, dgRole.Height, 20, 20));
+
             LoadData();
         }
 
         private void formRole_SizeChanged(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            dgRole.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgRole.Width, dgRole.Height, 20, 20));
+        }
+
+        private void pnlBody_SizeChanged(object sender, EventArgs e)
+        {
+            dgRole.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgRole.Width, dgRole.Height, 20, 20));
         }
 
         private void btnDone_Click(object sender, EventArgs e)
         {
             //validate fields
-            //update database
-            //Notify result
+            //insert or update data
+            if (currentSelectedRole == null)
+            {
+                CreateRole();
+            }
+            else
+            {
+                UpdateRole();
+            }
             LoadData();
             pnlDetail.Visible = false;
+        }
+
+        private void CreateRole()
+        {
+            string actionType = "Create";
+            Tuple<bool, Guid> roleCreationResult = new RoleDAO().Create(
+                name: txbName.Text, description: rtxbDescription.Text
+            );
+
+            bool isSucceed = roleCreationResult.Item1;
+            if (!isSucceed)
+            {
+                Notify(actionType, isSucceed);
+                return;
+            }
+
+            Guid roleId = roleCreationResult.Item2;
+            foreach (Control control in fpnlActions.Controls)
+            {
+                if (control is CheckBox && (control as CheckBox).Checked)
+                {
+                    object tag = (control as CheckBox).Tag;
+                    ActionDTO checkedAction = (ActionDTO)tag;
+
+                    bool roleActionCreationResult = new RoleActionDAO().Create(
+                        roleId, actionId: checkedAction.ActionId
+                    );
+                    
+                    if (roleActionCreationResult == false)
+                    {
+                        Notify(actionType, isSucceed: false);
+                        return;
+                    }
+                }
+            }
+            Notify(actionType, isSucceed: true);
+        }
+
+        private void UpdateRole()
+        {
+            string actionType = "Update";
+            bool roleUpdationResult = new RoleDAO().Update(
+                roleId: currentSelectedRole.RoleId,
+                name: txbName.Text,
+                description: rtxbDescription.Text
+            );
+
+            if (!roleUpdationResult)
+            {
+                Notify(actionType, isSucceed: roleUpdationResult);
+                return;
+            }
+
+            foreach (Control control in fpnlActions.Controls)
+            {
+                if (control is CheckBox && (control as CheckBox).Checked)
+                {
+                    object tag = (control as CheckBox).Tag;
+                    ActionDTO action = (ActionDTO)tag;
+
+                    List<RoleActionDTO> roleActions = new RoleActionDAO().GetRoleActionMapping(
+                        roleId: currentSelectedRole.RoleId,
+                        actionId: action.ActionId
+                    );
+
+                    if (roleActions.Count > 0)
+                    {
+                        continue;
+                    }
+
+                    bool roleActionCreationResult = new RoleActionDAO().Create(
+                        roleId: currentSelectedRole.RoleId,
+                        actionId: action.ActionId
+                    );
+
+                    if (roleActionCreationResult == false)
+                    {
+                        Notify(actionType, isSucceed: false);
+                        return;
+                    }
+                }
+                else if (control is CheckBox && !(control as CheckBox).Checked)
+                {
+                    object tag = (control as CheckBox).Tag;
+                    ActionDTO action = (ActionDTO)tag;
+
+                    List<RoleActionDTO> roleActions = new RoleActionDAO().GetRoleActionMapping(
+                        roleId: currentSelectedRole.RoleId,
+                        actionId: action.ActionId
+                    );
+
+                    if (roleActions.Count <= 0)
+                    {
+                        continue;
+                    }
+
+                    bool roleActionDeletionResult = new RoleActionDAO().Delete(
+                        roleId: currentSelectedRole.RoleId,
+                        actionId: action.ActionId
+                    );
+
+                    if (roleActionDeletionResult == false)
+                    {
+                        Notify(actionType, isSucceed: false);
+                        return;
+                    }
+                }
+            }
+            Notify(actionType, isSucceed: true);
+        }
+
+        private void Notify(string actionType, bool isSucceed = true)
+        {
+            if (isSucceed)
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} successful", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} fail", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
         }
 
         private void picClose_Click(object sender, EventArgs e)
@@ -76,11 +256,81 @@ namespace DesktopApp.GUI.SubGUI
             pnlDetail.Visible = false;
         }
 
+        private void dgRole_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgRole.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+
+            //mark current selected item
+            currentSelectedRole = (RoleDTO)dgRole.SelectedRows[0].DataBoundItem;
+            if (currentSelectedRole != null)
+            {
+                pnlDetail.Visible = true;
+                btnDone.Text = "Update";
+
+                txbName.Text = currentSelectedRole.Name;
+                rtxbDescription.Text = currentSelectedRole.Description;
+                LoadActions();
+            }
+        }
+
         private void LoadData()
         {
-            RoleDAO roleDAO = new RoleDAO();
-            List<RoleDTO> roles = roleDAO.GetAll();
+            List<RoleDTO> roles = new RoleDAO().GetAll();
             dgRole.DataSource = roles;
+
+            dgRole.AutoGenerateColumns = false;
+            dgRole.Columns.Clear();
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = "Name";
+            nameColumn.HeaderText = "Name";
+            nameColumn.Name = "colName";
+            nameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            nameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgRole.Columns.Add(nameColumn);
+
+            DataGridViewTextBoxColumn descriptionColumn = new DataGridViewTextBoxColumn();
+            descriptionColumn.DataPropertyName = "Description";
+            descriptionColumn.HeaderText = "Description";
+            descriptionColumn.Name = "colDescription";
+            descriptionColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            descriptionColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgRole.Columns.Add(descriptionColumn);
+        }
+
+        private void LoadActions()
+        {
+            List<Guid> enabledActionIds = new List<Guid>();
+            if (currentSelectedRole != null)
+            {
+                List<RoleActionDTO>  roleActions = new RoleActionDAO().GetRoleActionMapping(roleId: currentSelectedRole.RoleId);
+                foreach (RoleActionDTO roleAction in roleActions)
+                {
+                    enabledActionIds.Add(roleAction.ActionId);
+                }
+            }
+
+            fpnlActions.Controls.Clear();
+            List<ActionDTO> actions = new ActionDAO().GetAll();
+            foreach (ActionDTO action in actions)
+            {
+                CheckBox ckb = new CheckBox();
+                ckb.AutoSize = true;
+                ckb.Text = action.Name;
+                if (!string.IsNullOrEmpty(action.Description))
+                {
+                    ckb.Text += string.Format(" - {0}", action.Description);
+                }
+                if (enabledActionIds.Contains(action.ActionId))
+                {
+                    ckb.Checked = true;
+                }
+                ckb.Tag = action;
+                fpnlActions.Controls.Add(ckb);
+            }
         }
     }
 }
