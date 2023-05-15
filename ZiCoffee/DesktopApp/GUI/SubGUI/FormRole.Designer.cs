@@ -190,6 +190,7 @@
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(755, 556);
             this.pnlBody.TabIndex = 0;
+            this.pnlBody.SizeChanged += new System.EventHandler(this.pnlBody_SizeChanged);
             // 
             // dgRole
             // 
@@ -204,6 +205,7 @@
             this.dgRole.RowTemplate.Height = 24;
             this.dgRole.Size = new System.Drawing.Size(755, 497);
             this.dgRole.TabIndex = 0;
+            this.dgRole.SelectionChanged += new System.EventHandler(this.dgRole_SelectionChanged);
             // 
             // pnlHeader
             // 
