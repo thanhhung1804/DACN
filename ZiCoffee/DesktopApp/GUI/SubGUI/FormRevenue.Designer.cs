@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.dtpTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpTimeStart = new System.Windows.Forms.DateTimePicker();
@@ -211,6 +210,7 @@
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(1200, 452);
             this.pnlBody.TabIndex = 0;
+            this.pnlBody.SizeChanged += new System.EventHandler(this.pnlBody_SizeChanged);
             // 
             // dgRevenue
             // 
@@ -224,26 +224,17 @@
             this.dgRevenue.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgRevenue.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgRevenue.ColumnHeadersHeight = 29;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgRevenue.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgRevenue.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgRevenue.EnableHeadersVisualStyles = false;
             this.dgRevenue.GridColor = System.Drawing.Color.White;
             this.dgRevenue.Location = new System.Drawing.Point(0, 0);
-            this.dgRevenue.Margin = new System.Windows.Forms.Padding(4);
             this.dgRevenue.MultiSelect = false;
             this.dgRevenue.Name = "dgRevenue";
             this.dgRevenue.ReadOnly = true;
@@ -252,7 +243,7 @@
             this.dgRevenue.RowHeadersWidth = 51;
             this.dgRevenue.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgRevenue.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgRevenue.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.dgRevenue.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgRevenue.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             this.dgRevenue.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dgRevenue.RowTemplate.DividerHeight = 2;
