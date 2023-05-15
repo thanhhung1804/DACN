@@ -94,7 +94,7 @@ namespace DesktopApp.DAO
         }
 
         public bool Update(
-            string name, string address, string citizenId, string phone,
+            Guid userId, string name, string address, string citizenId, string phone,
             DateTime birthday, Guid roleId, string email = null, Gender gender = Gender.Male)
         {
             string query = @"
@@ -112,7 +112,7 @@ namespace DesktopApp.DAO
             DateTime birthdayDateOnly = new DateTime(birthday.Year, birthday.Month, birthday.Day);
             List<object> parameters = new List<object>
             {
-                name, address, citizenId, phone, birthdayDateOnly, roleId, email, gender
+                name, address, citizenId, phone, birthdayDateOnly, roleId, email, gender, userId
             };
 
             bool result = database.ExecuteNoneQuery(query, parameters);

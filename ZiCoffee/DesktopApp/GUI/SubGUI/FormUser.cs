@@ -51,7 +51,7 @@ namespace DesktopApp.GUI.SubGUI
             //show panel to add
             pnlDetail.Visible = true;
             btnDone.Text = "Add";
-            txbUsername.ReadOnly = true;
+            txbUsername.ReadOnly = false;
             //Clear fields
             foreach (Control control in pnlDetail.Controls)
             {
@@ -129,24 +129,35 @@ namespace DesktopApp.GUI.SubGUI
             //insert or update data
             bool result = false;
             string actionType = null;
+            UserDAO userDAO = new UserDAO();
             if (userDTO == null)
             {
-                result = new UserDAO().Create(
+                result = userDAO.Create(
                     username: txbUsername.Text,
                     name: txbName.Text,
-                    gender: (Gender)cbGenderSelector.SelectedIndex,
-                    birthday: dtpBirthday.Value,
                     address: txbAddress.Text,
                     citizenId: txbCitizenId.Text,
                     phone: txbPhone.Text,
+                    birthday: dtpBirthday.Value,
+                    roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
                     email: txbEmail.Text,
-                    roleId: (cbRole.SelectedItem as RoleDTO).RoleId
+                    gender: (Gender)cbGenderSelector.SelectedIndex
                 );
                 actionType = "Create";
             }
             else
             {
-                //update
+                result = userDAO.Update(
+                    userId: userDTO.UserId,
+                    name: txbName.Text,
+                    address: txbAddress.Text,
+                    citizenId: txbCitizenId.Text,
+                    phone: txbPhone.Text,
+                    birthday: dtpBirthday.Value,
+                    roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
+                    email: txbEmail.Text,
+                    gender: (Gender)cbGenderSelector.SelectedIndex
+                );
                 actionType = "Update";
             }
             //notification
@@ -231,7 +242,7 @@ namespace DesktopApp.GUI.SubGUI
             {
                 pnlDetail.Visible = true;
                 btnDone.Text = "Update";
-                txbUsername.ReadOnly = false;
+                txbUsername.ReadOnly = true;
 
                 txbUsername.Text = userDTO.Username;
                 txbName.Text = userDTO.Name;
