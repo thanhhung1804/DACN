@@ -276,6 +276,25 @@ namespace DesktopApp.GUI.SubGUI
             }
         }
 
+        private void dgRole_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgRole.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+
+            //mark current selected item
+            currentSelectedRole = (RoleDTO)dgRole.SelectedRows[0].DataBoundItem;
+            if (currentSelectedRole != null)
+            {
+                pnlDetail.Visible = true;
+                btnDone.Text = "Update";
+
+                txbName.Text = currentSelectedRole.Name;
+                rtxbDescription.Text = currentSelectedRole.Description;
+            }
+        }
+
         private void LoadData()
         {
             List<RoleDTO> roles = new RoleDAO().GetAll();
