@@ -21,19 +21,41 @@ namespace DesktopApp.DAO
 
         public List<RoleDTO> GetAll()
         {
-            List<RoleDTO> roles = new List<RoleDTO>();
             string query = "select * from dbo.[Role]";
 
-            database.Connect();
+            List<RoleDTO> roles = new List<RoleDTO>();
             DataTable dataTable = database.ExecuteQuery(query);
             foreach (DataRow row in dataTable.Rows)
             {
                 RoleDTO role = new RoleDTO(row);
                 roles.Add(role);
             }
-
-            database.Disconnect();
             return roles;
+        }
+
+        public Tuple<bool, Guid> Create(string name, string description = null)
+        {
+            string query = @"insert into dbo.[Role] (RoleId, Name, Description) values ( @roleId , @name , @description )";
+            Guid roleId = Guid.NewGuid();
+            List<object> parameters = new List<object> { roleId, name, description };
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return Tuple.Create(result, roleId);
+        }
+
+        public bool Delete(Guid roleId)
+        {
+            string query = @"delete from dbo.[Role] where RoleId = @roleId";
+            List<object> parameters = new List<object> { roleId };
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
+
+        public bool Update(Guid roleId, string name, string description = null)
+        {
+            string query = @"update dbo.[Role] set Name = @name , Description = @description where RoleId = @roleId";
+            List<object> parameters = new List<object> { name, description, roleId };
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
         }
     }
 }

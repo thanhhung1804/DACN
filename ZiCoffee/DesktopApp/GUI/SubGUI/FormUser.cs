@@ -31,12 +31,12 @@ namespace DesktopApp.GUI.SubGUI
         );
         #endregion
 
-        private UserDTO userDTO;
+        private UserDTO currentSelectedUser;
 
         public formUser()
         {
             InitializeComponent();
-            userDTO = null;
+            currentSelectedUser = null;
         }
 
         private void picSearch_Click(object sender, EventArgs e)
@@ -47,7 +47,7 @@ namespace DesktopApp.GUI.SubGUI
         private void picNew_Click(object sender, EventArgs e)
         {
             //unselect current item
-            userDTO = null;
+            currentSelectedUser = null;
             //show panel to add
             pnlDetail.Visible = true;
             btnDone.Text = "Add";
@@ -66,7 +66,7 @@ namespace DesktopApp.GUI.SubGUI
         private void picDelete_Click(object sender, EventArgs e)
         {
             //check selected item
-            if (userDTO == null)
+            if (currentSelectedUser == null)
             {
                 MessageBox.Show(
                     text: "Please choose an user", 
@@ -88,7 +88,7 @@ namespace DesktopApp.GUI.SubGUI
                 return;
             }
             //delete record in database
-            bool result = new UserDAO().Delete(userId: userDTO.UserId);
+            bool result = new UserDAO().Delete(userId: currentSelectedUser.UserId);
             //notification
             if (result == true)
             {
@@ -130,7 +130,7 @@ namespace DesktopApp.GUI.SubGUI
             bool result = false;
             string actionType = null;
             UserDAO userDAO = new UserDAO();
-            if (userDTO == null)
+            if (currentSelectedUser == null)
             {
                 result = userDAO.Create(
                     username: txbUsername.Text,
@@ -148,7 +148,7 @@ namespace DesktopApp.GUI.SubGUI
             else
             {
                 result = userDAO.Update(
-                    userId: userDTO.UserId,
+                    userId: currentSelectedUser.UserId,
                     name: txbName.Text,
                     address: txbAddress.Text,
                     citizenId: txbCitizenId.Text,
@@ -237,22 +237,22 @@ namespace DesktopApp.GUI.SubGUI
             }
 
             //mark current selected item
-            userDTO = (UserDTO)dgUser.SelectedRows[0].DataBoundItem;
-            if (userDTO != null)
+            currentSelectedUser = (UserDTO)dgUser.SelectedRows[0].DataBoundItem;
+            if (currentSelectedUser != null)
             {
                 pnlDetail.Visible = true;
                 btnDone.Text = "Update";
                 txbUsername.ReadOnly = true;
 
-                txbUsername.Text = userDTO.Username;
-                txbName.Text = userDTO.Name;
-                txbAddress.Text = userDTO.Address;
-                txbCitizenId.Text = userDTO.CitizenId;
-                txbPhone.Text = userDTO.Phone;
-                txbEmail.Text = userDTO.Email;
-                dtpBirthday.Value = userDTO.Birthday;
-                cbGenderSelector.SelectedIndex = cbGenderSelector.FindString(userDTO.Gender.ToString());
-                cbRole.SelectedIndex = cbRole.FindString(userDTO.RoleName);
+                txbUsername.Text = currentSelectedUser.Username;
+                txbName.Text = currentSelectedUser.Name;
+                txbAddress.Text = currentSelectedUser.Address;
+                txbCitizenId.Text = currentSelectedUser.CitizenId;
+                txbPhone.Text = currentSelectedUser.Phone;
+                txbEmail.Text = currentSelectedUser.Email;
+                dtpBirthday.Value = currentSelectedUser.Birthday;
+                cbGenderSelector.SelectedIndex = cbGenderSelector.FindString(currentSelectedUser.Gender.ToString());
+                cbRole.SelectedIndex = cbRole.FindString(currentSelectedUser.RoleName);
                 picAvatar.Image = Properties.Resources.Avatar;
             }
         }
