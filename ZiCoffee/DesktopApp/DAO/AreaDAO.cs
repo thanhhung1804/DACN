@@ -21,19 +21,47 @@ namespace DesktopApp.DAO
 
         public List<AreaDTO> GetAll()
         {
-            List<AreaDTO> areas = new List<AreaDTO>();
             string query = "select * from dbo.[Area]";
 
-            database.Connect();
+            List<AreaDTO> areas = new List<AreaDTO>();
             DataTable dataTable = database.ExecuteQuery(query);
             foreach (DataRow row in dataTable.Rows)
             {
                 AreaDTO area = new AreaDTO(row);
                 areas.Add(area);
             }
-
-            database.Disconnect();
             return areas;
+        }
+
+        public bool Create(string name, string description = null)
+        {
+            string query = "insert into dbo.[Area] (AreaId, Name, Description) values ( @areaId , @name , @description )";
+
+            Guid newAreaId = Guid.NewGuid();
+            List<object> parameters = new List<object>() { newAreaId, name, description };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
+
+        public bool Update(Guid areaId, string name, string description = null)
+        {
+            string query = "update dbo.[Area] set Name = @name , Description = @description where AreaId = @areaId";
+
+            List<object> parameters = new List<object>() { name, description, areaId };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
+
+        public bool Delete(Guid areaId)
+        {
+            string query = "delete from dbo.[Area] where AreaId = @areaId";
+
+            List<object> parameters = new List<object>() { areaId };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
@@ -163,20 +164,48 @@
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(700, 647);
             this.pnlBody.TabIndex = 0;
+            this.pnlBody.SizeChanged += new System.EventHandler(this.pnlBody_SizeChanged);
             // 
             // dgArea
             // 
             this.dgArea.AllowUserToAddRows = false;
             this.dgArea.AllowUserToDeleteRows = false;
+            this.dgArea.AllowUserToOrderColumns = true;
             this.dgArea.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgArea.BackgroundColor = System.Drawing.Color.White;
+            this.dgArea.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgArea.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgArea.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgArea.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgArea.ColumnHeadersHeight = 29;
             this.dgArea.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgArea.EnableHeadersVisualStyles = false;
+            this.dgArea.GridColor = System.Drawing.Color.White;
             this.dgArea.Location = new System.Drawing.Point(0, 59);
+            this.dgArea.MultiSelect = false;
             this.dgArea.Name = "dgArea";
+            this.dgArea.ReadOnly = true;
+            this.dgArea.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgArea.RowHeadersVisible = false;
             this.dgArea.RowHeadersWidth = 51;
-            this.dgArea.RowTemplate.Height = 24;
+            this.dgArea.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgArea.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgArea.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgArea.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgArea.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgArea.RowTemplate.DividerHeight = 2;
+            this.dgArea.RowTemplate.Height = 40;
+            this.dgArea.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgArea.Size = new System.Drawing.Size(700, 588);
             this.dgArea.TabIndex = 0;
+            this.dgArea.SelectionChanged += new System.EventHandler(this.dgArea_SelectionChanged);
             // 
             // pnlHeader
             // 

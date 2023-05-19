@@ -49,13 +49,11 @@ namespace DesktopApp.GUI.SubGUI
             txbName.Text = string.Empty;
             rtxbDescription.Text = string.Empty;
 
-            //reload action
             LoadActions();
         }
 
         private void picDelete_Click(object sender, EventArgs e)
         {
-            //check selected item
             if (currentSelectedRole == null)
             {
                 MessageBox.Show(
@@ -66,7 +64,7 @@ namespace DesktopApp.GUI.SubGUI
                 );
                 return;
             }
-            //confirmation
+
             var choosen = MessageBox.Show(
                 text: "Are you sure that you want to delete this role",
                 caption: "Confirmation",
@@ -77,10 +75,11 @@ namespace DesktopApp.GUI.SubGUI
             {
                 return;
             }
-            //delete record in database
+
             bool result = new RoleDAO().Delete(roleId: currentSelectedRole.RoleId);
-            //notification
+
             Notify(actionType: "Delete", isSucceed: result);
+
             LoadData();
             pnlDetail.Visible = false;
         }
@@ -89,7 +88,6 @@ namespace DesktopApp.GUI.SubGUI
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             dgRole.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgRole.Width, dgRole.Height, 20, 20));
-
             LoadData();
         }
 
@@ -107,7 +105,6 @@ namespace DesktopApp.GUI.SubGUI
         private void btnDone_Click(object sender, EventArgs e)
         {
             //validate fields
-            //insert or update data
             if (currentSelectedRole == null)
             {
                 CreateRole();
@@ -248,6 +245,7 @@ namespace DesktopApp.GUI.SubGUI
                     buttons: MessageBoxButtons.OK,
                     icon: MessageBoxIcon.Error
                 );
+                return;
             }
         }
 
@@ -263,7 +261,6 @@ namespace DesktopApp.GUI.SubGUI
                 return;
             }
 
-            //mark current selected item
             currentSelectedRole = (RoleDTO)dgRole.SelectedRows[0].DataBoundItem;
             if (currentSelectedRole != null)
             {
@@ -273,25 +270,6 @@ namespace DesktopApp.GUI.SubGUI
                 txbName.Text = currentSelectedRole.Name;
                 rtxbDescription.Text = currentSelectedRole.Description;
                 LoadActions();
-            }
-        }
-
-        private void dgRole_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgRole.SelectedRows.Count <= 0)
-            {
-                return;
-            }
-
-            //mark current selected item
-            currentSelectedRole = (RoleDTO)dgRole.SelectedRows[0].DataBoundItem;
-            if (currentSelectedRole != null)
-            {
-                pnlDetail.Visible = true;
-                btnDone.Text = "Update";
-
-                txbName.Text = currentSelectedRole.Name;
-                rtxbDescription.Text = currentSelectedRole.Description;
             }
         }
 
