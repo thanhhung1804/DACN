@@ -21,19 +21,47 @@ namespace DesktopApp.DAO
 
         public List<CategoryDTO> GetAll()
         {
-            List<CategoryDTO> categories = new List<CategoryDTO>();
             string query = "select * from dbo.[Category]";
 
-            database.Connect();
+            List<CategoryDTO> categories = new List<CategoryDTO>();
             DataTable dataTable = database.ExecuteQuery(query);
             foreach (DataRow row in dataTable.Rows)
             {
                 CategoryDTO category = new CategoryDTO(row);
                 categories.Add(category);
             }
-
-            database.Disconnect();
             return categories;
+        }
+
+        public bool Create(string name, string description = null)
+        {
+            string query = "insert into dbo.[Category] (CategoryId, Name, Description) values ( @categoryId , @name , @description )";
+
+            Guid newCategoryId = Guid.NewGuid();
+            List<object> parameters = new List<object>() { newCategoryId, name, description };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
+
+        public bool Update(Guid categoryId, string name, string description = null)
+        {
+            string query = "update dbo.[Category] set Name = @name , Description = @description where CategoryId = @categoryId";
+
+            List<object> parameters = new List<object>() { name, description, categoryId };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
+
+        public bool Delete(Guid categoryId)
+        {
+            string query = "delete from dbo.[Category] where CategoryId = @categoryId";
+
+            List<object> parameters = new List<object>() { categoryId };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
         }
     }
 }

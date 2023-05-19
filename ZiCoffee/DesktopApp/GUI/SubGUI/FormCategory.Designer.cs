@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
@@ -200,20 +201,48 @@
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(700, 588);
             this.pnlBody.TabIndex = 0;
+            this.pnlBody.SizeChanged += new System.EventHandler(this.pnlBody_SizeChanged);
             // 
             // dgCategory
             // 
             this.dgCategory.AllowUserToAddRows = false;
             this.dgCategory.AllowUserToDeleteRows = false;
+            this.dgCategory.AllowUserToOrderColumns = true;
             this.dgCategory.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgCategory.BackgroundColor = System.Drawing.Color.White;
+            this.dgCategory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgCategory.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgCategory.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgCategory.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgCategory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgCategory.EnableHeadersVisualStyles = false;
+            this.dgCategory.GridColor = System.Drawing.Color.White;
             this.dgCategory.Location = new System.Drawing.Point(0, 0);
+            this.dgCategory.MultiSelect = false;
             this.dgCategory.Name = "dgCategory";
+            this.dgCategory.ReadOnly = true;
+            this.dgCategory.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgCategory.RowHeadersVisible = false;
             this.dgCategory.RowHeadersWidth = 51;
-            this.dgCategory.RowTemplate.Height = 24;
+            this.dgCategory.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgCategory.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgCategory.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgCategory.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgCategory.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgCategory.RowTemplate.DividerHeight = 2;
+            this.dgCategory.RowTemplate.Height = 40;
+            this.dgCategory.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCategory.Size = new System.Drawing.Size(700, 588);
             this.dgCategory.TabIndex = 0;
+            this.dgCategory.SelectionChanged += new System.EventHandler(this.dgCategory_SelectionChanged);
             // 
             // formCategory
             // 

@@ -29,45 +29,30 @@ namespace DesktopApp.GUI.SubGUI
         );
         #endregion
 
+        private CategoryDTO currentSelectedCategory;
+
         public formCategory()
         {
             InitializeComponent();
+            currentSelectedCategory = null;
         }
 
         private void formCategory_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
             LoadData();
         }
 
         private void formCategory_SizeChanged(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
         }
 
-        private void picNew_Click(object sender, EventArgs e)
+        private void pnlBody_SizeChanged(object sender, EventArgs e)
         {
-            pnlDetail.Visible = true;
-            txbName.Text = string.Empty;
-            rtxbDescription.Text = string.Empty;
-        }
-
-        private void picDelete_Click(object sender, EventArgs e)
-        {
-            //check selected item
-            //delete record in database
-            //Notify result
-            LoadData();
-            pnlDetail.Visible = false;
-        }
-
-        private void btnDone_Click(object sender, EventArgs e)
-        {
-            //validate field
-            //update database
-            //notify result
-            LoadData();
-            pnlDetail.Visible = false;
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
         }
 
         private void picClose_Click(object sender, EventArgs e)
@@ -75,11 +60,159 @@ namespace DesktopApp.GUI.SubGUI
             pnlDetail.Visible = false;
         }
 
+        private void picNew_Click(object sender, EventArgs e)
+        {
+            currentSelectedCategory = null;
+
+            pnlDetail.Visible = true;
+            btnDone.Text = "Add";
+
+            txbName.Text = string.Empty;
+            rtxbDescription.Text = string.Empty;
+        }
+
+        private void dgCategory_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgCategory.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+
+            currentSelectedCategory = (CategoryDTO)dgCategory.SelectedRows[0].DataBoundItem;
+            if (currentSelectedCategory != null)
+            {
+                pnlDetail.Visible = true;
+                btnDone.Text = "Update";
+
+                txbName.Text = currentSelectedCategory.Name;
+                rtxbDescription.Text = currentSelectedCategory.Description;
+            }
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            //validate field
+            if (currentSelectedCategory == null)
+            {
+                CreateCategory();
+            }
+            else
+            {
+                UpdateCategory();
+            }
+            LoadData();
+            pnlDetail.Visible = false;
+        }
+
+        private void CreateCategory()
+        {
+            string actionType = "Create";
+            bool result = new CategoryDAO().Create(
+                name: txbName.Text, description: rtxbDescription.Text
+            );
+
+            if (!result)
+            {
+                Notify(actionType, isSucceed: result);
+                return;
+            }
+            Notify(actionType, isSucceed: result);
+        }
+
+        private void UpdateCategory()
+        {
+            string actionType = "Update";
+            bool result = new CategoryDAO().Update(
+                categoryId: currentSelectedCategory.CategoryId, 
+                name: txbName.Text, 
+                description: rtxbDescription.Text
+            );
+
+            if (!result)
+            {
+                Notify(actionType, isSucceed: result);
+                return;
+            }
+            Notify(actionType, isSucceed: result);
+        }
+
+        private void Notify(string actionType, bool isSucceed = true)
+        {
+            if (isSucceed)
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} successful", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} fail", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private void picDelete_Click(object sender, EventArgs e)
+        {
+            if (currentSelectedCategory == null)
+            {
+                MessageBox.Show(
+                    text: "Please choose an category",
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.None
+                );
+                return;
+            }
+
+            var choosen = MessageBox.Show(
+                text: "Are you sure that you want to delete this category",
+                caption: "Confirmation",
+                buttons: MessageBoxButtons.OKCancel,
+                icon: MessageBoxIcon.Question
+            );
+            if (choosen == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            bool result = new CategoryDAO().Delete(categoryId: currentSelectedCategory.CategoryId);
+
+            Notify(actionType: "Delete", isSucceed: result);
+
+            LoadData();
+            pnlDetail.Visible = false;
+        }
+
         private void LoadData()
         {
-            CategoryDAO categoryDAO = new CategoryDAO();
-            List<CategoryDTO> categories = categoryDAO.GetAll();
+            List<CategoryDTO> categories = new CategoryDAO().GetAll();
             dgCategory.DataSource = categories;
+
+            dgCategory.AutoGenerateColumns = false;
+            dgCategory.Columns.Clear();
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = "Name";
+            nameColumn.HeaderText = "Name";
+            nameColumn.Name = "colName";
+            nameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            nameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgCategory.Columns.Add(nameColumn);
+
+            DataGridViewTextBoxColumn descriptionColumn = new DataGridViewTextBoxColumn();
+            descriptionColumn.DataPropertyName = "Description";
+            descriptionColumn.HeaderText = "Description";
+            descriptionColumn.Name = "colDescription";
+            descriptionColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            descriptionColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgCategory.Columns.Add(descriptionColumn);
         }
     }
 }
