@@ -56,6 +56,11 @@ namespace DesktopApp.GUI.SubGUI
             dgArea.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgArea.Width, dgArea.Height, 20, 20));
         }
 
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            pnlDetail.Visible = false;
+        }
+
         private void picNew_Click(object sender, EventArgs e)
         {
             currentSelectedArea = null;
@@ -67,57 +72,21 @@ namespace DesktopApp.GUI.SubGUI
             rtxbDescription.Text = string.Empty;
         }
 
-        private void picDelete_Click(object sender, EventArgs e)
+        private void dgArea_SelectionChanged(object sender, EventArgs e)
         {
-            if (currentSelectedArea == null)
-            {
-                MessageBox.Show(
-                    text: "Please choose an area",
-                    caption: "Notification",
-                    buttons: MessageBoxButtons.OK,
-                    icon: MessageBoxIcon.None
-                );
-                return;
-            }
-
-            var choosen = MessageBox.Show(
-                text: "Are you sure that you want to delete this area",
-                caption: "Confirmation",
-                buttons: MessageBoxButtons.OKCancel,
-                icon: MessageBoxIcon.Question
-            );
-            if (choosen == DialogResult.Cancel)
+            if (dgArea.SelectedRows.Count <= 0)
             {
                 return;
             }
 
-            bool result = new AreaDAO().Delete(areaId: currentSelectedArea.AreaId);
-
-            Notify(actionType: "Delete", isSucceed: result);
-
-            LoadData();
-            pnlDetail.Visible = false;
-        }
-
-        private void Notify(string actionType, bool isSucceed = true)
-        {
-            if (isSucceed)
+            currentSelectedArea = (AreaDTO)dgArea.SelectedRows[0].DataBoundItem;
+            if (currentSelectedArea != null)
             {
-                MessageBox.Show(
-                    text: string.Format("{0} successful", actionType),
-                    caption: "Notification",
-                    buttons: MessageBoxButtons.OK,
-                    icon: MessageBoxIcon.Information
-                );
-            }
-            else
-            {
-                MessageBox.Show(
-                    text: string.Format("{0} fail", actionType),
-                    caption: "Notification",
-                    buttons: MessageBoxButtons.OK,
-                    icon: MessageBoxIcon.Error
-                );
+                pnlDetail.Visible = true;
+                btnDone.Text = "Update";
+
+                txbName.Text = currentSelectedArea.Name;
+                rtxbDescription.Text = currentSelectedArea.Description;
             }
         }
 
@@ -166,27 +135,58 @@ namespace DesktopApp.GUI.SubGUI
             Notify(actionType, isSucceed: result);
         }
 
-        private void picClose_Click(object sender, EventArgs e)
+        private void Notify(string actionType, bool isSucceed = true)
         {
-            pnlDetail.Visible = false;
+            if (isSucceed)
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} successful", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} fail", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
         }
 
-        private void dgArea_SelectionChanged(object sender, EventArgs e)
+        private void picDelete_Click(object sender, EventArgs e)
         {
-            if (dgArea.SelectedRows.Count <= 0)
+            if (currentSelectedArea == null)
+            {
+                MessageBox.Show(
+                    text: "Please choose an area",
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.None
+                );
+                return;
+            }
+
+            var choosen = MessageBox.Show(
+                text: "Are you sure that you want to delete this area",
+                caption: "Confirmation",
+                buttons: MessageBoxButtons.OKCancel,
+                icon: MessageBoxIcon.Question
+            );
+            if (choosen == DialogResult.Cancel)
             {
                 return;
             }
 
-            currentSelectedArea = (AreaDTO)dgArea.SelectedRows[0].DataBoundItem;
-            if (currentSelectedArea != null)
-            {
-                pnlDetail.Visible = true;
-                btnDone.Text = "Update";
+            bool result = new AreaDAO().Delete(areaId: currentSelectedArea.AreaId);
 
-                txbName.Text = currentSelectedArea.Name;
-                rtxbDescription.Text = currentSelectedArea.Description;
-            }
+            Notify(actionType: "Delete", isSucceed: result);
+
+            LoadData();
+            pnlDetail.Visible = false;
         }
 
         private void LoadData()
