@@ -39,57 +39,10 @@ namespace DesktopApp.GUI.SubGUI
             currentSelectedRole = null;
         }
 
-        private void picNew_Click(object sender, EventArgs e)
-        {
-            currentSelectedRole = null;
-
-            pnlDetail.Visible = true;
-            btnDone.Text = "Add";
-
-            txbName.Text = string.Empty;
-            rtxbDescription.Text = string.Empty;
-
-            //reload action
-            LoadActions();
-        }
-
-        private void picDelete_Click(object sender, EventArgs e)
-        {
-            //check selected item
-            if (currentSelectedRole == null)
-            {
-                MessageBox.Show(
-                    text: "Please choose an role",
-                    caption: "Notification",
-                    buttons: MessageBoxButtons.OK,
-                    icon: MessageBoxIcon.None
-                );
-                return;
-            }
-            //confirmation
-            var choosen = MessageBox.Show(
-                text: "Are you sure that you want to delete this role",
-                caption: "Confirmation",
-                buttons: MessageBoxButtons.OKCancel,
-                icon: MessageBoxIcon.Question
-            );
-            if (choosen == DialogResult.Cancel)
-            {
-                return;
-            }
-            //delete record in database
-            bool result = new RoleDAO().Delete(roleId: currentSelectedRole.RoleId);
-            //notification
-            Notify(actionType: "Delete", isSucceed: result);
-            LoadData();
-            pnlDetail.Visible = false;
-        }
-
         private void formRole_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             dgRole.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgRole.Width, dgRole.Height, 20, 20));
-
             LoadData();
         }
 
@@ -104,10 +57,46 @@ namespace DesktopApp.GUI.SubGUI
             dgRole.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, dgRole.Width, dgRole.Height, 20, 20));
         }
 
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            pnlDetail.Visible = false;
+        }
+
+        private void picNew_Click(object sender, EventArgs e)
+        {
+            currentSelectedRole = null;
+
+            pnlDetail.Visible = true;
+            btnDone.Text = "Add";
+
+            txbName.Text = string.Empty;
+            rtxbDescription.Text = string.Empty;
+
+            LoadActions();
+        }
+
+        private void dgRole_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgRole.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+
+            currentSelectedRole = (RoleDTO)dgRole.SelectedRows[0].DataBoundItem;
+            if (currentSelectedRole != null)
+            {
+                pnlDetail.Visible = true;
+                btnDone.Text = "Update";
+
+                txbName.Text = currentSelectedRole.Name;
+                rtxbDescription.Text = currentSelectedRole.Description;
+                LoadActions();
+            }
+        }
+
         private void btnDone_Click(object sender, EventArgs e)
         {
             //validate fields
-            //insert or update data
             if (currentSelectedRole == null)
             {
                 CreateRole();
@@ -145,7 +134,7 @@ namespace DesktopApp.GUI.SubGUI
                     bool roleActionCreationResult = new RoleActionDAO().Create(
                         roleId, actionId: checkedAction.ActionId
                     );
-                    
+
                     if (roleActionCreationResult == false)
                     {
                         Notify(actionType, isSucceed: false);
@@ -248,51 +237,40 @@ namespace DesktopApp.GUI.SubGUI
                     buttons: MessageBoxButtons.OK,
                     icon: MessageBoxIcon.Error
                 );
+                return;
             }
         }
 
-        private void picClose_Click(object sender, EventArgs e)
+        private void picDelete_Click(object sender, EventArgs e)
         {
+            if (currentSelectedRole == null)
+            {
+                MessageBox.Show(
+                    text: "Please choose an role",
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.None
+                );
+                return;
+            }
+
+            var choosen = MessageBox.Show(
+                text: "Are you sure that you want to delete this role",
+                caption: "Confirmation",
+                buttons: MessageBoxButtons.OKCancel,
+                icon: MessageBoxIcon.Question
+            );
+            if (choosen == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            bool result = new RoleDAO().Delete(roleId: currentSelectedRole.RoleId);
+
+            Notify(actionType: "Delete", isSucceed: result);
+
+            LoadData();
             pnlDetail.Visible = false;
-        }
-
-        private void dgRole_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgRole.SelectedRows.Count <= 0)
-            {
-                return;
-            }
-
-            //mark current selected item
-            currentSelectedRole = (RoleDTO)dgRole.SelectedRows[0].DataBoundItem;
-            if (currentSelectedRole != null)
-            {
-                pnlDetail.Visible = true;
-                btnDone.Text = "Update";
-
-                txbName.Text = currentSelectedRole.Name;
-                rtxbDescription.Text = currentSelectedRole.Description;
-                LoadActions();
-            }
-        }
-
-        private void dgRole_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgRole.SelectedRows.Count <= 0)
-            {
-                return;
-            }
-
-            //mark current selected item
-            currentSelectedRole = (RoleDTO)dgRole.SelectedRows[0].DataBoundItem;
-            if (currentSelectedRole != null)
-            {
-                pnlDetail.Visible = true;
-                btnDone.Text = "Update";
-
-                txbName.Text = currentSelectedRole.Name;
-                rtxbDescription.Text = currentSelectedRole.Description;
-            }
         }
 
         private void LoadData()
