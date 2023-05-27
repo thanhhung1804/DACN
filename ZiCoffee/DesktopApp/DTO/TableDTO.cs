@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopApp.Common;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,8 +13,9 @@ namespace DesktopApp.DTO
         public Guid TableId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Status { get; set; }
+        public TableStatus Status { get; set; }
         public Guid AreaId { get; set; }
+        public string AreaName { get; set; }
 
         public TableDTO(DataRow row)
         {
@@ -22,13 +24,14 @@ namespace DesktopApp.DTO
             Description = row["Description"].ToString();
             if (int.TryParse(row["Status"].ToString(), out int status))
             {
-                Status = status;
+                Status = (TableStatus)status;
             }
             else
             { 
-                Status = 0;
+                Status = TableStatus.Ready;
             }
             AreaId = Guid.Parse(row["AreaId"].ToString());
+            AreaName = row["AreaName"].ToString();
         }
     }
 }

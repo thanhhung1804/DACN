@@ -19,5 +19,12 @@ namespace DesktopApp.DTO
             Name = row["Name"].ToString();
             Description = row["Description"].ToString();
         }
+
+        public AreaDTO(string name)
+        {
+            AreaId = Guid.Empty;
+            Name = name;
+            Description = null;
+        }
     }
 }

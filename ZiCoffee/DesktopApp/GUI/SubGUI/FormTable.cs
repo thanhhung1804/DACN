@@ -1,4 +1,5 @@
-﻿using DesktopApp.DAO;
+﻿using DesktopApp.Common;
+using DesktopApp.DAO;
 using DesktopApp.DTO;
 using DesktopApp.Model;
 using System;
@@ -29,20 +30,198 @@ namespace DesktopApp.GUI.SubGUI
         );
         #endregion
 
+        private TableDTO currentSelectedTable;
+
         public formTable()
         {
             InitializeComponent();
+            currentSelectedTable = null;
         }
 
         private void formTable_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+
+            string[] tableStatusFilter = Enum.GetNames(typeof(TableStatus));
+            cbStatusFilter.Items.AddRange(tableStatusFilter);
+            cbStatusFilter.SelectedIndex = (int)TableStatus.All;
+
+            string[] tableStatusSelector = Enum.GetNames(typeof(TableStatus)).Except(new[] { TableStatus.All.ToString() }).ToArray();
+            cbStatusSelector.Items.AddRange(tableStatusSelector);
+            cbStatusSelector.SelectedIndex = (int)TableStatus.Ready;
+
+            List<AreaDTO> selectorAreas = new AreaDAO().GetAll();
+            cbAreaSelector.DataSource = selectorAreas;
+            cbAreaSelector.DisplayMember = "Name";
+
+            List<AreaDTO> filterAreas = new AreaDAO().GetAll();
+            AreaDTO filterAllArea = new AreaDTO(name: "All");
+            filterAreas.Add(filterAllArea);
+            cbAreaFilter.DataSource = filterAreas;
+            cbAreaFilter.DisplayMember = "Name";
+            cbAreaFilter.SelectedItem = filterAllArea;
+
             LoadData();
         }
 
         private void formTable_SizeChanged(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
+        private void pnlBody_SizeChanged(object sender, EventArgs e)
+        {
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            pnlDetail.Visible = false;
+        }
+
+        private void picNew_Click(object sender, EventArgs e)
+        {
+            currentSelectedTable = null;
+
+            pnlDetail.Visible = true;
+            btnDone.Text = "Add";
+
+            foreach (Control control in pnlDetail.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Text = string.Empty;
+                }
+            }
+            rtxbDescription.Text = string.Empty;
+        }
+
+        private void dgTable_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgTable.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+
+            currentSelectedTable = (TableDTO)dgTable.SelectedRows[0].DataBoundItem;
+            if (currentSelectedTable != null)
+            {
+                pnlDetail.Visible = true;
+                btnDone.Text = "Update";
+
+                txbName.Text = currentSelectedTable.Name;
+                rtxbDescription.Text = currentSelectedTable.Description;
+                cbStatusSelector.SelectedIndex = cbStatusSelector.FindString(currentSelectedTable.Status.ToString());
+                cbAreaSelector.SelectedIndex = cbAreaSelector.FindString(currentSelectedTable.AreaName);
+            }
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            //validate field
+            if (currentSelectedTable == null)
+            {
+                CreateTable();
+            }
+            else
+            {
+                UpdateTable();
+            }
+            LoadData();
+            pnlDetail.Visible = false;
+        }
+
+        private void CreateTable()
+        {
+            string actionType = "Create";
+            bool result = new TableDAO().Create(
+                name: txbName.Text,
+                areaId: (cbAreaSelector.SelectedItem as AreaDTO).AreaId,
+                status: (TableStatus)cbStatusSelector.SelectedIndex,
+                description: rtxbDescription.Text
+            );
+
+            if (!result)
+            {
+                Notify(actionType, isSucceed: result);
+                return;
+            }
+            Notify(actionType, isSucceed: result);
+        }
+
+        private void UpdateTable()
+        {
+            string actionType = "Update";
+            bool result = new TableDAO().Update(
+                tableId: currentSelectedTable.TableId,
+                name: txbName.Text,
+                areaId: (cbAreaSelector.SelectedItem as AreaDTO).AreaId,
+                status: (TableStatus)cbStatusSelector.SelectedIndex,
+                description: rtxbDescription.Text
+            );
+
+            if (!result)
+            {
+                Notify(actionType, isSucceed: result);
+                return;
+            }
+            Notify(actionType, isSucceed: result);
+        }
+
+        private void Notify(string actionType, bool isSucceed = true)
+        {
+            if (isSucceed)
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} successful", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} fail", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private void picDelete_Click(object sender, EventArgs e)
+        {
+            if (currentSelectedTable == null)
+            {
+                MessageBox.Show(
+                    text: "Please choose an table",
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.None
+                );
+                return;
+            }
+
+            var choosen = MessageBox.Show(
+                text: "Are you sure that you want to delete this table",
+                caption: "Confirmation",
+                buttons: MessageBoxButtons.OKCancel,
+                icon: MessageBoxIcon.Question
+            );
+            if (choosen == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            bool result = new TableDAO().Delete(tableId: currentSelectedTable.TableId);
+
+            Notify(actionType: "Delete", isSucceed: result);
+
+            LoadData();
+            pnlDetail.Visible = false;
         }
 
         private void txbSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -59,28 +238,6 @@ namespace DesktopApp.GUI.SubGUI
             LoadData();
         }
 
-        private void picNew_Click(object sender, EventArgs e)
-        {
-            pnlDetail.Visible = true;
-            foreach (Control control in pnlDetail.Controls)
-            {
-                if (control is TextBox)
-                {
-                    ((TextBox)control).Text = string.Empty;
-                }
-            }
-            rtxbDescription.Text = string.Empty;
-        }
-
-        private void picDelete_Click(object sender, EventArgs e)
-        {
-            //check selected item
-            //delete record in database
-            //Notify
-            LoadData();
-            pnlDetail.Visible = false;
-        }
-
         private void cbAreaFilter_SelectedValueChanged(object sender, EventArgs e)
         {
             LoadData();
@@ -91,25 +248,61 @@ namespace DesktopApp.GUI.SubGUI
             LoadData();
         }
 
-        private void picClose_Click(object sender, EventArgs e)
-        {
-            pnlDetail.Visible = false;
-        }
-
-        private void btnDone_Click(object sender, EventArgs e)
-        {
-            //valid datafield
-            //insert or update data
-            //Notify
-            LoadData();
-            pnlDetail.Visible = false;
-        }
-
         private void LoadData()
         {
-            TableDAO tableDAO = new TableDAO();
-            List<TableDTO> tables = tableDAO.GetAll();
+            Guid areaId = Guid.Empty;
+            if (cbAreaFilter.SelectedItem != null)
+            {
+                areaId = (cbAreaFilter.SelectedItem as AreaDTO).AreaId;
+            }
+
+            TableStatus status = TableStatus.All;
+            if (cbStatusFilter.SelectedItem != null)
+            {
+                status = (TableStatus)cbStatusFilter.SelectedIndex;
+            }
+
+            List<TableDTO> tables = new TableDAO().GetAll(
+                areaId: areaId,
+                keyword: txbSearch.Text,
+                status: status
+            );
             dgTable.DataSource = tables;
+
+            dgTable.AutoGenerateColumns = false;
+            dgTable.Columns.Clear();
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = "Name";
+            nameColumn.HeaderText = "Name";
+            nameColumn.Name = "colName";
+            nameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            nameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgTable.Columns.Add(nameColumn);
+
+            DataGridViewTextBoxColumn descriptionColumn = new DataGridViewTextBoxColumn();
+            descriptionColumn.DataPropertyName = "Description";
+            descriptionColumn.HeaderText = "Description";
+            descriptionColumn.Name = "colDescription";
+            descriptionColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            descriptionColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgTable.Columns.Add(descriptionColumn);
+
+            DataGridViewTextBoxColumn statusColumn = new DataGridViewTextBoxColumn();
+            statusColumn.DataPropertyName = "Status";
+            statusColumn.HeaderText = "Status";
+            statusColumn.Name = "colStatus";
+            statusColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            statusColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgTable.Columns.Add(statusColumn);
+
+            DataGridViewTextBoxColumn areaNameColumn = new DataGridViewTextBoxColumn();
+            areaNameColumn.DataPropertyName = "AreaName";
+            areaNameColumn.HeaderText = "Area";
+            areaNameColumn.Name = "colAreaName";
+            areaNameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            areaNameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgTable.Columns.Add(areaNameColumn);
         }
     }
 }
