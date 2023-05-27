@@ -32,7 +32,7 @@ namespace DesktopApp.DAO
             List<object> parameters = new List<object>();
             if (!string.IsNullOrEmpty(keyword))
             {
-                query += " and ( t.Name like @keyword1 or t.Description like @keyword2 like a.Name = @keyword3 )";
+                query += " and ( t.Name like @keyword1 or t.Description like @keyword2 or a.Name like @keyword3 )";
                 keyword = string.Format("%{0}%", keyword);
                 for (int i = 0; i < 3; i++)
                 {

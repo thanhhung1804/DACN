@@ -19,5 +19,12 @@ namespace DesktopApp.DTO
             Name = row["Name"].ToString();
             Description = row["Description"].ToString();
         }
+
+        public CategoryDTO(string name)
+        {
+            CategoryId = Guid.Empty;
+            Name = name;
+            Description = null;
+        }
     }
 }

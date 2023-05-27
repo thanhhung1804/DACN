@@ -94,6 +94,7 @@
     <Compile Include="Common\BillStatus.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Gender.cs" />
+    <Compile Include="Common\ServiceStatus.cs" />
     <Compile Include="Common\TableStatus.cs" />
     <Compile Include="DAO\ActionDAO.cs" />
     <Compile Include="DAO\AreaDAO.cs" />
@@ -260,6 +261,7 @@
   <ItemGroup>
     <Content Include="GUI\Assets\Icon\Close.png" />
     <Content Include="GUI\Assets\Icon\Delete.png" />
+    <Content Include="GUI\Assets\Icon\Drink.png" />
     <Content Include="GUI\Assets\Icon\Edit.png" />
     <Content Include="GUI\Assets\Icon\hide.png" />
     <Content Include="GUI\Assets\Icon\Logo.png" />
