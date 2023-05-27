@@ -39,6 +39,42 @@ namespace DesktopApp.GUI.SubGUI
             currentSelectedUser = null;
         }
 
+        private void formUser_Load(object sender, EventArgs e)
+        {
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+
+            string[] genderNamesFilter = Enum.GetNames(typeof(Gender));
+            cbGenderFilter.Items.AddRange(genderNamesFilter);
+            cbGenderFilter.SelectedIndex = (int)Gender.All;
+
+            string[] genderNamesSelector = Enum.GetNames(typeof(Gender)).Except(new[] { Gender.All.ToString() }).ToArray();
+            cbGenderSelector.Items.AddRange(genderNamesSelector);
+            cbGenderSelector.SelectedIndex = (int)Gender.Male;
+
+            List<RoleDTO> roles = new RoleDAO().GetAll();
+            cbRole.DataSource = roles;
+            cbRole.DisplayMember = "Name";
+
+            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+        }
+
+        private void formUser_SizeChanged(object sender, EventArgs e)
+        {
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
+        private void pnlBody_SizeChanged(object sender, EventArgs e)
+        {
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            pnlDetail.Visible = false;
+        }
+
         private void picSearch_Click(object sender, EventArgs e)
         {
             LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
@@ -46,13 +82,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picNew_Click(object sender, EventArgs e)
         {
-            //unselect current item
             currentSelectedUser = null;
-            //show panel to add
+
             pnlDetail.Visible = true;
             btnDone.Text = "Add";
             txbUsername.ReadOnly = false;
-            //Clear fields
+
             foreach (Control control in pnlDetail.Controls)
             {
                 if (control is TextBox)
@@ -63,70 +98,36 @@ namespace DesktopApp.GUI.SubGUI
             picAvatar.Image = Properties.Resources.Avatar;
         }
 
-        private void picDelete_Click(object sender, EventArgs e)
+        private void dgUser_SelectionChanged(object sender, EventArgs e)
         {
-            //check selected item
-            if (currentSelectedUser == null)
-            {
-                MessageBox.Show(
-                    text: "Please choose an user", 
-                    caption: "Notification", 
-                    buttons: MessageBoxButtons.OK, 
-                    icon: MessageBoxIcon.None
-                );
-                return;
-            }
-            //confirmation
-            var choosen = MessageBox.Show(
-                text: "Are you sure that you want to delete this user", 
-                caption: "Confirmation", 
-                buttons: MessageBoxButtons.OKCancel, 
-                icon: MessageBoxIcon.Question
-            );
-            if (choosen == DialogResult.Cancel)
+            if (dgUser.SelectedRows.Count <= 0)
             {
                 return;
             }
-            //delete record in database
-            bool result = new UserDAO().Delete(userId: currentSelectedUser.UserId);
-            //notification
-            if (result == true)
-            {
-                MessageBox.Show(
-                    text: "Delete successful", 
-                    caption: "Notification", 
-                    buttons: MessageBoxButtons.OK, 
-                    icon: MessageBoxIcon.Information
-                );
-            }
-            else
-            {
-                MessageBox.Show(
-                    text: "Delete fail", 
-                    caption: "Notification", 
-                    buttons: MessageBoxButtons.OK, 
-                    icon: MessageBoxIcon.Error
-                );
-                return;
-            }
-            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
-            pnlDetail.Visible = false;
-        }
 
-        private void picClose_Click(object sender, EventArgs e)
-        {
-            pnlDetail.Visible = false;
-        }
+            currentSelectedUser = (UserDTO)dgUser.SelectedRows[0].DataBoundItem;
+            if (currentSelectedUser != null)
+            {
+                pnlDetail.Visible = true;
+                btnDone.Text = "Update";
+                txbUsername.ReadOnly = true;
 
-        private void picAvatar_Click(object sender, EventArgs e)
-        {
-            //upload avatar
+                txbUsername.Text = currentSelectedUser.Username;
+                txbName.Text = currentSelectedUser.Name;
+                txbAddress.Text = currentSelectedUser.Address;
+                txbCitizenId.Text = currentSelectedUser.CitizenId;
+                txbPhone.Text = currentSelectedUser.Phone;
+                txbEmail.Text = currentSelectedUser.Email;
+                dtpBirthday.Value = currentSelectedUser.Birthday;
+                cbGenderSelector.SelectedIndex = cbGenderSelector.FindString(currentSelectedUser.Gender.ToString());
+                cbRole.SelectedIndex = cbRole.FindString(currentSelectedUser.RoleName);
+                picAvatar.Image = Properties.Resources.Avatar;
+            }
         }
 
         private void btnDone_Click(object sender, EventArgs e)
         {
             //valid datafield
-            //insert or update data
             bool result = false;
             string actionType = null;
             UserDAO userDAO = new UserDAO();
@@ -160,11 +161,60 @@ namespace DesktopApp.GUI.SubGUI
                 );
                 actionType = "Update";
             }
-            //notification
+
             if (result == true)
             {
                 MessageBox.Show(
-                    text: string.Format("{0} successful", actionType), 
+                    text: string.Format("{0} successful", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} fail", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+                return;
+            }
+            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+            pnlDetail.Visible = false;
+        }
+
+        private void picDelete_Click(object sender, EventArgs e)
+        {
+            if (currentSelectedUser == null)
+            {
+                MessageBox.Show(
+                    text: "Please choose an user", 
+                    caption: "Notification", 
+                    buttons: MessageBoxButtons.OK, 
+                    icon: MessageBoxIcon.None
+                );
+                return;
+            }
+
+            var choosen = MessageBox.Show(
+                text: "Are you sure that you want to delete this user", 
+                caption: "Confirmation", 
+                buttons: MessageBoxButtons.OKCancel, 
+                icon: MessageBoxIcon.Question
+            );
+            if (choosen == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            bool result = new UserDAO().Delete(userId: currentSelectedUser.UserId);
+
+            if (result == true)
+            {
+                MessageBox.Show(
+                    text: "Delete successful", 
                     caption: "Notification", 
                     buttons: MessageBoxButtons.OK, 
                     icon: MessageBoxIcon.Information
@@ -173,7 +223,7 @@ namespace DesktopApp.GUI.SubGUI
             else
             {
                 MessageBox.Show(
-                    text: string.Format("{0} fail", actionType),
+                    text: "Delete fail", 
                     caption: "Notification", 
                     buttons: MessageBoxButtons.OK, 
                     icon: MessageBoxIcon.Error
@@ -198,63 +248,9 @@ namespace DesktopApp.GUI.SubGUI
             LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
         }
 
-        private void formUser_Load(object sender, EventArgs e)
+        private void picAvatar_Click(object sender, EventArgs e)
         {
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
-
-            string[] genderNamesFilter = Enum.GetNames(typeof(Gender));
-            cbGenderFilter.Items.AddRange(genderNamesFilter);
-            cbGenderFilter.SelectedIndex = (int)Gender.All;
-
-            string[] genderNamesSelector = Enum.GetNames(typeof(Gender)).Except(new[] { Gender.All.ToString() }).ToArray();
-            cbGenderSelector.Items.AddRange(genderNamesSelector);
-            cbGenderSelector.SelectedIndex = (int)Gender.Male;
-
-            List<RoleDTO> roles = new RoleDAO().GetAll();
-            cbRole.DataSource = roles;
-            cbRole.DisplayMember = "Name";
-
-            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
-        }
-
-        private void formUser_SizeChanged(object sender, EventArgs e)
-        {
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
-        }
-
-        private void pnlBody_SizeChanged(object sender, EventArgs e)
-        {
-            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
-        }
-
-        private void dgUser_SelectionChanged(object sender, EventArgs e)
-        {
-            if (dgUser.SelectedRows.Count <= 0)
-            {
-                return;
-            }
-
-            //mark current selected item
-            currentSelectedUser = (UserDTO)dgUser.SelectedRows[0].DataBoundItem;
-            if (currentSelectedUser != null)
-            {
-                pnlDetail.Visible = true;
-                btnDone.Text = "Update";
-                txbUsername.ReadOnly = true;
-
-                txbUsername.Text = currentSelectedUser.Username;
-                txbName.Text = currentSelectedUser.Name;
-                txbAddress.Text = currentSelectedUser.Address;
-                txbCitizenId.Text = currentSelectedUser.CitizenId;
-                txbPhone.Text = currentSelectedUser.Phone;
-                txbEmail.Text = currentSelectedUser.Email;
-                dtpBirthday.Value = currentSelectedUser.Birthday;
-                cbGenderSelector.SelectedIndex = cbGenderSelector.FindString(currentSelectedUser.Gender.ToString());
-                cbRole.SelectedIndex = cbRole.FindString(currentSelectedUser.RoleName);
-                picAvatar.Image = Properties.Resources.Avatar;
-            }
+            //upload avatar
         }
 
         private void LoadData(string keyword, Gender gender)
