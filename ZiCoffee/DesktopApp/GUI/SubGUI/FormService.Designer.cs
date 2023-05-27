@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lbCategoryError = new System.Windows.Forms.Label();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.cbCategorySelector = new System.Windows.Forms.ComboBox();
             this.lbCategory = new System.Windows.Forms.Label();
             this.lbStatusError = new System.Windows.Forms.Label();
             this.cbStatusSelector = new System.Windows.Forms.ComboBox();
@@ -37,9 +38,7 @@
             this.lbNameError = new System.Windows.Forms.Label();
             this.txbName = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
-            this.picClose = new System.Windows.Forms.PictureBox();
             this.pnlDetail = new System.Windows.Forms.Panel();
-            this.picImage = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
             this.lbDescription = new System.Windows.Forms.Label();
@@ -50,23 +49,25 @@
             this.lbStatusFilter = new System.Windows.Forms.Label();
             this.lbCategoryFilter = new System.Windows.Forms.Label();
             this.cbStatusFilter = new System.Windows.Forms.ComboBox();
-            this.picDelete = new System.Windows.Forms.PictureBox();
-            this.picNew = new System.Windows.Forms.PictureBox();
-            this.picSearch = new System.Windows.Forms.PictureBox();
             this.cbCategoryFilter = new System.Windows.Forms.ComboBox();
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgService = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
+            this.picDelete = new System.Windows.Forms.PictureBox();
+            this.picNew = new System.Windows.Forms.PictureBox();
+            this.picSearch = new System.Windows.Forms.PictureBox();
+            this.picImage = new System.Windows.Forms.PictureBox();
+            this.picClose = new System.Windows.Forms.PictureBox();
             this.pnlDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            this.pnlBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgService)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).BeginInit();
-            this.pnlBody.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgService)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lbCategoryError
@@ -81,17 +82,17 @@
             this.lbCategoryError.Text = "Error message";
             this.lbCategoryError.Visible = false;
             // 
-            // cbCategory
+            // cbCategorySelector
             // 
-            this.cbCategory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbCategorySelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(14, 239);
-            this.cbCategory.Margin = new System.Windows.Forms.Padding(4);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(373, 31);
-            this.cbCategory.TabIndex = 6;
+            this.cbCategorySelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategorySelector.FormattingEnabled = true;
+            this.cbCategorySelector.Location = new System.Drawing.Point(14, 239);
+            this.cbCategorySelector.Margin = new System.Windows.Forms.Padding(4);
+            this.cbCategorySelector.Name = "cbCategorySelector";
+            this.cbCategorySelector.Size = new System.Drawing.Size(373, 31);
+            this.cbCategorySelector.TabIndex = 6;
             // 
             // lbCategory
             // 
@@ -170,19 +171,6 @@
             this.lbName.TabIndex = 0;
             this.lbName.Text = "Name";
             // 
-            // picClose
-            // 
-            this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
-            this.picClose.Location = new System.Drawing.Point(358, 13);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(30, 30);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClose.TabIndex = 0;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
-            // 
             // pnlDetail
             // 
             this.pnlDetail.AutoScroll = true;
@@ -195,7 +183,7 @@
             this.pnlDetail.Controls.Add(this.nudPrice);
             this.pnlDetail.Controls.Add(this.lbPrice);
             this.pnlDetail.Controls.Add(this.lbCategoryError);
-            this.pnlDetail.Controls.Add(this.cbCategory);
+            this.pnlDetail.Controls.Add(this.cbCategorySelector);
             this.pnlDetail.Controls.Add(this.lbCategory);
             this.pnlDetail.Controls.Add(this.lbStatusError);
             this.pnlDetail.Controls.Add(this.cbStatusSelector);
@@ -211,19 +199,6 @@
             this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
             this.pnlDetail.Visible = false;
-            // 
-            // picImage
-            // 
-            this.picImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picImage.Image = global::DesktopApp.Properties.Resources.User;
-            this.picImage.Location = new System.Drawing.Point(237, 397);
-            this.picImage.Name = "picImage";
-            this.picImage.Size = new System.Drawing.Size(150, 150);
-            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picImage.TabIndex = 0;
-            this.picImage.TabStop = false;
-            this.picImage.Click += new System.EventHandler(this.picImage_Click);
             // 
             // btnDone
             // 
@@ -349,6 +324,83 @@
             this.cbStatusFilter.TabIndex = 3;
             this.cbStatusFilter.SelectedValueChanged += new System.EventHandler(this.cbStatusFilter_SelectedValueChanged);
             // 
+            // cbCategoryFilter
+            // 
+            this.cbCategoryFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCategoryFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategoryFilter.FormattingEnabled = true;
+            this.cbCategoryFilter.Location = new System.Drawing.Point(13, 78);
+            this.cbCategoryFilter.Margin = new System.Windows.Forms.Padding(4);
+            this.cbCategoryFilter.Name = "cbCategoryFilter";
+            this.cbCategoryFilter.Size = new System.Drawing.Size(471, 31);
+            this.cbCategoryFilter.TabIndex = 2;
+            this.cbCategoryFilter.SelectedValueChanged += new System.EventHandler(this.cbCategoryFilter_SelectedValueChanged);
+            // 
+            // txbSearch
+            // 
+            this.txbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbSearch.Location = new System.Drawing.Point(13, 13);
+            this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txbSearch.Name = "txbSearch";
+            this.txbSearch.Size = new System.Drawing.Size(471, 30);
+            this.txbSearch.TabIndex = 1;
+            this.txbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSearch_KeyPress);
+            // 
+            // pnlBody
+            // 
+            this.pnlBody.BackColor = System.Drawing.Color.Transparent;
+            this.pnlBody.Controls.Add(this.dgService);
+            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlBody.Location = new System.Drawing.Point(0, 131);
+            this.pnlBody.Name = "pnlBody";
+            this.pnlBody.Size = new System.Drawing.Size(700, 516);
+            this.pnlBody.TabIndex = 0;
+            this.pnlBody.SizeChanged += new System.EventHandler(this.pnlBody_SizeChanged);
+            // 
+            // dgService
+            // 
+            this.dgService.AllowUserToAddRows = false;
+            this.dgService.AllowUserToDeleteRows = false;
+            this.dgService.AllowUserToOrderColumns = true;
+            this.dgService.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgService.BackgroundColor = System.Drawing.Color.White;
+            this.dgService.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgService.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgService.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgService.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgService.ColumnHeadersHeight = 29;
+            this.dgService.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgService.EnableHeadersVisualStyles = false;
+            this.dgService.GridColor = System.Drawing.Color.White;
+            this.dgService.Location = new System.Drawing.Point(0, 0);
+            this.dgService.MultiSelect = false;
+            this.dgService.Name = "dgService";
+            this.dgService.ReadOnly = true;
+            this.dgService.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgService.RowHeadersVisible = false;
+            this.dgService.RowHeadersWidth = 51;
+            this.dgService.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgService.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dgService.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgService.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgService.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgService.RowTemplate.DividerHeight = 2;
+            this.dgService.RowTemplate.Height = 40;
+            this.dgService.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgService.Size = new System.Drawing.Size(700, 516);
+            this.dgService.TabIndex = 0;
+            this.dgService.SelectionChanged += new System.EventHandler(this.dgService_SelectionChanged);
+            // 
             // picDelete
             // 
             this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -388,54 +440,31 @@
             this.picSearch.TabStop = false;
             this.picSearch.Click += new System.EventHandler(this.picSearch_Click);
             // 
-            // cbCategoryFilter
+            // picImage
             // 
-            this.cbCategoryFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbCategoryFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCategoryFilter.FormattingEnabled = true;
-            this.cbCategoryFilter.Location = new System.Drawing.Point(13, 78);
-            this.cbCategoryFilter.Margin = new System.Windows.Forms.Padding(4);
-            this.cbCategoryFilter.Name = "cbCategoryFilter";
-            this.cbCategoryFilter.Size = new System.Drawing.Size(471, 31);
-            this.cbCategoryFilter.TabIndex = 2;
-            this.cbCategoryFilter.SelectedValueChanged += new System.EventHandler(this.cbCategoryFilter_SelectedValueChanged);
+            this.picImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picImage.Image = global::DesktopApp.Properties.Resources.User;
+            this.picImage.Location = new System.Drawing.Point(237, 397);
+            this.picImage.Name = "picImage";
+            this.picImage.Size = new System.Drawing.Size(150, 150);
+            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImage.TabIndex = 0;
+            this.picImage.TabStop = false;
+            this.picImage.Click += new System.EventHandler(this.picImage_Click);
             // 
-            // txbSearch
+            // picClose
             // 
-            this.txbSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbSearch.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSearch.Location = new System.Drawing.Point(13, 13);
-            this.txbSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(471, 30);
-            this.txbSearch.TabIndex = 1;
-            this.txbSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSearch_KeyPress);
-            // 
-            // pnlBody
-            // 
-            this.pnlBody.BackColor = System.Drawing.Color.Transparent;
-            this.pnlBody.Controls.Add(this.dgService);
-            this.pnlBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlBody.Location = new System.Drawing.Point(0, 131);
-            this.pnlBody.Name = "pnlBody";
-            this.pnlBody.Size = new System.Drawing.Size(700, 516);
-            this.pnlBody.TabIndex = 0;
-            // 
-            // dgService
-            // 
-            this.dgService.AllowUserToAddRows = false;
-            this.dgService.AllowUserToDeleteRows = false;
-            this.dgService.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgService.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgService.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgService.Location = new System.Drawing.Point(0, 0);
-            this.dgService.Name = "dgService";
-            this.dgService.RowHeadersWidth = 51;
-            this.dgService.RowTemplate.Height = 24;
-            this.dgService.Size = new System.Drawing.Size(700, 516);
-            this.dgService.TabIndex = 0;
+            this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
+            this.picClose.Location = new System.Drawing.Point(358, 13);
+            this.picClose.Name = "picClose";
+            this.picClose.Size = new System.Drawing.Size(30, 30);
+            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picClose.TabIndex = 0;
+            this.picClose.TabStop = false;
+            this.picClose.Click += new System.EventHandler(this.picClose_Click);
             // 
             // formService
             // 
@@ -454,25 +483,25 @@
             this.Text = "FormService";
             this.Load += new System.EventHandler(this.formService_Load);
             this.SizeChanged += new System.EventHandler(this.formService_SizeChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            this.pnlBody.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgService)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).EndInit();
-            this.pnlBody.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgService)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Label lbCategoryError;
-        private System.Windows.Forms.ComboBox cbCategory;
+        private System.Windows.Forms.ComboBox cbCategorySelector;
         private System.Windows.Forms.Label lbCategory;
         private System.Windows.Forms.Label lbStatusError;
         private System.Windows.Forms.ComboBox cbStatusSelector;

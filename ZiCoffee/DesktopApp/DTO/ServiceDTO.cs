@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DesktopApp.Common;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,10 +13,11 @@ namespace DesktopApp.DTO
         public Guid ServiceId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public int Status { get; set; }
+        public ServiceStatus Status { get; set; }
         public float Price { get; set; }
         public string Image { get; set; }
         public Guid CategoryId { get; set; }
+        public string CategoryName { get; set; }
 
         public ServiceDTO(DataRow row)
         {
@@ -24,11 +26,11 @@ namespace DesktopApp.DTO
             Description = row["Description"].ToString();
             if (int.TryParse(row["Status"].ToString(), out int status))
             {
-                Status = status;
+                Status = (ServiceStatus)status;
             }
             else
             {
-                Status = 0;
+                Status = ServiceStatus.Unavailable;
             }
             if (float.TryParse(row["Price"].ToString(), out float price))
             {
@@ -40,6 +42,7 @@ namespace DesktopApp.DTO
             }
             Image = row["Image"].ToString();
             CategoryId = Guid.Parse(row["CategoryId"].ToString());
+            CategoryName = row["CategoryName"].ToString();
         }
     }
 }

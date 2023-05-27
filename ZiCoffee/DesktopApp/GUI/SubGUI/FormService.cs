@@ -1,4 +1,5 @@
-﻿using DesktopApp.DAO;
+﻿using DesktopApp.Common;
+using DesktopApp.DAO;
 using DesktopApp.DTO;
 using DesktopApp.Model;
 using System;
@@ -29,20 +30,204 @@ namespace DesktopApp.GUI.SubGUI
         );
         #endregion
 
+        private ServiceDTO currentSelectedService;
+
         public formService()
         {
             InitializeComponent();
+            currentSelectedService = null;
         }
 
         private void formService_Load(object sender, EventArgs e)
         {
-            LoadData();
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+
+            string[] serviceStatusFilter = Enum.GetNames(typeof(ServiceStatus));
+            cbStatusFilter.Items.AddRange(serviceStatusFilter);
+            cbStatusFilter.SelectedIndex = (int)ServiceStatus.All;
+
+            string[] serviceStatusSelector = Enum.GetNames(typeof(ServiceStatus)).Except(new[] { ServiceStatus.All.ToString() }).ToArray();
+            cbStatusSelector.Items.AddRange(serviceStatusSelector);
+            cbStatusSelector.SelectedIndex = (int)ServiceStatus.Unavailable;
+
+            List<CategoryDTO> selectorCategories = new CategoryDAO().GetAll();
+            cbCategorySelector.DataSource = selectorCategories;
+            cbCategorySelector.DisplayMember = "Name";
+
+            List<CategoryDTO> filterCategories = new CategoryDAO().GetAll();
+            CategoryDTO filterAllCategory = new CategoryDTO(name: "All");
+            filterCategories.Add(filterAllCategory);
+            cbCategoryFilter.DataSource = filterCategories;
+            cbCategoryFilter.DisplayMember = "Name";
+            cbCategoryFilter.SelectedItem = filterAllCategory;
+
+            LoadData();
         }
 
         private void formService_SizeChanged(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
+        private void pnlBody_SizeChanged(object sender, EventArgs e)
+        {
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
+        private void picClose_Click(object sender, EventArgs e)
+        {
+            pnlDetail.Visible = false;
+        }
+
+        private void picNew_Click(object sender, EventArgs e)
+        {
+            currentSelectedService = null;
+
+            pnlDetail.Visible = true;
+            btnDone.Text = "Add";
+
+            foreach (Control control in pnlDetail.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Text = string.Empty;
+                }
+            }
+            picImage.Image = Properties.Resources.User;
+            rtxbDescription.Text = string.Empty;
+            nudPrice.Value = 0;
+        }
+
+        private void dgService_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgService.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+
+            currentSelectedService = (ServiceDTO)dgService.SelectedRows[0].DataBoundItem;
+            if (currentSelectedService != null)
+            {
+                pnlDetail.Visible = true;
+                btnDone.Text = "Update";
+
+                txbName.Text = currentSelectedService.Name;
+                rtxbDescription.Text = currentSelectedService.Description;
+                cbStatusSelector.SelectedIndex = cbStatusSelector.FindString(currentSelectedService.Status.ToString());
+                cbCategorySelector.SelectedIndex = cbCategorySelector.FindString(currentSelectedService.CategoryName);
+                nudPrice.Value = (decimal)currentSelectedService.Price;
+                picImage.Image = Properties.Resources.Drink;
+            }
+        }
+
+        private void btnDone_Click(object sender, EventArgs e)
+        {
+            //valid datafield
+            if (currentSelectedService == null)
+            {
+                CreateService();
+            }
+            else
+            {
+                UpdateService();
+            }
+            LoadData();
+            pnlDetail.Visible = false;
+        }
+
+        private void CreateService()
+        {
+            string actionType = "Create";
+            bool result = new ServiceDAO().Create(
+                name: txbName.Text,
+                categoryId: (cbCategorySelector.SelectedItem as CategoryDTO).CategoryId,
+                status: (ServiceStatus)cbStatusSelector.SelectedIndex,
+                description: rtxbDescription.Text,
+                price: (float)nudPrice.Value
+            );
+
+            if (!result)
+            {
+                Notify(actionType, isSucceed: result);
+                return;
+            }
+            Notify(actionType, isSucceed: result);
+        }
+
+        private void UpdateService()
+        {
+            string actionType = "Update";
+            bool result = new ServiceDAO().Update(
+                serviceId: currentSelectedService.ServiceId,
+                name: txbName.Text,
+                categoryId: (cbCategorySelector.SelectedItem as CategoryDTO).CategoryId,
+                status: (ServiceStatus)cbStatusSelector.SelectedIndex,
+                description: rtxbDescription.Text,
+                price: (float)nudPrice.Value
+            );
+
+            if (!result)
+            {
+                Notify(actionType, isSucceed: result);
+                return;
+            }
+            Notify(actionType, isSucceed: result);
+        }
+
+        private void Notify(string actionType, bool isSucceed = true)
+        {
+            if (isSucceed)
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} successful", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Information
+                );
+            }
+            else
+            {
+                MessageBox.Show(
+                    text: string.Format("{0} fail", actionType),
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.Error
+                );
+            }
+        }
+
+        private void picDelete_Click(object sender, EventArgs e)
+        {
+            if (currentSelectedService == null)
+            {
+                MessageBox.Show(
+                    text: "Please choose an service",
+                    caption: "Notification",
+                    buttons: MessageBoxButtons.OK,
+                    icon: MessageBoxIcon.None
+                );
+                return;
+            }
+
+            var choosen = MessageBox.Show(
+                text: "Are you sure that you want to delete this service",
+                caption: "Confirmation",
+                buttons: MessageBoxButtons.OKCancel,
+                icon: MessageBoxIcon.Question
+            );
+            if (choosen == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            bool result = new ServiceDAO().Delete(serviceId: currentSelectedService.ServiceId);
+
+            Notify(actionType: "Delete", isSucceed: result);
+
+            LoadData();
+            pnlDetail.Visible = false;
         }
 
         private void txbSearch_KeyPress(object sender, KeyPressEventArgs e)
@@ -59,30 +244,6 @@ namespace DesktopApp.GUI.SubGUI
             LoadData();
         }
 
-        private void picNew_Click(object sender, EventArgs e)
-        {
-            pnlDetail.Visible = true;
-            foreach (Control control in pnlDetail.Controls)
-            {
-                if (control is TextBox)
-                {
-                    ((TextBox)control).Text = string.Empty;
-                }
-            }
-            picImage.Image = Properties.Resources.User;
-            rtxbDescription.Text = string.Empty;
-            nudPrice.Value = 0;
-        }
-
-        private void picDelete_Click(object sender, EventArgs e)
-        {
-            //check selected item
-            //delete record in database
-            //Notify
-            LoadData();
-            pnlDetail.Visible = false;
-        }
-
         private void cbCategoryFilter_SelectedValueChanged(object sender, EventArgs e)
         {
             LoadData();
@@ -93,20 +254,6 @@ namespace DesktopApp.GUI.SubGUI
             LoadData();
         }
 
-        private void picClose_Click(object sender, EventArgs e)
-        {
-            pnlDetail.Visible = false;
-        }
-
-        private void btnDone_Click(object sender, EventArgs e)
-        {
-            //valid datafield
-            //insert or update data
-            //Notify
-            LoadData();
-            pnlDetail.Visible = false;
-        }
-
         private void picImage_Click(object sender, EventArgs e)
         {
             //upload Image
@@ -114,9 +261,67 @@ namespace DesktopApp.GUI.SubGUI
 
         private void LoadData()
         {
-            ServiceDAO serviceDAO = new ServiceDAO();
-            List<ServiceDTO> services = serviceDAO.GetAll();
+            Guid categoryId = Guid.Empty;
+            if (cbCategoryFilter.SelectedItem != null)
+            {
+                categoryId = (cbCategoryFilter.SelectedItem as CategoryDTO).CategoryId;
+            }
+
+            ServiceStatus status = ServiceStatus.All;
+            if (cbStatusFilter.SelectedItem != null)
+            {
+                status = (ServiceStatus)cbStatusFilter.SelectedIndex;
+            }
+
+            List<ServiceDTO> services = new ServiceDAO().GetAll(
+                categoryId: categoryId,
+                keyword: txbSearch.Text,
+                status: status
+            );
             dgService.DataSource = services;
+
+            dgService.AutoGenerateColumns = false;
+            dgService.Columns.Clear();
+
+            DataGridViewTextBoxColumn nameColumn = new DataGridViewTextBoxColumn();
+            nameColumn.DataPropertyName = "Name";
+            nameColumn.HeaderText = "Name";
+            nameColumn.Name = "colName";
+            nameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            nameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgService.Columns.Add(nameColumn);
+
+            DataGridViewTextBoxColumn descriptionColumn = new DataGridViewTextBoxColumn();
+            descriptionColumn.DataPropertyName = "Description";
+            descriptionColumn.HeaderText = "Description";
+            descriptionColumn.Name = "colDescription";
+            descriptionColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            descriptionColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgService.Columns.Add(descriptionColumn);
+
+            DataGridViewTextBoxColumn priceColumn = new DataGridViewTextBoxColumn();
+            priceColumn.DataPropertyName = "Price";
+            priceColumn.HeaderText = "Price";
+            priceColumn.Name = "colPrice";
+            priceColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            priceColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgService.Columns.Add(priceColumn);
+
+            DataGridViewTextBoxColumn statusColumn = new DataGridViewTextBoxColumn();
+            statusColumn.DataPropertyName = "Status";
+            statusColumn.HeaderText = "Status";
+            statusColumn.Name = "colStatus";
+            statusColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            statusColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgService.Columns.Add(statusColumn);
+
+            DataGridViewTextBoxColumn categoryNameColumn = new DataGridViewTextBoxColumn();
+            categoryNameColumn.DataPropertyName = "CategoryName";
+            categoryNameColumn.HeaderText = "Category";
+            categoryNameColumn.Name = "colCategoryName";
+            categoryNameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            categoryNameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgService.Columns.Add(categoryNameColumn);
         }
     }
 }
