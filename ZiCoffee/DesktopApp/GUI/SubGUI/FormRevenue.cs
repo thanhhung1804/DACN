@@ -129,18 +129,68 @@ namespace DesktopApp.GUI.SubGUI
             Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Add();
             Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.Sheets.Add();
+            
+            // Set the [title, start time, end time] in the [first, second, third] row
+            excelWorksheet.Cells[1, 1] = string.Format("REVENUE REPORT");
+            excelWorksheet.Cells[2, 1] = string.Format("From: {0}", dtpTimeStart.Value.ToString());
+            excelWorksheet.Cells[3, 1] = string.Format("To: {0}", dtpTimeEnd.Value.ToString());
+
+            // Merge cells for the [title, start time, end time]
+            Microsoft.Office.Interop.Excel.Range titleRange = excelWorksheet.Range[
+                excelWorksheet.Cells[1, 1], 
+                excelWorksheet.Cells[1, dgRevenue.Columns.Count]
+            ];
+            titleRange.Merge();
+
+            Microsoft.Office.Interop.Excel.Range startTimeRange = excelWorksheet.Range[
+                excelWorksheet.Cells[2, 1],
+                excelWorksheet.Cells[2, dgRevenue.Columns.Count]
+            ];
+            startTimeRange.Merge();
+
+            Microsoft.Office.Interop.Excel.Range endTimeRange = excelWorksheet.Range[
+                excelWorksheet.Cells[3, 1],
+                excelWorksheet.Cells[3, dgRevenue.Columns.Count]
+            ];
+            endTimeRange.Merge();
+
+            // Apply formatting to the [title, start time, end time]
+            titleRange.Font.Bold = true;
+            titleRange.Font.Size = 16;
+            titleRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+
+            startTimeRange.Font.Bold = true;
+            startTimeRange.Font.Color = Color.DarkBlue;
+            startTimeRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            endTimeRange.Font.Bold = true;
+            endTimeRange.Font.Color = Color.DarkBlue;
+            endTimeRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
+
+            // Set the column header in the fourth row
+            for (int j = 0; j < dgRevenue.Columns.Count; j++)
+            {
+                Microsoft.Office.Interop.Excel.Range headerColumn = excelWorksheet.Columns[j + 1];
+                headerColumn.ColumnWidth = 20;
+
+                Microsoft.Office.Interop.Excel.Range headerCell = excelWorksheet.Cells[4, j + 1];
+                headerCell.Value = dgRevenue.Columns[j].HeaderText;
+                headerCell.Font.Bold = true;
+                headerCell.Interior.Color = Color.Gray;
+                headerColumn.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            }
 
             // Populate the worksheet with data from the DataGridView's DataSource
             for (int i = 0; i < dgRevenue.Rows.Count; i++)
             {
                 for (int j = 0; j < dgRevenue.Columns.Count; j++)
                 {
-                    excelWorksheet.Cells[i + 1, j + 1] = dgRevenue.Rows[i].Cells[j].Value.ToString();
+                    excelWorksheet.Cells[i + 5, j + 1] = dgRevenue.Rows[i].Cells[j].Value.ToString();
                 }
             }
 
             // Add a row at the end of the worksheet and calculate the total value
-            int lastRowIndex = dgRevenue.Rows.Count - 1;
+            int lastRowIndex = dgRevenue.Rows.Count + 4;
             for (int j = 0; j < dgRevenue.Columns.Count; j++)
             {
                 if (dgRevenue.Columns[j].ValueType == typeof(decimal))
@@ -148,8 +198,15 @@ namespace DesktopApp.GUI.SubGUI
                     decimal cellValue = Convert.ToDecimal(dgRevenue.Rows[lastRowIndex].Cells[j].Value);
                 }
             }
-            excelWorksheet.Cells[lastRowIndex + 1, 1] = "Total";
-            excelWorksheet.Cells[lastRowIndex + 1, dgRevenue.Columns.Count] = txbTotalRevenue.Text;
+            Microsoft.Office.Interop.Excel.Range totalTitle = excelWorksheet.Cells[lastRowIndex + 1, 1];
+            totalTitle.Value = "Total";
+            totalTitle.Font.Bold = true;
+            totalTitle.Font.Color = Color.Red;
+
+            Microsoft.Office.Interop.Excel.Range totalValue = excelWorksheet.Cells[lastRowIndex + 1, 2];
+            totalValue.Value = txbTotalRevenue.Text;
+            totalValue.Font.Bold = true;
+            totalValue.Font.Color = Color.Red;
 
             // Prompt the user for a save location using a SaveFileDialog
             SaveFileDialog saveFileDialog = new SaveFileDialog();
