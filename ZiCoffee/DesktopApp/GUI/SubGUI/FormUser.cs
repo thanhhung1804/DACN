@@ -128,41 +128,67 @@ namespace DesktopApp.GUI.SubGUI
         private void btnDone_Click(object sender, EventArgs e)
         {
             //valid datafield
-            bool result = false;
-            string actionType = null;
-            UserDAO userDAO = new UserDAO();
             if (currentSelectedUser == null)
             {
-                result = userDAO.Create(
-                    username: txbUsername.Text,
-                    name: txbName.Text,
-                    address: txbAddress.Text,
-                    citizenId: txbCitizenId.Text,
-                    phone: txbPhone.Text,
-                    birthday: dtpBirthday.Value,
-                    roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
-                    email: txbEmail.Text,
-                    gender: (Gender)cbGenderSelector.SelectedIndex
-                );
-                actionType = "Create";
+                CreateUser();
             }
             else
             {
-                result = userDAO.Update(
-                    userId: currentSelectedUser.UserId,
-                    name: txbName.Text,
-                    address: txbAddress.Text,
-                    citizenId: txbCitizenId.Text,
-                    phone: txbPhone.Text,
-                    birthday: dtpBirthday.Value,
-                    roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
-                    email: txbEmail.Text,
-                    gender: (Gender)cbGenderSelector.SelectedIndex
-                );
-                actionType = "Update";
+                UpdateUser();
             }
+            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+            pnlDetail.Visible = false;
+        }
 
-            if (result == true)
+        private void CreateUser()
+        {
+            string actionType = "Create";
+            bool result = new UserDAO().Create(
+                username: txbUsername.Text,
+                name: txbName.Text,
+                address: txbAddress.Text,
+                citizenId: txbCitizenId.Text,
+                phone: txbPhone.Text,
+                birthday: dtpBirthday.Value,
+                roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
+                email: txbEmail.Text,
+                gender: (Gender)cbGenderSelector.SelectedIndex
+            );
+
+            if (!result)
+            {
+                Notify(actionType, isSucceed: result);
+                return;
+            }
+            Notify(actionType, isSucceed: result);
+        }
+
+        private void UpdateUser()
+        {
+            string actionType = "Update";
+            bool result = new UserDAO().Update(
+                userId: currentSelectedUser.UserId,
+                name: txbName.Text,
+                address: txbAddress.Text,
+                citizenId: txbCitizenId.Text,
+                phone: txbPhone.Text,
+                birthday: dtpBirthday.Value,
+                roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
+                email: txbEmail.Text,
+                gender: (Gender)cbGenderSelector.SelectedIndex
+            );
+
+            if (!result)
+            {
+                Notify(actionType, isSucceed: result);
+                return;
+            }
+            Notify(actionType, isSucceed: result);
+        }
+
+        private void Notify(string actionType, bool isSucceed = true)
+        {
+            if (isSucceed)
             {
                 MessageBox.Show(
                     text: string.Format("{0} successful", actionType),
@@ -179,10 +205,7 @@ namespace DesktopApp.GUI.SubGUI
                     buttons: MessageBoxButtons.OK,
                     icon: MessageBoxIcon.Error
                 );
-                return;
             }
-            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
-            pnlDetail.Visible = false;
         }
 
         private void picDelete_Click(object sender, EventArgs e)
@@ -211,25 +234,7 @@ namespace DesktopApp.GUI.SubGUI
 
             bool result = new UserDAO().Delete(userId: currentSelectedUser.UserId);
 
-            if (result == true)
-            {
-                MessageBox.Show(
-                    text: "Delete successful", 
-                    caption: "Notification", 
-                    buttons: MessageBoxButtons.OK, 
-                    icon: MessageBoxIcon.Information
-                );
-            }
-            else
-            {
-                MessageBox.Show(
-                    text: "Delete fail", 
-                    caption: "Notification", 
-                    buttons: MessageBoxButtons.OK, 
-                    icon: MessageBoxIcon.Error
-                );
-                return;
-            }
+            Notify(actionType: "Delete", result);
             LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
             pnlDetail.Visible = false;
         }
