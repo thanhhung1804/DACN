@@ -65,23 +65,13 @@ namespace DesktopApp.GUI.SubGUI
         private void dtpTimeStart_ValueChanged(object sender, EventArgs e)
         {
             CheckDateTimePickerValid();
-            LoadData(
-                startTime: dtpTimeStart.Value,
-                endTime: dtpTimeEnd.Value,
-                tableName: txbTableName.Text,
-                username: txbCashierName.Text
-            );
+            LoadData();
         }
 
         private void dtpTimeEnd_ValueChanged(object sender, EventArgs e)
         {
             CheckDateTimePickerValid();
-            LoadData(
-                startTime: dtpTimeStart.Value,
-                endTime: dtpTimeEnd.Value,
-                tableName: txbTableName.Text,
-                username: txbCashierName.Text
-            );
+            LoadData();
         }
 
         private void CheckDateTimePickerValid()
@@ -105,12 +95,7 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                LoadData(
-                    startTime: dtpTimeStart.Value,
-                    endTime: dtpTimeEnd.Value,
-                    tableName: txbTableName.Text,
-                    username: txbCashierName.Text
-                );
+                LoadData();
             }
         }
 
@@ -119,12 +104,7 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                LoadData(
-                    startTime: dtpTimeStart.Value,
-                    endTime: dtpTimeEnd.Value,
-                    tableName: txbTableName.Text,
-                    username: txbCashierName.Text
-                );
+                LoadData();
             }
         }
 
@@ -191,9 +171,14 @@ namespace DesktopApp.GUI.SubGUI
             }
         }
 
-        private void LoadData(DateTime startTime, DateTime endTime, string tableName, string username)
+        private void LoadData()
         {
-            Tuple<List<BillDTO>, float> result = new BillDAO().GetRevenue(startTime, endTime, tableName, username);
+            Tuple<List<BillDTO>, float> result = new BillDAO().GetRevenue(
+                startTime: dtpTimeStart.Value,
+                endTime: dtpTimeEnd.Value,
+                tableName: txbTableName.Text,
+                username: txbCashierName.Text
+            );
 
             float revenueTotal = result.Item2;
             txbTotalRevenue.Text = revenueTotal.ToString();

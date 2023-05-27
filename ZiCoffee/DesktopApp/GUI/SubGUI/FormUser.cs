@@ -56,7 +56,7 @@ namespace DesktopApp.GUI.SubGUI
             cbRole.DataSource = roles;
             cbRole.DisplayMember = "Name";
 
-            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+            LoadData();
         }
 
         private void formUser_SizeChanged(object sender, EventArgs e)
@@ -77,7 +77,7 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picSearch_Click(object sender, EventArgs e)
         {
-            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+            LoadData();
         }
 
         private void picNew_Click(object sender, EventArgs e)
@@ -136,7 +136,7 @@ namespace DesktopApp.GUI.SubGUI
             {
                 UpdateUser();
             }
-            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -235,7 +235,7 @@ namespace DesktopApp.GUI.SubGUI
             bool result = new UserDAO().Delete(userId: currentSelectedUser.UserId);
 
             Notify(actionType: "Delete", result);
-            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -244,13 +244,13 @@ namespace DesktopApp.GUI.SubGUI
             int enterKeycode = 13;
             if (e.KeyChar == enterKeycode)
             {
-                LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+                LoadData();
             }
         }
 
         private void cbGenderFilter_SelectedValueChanged(object sender, EventArgs e)
         {
-            LoadData(keyword: txbSearch.Text, gender: (Gender)cbGenderFilter.SelectedIndex);
+            LoadData();
         }
 
         private void picAvatar_Click(object sender, EventArgs e)
@@ -258,9 +258,12 @@ namespace DesktopApp.GUI.SubGUI
             //upload avatar
         }
 
-        private void LoadData(string keyword, Gender gender)
+        private void LoadData()
         {
-            List<UserDTO> users = new UserDAO().GetAll(keyword, gender);
+            List<UserDTO> users = new UserDAO().GetAll(
+                keyword: txbSearch.Text, 
+                gender: (Gender)cbGenderFilter.SelectedIndex
+            );
             dgUser.DataSource = users;
 
             dgUser.AutoGenerateColumns = false;
