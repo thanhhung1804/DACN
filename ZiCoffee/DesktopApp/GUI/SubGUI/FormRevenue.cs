@@ -38,6 +38,30 @@ namespace DesktopApp.GUI.SubGUI
             InitializeComponent();
         }
 
+        private void formRevenue_Load(object sender, EventArgs e)
+        {
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+
+            dtpTimeStart.Format = dtpTimeEnd.Format = DateTimePickerFormat.Custom;
+            dtpTimeStart.CustomFormat = dtpTimeEnd.CustomFormat = "dd/MM/yyyy";
+
+            DateTime currentDateTime = DateTime.Now;
+            dtpTimeStart.Value = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 0, 0, 0);
+            dtpTimeEnd.Value = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 23, 59, 59);
+        }
+
+        private void formRevenue_SizeChanged(object sender, EventArgs e)
+        {
+            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
+        private void pnlBody_SizeChanged(object sender, EventArgs e)
+        {
+            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
+        }
+
         private void dtpTimeStart_ValueChanged(object sender, EventArgs e)
         {
             CheckDateTimePickerValid();
@@ -167,34 +191,9 @@ namespace DesktopApp.GUI.SubGUI
             }
         }
 
-        private void formRevenue_Load(object sender, EventArgs e)
-        {
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
-
-            dtpTimeStart.Format = dtpTimeEnd.Format = DateTimePickerFormat.Custom;
-            dtpTimeStart.CustomFormat = dtpTimeEnd.CustomFormat = "dd/MM/yyyy";
-
-            DateTime currentDateTime = DateTime.Now;
-            dtpTimeStart.Value = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 0, 0, 0);
-            dtpTimeEnd.Value = new DateTime(currentDateTime.Year, currentDateTime.Month, currentDateTime.Day, 23, 59, 59);
-        }
-
-        private void formRevenue_SizeChanged(object sender, EventArgs e)
-        {
-            Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
-        }
-
-        private void pnlBody_SizeChanged(object sender, EventArgs e)
-        {
-            pnlBody.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, pnlBody.Width, pnlBody.Height, 20, 20));
-        }
-
         private void LoadData(DateTime startTime, DateTime endTime, string tableName, string username)
         {
-            BillDAO billDAO = new BillDAO();
-            Tuple<List<BillDTO>, float> result = billDAO.GetRevenue(startTime, endTime, tableName, username);
+            Tuple<List<BillDTO>, float> result = new BillDAO().GetRevenue(startTime, endTime, tableName, username);
 
             float revenueTotal = result.Item2;
             txbTotalRevenue.Text = revenueTotal.ToString();
@@ -218,16 +217,16 @@ namespace DesktopApp.GUI.SubGUI
             totalColumn.DataPropertyName = "Total";
             totalColumn.HeaderText = "Total";
             totalColumn.Name = "colTotal";
-            totalColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            totalColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            totalColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            totalColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgRevenue.Columns.Add(totalColumn);
 
             DataGridViewTextBoxColumn statusColumn = new DataGridViewTextBoxColumn();
             statusColumn.DataPropertyName = "Status";
             statusColumn.HeaderText = "Status";
             statusColumn.Name = "colStatus";
-            statusColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            statusColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            statusColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            statusColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgRevenue.Columns.Add(statusColumn);
 
 
