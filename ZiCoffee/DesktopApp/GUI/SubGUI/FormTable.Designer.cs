@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.btnDone = new System.Windows.Forms.Button();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
             this.lbDescription = new System.Windows.Forms.Label();
             this.lbAreaError = new System.Windows.Forms.Label();
-            this.cbArea = new System.Windows.Forms.ComboBox();
+            this.cbAreaSelector = new System.Windows.Forms.ComboBox();
             this.lbArea = new System.Windows.Forms.Label();
             this.lbStatusError = new System.Windows.Forms.Label();
             this.cbStatusSelector = new System.Windows.Forms.ComboBox();
@@ -71,7 +72,7 @@
             this.pnlDetail.Controls.Add(this.rtxbDescription);
             this.pnlDetail.Controls.Add(this.lbDescription);
             this.pnlDetail.Controls.Add(this.lbAreaError);
-            this.pnlDetail.Controls.Add(this.cbArea);
+            this.pnlDetail.Controls.Add(this.cbAreaSelector);
             this.pnlDetail.Controls.Add(this.lbArea);
             this.pnlDetail.Controls.Add(this.lbStatusError);
             this.pnlDetail.Controls.Add(this.cbStatusSelector);
@@ -137,17 +138,17 @@
             this.lbAreaError.Text = "Error message";
             this.lbAreaError.Visible = false;
             // 
-            // cbArea
+            // cbAreaSelector
             // 
-            this.cbArea.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbAreaSelector.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbArea.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbArea.FormattingEnabled = true;
-            this.cbArea.Location = new System.Drawing.Point(14, 239);
-            this.cbArea.Margin = new System.Windows.Forms.Padding(4);
-            this.cbArea.Name = "cbArea";
-            this.cbArea.Size = new System.Drawing.Size(373, 31);
-            this.cbArea.TabIndex = 6;
+            this.cbAreaSelector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAreaSelector.FormattingEnabled = true;
+            this.cbAreaSelector.Location = new System.Drawing.Point(14, 239);
+            this.cbAreaSelector.Margin = new System.Windows.Forms.Padding(4);
+            this.cbAreaSelector.Name = "cbAreaSelector";
+            this.cbAreaSelector.Size = new System.Drawing.Size(373, 31);
+            this.cbAreaSelector.TabIndex = 6;
             // 
             // lbArea
             // 
@@ -363,20 +364,47 @@
             this.pnlBody.Name = "pnlBody";
             this.pnlBody.Size = new System.Drawing.Size(700, 516);
             this.pnlBody.TabIndex = 0;
+            this.pnlBody.SizeChanged += new System.EventHandler(this.pnlBody_SizeChanged);
             // 
             // dgTable
             // 
             this.dgTable.AllowUserToAddRows = false;
             this.dgTable.AllowUserToDeleteRows = false;
+            this.dgTable.AllowUserToOrderColumns = true;
             this.dgTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgTable.BackgroundColor = System.Drawing.Color.White;
+            this.dgTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgTable.EnableHeadersVisualStyles = false;
+            this.dgTable.GridColor = System.Drawing.Color.White;
             this.dgTable.Location = new System.Drawing.Point(0, 0);
+            this.dgTable.MultiSelect = false;
             this.dgTable.Name = "dgTable";
+            this.dgTable.ReadOnly = true;
+            this.dgTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgTable.RowHeadersVisible = false;
             this.dgTable.RowHeadersWidth = 51;
-            this.dgTable.RowTemplate.Height = 24;
+            this.dgTable.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgTable.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgTable.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            this.dgTable.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgTable.RowTemplate.DividerHeight = 2;
+            this.dgTable.RowTemplate.Height = 40;
+            this.dgTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgTable.Size = new System.Drawing.Size(700, 516);
             this.dgTable.TabIndex = 0;
+            this.dgTable.SelectionChanged += new System.EventHandler(this.dgTable_SelectionChanged);
             // 
             // formTable
             // 
@@ -430,7 +458,7 @@
         private System.Windows.Forms.RichTextBox rtxbDescription;
         private System.Windows.Forms.Label lbDescription;
         private System.Windows.Forms.Label lbAreaError;
-        private System.Windows.Forms.ComboBox cbArea;
+        private System.Windows.Forms.ComboBox cbAreaSelector;
         private System.Windows.Forms.Label lbArea;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.ComboBox cbStatusFilter;

@@ -94,6 +94,7 @@
     <Compile Include="Common\BillStatus.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Gender.cs" />
+    <Compile Include="Common\TableStatus.cs" />
     <Compile Include="DAO\ActionDAO.cs" />
     <Compile Include="DAO\AreaDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
