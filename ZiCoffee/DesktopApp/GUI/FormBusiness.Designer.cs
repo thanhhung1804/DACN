@@ -494,6 +494,7 @@
             this.btnLockTable.TabIndex = 0;
             this.btnLockTable.Text = "Lock";
             this.btnLockTable.UseVisualStyleBackColor = true;
+            this.btnLockTable.Click += new System.EventHandler(this.btnLockTable_Click);
             // 
             // btnMoveTable
             // 
@@ -569,36 +570,21 @@
             // 
             // fpnlArea
             // 
-            this.fpnlArea.BackColor = System.Drawing.Color.Transparent;
+            this.fpnlArea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.fpnlArea.Dock = System.Windows.Forms.DockStyle.Top;
             this.fpnlArea.Location = new System.Drawing.Point(300, 50);
             this.fpnlArea.Name = "fpnlArea";
-            this.fpnlArea.Size = new System.Drawing.Size(600, 200);
+            this.fpnlArea.Size = new System.Drawing.Size(600, 100);
             this.fpnlArea.TabIndex = 0;
             // 
             // fpnlTable
             // 
-            this.fpnlTable.BackColor = System.Drawing.Color.Transparent;
+            this.fpnlTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.fpnlTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fpnlTable.Location = new System.Drawing.Point(300, 250);
+            this.fpnlTable.Location = new System.Drawing.Point(300, 150);
             this.fpnlTable.Name = "fpnlTable";
-            this.fpnlTable.Size = new System.Drawing.Size(600, 520);
+            this.fpnlTable.Size = new System.Drawing.Size(600, 620);
             this.fpnlTable.TabIndex = 0;
-            // 
-            // btnManage
-            // 
-            this.btnManage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnManage.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnManage.FlatAppearance.BorderSize = 3;
-            this.btnManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnManage.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManage.Location = new System.Drawing.Point(60, 561);
-            this.btnManage.Name = "btnManage";
-            this.btnManage.Size = new System.Drawing.Size(240, 50);
-            this.btnManage.TabIndex = 0;
-            this.btnManage.Text = "Manage";
-            this.btnManage.UseVisualStyleBackColor = true;
-            this.btnManage.Click += new System.EventHandler(this.btnManage_Click);
             // 
             // formBusiness
             // 
