@@ -22,7 +22,8 @@ namespace DesktopApp.DAO
         public List<TableDTO> GetAll(
             Guid areaId, 
             string keyword = null, 
-            TableStatus status = TableStatus.All)
+            TableStatus status = TableStatus.All,
+            bool ascSortByName = true)
         {
             string query = @"
                 select t.TableId, t.Name, t.Description, t.Status, t.AreaId, a.Name as AreaName 
@@ -52,6 +53,14 @@ namespace DesktopApp.DAO
             {
                 query += " and t.Status = @status";
                 parameters.Add(status);
+            }
+            if (ascSortByName)
+            {
+                query += " order by t.Name";
+            }
+            else
+            {
+                query += " order by t.Name desc";
             }
 
             List<TableDTO> tables = new List<TableDTO>();
@@ -104,6 +113,16 @@ namespace DesktopApp.DAO
             string query = @"delete from dbo.[Table] where TableId = @tableId";
 
             List<object> parameters = new List<object> { tableId };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
+
+        public bool ChangeStatus(Guid tableId, TableStatus status = TableStatus.Ready)
+        {
+            string query = @"update dbo.[Table] set Status = @status where TableId = @tableId";
+
+            List<object> parameters = new List<object> { status, tableId };
 
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;

@@ -19,9 +19,17 @@ namespace DesktopApp.DAO
             database = new SqlServerDatabase(Constants.CONNECTION_STRING);
         }
 
-        public List<AreaDTO> GetAll()
+        public List<AreaDTO> GetAll(bool ascSortByName = true)
         {
             string query = "select * from dbo.[Area]";
+            if (ascSortByName)
+            {
+                query += " order by Name";
+            }
+            else
+            {
+                query += " order by Name desc";
+            }
 
             List<AreaDTO> areas = new List<AreaDTO>();
             DataTable dataTable = database.ExecuteQuery(query);

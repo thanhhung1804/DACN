@@ -17,6 +17,8 @@ namespace DesktopApp.DTO
         public Guid AreaId { get; set; }
         public string AreaName { get; set; }
 
+        public string DisplayName { get; set; }
+
         public TableDTO(DataRow row)
         {
             TableId = Guid.Parse(row["TableId"].ToString());
@@ -32,6 +34,7 @@ namespace DesktopApp.DTO
             }
             AreaId = Guid.Parse(row["AreaId"].ToString());
             AreaName = row["AreaName"].ToString();
+            DisplayName = string.Format("{0}\n{1}", Name, Status.ToString());
         }
     }
 }
