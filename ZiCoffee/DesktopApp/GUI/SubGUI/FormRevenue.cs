@@ -125,71 +125,90 @@ namespace DesktopApp.GUI.SubGUI
 
         private void ExportToExcel()
         {
-            // Create a new Excel workbook and worksheet
             Microsoft.Office.Interop.Excel.Application excelApp = new Microsoft.Office.Interop.Excel.Application();
             Microsoft.Office.Interop.Excel.Workbook excelWorkbook = excelApp.Workbooks.Add();
             Microsoft.Office.Interop.Excel.Worksheet excelWorksheet = (Microsoft.Office.Interop.Excel.Worksheet)excelWorkbook.Sheets.Add();
-            
-            // Set the [title, start time, end time] in the [first, second, third] row
-            excelWorksheet.Cells[1, 1] = string.Format("REVENUE REPORT");
-            excelWorksheet.Cells[2, 1] = string.Format("From: {0}", dtpTimeStart.Value.ToString());
-            excelWorksheet.Cells[3, 1] = string.Format("To: {0}", dtpTimeEnd.Value.ToString());
 
-            // Merge cells for the [title, start time, end time]
-            Microsoft.Office.Interop.Excel.Range titleRange = excelWorksheet.Range[
-                excelWorksheet.Cells[1, 1], 
-                excelWorksheet.Cells[1, dgRevenue.Columns.Count]
+            SetReportInfo(
+                worksheet: excelWorksheet,
+                rowIndex: 1,
+                value: "REVENUE REPORT",
+                color: Color.Black,
+                isBold: true,
+                size: 16,
+                align: Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter
+            );
+            SetReportInfo(
+                worksheet: excelWorksheet,
+                rowIndex: 2,
+                value: string.Format("From: {0}", dtpTimeStart.Value.ToString()),
+                color: Color.DarkBlue,
+                isBold: true
+            );
+            SetReportInfo(
+                worksheet: excelWorksheet,
+                rowIndex: 3,
+                value: string.Format("To: {0}", dtpTimeEnd.Value.ToString()),
+                color: Color.DarkBlue,
+                isBold: true
+            );
+            SetColumnHeaders(worksheet: excelWorksheet);
+            PopulateData(worksheet: excelWorksheet);
+            CalculateTotal(worksheet: excelWorksheet);
+            SaveFile(app: excelApp, workbook: excelWorkbook, worksheet: excelWorksheet);
+        }
+
+        private void SetReportInfo(
+            Microsoft.Office.Interop.Excel.Worksheet worksheet,
+            int rowIndex,
+            string value,
+            Color color,
+            bool isBold = false,
+            int size = 12,
+            Microsoft.Office.Interop.Excel.XlHAlign align = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft)
+        {
+            worksheet.Cells[rowIndex, 1] = string.Format(value);
+
+            Microsoft.Office.Interop.Excel.Range range = worksheet.Range[
+                worksheet.Cells[rowIndex, 1],
+                worksheet.Cells[rowIndex, dgRevenue.Columns.Count]
             ];
-            titleRange.Merge();
+            range.Merge();
 
-            Microsoft.Office.Interop.Excel.Range startTimeRange = excelWorksheet.Range[
-                excelWorksheet.Cells[2, 1],
-                excelWorksheet.Cells[2, dgRevenue.Columns.Count]
-            ];
-            startTimeRange.Merge();
+            range.Font.Bold = isBold;
+            range.Font.Size = size;
+            range.Font.Color = color;
+            range.HorizontalAlignment = align;
+        }
 
-            Microsoft.Office.Interop.Excel.Range endTimeRange = excelWorksheet.Range[
-                excelWorksheet.Cells[3, 1],
-                excelWorksheet.Cells[3, dgRevenue.Columns.Count]
-            ];
-            endTimeRange.Merge();
-
-            // Apply formatting to the [title, start time, end time]
-            titleRange.Font.Bold = true;
-            titleRange.Font.Size = 16;
-            titleRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-
-            startTimeRange.Font.Bold = true;
-            startTimeRange.Font.Color = Color.DarkBlue;
-            startTimeRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-
-            endTimeRange.Font.Bold = true;
-            endTimeRange.Font.Color = Color.DarkBlue;
-            endTimeRange.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignLeft;
-
-            // Set the column header in the fourth row
+        private void SetColumnHeaders(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        {
             for (int j = 0; j < dgRevenue.Columns.Count; j++)
             {
-                Microsoft.Office.Interop.Excel.Range headerColumn = excelWorksheet.Columns[j + 1];
+                Microsoft.Office.Interop.Excel.Range headerColumn = worksheet.Columns[j + 1];
                 headerColumn.ColumnWidth = 20;
 
-                Microsoft.Office.Interop.Excel.Range headerCell = excelWorksheet.Cells[4, j + 1];
+                Microsoft.Office.Interop.Excel.Range headerCell = worksheet.Cells[4, j + 1];
                 headerCell.Value = dgRevenue.Columns[j].HeaderText;
                 headerCell.Font.Bold = true;
                 headerCell.Interior.Color = Color.Gray;
                 headerColumn.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             }
+        }
 
-            // Populate the worksheet with data from the DataGridView's DataSource
+        private void PopulateData(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        {
             for (int i = 0; i < dgRevenue.Rows.Count; i++)
             {
                 for (int j = 0; j < dgRevenue.Columns.Count; j++)
                 {
-                    excelWorksheet.Cells[i + 5, j + 1] = dgRevenue.Rows[i].Cells[j].Value.ToString();
+                    worksheet.Cells[i + 5, j + 1] = dgRevenue.Rows[i].Cells[j].Value.ToString();
                 }
             }
+        }
 
-            // Add a row at the end of the worksheet and calculate the total value
+        private void CalculateTotal(Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        {
             int lastRowIndex = dgRevenue.Rows.Count + 4;
             for (int j = 0; j < dgRevenue.Columns.Count; j++)
             {
@@ -198,27 +217,31 @@ namespace DesktopApp.GUI.SubGUI
                     decimal cellValue = Convert.ToDecimal(dgRevenue.Rows[lastRowIndex].Cells[j].Value);
                 }
             }
-            Microsoft.Office.Interop.Excel.Range totalTitle = excelWorksheet.Cells[lastRowIndex + 1, 1];
+            Microsoft.Office.Interop.Excel.Range totalTitle = worksheet.Cells[lastRowIndex + 1, 1];
             totalTitle.Value = "Total";
             totalTitle.Font.Bold = true;
             totalTitle.Font.Color = Color.Red;
 
-            Microsoft.Office.Interop.Excel.Range totalValue = excelWorksheet.Cells[lastRowIndex + 1, 2];
+            Microsoft.Office.Interop.Excel.Range totalValue = worksheet.Cells[lastRowIndex + 1, 2];
             totalValue.Value = txbTotalRevenue.Text;
             totalValue.Font.Bold = true;
             totalValue.Font.Color = Color.Red;
+        }
 
-            // Prompt the user for a save location using a SaveFileDialog
+        private void SaveFile(
+            Microsoft.Office.Interop.Excel.Application app,
+            Microsoft.Office.Interop.Excel.Workbook workbook,
+            Microsoft.Office.Interop.Excel.Worksheet worksheet)
+        {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
             saveFileDialog.FileName = "ExportedData.xlsx";
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Save the workbook to the selected location
                 string filePath = saveFileDialog.FileName;
-                excelWorkbook.SaveAs(filePath);
-                excelWorkbook.Close();
-                excelApp.Quit();
+                worksheet.SaveAs(filePath);
+                workbook.Close();
+                app.Quit();
                 MessageBox.Show(
                     text: "Export successful!",
                     caption: "Notification",
