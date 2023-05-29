@@ -99,6 +99,7 @@
     <Compile Include="DAO\ActionDAO.cs" />
     <Compile Include="DAO\AreaDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
+    <Compile Include="DAO\BillDetailDAO.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
     <Compile Include="DAO\RoleActionDAO.cs" />
     <Compile Include="DAO\RoleDAO.cs" />
@@ -108,6 +109,7 @@
     <Compile Include="Database\SqlServerDatabase.cs" />
     <Compile Include="DTO\ActionDTO.cs" />
     <Compile Include="DTO\AreaDTO.cs" />
+    <Compile Include="DTO\BillDetailDTO.cs" />
     <Compile Include="DTO\CategoryDTO.cs" />
     <Compile Include="DTO\RoleActionDTO.cs" />
     <Compile Include="DTO\RoleDTO.cs" />
