@@ -105,5 +105,25 @@ namespace DesktopApp.DAO
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;
         }
+
+        public bool ChangeStatus(Guid billId, BillStatus status)
+        {
+            string query = @"update dbo.[Bill] set Status = @status where BillId = @billId";
+
+            List<object> parameters = new List<object> { status, billId };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
+
+        public bool UpdateTotal(Guid billId, float total)
+        {
+            string query = @"update dbo.[Bill] set Total = @total where BillId = @billId";
+
+            List<object> parameters = new List<object> { total, billId };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
     }
 }

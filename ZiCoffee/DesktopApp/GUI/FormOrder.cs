@@ -339,10 +339,14 @@ namespace DesktopApp.GUI
 
             BillDetailDAO billDetailDAO = new BillDetailDAO();
             billDetailDAO.DeleteBillDetails(billId: currentBill.BillId);
+            float total = 0;
             foreach (BillDetailDTO billDetail in currentBillDetails)
             {
                 billDetailDAO.CreateBillDetails(billDetail: billDetail);
+                total += billDetail.Amount;
             }
+
+            new BillDAO().UpdateTotal(billId: currentBill.BillId, total: total);
             
             if (currentSelectedTable.Status == TableStatus.Ready)
             {
