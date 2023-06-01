@@ -38,7 +38,7 @@
             this.lbPendingTable = new System.Windows.Forms.Label();
             this.lbReadyTable = new System.Windows.Forms.Label();
             this.lbUsingTable = new System.Windows.Forms.Label();
-            this.TotalTable = new System.Windows.Forms.Label();
+            this.lbTotalTable = new System.Windows.Forms.Label();
             this.lbCopyright = new System.Windows.Forms.Label();
             this.pnlAccountSideBar = new System.Windows.Forms.Panel();
             this.btnManage = new System.Windows.Forms.Button();
@@ -153,7 +153,7 @@
             this.pnlFooter.Controls.Add(this.lbPendingTable);
             this.pnlFooter.Controls.Add(this.lbReadyTable);
             this.pnlFooter.Controls.Add(this.lbUsingTable);
-            this.pnlFooter.Controls.Add(this.TotalTable);
+            this.pnlFooter.Controls.Add(this.lbTotalTable);
             this.pnlFooter.Controls.Add(this.lbCopyright);
             this.pnlFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlFooter.Location = new System.Drawing.Point(0, 770);
@@ -201,17 +201,17 @@
             this.lbUsingTable.Text = "Using Table: 100";
             this.lbUsingTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // TotalTable
+            // lbTotalTable
             // 
-            this.TotalTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TotalTable.AutoSize = true;
-            this.TotalTable.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalTable.Location = new System.Drawing.Point(12, 1);
-            this.TotalTable.Name = "TotalTable";
-            this.TotalTable.Size = new System.Drawing.Size(108, 17);
-            this.TotalTable.TabIndex = 0;
-            this.TotalTable.Text = "Total Table: 100";
-            this.TotalTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbTotalTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbTotalTable.AutoSize = true;
+            this.lbTotalTable.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTotalTable.Location = new System.Drawing.Point(12, 1);
+            this.lbTotalTable.Name = "lbTotalTable";
+            this.lbTotalTable.Size = new System.Drawing.Size(108, 17);
+            this.lbTotalTable.TabIndex = 0;
+            this.lbTotalTable.Text = "Total Table: 100";
+            this.lbTotalTable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lbCopyright
             // 
@@ -641,7 +641,7 @@
         private System.Windows.Forms.Label lbPendingTable;
         private System.Windows.Forms.Label lbReadyTable;
         private System.Windows.Forms.Label lbUsingTable;
-        private System.Windows.Forms.Label TotalTable;
+        private System.Windows.Forms.Label lbTotalTable;
         private System.Windows.Forms.Panel pnlAccountSideBar;
         private System.Windows.Forms.Panel pnlSwitch;
         private System.Windows.Forms.PictureBox picShowAccount;

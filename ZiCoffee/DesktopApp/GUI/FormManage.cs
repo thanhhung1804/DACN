@@ -42,6 +42,7 @@ namespace DesktopApp.GUI
         private void formManage_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            btnRevenue_Click(sender: btnRevenue, e: new EventArgs());
         }
 
         private void formManage_SizeChanged(object sender, EventArgs e)

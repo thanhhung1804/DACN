@@ -229,6 +229,7 @@
             this.columnHeaderTotal});
             this.lsvBill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsvBill.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lsvBill.ForeColor = System.Drawing.Color.White;
             this.lsvBill.FullRowSelect = true;
             this.lsvBill.HideSelection = false;
             this.lsvBill.Location = new System.Drawing.Point(0, 0);
@@ -274,9 +275,9 @@
             // fpnlService
             // 
             this.fpnlService.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fpnlService.Location = new System.Drawing.Point(50, 250);
+            this.fpnlService.Location = new System.Drawing.Point(50, 150);
             this.fpnlService.Name = "fpnlService";
-            this.fpnlService.Size = new System.Drawing.Size(680, 472);
+            this.fpnlService.Size = new System.Drawing.Size(680, 572);
             this.fpnlService.TabIndex = 0;
             // 
             // fpnlCategory
@@ -284,7 +285,7 @@
             this.fpnlCategory.Dock = System.Windows.Forms.DockStyle.Top;
             this.fpnlCategory.Location = new System.Drawing.Point(50, 50);
             this.fpnlCategory.Name = "fpnlCategory";
-            this.fpnlCategory.Size = new System.Drawing.Size(680, 200);
+            this.fpnlCategory.Size = new System.Drawing.Size(680, 100);
             this.fpnlCategory.TabIndex = 0;
             // 
             // formOrder

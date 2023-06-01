@@ -38,19 +38,37 @@ namespace DesktopApp.GUI
 
         private AreaDTO currentSelectedArea;
         private TableDTO currentSelectedTable;
+        private UserDTO currentSelectedUser;
 
         public formBusiness()
         {
             InitializeComponent();
-            currentSelectedArea = null; 
+            currentSelectedArea = null;
             currentSelectedTable = null;
+            currentSelectedUser = null;
         }
 
         private void formBusiness_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
+            // TODO: Fixed username
+            currentSelectedUser = new UserDAO().GetUser(username: "admin01");
+
             LoadArea();
             LoadTable();
+        }
+
+        private void formBusiness_SizeChanged(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Maximized)
+            {
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
+            }
+            else
+            {
+                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            }
         }
 
         private void LoadArea()
@@ -119,6 +137,7 @@ namespace DesktopApp.GUI
                 btnTable.Click += btnTable_Click;
                 fpnlTable.Controls.Add(btnTable);
             }
+            LoadFooter();
         }
 
         private void btnTable_Click(object sender, EventArgs e)
@@ -135,16 +154,31 @@ namespace DesktopApp.GUI
             }
         }
 
-        private void formBusiness_SizeChanged(object sender, EventArgs e)
+        private void LoadFooter()
         {
-            if (WindowState == FormWindowState.Maximized)
+            List<TableDTO> tables = new TableDAO().GetAll(areaId: Guid.Empty);
+            int pendingTable = 0;
+            int usingTable = 0;
+            int readyTable = 0;
+            foreach (TableDTO table in tables)
             {
-                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 0, 0));
+                if (table.Status == TableStatus.Pending)
+                {
+                    pendingTable++;
+                }
+                else if (table.Status == TableStatus.Using)
+                {
+                    usingTable++;
+                }
+                else
+                {
+                    readyTable++;
+                }
             }
-            else
-            {
-                Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            }
+            lbTotalTable.Text = string.Format("Total table: {0}", tables.Count.ToString());
+            lbPendingTable.Text = string.Format("Pending table: {0}", pendingTable.ToString());
+            lbUsingTable.Text = string.Format("Using table: {0}", usingTable.ToString());
+            lbReadyTable.Text = string.Format("Ready table: {0}", readyTable.ToString());
         }
 
         private void picClose_Click(object sender, EventArgs e)
@@ -195,20 +229,56 @@ namespace DesktopApp.GUI
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            formOrder formOrder = new formOrder();
+            if (currentSelectedTable == null)
+            {
+                MessageBox.Show("Please select a table before", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (currentSelectedTable.Status == TableStatus.Pending)
+            {
+                MessageBox.Show("Please unlock table before", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            formOrder formOrder = new formOrder(table: currentSelectedTable, user: currentSelectedUser);
             formOrder.ShowDialog();
+            LoadTable();
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
-            formCheckOut formCheckOut = new formCheckOut();
+            if (currentSelectedTable == null)
+            {
+                MessageBox.Show("Please select a table before", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (currentSelectedTable.Status == TableStatus.Pending)
+            {
+                MessageBox.Show("Please unlock table before", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (currentSelectedTable.Status == TableStatus.Ready)
+            {
+                MessageBox.Show("Can not pay for empty table", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            formCheckOut formCheckOut = new formCheckOut(currentSelectedTable, currentSelectedUser);
             formCheckOut.ShowDialog();
+            LoadTable();
         }
 
         private void btnManage_Click(object sender, EventArgs e)
         {
             formManage form = new formManage();
+            Hide();
             form.ShowDialog();
+            Show();
+            LoadArea();
+            LoadTable();
         }
 
         private void btnLockTable_Click(object sender, EventArgs e)
@@ -216,6 +286,12 @@ namespace DesktopApp.GUI
             if (currentSelectedTable == null)
             {
                 MessageBox.Show("Please select a table before", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (currentSelectedTable.Status == TableStatus.Using)
+            {
+                MessageBox.Show("Can not lock a using table", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -231,6 +307,15 @@ namespace DesktopApp.GUI
             );
             currentSelectedTable.Status = status;
             LoadTable();
+
+            if (btnLockTable.Text == "Lock")
+            {
+                btnLockTable.Text = "UnLock";
+            }
+            else
+            {
+                btnLockTable.Text = "Lock";
+            }
         }
     }
 }

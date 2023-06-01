@@ -118,7 +118,7 @@ namespace DesktopApp.DAO
             return result;
         }
 
-        public bool ChangeStatus(Guid tableId, TableStatus status = TableStatus.Ready)
+        public bool ChangeStatus(Guid tableId, TableStatus status)
         {
             string query = @"update dbo.[Table] set Status = @status where TableId = @tableId";
 

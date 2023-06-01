@@ -19,6 +19,8 @@ namespace DesktopApp.DTO
         public Guid CategoryId { get; set; }
         public string CategoryName { get; set; }
 
+        public string DisplayName { get; set; }
+
         public ServiceDTO(DataRow row)
         {
             ServiceId = Guid.Parse(row["ServiceId"].ToString());
@@ -43,6 +45,7 @@ namespace DesktopApp.DTO
             Image = row["Image"].ToString();
             CategoryId = Guid.Parse(row["CategoryId"].ToString());
             CategoryName = row["CategoryName"].ToString();
+            DisplayName = string.Format("{0}\n{1}\n{2}", Name, Price, Status.ToString());
         }
     }
 }

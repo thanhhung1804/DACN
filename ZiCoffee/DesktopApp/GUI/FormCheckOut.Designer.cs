@@ -159,6 +159,7 @@
             this.columnHeaderTotal});
             this.lsvBill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsvBill.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lsvBill.ForeColor = System.Drawing.Color.White;
             this.lsvBill.FullRowSelect = true;
             this.lsvBill.HideSelection = false;
             this.lsvBill.Location = new System.Drawing.Point(0, 0);

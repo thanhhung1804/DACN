@@ -118,5 +118,20 @@ namespace DesktopApp.DAO
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;
         }
+
+        public UserDTO GetUser(string username)
+        {
+            string query = @"
+                select u.UserId, u.Username, u.Password, u.Avatar, u.Name, u.Gender, u.Birthday, 
+                    u.Address, u.CitizenId, u.Phone, u.Email, u.RoleId, r.Name as RoleName 
+                from dbo.[User] as u, dbo.[Role] as r 
+                where u.RoleId = r.RoleId and u.Username = @username";
+
+            List<object> parameters = new List<object> { username };
+
+            DataTable dataTable = database.ExecuteQuery(query, parameters);
+            UserDTO user = new UserDTO(dataTable.Rows[0]);
+            return user;
+        }
     }
 }
