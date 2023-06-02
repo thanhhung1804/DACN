@@ -57,6 +57,18 @@ namespace DesktopApp.GUI
 
             LoadArea();
             LoadTable();
+            LoadUserInfo();
+        }
+
+        private void LoadUserInfo()
+        {
+            picAvatar.Image = Properties.Resources.Avatar;
+            txbFullName.Text = currentSelectedUser.Name;
+            txbAddress.Text = currentSelectedUser.Address;
+            txbBirthday.Text = currentSelectedUser.Birthday.Date.ToString("dd-MM-yyyy");
+            txbCitizenId.Text = currentSelectedUser.CitizenId;
+            txbPhone.Text = currentSelectedUser.Phone;
+            txbRole.Text = currentSelectedUser.RoleName;
         }
 
         private void formBusiness_SizeChanged(object sender, EventArgs e)
@@ -432,6 +444,7 @@ namespace DesktopApp.GUI
             Show();
             LoadArea();
             LoadTable();
+            LoadUserInfo();
         }
 
         private void btnLockTable_Click(object sender, EventArgs e)
