@@ -119,7 +119,7 @@ namespace DesktopApp.DAO
             return result;
         }
 
-        public UserDTO GetUser(string username)
+        public UserDTO GetUser(string username, string password = null)
         {
             string query = @"
                 select u.UserId, u.Username, u.Password, u.Avatar, u.Name, u.Gender, u.Birthday, 
@@ -129,7 +129,17 @@ namespace DesktopApp.DAO
 
             List<object> parameters = new List<object> { username };
 
+            if (password != null)
+            {
+                query += " and u.Password = @password";
+                parameters.Add(password);
+            }
+
             DataTable dataTable = database.ExecuteQuery(query, parameters);
+            if (dataTable == null || dataTable.Rows.Count <= 0)
+            {
+                return null;
+            }
             UserDTO user = new UserDTO(dataTable.Rows[0]);
             return user;
         }

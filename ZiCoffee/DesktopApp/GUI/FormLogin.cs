@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DesktopApp.DAO;
+using DesktopApp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -108,8 +110,16 @@ namespace DesktopApp.GUI
                 lbErrorPassword.Visible = false;
             }
 
-            //Check database: to verify username and password
-            formBusiness formBusiness = new formBusiness();
+            UserDTO user = new UserDAO().GetUser(username, password);
+            if (user == null)
+            {
+                lbErrorUsername.Text = lbErrorPassword.Text = "Username or password is not correct";
+                lbErrorUsername.Visible = lbErrorPassword.Visible = true;
+                return;
+            }
+            lbErrorUsername.Visible = lbErrorPassword.Visible = false;
+
+            formBusiness formBusiness = new formBusiness(user);
             Hide();
             formBusiness.ShowDialog();
             Show();

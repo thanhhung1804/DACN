@@ -43,20 +43,17 @@ namespace DesktopApp.GUI
 
         private Button draggedButton;
 
-        public formBusiness()
+        public formBusiness(UserDTO user)
         {
             InitializeComponent();
             currentSelectedArea = null;
             currentSelectedTable = null;
-            currentSelectedUser = null;
+            currentSelectedUser = user;
         }
 
         private void formBusiness_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-
-            // TODO: Fixed username
-            currentSelectedUser = new UserDAO().GetUser(username: "admin01");
 
             LoadArea();
             LoadTable();
