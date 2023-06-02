@@ -39,7 +39,7 @@ namespace DesktopApp.GUI
         #endregion
 
         private TableDTO currentSelectedTable;
-        private UserDTO currentSelectedUser;
+        private UserDTO currentUser;
         private CategoryDTO currentSelectedCategory;
         private ServiceDTO currentSelectedService;
         private BillDTO currentBill;
@@ -50,7 +50,7 @@ namespace DesktopApp.GUI
         {
             InitializeComponent();
             currentSelectedTable = table;
-            currentSelectedUser = user;
+            currentUser = user;
             currentSelectedCategory = null;
             currentSelectedService = null;
             currentBill = null;
@@ -77,7 +77,7 @@ namespace DesktopApp.GUI
             {
                 Tuple<bool, Guid> creationResult = new BillDAO().Create(
                     tableId: currentSelectedTable.TableId, 
-                    userId: currentSelectedUser.UserId
+                    userId: currentUser.UserId
                 );
                 currentBill = new BillDAO().GetUnpaidBillByTable(tableId: currentSelectedTable.TableId);
             }

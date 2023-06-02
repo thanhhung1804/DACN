@@ -143,5 +143,15 @@ namespace DesktopApp.DAO
             UserDTO user = new UserDTO(dataTable.Rows[0]);
             return user;
         }
+
+        public bool SetPassword(Guid userId, string password)
+        {
+            string query = @"update dbo.[User] set Password = @password where UserId = @userId";
+
+            List<object> parameters = new List<object> { password, userId };
+
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace DesktopApp.GUI
 
         private AreaDTO currentSelectedArea;
         private TableDTO currentSelectedTable;
-        private UserDTO currentSelectedUser;
+        private UserDTO currentUser;
 
         private Button draggedButton;
 
@@ -48,7 +48,7 @@ namespace DesktopApp.GUI
             InitializeComponent();
             currentSelectedArea = null;
             currentSelectedTable = null;
-            currentSelectedUser = user;
+            currentUser = user;
         }
 
         private void formBusiness_Load(object sender, EventArgs e)
@@ -63,12 +63,12 @@ namespace DesktopApp.GUI
         private void LoadUserInfo()
         {
             picAvatar.Image = Properties.Resources.Avatar;
-            txbFullName.Text = currentSelectedUser.Name;
-            txbAddress.Text = currentSelectedUser.Address;
-            txbBirthday.Text = currentSelectedUser.Birthday.Date.ToString("dd-MM-yyyy");
-            txbCitizenId.Text = currentSelectedUser.CitizenId;
-            txbPhone.Text = currentSelectedUser.Phone;
-            txbRole.Text = currentSelectedUser.RoleName;
+            txbFullName.Text = currentUser.Name;
+            txbAddress.Text = currentUser.Address;
+            txbBirthday.Text = currentUser.Birthday.Date.ToString("dd-MM-yyyy");
+            txbCitizenId.Text = currentUser.CitizenId;
+            txbPhone.Text = currentUser.Phone;
+            txbRole.Text = currentUser.RoleName;
         }
 
         private void formBusiness_SizeChanged(object sender, EventArgs e)
@@ -388,7 +388,7 @@ namespace DesktopApp.GUI
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            formChangePassword formChangePassword = new formChangePassword();
+            formChangePassword formChangePassword = new formChangePassword(currentUser);
             formChangePassword.ShowDialog();
         }
 
@@ -406,7 +406,7 @@ namespace DesktopApp.GUI
                 return;
             }
 
-            formOrder formOrder = new formOrder(table: currentSelectedTable, user: currentSelectedUser);
+            formOrder formOrder = new formOrder(table: currentSelectedTable, user: currentUser);
             formOrder.ShowDialog();
             LoadTable();
         }
@@ -431,7 +431,7 @@ namespace DesktopApp.GUI
                 return;
             }
 
-            formCheckOut formCheckOut = new formCheckOut(currentSelectedTable, currentSelectedUser);
+            formCheckOut formCheckOut = new formCheckOut(currentSelectedTable, currentUser);
             formCheckOut.ShowDialog();
             LoadTable();
         }

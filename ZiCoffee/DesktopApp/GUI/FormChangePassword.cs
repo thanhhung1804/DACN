@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DesktopApp.DAO;
+using DesktopApp.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,9 +36,12 @@ namespace DesktopApp.GUI
         );
         #endregion
 
-        public formChangePassword()
+        private UserDTO currentUser;
+
+        public formChangePassword(UserDTO user)
         {
             InitializeComponent();
+            currentUser = user;
         }
 
         private void picMinimize_Click(object sender, EventArgs e)
@@ -91,6 +96,16 @@ namespace DesktopApp.GUI
         private void btnChange_Click(object sender, EventArgs e)
         {
             //check old password matching with database
+            if (txbOldPassword.Text != currentUser.Password)
+            {
+                lbCommentOldPassword.Text = "The old password is not match";
+                lbCommentOldPassword.Visible = true;
+                return;
+            }
+            else
+            {
+                lbCommentOldPassword.Visible = false;
+            }
             //check new password matching with old password
             if (txbNewPassword.Text == txbOldPassword.Text)
             {
@@ -126,7 +141,15 @@ namespace DesktopApp.GUI
                 lbCommentNewPassword.Visible = false;
             }
             //Save new password into database
-            //Close
+            bool isPasswordUpdated = new UserDAO().SetPassword(userId: currentUser.UserId, password: txbNewPassword.Text);
+            
+            if (!isPasswordUpdated)
+            {
+                MessageBox.Show("update fail", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MessageBox.Show("update successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             Close();
         }
 
