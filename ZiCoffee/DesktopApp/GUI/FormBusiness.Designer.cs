@@ -60,8 +60,6 @@
             this.picHideAccount = new System.Windows.Forms.PictureBox();
             this.pnlBusinessSideBar = new System.Windows.Forms.Panel();
             this.btnLockTable = new System.Windows.Forms.Button();
-            this.btnMoveTable = new System.Windows.Forms.Button();
-            this.btnMergeTable = new System.Windows.Forms.Button();
             this.btnOrder = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             this.txbSelectingTable = new System.Windows.Forms.TextBox();
@@ -467,22 +465,22 @@
             // 
             // pnlBusinessSideBar
             // 
-            this.pnlBusinessSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlBusinessSideBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.pnlBusinessSideBar.Controls.Add(this.btnLockTable);
-            this.pnlBusinessSideBar.Controls.Add(this.btnMoveTable);
-            this.pnlBusinessSideBar.Controls.Add(this.btnMergeTable);
             this.pnlBusinessSideBar.Controls.Add(this.btnOrder);
             this.pnlBusinessSideBar.Controls.Add(this.btnPay);
             this.pnlBusinessSideBar.Controls.Add(this.txbSelectingTable);
             this.pnlBusinessSideBar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlBusinessSideBar.Location = new System.Drawing.Point(900, 50);
+            this.pnlBusinessSideBar.Location = new System.Drawing.Point(1000, 50);
             this.pnlBusinessSideBar.Margin = new System.Windows.Forms.Padding(4);
             this.pnlBusinessSideBar.Name = "pnlBusinessSideBar";
-            this.pnlBusinessSideBar.Size = new System.Drawing.Size(300, 720);
-            this.pnlBusinessSideBar.TabIndex = 1;
+            this.pnlBusinessSideBar.Size = new System.Drawing.Size(200, 720);
+            this.pnlBusinessSideBar.TabIndex = 0;
             // 
             // btnLockTable
             // 
+            this.btnLockTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLockTable.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLockTable.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnLockTable.FlatAppearance.BorderSize = 3;
@@ -490,50 +488,24 @@
             this.btnLockTable.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLockTable.Location = new System.Drawing.Point(0, 50);
             this.btnLockTable.Name = "btnLockTable";
-            this.btnLockTable.Size = new System.Drawing.Size(300, 50);
+            this.btnLockTable.Size = new System.Drawing.Size(200, 50);
             this.btnLockTable.TabIndex = 0;
             this.btnLockTable.Text = "Lock";
             this.btnLockTable.UseVisualStyleBackColor = true;
             this.btnLockTable.Click += new System.EventHandler(this.btnLockTable_Click);
             // 
-            // btnMoveTable
-            // 
-            this.btnMoveTable.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMoveTable.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnMoveTable.FlatAppearance.BorderSize = 3;
-            this.btnMoveTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMoveTable.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMoveTable.Location = new System.Drawing.Point(0, 106);
-            this.btnMoveTable.Name = "btnMoveTable";
-            this.btnMoveTable.Size = new System.Drawing.Size(300, 50);
-            this.btnMoveTable.TabIndex = 0;
-            this.btnMoveTable.Text = "Move";
-            this.btnMoveTable.UseVisualStyleBackColor = true;
-            // 
-            // btnMergeTable
-            // 
-            this.btnMergeTable.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMergeTable.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnMergeTable.FlatAppearance.BorderSize = 3;
-            this.btnMergeTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMergeTable.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMergeTable.Location = new System.Drawing.Point(0, 162);
-            this.btnMergeTable.Name = "btnMergeTable";
-            this.btnMergeTable.Size = new System.Drawing.Size(300, 50);
-            this.btnMergeTable.TabIndex = 0;
-            this.btnMergeTable.Text = "Merge";
-            this.btnMergeTable.UseVisualStyleBackColor = true;
-            // 
             // btnOrder
             // 
+            this.btnOrder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOrder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnOrder.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnOrder.FlatAppearance.BorderSize = 3;
             this.btnOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOrder.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOrder.Location = new System.Drawing.Point(0, 218);
+            this.btnOrder.Location = new System.Drawing.Point(0, 106);
             this.btnOrder.Name = "btnOrder";
-            this.btnOrder.Size = new System.Drawing.Size(300, 50);
+            this.btnOrder.Size = new System.Drawing.Size(200, 50);
             this.btnOrder.TabIndex = 0;
             this.btnOrder.Text = "Order";
             this.btnOrder.UseVisualStyleBackColor = true;
@@ -541,14 +513,16 @@
             // 
             // btnPay
             // 
+            this.btnPay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPay.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPay.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnPay.FlatAppearance.BorderSize = 3;
             this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPay.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPay.Location = new System.Drawing.Point(0, 274);
+            this.btnPay.Location = new System.Drawing.Point(0, 162);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(300, 50);
+            this.btnPay.Size = new System.Drawing.Size(200, 50);
             this.btnPay.TabIndex = 0;
             this.btnPay.Text = "Pay";
             this.btnPay.UseVisualStyleBackColor = true;
@@ -556,13 +530,15 @@
             // 
             // txbSelectingTable
             // 
+            this.txbSelectingTable.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txbSelectingTable.Cursor = System.Windows.Forms.Cursors.No;
             this.txbSelectingTable.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbSelectingTable.Location = new System.Drawing.Point(0, 12);
             this.txbSelectingTable.MaxLength = 20;
             this.txbSelectingTable.Name = "txbSelectingTable";
             this.txbSelectingTable.ReadOnly = true;
-            this.txbSelectingTable.Size = new System.Drawing.Size(300, 30);
+            this.txbSelectingTable.Size = new System.Drawing.Size(200, 30);
             this.txbSelectingTable.TabIndex = 0;
             this.txbSelectingTable.TabStop = false;
             this.txbSelectingTable.Text = "No Selected Table";
@@ -574,7 +550,7 @@
             this.fpnlArea.Dock = System.Windows.Forms.DockStyle.Top;
             this.fpnlArea.Location = new System.Drawing.Point(300, 50);
             this.fpnlArea.Name = "fpnlArea";
-            this.fpnlArea.Size = new System.Drawing.Size(600, 100);
+            this.fpnlArea.Size = new System.Drawing.Size(700, 100);
             this.fpnlArea.TabIndex = 0;
             // 
             // fpnlTable
@@ -583,7 +559,7 @@
             this.fpnlTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnlTable.Location = new System.Drawing.Point(300, 150);
             this.fpnlTable.Name = "fpnlTable";
-            this.fpnlTable.Size = new System.Drawing.Size(600, 620);
+            this.fpnlTable.Size = new System.Drawing.Size(700, 620);
             this.fpnlTable.TabIndex = 0;
             // 
             // formBusiness
@@ -660,8 +636,6 @@
         private System.Windows.Forms.TextBox txbRole;
         private System.Windows.Forms.Panel pnlBusinessSideBar;
         private System.Windows.Forms.Button btnLockTable;
-        private System.Windows.Forms.Button btnMoveTable;
-        private System.Windows.Forms.Button btnMergeTable;
         private System.Windows.Forms.Button btnOrder;
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.TextBox txbSelectingTable;
