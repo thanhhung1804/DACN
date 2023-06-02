@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Shapes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.IO;
 
 namespace DesktopApp.GUI
 {
@@ -153,7 +153,7 @@ namespace DesktopApp.GUI
             {
                 PrintDocument printDocument = new PrintDocument();
                 printDocument.PrintPage += PrintDocument_PrintPage;
-                printDocument.DefaultPageSettings.Margins = new Margins(50,300,50,50);
+                printDocument.DefaultPageSettings.Margins = new Margins(50,320,50,50);
                 printDocument.Print();
                 return;
             }
@@ -163,37 +163,58 @@ namespace DesktopApp.GUI
         {
             Graphics graphics = e.Graphics;
             System.Drawing.Font titleFont = new System.Drawing.Font("Arial", 20, FontStyle.Bold);
-            System.Drawing.Font totalFont = new System.Drawing.Font("Arial", 16, FontStyle.Bold);
-            System.Drawing.Font headerFont = new System.Drawing.Font("Arial", 12, FontStyle.Bold);
-            System.Drawing.Font contentFont = new System.Drawing.Font("Arial", 12);
+            System.Drawing.Font totalFont = new System.Drawing.Font("Courier New", 16, FontStyle.Bold);
+            System.Drawing.Font headerFont = new System.Drawing.Font("Courier New", 12, FontStyle.Bold);
+            System.Drawing.Font contentFont = new System.Drawing.Font("Courier New", 12);
             int lineSpacing = 20;
 
             // Print store name
-            graphics.DrawString("ZiCoffee", titleFont, Brushes.Black, new PointF(e.MarginBounds.Left, e.MarginBounds.Top));
-
-            // Print bill ID
-            graphics.DrawString("Bill ID: " + currentBill.BillId, contentFont, Brushes.Black, new PointF(e.MarginBounds.Left, e.MarginBounds.Top + lineSpacing * 2));
-
-            // Print current date
-            graphics.DrawString("Date: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"), contentFont, Brushes.Black, new PointF(e.MarginBounds.Left, e.MarginBounds.Top + lineSpacing * 3));
+            string storeName = "ZiCoffee";
+            SizeF storeNameSize = graphics.MeasureString(storeName, titleFont);
+            PointF storeNamePosition = new PointF(
+                e.MarginBounds.Left + (e.MarginBounds.Width - storeNameSize.Width) / 2, 
+                e.MarginBounds.Top
+            );
+            graphics.DrawString(storeName, titleFont, Brushes.Black, storeNamePosition);
 
             // Print cashier name
-            graphics.DrawString("Cashier: " + currentSelectedUser.Name, contentFont, Brushes.Black, new PointF(e.MarginBounds.Left, e.MarginBounds.Top + lineSpacing * 4));
+            string cashierName = "Cashier: " + currentSelectedUser.Name;
+            SizeF cashierNameSize = graphics.MeasureString(cashierName, contentFont);
+            PointF cashierNamePosition = new PointF(
+                e.MarginBounds.Left + (e.MarginBounds.Width - cashierNameSize.Width) / 2, 
+                e.MarginBounds.Top + lineSpacing * 2
+            );
+            graphics.DrawString(cashierName, contentFont, Brushes.Black, cashierNamePosition);
+
+            // Print current date
+            string createDate = "Date: " + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            SizeF createDateSize = graphics.MeasureString(createDate, contentFont);
+            PointF createDatePosition = new PointF(
+                e.MarginBounds.Left + (e.MarginBounds.Width - createDateSize.Width) / 2, 
+                e.MarginBounds.Top + lineSpacing * 3
+            );
+            graphics.DrawString(createDate, contentFont, Brushes.Black, createDatePosition);
 
             // Print table name
-            graphics.DrawString("Table: " + currentSelectedTable.Name, contentFont, Brushes.Black, new PointF(e.MarginBounds.Left, e.MarginBounds.Top + lineSpacing * 5));
+            string tableName = "Table: " + currentSelectedTable.Name;
+            SizeF tableNameSize = graphics.MeasureString(tableName, contentFont);
+            PointF tableNamePosition = new PointF(
+                e.MarginBounds.Left + (e.MarginBounds.Width - tableNameSize.Width) / 2, 
+                e.MarginBounds.Top + lineSpacing * 4
+            );
+            graphics.DrawString(tableName, contentFont, Brushes.Black, tableNamePosition);
 
             // Print bill details table headers
-            graphics.DrawString("Service", headerFont, Brushes.Black, new PointF(e.MarginBounds.Left, e.MarginBounds.Top + lineSpacing * 7));
-            graphics.DrawString("Price", headerFont, Brushes.Black, new PointF(e.MarginBounds.Left + 200, e.MarginBounds.Top + lineSpacing * 7));
-            graphics.DrawString("Quantity", headerFont, Brushes.Black, new PointF(e.MarginBounds.Left + 300, e.MarginBounds.Top + lineSpacing * 7));
-            graphics.DrawString("Amount", headerFont, Brushes.Black, new PointF(e.MarginBounds.Left + 400, e.MarginBounds.Top + lineSpacing * 7));
+            graphics.DrawString("Service", headerFont, Brushes.Black, new PointF(e.MarginBounds.Left, e.MarginBounds.Top + lineSpacing * 6));
+            graphics.DrawString("Price", headerFont, Brushes.Black, new PointF(e.MarginBounds.Left + 200, e.MarginBounds.Top + lineSpacing * 6));
+            graphics.DrawString("Qty", headerFont, Brushes.Black, new PointF(e.MarginBounds.Left + 300, e.MarginBounds.Top + lineSpacing * 6));
+            graphics.DrawString("Amount", headerFont, Brushes.Black, new PointF(e.MarginBounds.Left + 400, e.MarginBounds.Top + lineSpacing * 6));
 
-            int lineY = e.MarginBounds.Top + lineSpacing * 8;
+            int lineY = e.MarginBounds.Top + lineSpacing * 7;
             graphics.DrawLine(Pens.Black, e.MarginBounds.Left, lineY, e.MarginBounds.Right, lineY);
 
             // Print bill details
-            float tableY = e.MarginBounds.Top + lineSpacing * 9;
+            float tableY = e.MarginBounds.Top + lineSpacing * 8;
             float totalAmount = 0;
             foreach (BillDetailDTO billDetail in currentBillDetails)
             {
@@ -203,19 +224,50 @@ namespace DesktopApp.GUI
                 graphics.DrawString(billDetail.ServiceName, contentFont, Brushes.Black, new PointF(e.MarginBounds.Left, tableY));
                 graphics.DrawString(billDetail.ServicePrice.ToString("n0"), contentFont, Brushes.Black, new PointF(e.MarginBounds.Left + 200, tableY));
                 graphics.DrawString(billDetail.Quantity.ToString(), contentFont, Brushes.Black, new PointF(e.MarginBounds.Left + 300, tableY));
-                graphics.DrawString(amount.ToString("0.00"), contentFont, Brushes.Black, new PointF(e.MarginBounds.Left + 400, tableY));
+                graphics.DrawString(amount.ToString("n0"), contentFont, Brushes.Black, new PointF(e.MarginBounds.Left + 400, tableY));
 
                 tableY += lineSpacing;
             }
 
             // Print total amount
-            graphics.DrawString("Total: " + totalAmount.ToString("n0"), totalFont, Brushes.Black, new PointF(e.MarginBounds.Left, tableY + lineSpacing));
+            string total = "Total: " + totalAmount.ToString("n0");
+            SizeF totalSize = graphics.MeasureString(total, contentFont);
+            PointF totalPosition = new PointF(
+                e.MarginBounds.Right - totalSize.Width - 50, 
+                tableY + lineSpacing
+            );
+            graphics.DrawString(total, totalFont, Brushes.Black, totalPosition);
 
             // Print thanks message
-            graphics.DrawString("Thank you for your visit!", contentFont, Brushes.Black, new PointF(e.MarginBounds.Left, tableY + lineSpacing * 3));
+            string thanks = "Thank you for your visit!";
+            SizeF thanksSize = graphics.MeasureString(thanks, contentFont);
+            PointF thanksPosition = new PointF(e.MarginBounds.Left + (
+                e.MarginBounds.Width - thanksSize.Width) / 2, 
+                tableY + lineSpacing * 3
+            );
+            graphics.DrawString(thanks, contentFont, Brushes.Black, thanksPosition);
 
             // Print store address
-            graphics.DrawString("441/42 Dien Bien Phu, ward 25, Binh Thanh district, HCM city", contentFont, Brushes.Black, new PointF(e.MarginBounds.Left, tableY + lineSpacing * 4));
+            string addressLine1 = "441/42 Dien Bien Phu";
+            SizeF addressLine1Size = graphics.MeasureString(addressLine1, contentFont);
+            PointF addressLine1Position = new PointF(
+                e.MarginBounds.Left + (e.MarginBounds.Width - addressLine1Size.Width) / 2, 
+                tableY + lineSpacing * 4
+            );
+            graphics.DrawString(addressLine1, contentFont, Brushes.Black, addressLine1Position);
+
+            string addressLine2 = "ward 25, Binh Thanh district, HCM city";
+            SizeF addressLine2Size = graphics.MeasureString(addressLine2, contentFont);
+            PointF addressLine2Position = new PointF(
+                e.MarginBounds.Left + (e.MarginBounds.Width - addressLine2Size.Width) / 2, 
+                tableY + lineSpacing * 5
+            );
+            graphics.DrawString(addressLine2, contentFont, Brushes.Black, addressLine2Position);
+
+            // Add logo at the bottom center
+            int logoX = e.MarginBounds.Left + (e.MarginBounds.Width - 100) / 2;
+            float logoY = tableY + lineSpacing * 7;
+            graphics.DrawImage(Properties.Resources.Logo, logoX, int.Parse(logoY.ToString()), 100, 100);
 
             // Indicate that there are no more pages to print
             e.HasMorePages = false;
