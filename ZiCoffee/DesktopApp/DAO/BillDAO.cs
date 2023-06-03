@@ -42,6 +42,7 @@ namespace DesktopApp.DAO
                 username = string.Format("%{0}%", username);
                 parameters.Add(username);
             }
+            query += " order by b.CreatedDate";
 
             List<BillDTO> bills = new List<BillDTO>();
             DataTable dataTable = database.ExecuteQuery(query, parameters);
