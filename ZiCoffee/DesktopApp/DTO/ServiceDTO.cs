@@ -15,7 +15,7 @@ namespace DesktopApp.DTO
         public string Description { get; set; }
         public ServiceStatus Status { get; set; }
         public float Price { get; set; }
-        public string Image { get; set; }
+        public byte[] Image { get; set; }
         public Guid CategoryId { get; set; }
         public string CategoryName { get; set; }
 
@@ -42,7 +42,14 @@ namespace DesktopApp.DTO
             {
                 Price = 0;
             }
-            Image = row["Image"].ToString();
+            if (row["Image"] == DBNull.Value)
+            {
+                Image = null;
+            }
+            else
+            {
+                Image = (byte[])row["Image"];
+            }
             CategoryId = Guid.Parse(row["CategoryId"].ToString());
             CategoryName = row["CategoryName"].ToString();
             DisplayName = string.Format("{0}\n{1}\n{2}", Name, Price, Status.ToString());

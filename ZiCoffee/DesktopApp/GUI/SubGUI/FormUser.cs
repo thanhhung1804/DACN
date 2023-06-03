@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -123,7 +124,16 @@ namespace DesktopApp.GUI.SubGUI
                 dtpBirthday.Value = currentSelectedUser.Birthday;
                 cbGenderSelector.SelectedIndex = cbGenderSelector.FindString(currentSelectedUser.Gender.ToString());
                 cbRole.SelectedIndex = cbRole.FindString(currentSelectedUser.RoleName);
-                picAvatar.Image = Properties.Resources.Avatar;
+                if (currentSelectedUser.Avatar == null)
+                {
+                    picAvatar.Image = Properties.Resources.Avatar;
+                }
+                else
+                {
+                    MemoryStream ms = new MemoryStream(currentSelectedUser.Avatar);
+                    Image image = Image.FromStream(ms);
+                    picAvatar.Image = image;
+                }
             }
         }
 
@@ -160,7 +170,8 @@ namespace DesktopApp.GUI.SubGUI
                 birthday: dtpBirthday.Value,
                 roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
                 email: txbEmail.Text,
-                gender: (Gender)cbGenderSelector.SelectedIndex
+                gender: (Gender)cbGenderSelector.SelectedIndex,
+                avatar: File.ReadAllBytes(path: picAvatar.Tag.ToString())
             );
 
             if (!result)
@@ -189,7 +200,8 @@ namespace DesktopApp.GUI.SubGUI
                 birthday: dtpBirthday.Value,
                 roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
                 email: txbEmail.Text,
-                gender: (Gender)cbGenderSelector.SelectedIndex
+                gender: (Gender)cbGenderSelector.SelectedIndex,
+                avatar: File.ReadAllBytes(path: picAvatar.Tag.ToString())
             );
 
             if (!result)
@@ -275,7 +287,15 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picAvatar_Click(object sender, EventArgs e)
         {
-            //upload avatar
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png, *.gif) | *.jpg; *.jpeg; *.png; *.gif";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedImagePath = openFileDialog.FileName;
+                picAvatar.Image = Image.FromFile(selectedImagePath);
+                picAvatar.Tag = selectedImagePath;
+            }
         }
 
         private void LoadData()

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -153,7 +154,8 @@ namespace DesktopApp.GUI.SubGUI
                 categoryId: (cbCategorySelector.SelectedItem as CategoryDTO).CategoryId,
                 status: (ServiceStatus)cbStatusSelector.SelectedIndex,
                 description: rtxbDescription.Text,
-                price: (float)nudPrice.Value
+                price: (float)nudPrice.Value,
+                image: File.ReadAllBytes(path: picImage.Tag.ToString())
             );
 
             if (!result)
@@ -179,7 +181,8 @@ namespace DesktopApp.GUI.SubGUI
                 categoryId: (cbCategorySelector.SelectedItem as CategoryDTO).CategoryId,
                 status: (ServiceStatus)cbStatusSelector.SelectedIndex,
                 description: rtxbDescription.Text,
-                price: (float)nudPrice.Value
+                price: (float)nudPrice.Value,
+                image: File.ReadAllBytes(path: picImage.Tag.ToString())
             );
 
             if (!result)
@@ -276,7 +279,15 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picImage_Click(object sender, EventArgs e)
         {
-            //upload Image
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png, *.gif) | *.jpg; *.jpeg; *.png; *.gif";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string selectedImagePath = openFileDialog.FileName;
+                picImage.Image = Image.FromFile(selectedImagePath);
+                picImage.Tag = selectedImagePath;
+            }
         }
 
         private void LoadData()

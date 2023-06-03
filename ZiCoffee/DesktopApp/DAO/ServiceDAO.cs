@@ -69,14 +69,17 @@ namespace DesktopApp.DAO
             Guid categoryId,
             ServiceStatus status = ServiceStatus.Unavailable,
             string description = null,
-            float price = 0)
+            float price = 0,
+            byte[] image = null)
         {
             string query = @"
-                insert into dbo.[Service] (ServiceId, Name, Description, Status, CategoryId, Price) 
-                values ( @serviceId , @name , @description , @status , @categoryId , @price )";
+                insert into dbo.[Service] (ServiceId, Name, Description, Status, CategoryId, Price, Image) 
+                values ( @serviceId , @name , @description , @status , @categoryId , @price , @image )";
 
             Guid newServiceId = Guid.NewGuid();
-            List<object> parameters = new List<object> { newServiceId, name, description, status, categoryId, price };
+            List<object> parameters = new List<object> { 
+                newServiceId, name, description, status, categoryId, price, image 
+            };
 
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;
@@ -88,14 +91,18 @@ namespace DesktopApp.DAO
             Guid categoryId,
             ServiceStatus status = ServiceStatus.Unavailable,
             string description = null,
-            float price = 0)
+            float price = 0,
+            byte[] image = null)
         {
             string query = @"
                 update dbo.[Service] 
-                set Name = @name , Description = @description , Status = @status , CategoryId = @categoryId , Price = @price 
+                set Name = @name , Description = @description , Status = @status , 
+                    CategoryId = @categoryId , Price = @price , Image = @image
                 where ServiceId = @serviceId";
 
-            List<object> parameters = new List<object> { name, description, status, categoryId, price, serviceId };
+            List<object> parameters = new List<object> { 
+                name, description, status, categoryId, price, image, serviceId 
+            };
 
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;

@@ -61,15 +61,16 @@ namespace DesktopApp.DAO
 
         public bool Create(
             string username, string name, string address, string citizenId, string phone,
-            DateTime birthday, Guid roleId, string email = null, Gender gender = Gender.Male)
+            DateTime birthday, Guid roleId, string email = null, Gender gender = Gender.Male, 
+            byte[] avatar = null)
         {
             string query = @"
                 insert into dbo.[User] (
                     UserId, Username, Password, Name, Address, CitizenId, Phone, 
-                    Birthday, RoleId, Email, Gender
+                    Birthday, RoleId, Email, Gender, Avatar
                 ) values ( 
                     @userId , @username , @password , @name , @address , @citizenId , @phone , 
-                    @birthday , @roleId , @email , @gender 
+                    @birthday , @roleId , @email , @gender , @avatar 
                 )";
 
             Guid userId = Guid.NewGuid();
@@ -78,7 +79,7 @@ namespace DesktopApp.DAO
             List<object> parameters = new List<object>
             {
                 userId, username, defaultPassword, name, address, citizenId, phone,
-                birthdayDateOnly, roleId, email, gender
+                birthdayDateOnly, roleId, email, gender, avatar
             };
 
             bool result = database.ExecuteNoneQuery(query, parameters);
@@ -95,7 +96,8 @@ namespace DesktopApp.DAO
 
         public bool Update(
             Guid userId, string name, string address, string citizenId, string phone,
-            DateTime birthday, Guid roleId, string email = null, Gender gender = Gender.Male)
+            DateTime birthday, Guid roleId, string email = null, Gender gender = Gender.Male,
+            byte[] avatar = null)
         {
             string query = @"
                 update dbo.[User] set 
@@ -106,13 +108,14 @@ namespace DesktopApp.DAO
                     Birthday = @birthday , 
                     RoleId = @roleId , 
                     Email = @email , 
-                    Gender = @gender 
+                    Gender = @gender ,
+                    Avatar = @avatar
                 where UserId = @userId";
 
             DateTime birthdayDateOnly = new DateTime(birthday.Year, birthday.Month, birthday.Day);
             List<object> parameters = new List<object>
             {
-                name, address, citizenId, phone, birthdayDateOnly, roleId, email, gender, userId
+                name, address, citizenId, phone, birthdayDateOnly, roleId, email, gender, avatar, userId
             };
 
             bool result = database.ExecuteNoneQuery(query, parameters);
