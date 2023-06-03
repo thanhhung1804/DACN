@@ -555,6 +555,7 @@
             // 
             // fpnlTable
             // 
+            this.fpnlTable.AutoScroll = true;
             this.fpnlTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
             this.fpnlTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnlTable.Location = new System.Drawing.Point(300, 150);
