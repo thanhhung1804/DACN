@@ -97,7 +97,7 @@ namespace DesktopApp.DAO
             string query = @"
                 update dbo.[Service] 
                 set Name = @name , Description = @description , Status = @status , 
-                    CategoryId = @categoryId , Price = @price , Image = @image
+                    CategoryId = @categoryId , Price = @price , Image = @image 
                 where ServiceId = @serviceId";
 
             List<object> parameters = new List<object> { 

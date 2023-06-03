@@ -122,6 +122,16 @@ namespace DesktopApp.GUI.SubGUI
                 cbCategorySelector.SelectedIndex = cbCategorySelector.FindString(currentSelectedService.CategoryName);
                 nudPrice.Value = (decimal)currentSelectedService.Price;
                 picImage.Image = Properties.Resources.Drink;
+                if (currentSelectedService.Image == null)
+                {
+                    picImage.Image = Properties.Resources.Avatar;
+                }
+                else
+                {
+                    MemoryStream ms = new MemoryStream(currentSelectedService.Image);
+                    Image image = Image.FromStream(ms);
+                    picImage.Image = image;
+                }
             }
         }
 
@@ -148,6 +158,12 @@ namespace DesktopApp.GUI.SubGUI
                 return;
             }
 
+            byte[] image = null;
+            if (picImage.Tag != null)
+            {
+                image = File.ReadAllBytes(path: picImage.Tag.ToString());
+            }
+
             string actionType = "Create";
             bool result = new ServiceDAO().Create(
                 name: txbName.Text,
@@ -155,7 +171,7 @@ namespace DesktopApp.GUI.SubGUI
                 status: (ServiceStatus)cbStatusSelector.SelectedIndex,
                 description: rtxbDescription.Text,
                 price: (float)nudPrice.Value,
-                image: File.ReadAllBytes(path: picImage.Tag.ToString())
+                image: image
             );
 
             if (!result)
@@ -174,6 +190,12 @@ namespace DesktopApp.GUI.SubGUI
                 return;
             }
 
+            byte[] image = null;
+            if (picImage.Tag != null)
+            {
+                image = File.ReadAllBytes(path: picImage.Tag.ToString());
+            }
+
             string actionType = "Update";
             bool result = new ServiceDAO().Update(
                 serviceId: currentSelectedService.ServiceId,
@@ -182,7 +204,7 @@ namespace DesktopApp.GUI.SubGUI
                 status: (ServiceStatus)cbStatusSelector.SelectedIndex,
                 description: rtxbDescription.Text,
                 price: (float)nudPrice.Value,
-                image: File.ReadAllBytes(path: picImage.Tag.ToString())
+                image: image
             );
 
             if (!result)

@@ -160,6 +160,12 @@ namespace DesktopApp.GUI.SubGUI
                 return;
             }
 
+            byte[] avatar = null;
+            if (picAvatar.Tag != null)
+            {
+                avatar = File.ReadAllBytes(path: picAvatar.Tag.ToString());
+            }
+
             string actionType = "Create";
             bool result = new UserDAO().Create(
                 username: txbUsername.Text,
@@ -171,7 +177,7 @@ namespace DesktopApp.GUI.SubGUI
                 roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
                 email: txbEmail.Text,
                 gender: (Gender)cbGenderSelector.SelectedIndex,
-                avatar: File.ReadAllBytes(path: picAvatar.Tag.ToString())
+                avatar: avatar
             );
 
             if (!result)
@@ -188,6 +194,12 @@ namespace DesktopApp.GUI.SubGUI
             {
                 MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
+            }
+
+            byte[] avatar = null;
+            if (picAvatar.Tag != null)
+            {
+                avatar = File.ReadAllBytes(path: picAvatar.Tag.ToString());
             }
 
             string actionType = "Update";

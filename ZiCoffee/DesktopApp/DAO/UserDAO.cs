@@ -109,7 +109,7 @@ namespace DesktopApp.DAO
                     RoleId = @roleId , 
                     Email = @email , 
                     Gender = @gender ,
-                    Avatar = @avatar
+                    Avatar = @avatar 
                 where UserId = @userId";
 
             DateTime birthdayDateOnly = new DateTime(birthday.Year, birthday.Month, birthday.Day);
