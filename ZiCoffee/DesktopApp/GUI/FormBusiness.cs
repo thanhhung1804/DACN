@@ -39,27 +39,52 @@ namespace DesktopApp.GUI
 
         private AreaDTO currentSelectedArea;
         private TableDTO currentSelectedTable;
-        private UserDTO currentSelectedUser;
+        private UserDTO currentUser;
 
+        private List<string> authorizedActions;
         private Button draggedButton;
 
-        public formBusiness()
+        public formBusiness(UserDTO user)
         {
             InitializeComponent();
             currentSelectedArea = null;
             currentSelectedTable = null;
-            currentSelectedUser = null;
+            authorizedActions = new List<string>();
+            currentUser = user;
         }
 
         private void formBusiness_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
 
-            // TODO: Fixed username
-            currentSelectedUser = new UserDAO().GetUser(username: "admin01");
-
+            LoadUserInfo();
             LoadArea();
             LoadTable();
+        }
+
+        private void LoadUserInfo()
+        {
+            picAvatar.Image = Properties.Resources.Avatar;
+            txbFullName.Text = currentUser.Name;
+            txbAddress.Text = currentUser.Address;
+            txbBirthday.Text = currentUser.Birthday.Date.ToString("dd-MM-yyyy");
+            txbCitizenId.Text = currentUser.CitizenId;
+            txbPhone.Text = currentUser.Phone;
+            txbRole.Text = currentUser.RoleName;
+
+            LoadUserPermission();
+        }
+
+        private void LoadUserPermission()
+        {
+            Guid roleId = currentUser.RoleId;
+            List<RoleActionDTO> roleActions = new RoleActionDAO().GetRoleActionMapping(roleId: roleId);
+            
+            authorizedActions.Clear();
+            foreach (RoleActionDTO roleAction in roleActions)
+            {
+                authorizedActions.Add(roleAction.ActionName);
+            }
         }
 
         private void formBusiness_SizeChanged(object sender, EventArgs e)
@@ -246,6 +271,12 @@ namespace DesktopApp.GUI
 
         private void MoveTable(TableDTO originTable, TableDTO targetTable)
         {
+            if (!authorizedActions.Contains(Constants.MOVE_TABLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             var result = MessageBox.Show(
                 text: string.Format("Are you sure you want to move {0} to {1}?", originTable.Name, targetTable.Name), 
                 caption: "Confirmation", 
@@ -267,6 +298,12 @@ namespace DesktopApp.GUI
 
         private void MergeTable(TableDTO originTable, TableDTO targetTable)
         {
+            if (!authorizedActions.Contains(Constants.MERGE_TABLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             var result = MessageBox.Show(
                 text: string.Format("Are you sure you want to merge {0} into {1}?", originTable.Name, targetTable.Name),
                 caption: "Confirmation",
@@ -379,12 +416,23 @@ namespace DesktopApp.GUI
 
         private void btnChangePassword_Click(object sender, EventArgs e)
         {
-            formChangePassword formChangePassword = new formChangePassword();
+            if (!authorizedActions.Contains(Constants.CHANGE_PASSWORD))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+            formChangePassword formChangePassword = new formChangePassword(currentUser);
             formChangePassword.ShowDialog();
         }
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.ORDER))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedTable == null)
             {
                 MessageBox.Show("Please select a table before", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -397,13 +445,19 @@ namespace DesktopApp.GUI
                 return;
             }
 
-            formOrder formOrder = new formOrder(table: currentSelectedTable, user: currentSelectedUser);
+            formOrder formOrder = new formOrder(table: currentSelectedTable, user: currentUser);
             formOrder.ShowDialog();
             LoadTable();
         }
 
         private void btnPay_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.PAY))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedTable == null)
             {
                 MessageBox.Show("Please select a table before", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -422,23 +476,30 @@ namespace DesktopApp.GUI
                 return;
             }
 
-            formCheckOut formCheckOut = new formCheckOut(currentSelectedTable, currentSelectedUser);
+            formCheckOut formCheckOut = new formCheckOut(currentSelectedTable, currentUser);
             formCheckOut.ShowDialog();
             LoadTable();
         }
 
         private void btnManage_Click(object sender, EventArgs e)
         {
-            formManage form = new formManage();
+            formManage form = new formManage(authorizedActions);
             Hide();
             form.ShowDialog();
             Show();
             LoadArea();
             LoadTable();
+            LoadUserInfo();
         }
 
         private void btnLockTable_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.LOCK_TABLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedTable == null)
             {
                 MessageBox.Show("Please select a table before", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);

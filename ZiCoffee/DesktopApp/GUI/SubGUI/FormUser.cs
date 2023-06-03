@@ -32,11 +32,13 @@ namespace DesktopApp.GUI.SubGUI
         #endregion
 
         private UserDTO currentSelectedUser;
+        private List<string> authorizedActions;
 
-        public formUser()
+        public formUser(List<string> authorizedActions)
         {
             InitializeComponent();
             currentSelectedUser = null;
+            this.authorizedActions = authorizedActions;
         }
 
         private void formUser_Load(object sender, EventArgs e)
@@ -142,6 +144,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void CreateUser()
         {
+            if (!authorizedActions.Contains(Constants.ADD_USER))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Create";
             bool result = new UserDAO().Create(
                 username: txbUsername.Text,
@@ -165,6 +173,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void UpdateUser()
         {
+            if (!authorizedActions.Contains(Constants.EDIT_USER))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Update";
             bool result = new UserDAO().Update(
                 userId: currentSelectedUser.UserId,
@@ -210,6 +224,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picDelete_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.DELETE_USER))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedUser == null)
             {
                 MessageBox.Show(

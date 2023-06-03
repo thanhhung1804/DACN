@@ -1,4 +1,6 @@
-﻿using DesktopApp.GUI.SubGUI;
+﻿using DesktopApp.Common;
+using DesktopApp.DTO;
+using DesktopApp.GUI.SubGUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,15 +36,22 @@ namespace DesktopApp.GUI
         );
         #endregion
 
-        public formManage()
+        private List<string> authorizedActions;
+
+        public formManage(List<string> authorizedActions)
         {
             InitializeComponent();
+            this.authorizedActions = authorizedActions;
         }
 
         private void formManage_Load(object sender, EventArgs e)
         {
             Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            btnRevenue_Click(sender: btnRevenue, e: new EventArgs());
+
+            if (authorizedActions.Contains(Constants.VIEW_REVENUE))
+            {
+                btnRevenue_Click(sender: btnRevenue, e: new EventArgs());
+            }
         }
 
         private void formManage_SizeChanged(object sender, EventArgs e)
@@ -97,6 +106,12 @@ namespace DesktopApp.GUI
 
         private void btnRevenue_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.VIEW_REVENUE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             ChangeBackcolorNavbarButtons(sender);
             formRevenue subform = new formRevenue();
             subform.Dock = DockStyle.Fill;
@@ -109,8 +124,14 @@ namespace DesktopApp.GUI
 
         private void btnUser_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.VIEW_USER))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             ChangeBackcolorNavbarButtons(sender);
-            formUser subform = new formUser();
+            formUser subform = new formUser(authorizedActions);
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
             subform.AutoScroll = true;
@@ -121,8 +142,14 @@ namespace DesktopApp.GUI
 
         private void btnRole_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.VIEW_ROLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             ChangeBackcolorNavbarButtons(sender);
-            formRole subform = new formRole();
+            formRole subform = new formRole(authorizedActions);
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
             subform.AutoScroll = true;
@@ -133,8 +160,14 @@ namespace DesktopApp.GUI
 
         private void btnArea_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.VIEW_AREA))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             ChangeBackcolorNavbarButtons(sender);
-            formArea subform = new formArea();
+            formArea subform = new formArea(authorizedActions);
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
             subform.AutoScroll = true;
@@ -145,8 +178,14 @@ namespace DesktopApp.GUI
 
         private void btnTable_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.VIEW_TABLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             ChangeBackcolorNavbarButtons(sender);
-            formTable subform = new formTable();
+            formTable subform = new formTable(authorizedActions);
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
             subform.AutoScroll = true;
@@ -157,8 +196,14 @@ namespace DesktopApp.GUI
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.VIEW_CATEGORY))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             ChangeBackcolorNavbarButtons(sender);
-            formCategory subform = new formCategory();
+            formCategory subform = new formCategory(authorizedActions);
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
             subform.AutoScroll = true;
@@ -169,8 +214,14 @@ namespace DesktopApp.GUI
 
         private void btnService_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.VIEW_SERVICE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             ChangeBackcolorNavbarButtons(sender);
-            formService subform = new formService();
+            formService subform = new formService(authorizedActions);
             subform.Dock = DockStyle.Fill;
             subform.TopLevel = false;
             subform.AutoScroll = true;

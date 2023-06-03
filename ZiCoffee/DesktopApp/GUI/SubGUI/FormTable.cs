@@ -31,11 +31,13 @@ namespace DesktopApp.GUI.SubGUI
         #endregion
 
         private TableDTO currentSelectedTable;
+        private List<string> authorizedActions;
 
-        public formTable()
+        public formTable(List<string> authorizedActions)
         {
             InitializeComponent();
             currentSelectedTable = null;
+            this.authorizedActions = authorizedActions;
         }
 
         private void formTable_Load(object sender, EventArgs e)
@@ -135,6 +137,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void CreateTable()
         {
+            if (!authorizedActions.Contains(Constants.ADD_TABLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Create";
             bool result = new TableDAO().Create(
                 name: txbName.Text,
@@ -153,6 +161,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void UpdateTable()
         {
+            if (!authorizedActions.Contains(Constants.EDIT_TABLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Update";
             bool result = new TableDAO().Update(
                 tableId: currentSelectedTable.TableId,
@@ -194,6 +208,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picDelete_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.DELETE_TABLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedTable == null)
             {
                 MessageBox.Show(

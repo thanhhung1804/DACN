@@ -42,7 +42,7 @@ namespace DesktopApp.GUI
         #endregion
 
         private TableDTO currentSelectedTable;
-        private UserDTO currentSelectedUser;
+        private UserDTO currentUser;
         private BillDTO currentBill;
         private List<BillDetailDTO> currentBillDetails;
 
@@ -50,7 +50,7 @@ namespace DesktopApp.GUI
         {
             InitializeComponent();
             currentSelectedTable = table;
-            currentSelectedUser = user;
+            currentUser = user;
             currentBill = null;
         }
 
@@ -71,7 +71,7 @@ namespace DesktopApp.GUI
             {
                 Tuple<bool, Guid> creationResult = new BillDAO().Create(
                     tableId: currentSelectedTable.TableId,
-                    userId: currentSelectedUser.UserId
+                    userId: currentUser.UserId
                 );
                 currentBill = new BillDAO().GetUnpaidBillByTable(tableId: currentSelectedTable.TableId);
             }
@@ -154,6 +154,7 @@ namespace DesktopApp.GUI
                 PrintDocument printDocument = new PrintDocument();
                 printDocument.PrintPage += PrintDocument_PrintPage;
                 printDocument.DefaultPageSettings.Margins = new Margins(50,320,50,50);
+                printDocument.PrinterSettings.PrintFileName = currentBill.BillId.ToString();
                 printDocument.Print();
                 return;
             }
@@ -178,7 +179,7 @@ namespace DesktopApp.GUI
             graphics.DrawString(storeName, titleFont, Brushes.Black, storeNamePosition);
 
             // Print cashier name
-            string cashierName = "Cashier: " + currentSelectedUser.Name;
+            string cashierName = "Cashier: " + currentUser.Name;
             SizeF cashierNameSize = graphics.MeasureString(cashierName, contentFont);
             PointF cashierNamePosition = new PointF(
                 e.MarginBounds.Left + (e.MarginBounds.Width - cashierNameSize.Width) / 2, 

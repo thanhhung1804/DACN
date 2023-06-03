@@ -31,11 +31,13 @@ namespace DesktopApp.GUI.SubGUI
         #endregion
 
         private ServiceDTO currentSelectedService;
+        private List<string> authorizedActions;
 
-        public formService()
+        public formService(List<string> authorizedActions)
         {
             InitializeComponent();
             currentSelectedService = null;
+            this.authorizedActions = authorizedActions;
         }
 
         private void formService_Load(object sender, EventArgs e)
@@ -139,6 +141,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void CreateService()
         {
+            if (!authorizedActions.Contains(Constants.ADD_SERVICE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Create";
             bool result = new ServiceDAO().Create(
                 name: txbName.Text,
@@ -158,6 +166,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void UpdateService()
         {
+            if (!authorizedActions.Contains(Constants.EDIT_SERVICE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Update";
             bool result = new ServiceDAO().Update(
                 serviceId: currentSelectedService.ServiceId,
@@ -200,6 +214,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picDelete_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.DELETE_SERVICE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedService == null)
             {
                 MessageBox.Show(
