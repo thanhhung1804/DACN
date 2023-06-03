@@ -1,4 +1,5 @@
-﻿using DesktopApp.DAO;
+﻿using DesktopApp.Common;
+using DesktopApp.DAO;
 using DesktopApp.DTO;
 using DesktopApp.Model;
 using System;
@@ -30,11 +31,13 @@ namespace DesktopApp.GUI.SubGUI
         #endregion
 
         private CategoryDTO currentSelectedCategory;
+        private List<string> authorizedActions;
 
-        public formCategory()
+        public formCategory(List<string> authorizedActions)
         {
             InitializeComponent();
             currentSelectedCategory = null;
+            this.authorizedActions = authorizedActions;
         }
 
         private void formCategory_Load(object sender, EventArgs e)
@@ -106,6 +109,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void CreateCategory()
         {
+            if (!authorizedActions.Contains(Constants.ADD_CATEGORY))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Create";
             bool result = new CategoryDAO().Create(
                 name: txbName.Text, description: rtxbDescription.Text
@@ -121,6 +130,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void UpdateCategory()
         {
+            if (!authorizedActions.Contains(Constants.EDIT_CATEGORY))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Update";
             bool result = new CategoryDAO().Update(
                 categoryId: currentSelectedCategory.CategoryId, 
@@ -160,6 +175,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picDelete_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.DELETE_CATEGORY))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedCategory == null)
             {
                 MessageBox.Show(

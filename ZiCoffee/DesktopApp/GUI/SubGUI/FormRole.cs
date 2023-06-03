@@ -32,11 +32,13 @@ namespace DesktopApp.GUI.SubGUI
         #endregion
 
         private RoleDTO currentSelectedRole;
+        private List<string> authorizedActions;
 
-        public formRole()
+        public formRole(List<string> authorizedActions)
         {
             InitializeComponent();
             currentSelectedRole = null;
+            this.authorizedActions = authorizedActions;
         }
 
         private void formRole_Load(object sender, EventArgs e)
@@ -111,6 +113,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void CreateRole()
         {
+            if (!authorizedActions.Contains(Constants.ADD_ROLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Create";
             Tuple<bool, Guid> roleCreationResult = new RoleDAO().Create(
                 name: txbName.Text, description: rtxbDescription.Text
@@ -147,6 +155,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void UpdateRole()
         {
+            if (!authorizedActions.Contains(Constants.EDIT_ROLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Update";
             bool roleUpdationResult = new RoleDAO().Update(
                 roleId: currentSelectedRole.RoleId,
@@ -243,6 +257,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picDelete_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.DELETE_ROLE))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedRole == null)
             {
                 MessageBox.Show(

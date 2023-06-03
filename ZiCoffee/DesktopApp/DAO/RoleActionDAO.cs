@@ -21,23 +21,20 @@ namespace DesktopApp.DAO
 
         public List<RoleActionDTO> GetRoleActionMapping(Guid? roleId = null, Guid? actionId = null)
         {
-            string query = @"select * from dbo.[RoleAction]";
+            string query = @"
+                select ra.RoleId, ra.ActionId, a.Name as ActionName 
+                from dbo.[RoleAction] as ra, dbo.[Action] as a 
+                where ra.ActionId = a.ActionId";
 
             List<object> parameters = new List<object> { };
-            if (roleId != null && actionId == null) 
+            if (roleId != null) 
             {
-                query += " where RoleId = @roleId";
+                query += " and RoleId = @roleId";
                 parameters.Add(roleId);
             }
-            if (roleId == null && actionId != null)
+            if (actionId != null)
             {
-                query += " where ActionId = @actionId";
-                parameters.Add(actionId);
-            }
-            if (roleId != null && actionId != null)
-            {
-                query += " where RoleId = @roleId and ActionId = @actionId";
-                parameters.Add(roleId);
+                query += " and ActionId = @actionId";
                 parameters.Add(actionId);
             }
 

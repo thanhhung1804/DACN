@@ -1,4 +1,5 @@
-﻿using DesktopApp.DAO;
+﻿using DesktopApp.Common;
+using DesktopApp.DAO;
 using DesktopApp.DTO;
 using DesktopApp.Model;
 using MySqlX.XDevAPI.Common;
@@ -31,11 +32,13 @@ namespace DesktopApp.GUI.SubGUI
         #endregion
 
         private AreaDTO currentSelectedArea;
+        private List<string> authorizedActions;
 
-        public formArea()
+        public formArea(List<string> authorizedActions)
         {
             InitializeComponent();
             currentSelectedArea = null;
+            this.authorizedActions = authorizedActions;
         }
 
         private void formArea_Load(object sender, EventArgs e)
@@ -107,6 +110,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void CreateArea()
         {
+            if (!authorizedActions.Contains(Constants.ADD_AREA))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Create";
             bool result = new AreaDAO().Create(
                 name: txbName.Text, description: rtxbDescription.Text
@@ -122,6 +131,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void UpdateArea()
         {
+            if (!authorizedActions.Contains(Constants.EDIT_AREA))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             string actionType = "Update";
             bool result = new AreaDAO().Update(
                 areaId: currentSelectedArea.AreaId, name: txbName.Text, description: rtxbDescription.Text
@@ -159,6 +174,12 @@ namespace DesktopApp.GUI.SubGUI
 
         private void picDelete_Click(object sender, EventArgs e)
         {
+            if (!authorizedActions.Contains(Constants.DELETE_AREA))
+            {
+                MessageBox.Show("Permission denied", "Unauthorization", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (currentSelectedArea == null)
             {
                 MessageBox.Show(
