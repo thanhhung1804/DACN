@@ -154,6 +154,7 @@ namespace DesktopApp.GUI
                 PrintDocument printDocument = new PrintDocument();
                 printDocument.PrintPage += PrintDocument_PrintPage;
                 printDocument.DefaultPageSettings.Margins = new Margins(50,320,50,50);
+                printDocument.PrinterSettings.PrintFileName = currentBill.BillId.ToString();
                 printDocument.Print();
                 return;
             }
