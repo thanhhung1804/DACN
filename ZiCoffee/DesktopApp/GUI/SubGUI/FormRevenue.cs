@@ -202,6 +202,13 @@ namespace DesktopApp.GUI.SubGUI
             {
                 for (int j = 0; j < dgRevenue.Columns.Count; j++)
                 {
+                    if (dgRevenue.Columns[j].Name == "colCreatedDate")
+                    {
+                        DateTime value = DateTime.Parse(dgRevenue.Rows[i].Cells[j].Value.ToString());
+                        worksheet.Cells[i + 5, j + 1].NumberFormat = "dd/MM/yyyy HH:mm:ss";
+                        worksheet.Cells[i + 5, j + 1].Value = value;
+                        continue;
+                    }
                     worksheet.Cells[i + 5, j + 1] = dgRevenue.Rows[i].Cells[j].Value.ToString();
                 }
             }
@@ -273,7 +280,7 @@ namespace DesktopApp.GUI.SubGUI
             createdDateColumn.DataPropertyName = "CreatedDate";
             createdDateColumn.HeaderText = "Created date";
             createdDateColumn.Name = "colCreatedDate";
-            createdDateColumn.DefaultCellStyle.Format = "dd/MM/yyyy";
+            createdDateColumn.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm:ss";
             createdDateColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             createdDateColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgRevenue.Columns.Add(createdDateColumn);

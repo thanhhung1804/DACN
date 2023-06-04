@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -64,7 +65,16 @@ namespace DesktopApp.GUI
 
         private void LoadUserInfo()
         {
-            picAvatar.Image = Properties.Resources.Avatar;
+            if (currentUser.Avatar == null)
+            {
+                picAvatar.Image = Properties.Resources.Avatar;
+            }
+            else
+            {
+                MemoryStream ms = new MemoryStream(currentUser.Avatar);
+                Image image = Image.FromStream(ms);
+                picAvatar.Image = image;
+            }
             txbFullName.Text = currentUser.Name;
             txbAddress.Text = currentUser.Address;
             txbBirthday.Text = currentUser.Birthday.Date.ToString("dd-MM-yyyy");
@@ -489,6 +499,7 @@ namespace DesktopApp.GUI
             Show();
             LoadArea();
             LoadTable();
+            currentUser = new UserDAO().GetUser(username: currentUser.Username);
             LoadUserInfo();
         }
 

@@ -13,7 +13,7 @@ namespace DesktopApp.DTO
         public Guid UserId { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public string Avatar { get; set; }
+        public byte[] Avatar { get; set; }
         public string Name { get; set; }
         public Gender Gender { get; set; }
         public DateTime Birthday { get; set; }
@@ -30,7 +30,14 @@ namespace DesktopApp.DTO
             UserId = Guid.Parse(row["UserId"].ToString());
             Username = row["Username"].ToString();
             Password = row["Password"].ToString();
-            Avatar = row["Avatar"].ToString();
+            if (row["Avatar"] == DBNull.Value)
+            {
+                Avatar = null;
+            }
+            else
+            {
+                Avatar = (byte[])row["Avatar"];
+            }
             Name = row["Name"].ToString();
             if (int.TryParse(row["Gender"].ToString(), out int gender))
             {

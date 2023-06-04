@@ -274,6 +274,7 @@
             // 
             // fpnlService
             // 
+            this.fpnlService.AutoScroll = true;
             this.fpnlService.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fpnlService.Location = new System.Drawing.Point(50, 150);
             this.fpnlService.Name = "fpnlService";
@@ -282,6 +283,7 @@
             // 
             // fpnlCategory
             // 
+            this.fpnlCategory.AutoScroll = true;
             this.fpnlCategory.Dock = System.Windows.Forms.DockStyle.Top;
             this.fpnlCategory.Location = new System.Drawing.Point(50, 50);
             this.fpnlCategory.Name = "fpnlCategory";
