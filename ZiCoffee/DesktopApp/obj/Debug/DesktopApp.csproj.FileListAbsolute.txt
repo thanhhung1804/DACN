@@ -47,3 +47,4 @@ C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.csproj.CopyComplete
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.exe
 C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.pdb
+C:\Users\84797\OneDrive\Máy tính\DACN\ZiCoffee\DesktopApp\obj\Debug\DesktopApp.GUI.UserControls.UserControlService.resources

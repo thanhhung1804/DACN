@@ -13,6 +13,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DesktopApp.GUI.UserControls;
+using System.IO;
 
 namespace DesktopApp.GUI
 {
@@ -143,11 +145,20 @@ namespace DesktopApp.GUI
             fpnlService.Controls.Clear();
             foreach (ServiceDTO service in services)
             {
-                Button btnService = new Button();
-                btnService.Text = service.DisplayName;
-                btnService.Size = new Size(150, 200);
-                btnService.FlatStyle = FlatStyle.Flat;
-                btnService.FlatAppearance.BorderSize = 0;
+                UserControlService btnService = new UserControlService();
+                if (service.Image == null)
+                {
+                    btnService.picService.Image = Properties.Resources.Drink;
+                }
+                else
+                {
+                    MemoryStream ms = new MemoryStream(service.Image);
+                    Image image = Image.FromStream(ms);
+                    btnService.picService.Image = image;
+                }
+                btnService.lbServiceName.Text = service.Name;
+                btnService.lbServicePrice.Text = service.Price.ToString("n0");
+                btnService.Size = new Size(150, 210);
                 btnService.Font = new Font("Arial", 12, FontStyle.Bold);
                 btnService.Cursor = Cursors.Hand;
                 if (service.Status == ServiceStatus.Available)
@@ -161,15 +172,15 @@ namespace DesktopApp.GUI
                     btnService.ForeColor = Color.Black;
                 }
                 btnService.Tag = service;
-                btnService.Click += btnService_Click;
+                btnService.UserControlClick += btnService_UserControlClick;
                 btnService.KeyDown += btnService_KeyDown;
                 fpnlService.Controls.Add(btnService);
             }
         }
 
-        private void btnService_Click(object sender, EventArgs e)
+        private void btnService_UserControlClick(object sender, EventArgs e)
         {
-            currentSelectedService = (sender as Button).Tag as ServiceDTO;
+            currentSelectedService = (sender as UserControlService).Tag as ServiceDTO;
             if (currentSelectedService.Status == ServiceStatus.Unavailable)
             {
                 MessageBox.Show(
