@@ -180,7 +180,7 @@
             this.txbPassword.Name = "txbPassword";
             this.txbPassword.Size = new System.Drawing.Size(314, 30);
             this.txbPassword.TabIndex = 2;
-            this.txbPassword.Text = "Password";
+            this.txbPassword.Text = "Hung@1804";
             this.txbPassword.UseSystemPasswordChar = true;
             // 
             // txbUser
@@ -191,7 +191,7 @@
             this.txbUser.Name = "txbUser";
             this.txbUser.Size = new System.Drawing.Size(348, 30);
             this.txbUser.TabIndex = 1;
-            this.txbUser.Text = "Username";
+            this.txbUser.Text = "admin01";
             // 
             // picEye
             // 

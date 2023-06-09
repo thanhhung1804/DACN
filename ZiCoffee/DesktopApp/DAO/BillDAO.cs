@@ -27,9 +27,10 @@ namespace DesktopApp.DAO
                 from dbo.[Bill] as b, dbo.[Table] as t, dbo.[User] as u 
                 where b.TableId = t.TableId 
                     and b.UserId = u.UserId 
-                    and b.CreatedDate between @startTime and @endTime";
+                    and b.CreatedDate between @startTime and @endTime 
+                    and b.Status = @status";
 
-            List<object> parameters = new List<object> { startTime, endTime };
+            List<object> parameters = new List<object> { startTime, endTime, BillStatus.Paid };
             if (!string.IsNullOrEmpty(tableName))
             {
                 query += " and upper(t.Name) like upper( @tableName )";

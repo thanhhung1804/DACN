@@ -89,7 +89,7 @@ namespace DesktopApp.GUI
         {
             Guid roleId = currentUser.RoleId;
             List<RoleActionDTO> roleActions = new RoleActionDAO().GetRoleActionMapping(roleId: roleId);
-            
+
             authorizedActions.Clear();
             foreach (RoleActionDTO roleAction in roleActions)
             {
@@ -214,7 +214,7 @@ namespace DesktopApp.GUI
             {
                 return;
             }
-                
+
             draggedButton = originButton;
             draggedButton.DoDragDrop(draggedButton, DragDropEffects.Move);
         }
@@ -288,9 +288,9 @@ namespace DesktopApp.GUI
             }
 
             var result = MessageBox.Show(
-                text: string.Format("Are you sure you want to move {0} to {1}?", originTable.Name, targetTable.Name), 
-                caption: "Confirmation", 
-                buttons: MessageBoxButtons.OKCancel, 
+                text: string.Format("Are you sure you want to move {0} to {1}?", originTable.Name, targetTable.Name),
+                caption: "Confirmation",
+                buttons: MessageBoxButtons.OKCancel,
                 icon: MessageBoxIcon.Question
             );
 

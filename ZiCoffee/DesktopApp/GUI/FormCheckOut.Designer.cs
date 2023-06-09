@@ -195,6 +195,7 @@
             // txbTotal
             // 
             this.txbTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbTotal.BackColor = System.Drawing.Color.White;
             this.txbTotal.Cursor = System.Windows.Forms.Cursors.No;
             this.txbTotal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTotal.ForeColor = System.Drawing.Color.Red;
