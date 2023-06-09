@@ -29,12 +29,12 @@ namespace DesktopApp.DAO
             List<object> parameters = new List<object> { };
             if (roleId != null) 
             {
-                query += " and RoleId = @roleId";
+                query += " and ra.RoleId = @roleId";
                 parameters.Add(roleId);
             }
             if (actionId != null)
             {
-                query += " and ActionId = @actionId";
+                query += " and ra.ActionId = @actionId";
                 parameters.Add(actionId);
             }
 
