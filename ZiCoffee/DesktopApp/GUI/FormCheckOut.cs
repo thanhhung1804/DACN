@@ -2,20 +2,12 @@
 using DesktopApp.DAO;
 using DesktopApp.DTO;
 using DesktopApp.Model;
-using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Shapes;
-using System.IO;
 
 namespace DesktopApp.GUI
 {

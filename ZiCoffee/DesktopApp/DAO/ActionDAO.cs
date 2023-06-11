@@ -1,12 +1,8 @@
 ﻿using DesktopApp.Common;
 using DesktopApp.Database;
 using DesktopApp.DTO;
-using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DesktopApp.DAO
 {

@@ -1,20 +1,10 @@
-﻿using DesktopApp.Common;
-using DesktopApp.DAO;
-using DesktopApp.Database;
+﻿using DesktopApp.DAO;
 using DesktopApp.Model;
-using Org.BouncyCastle.Cms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Globalization;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft;
 
 namespace DesktopApp.GUI.SubGUI
 {
