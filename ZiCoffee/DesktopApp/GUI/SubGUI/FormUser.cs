@@ -124,7 +124,7 @@ namespace DesktopApp.GUI.SubGUI
                 dtpBirthday.Value = currentSelectedUser.Birthday;
                 cbGenderSelector.SelectedIndex = cbGenderSelector.FindString(currentSelectedUser.Gender.ToString());
                 cbRole.SelectedIndex = cbRole.FindString(currentSelectedUser.RoleName);
-                if (currentSelectedUser.Avatar == null)
+                if (currentSelectedUser.Avatar == null || currentSelectedUser.Avatar.Length == 0)
                 {
                     picAvatar.Image = Properties.Resources.Avatar;
                 }
@@ -196,7 +196,7 @@ namespace DesktopApp.GUI.SubGUI
                 return;
             }
 
-            byte[] avatar = null;
+            byte[] avatar = currentSelectedUser.Avatar;
             if (picAvatar.Tag != null)
             {
                 avatar = File.ReadAllBytes(path: picAvatar.Tag.ToString());
@@ -213,7 +213,7 @@ namespace DesktopApp.GUI.SubGUI
                 roleId: (cbRole.SelectedItem as RoleDTO).RoleId,
                 email: txbEmail.Text,
                 gender: (Gender)cbGenderSelector.SelectedIndex,
-                avatar: File.ReadAllBytes(path: picAvatar.Tag.ToString())
+                avatar: avatar
             );
 
             if (!result)

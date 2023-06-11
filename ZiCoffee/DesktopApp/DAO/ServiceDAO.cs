@@ -77,6 +77,10 @@ namespace DesktopApp.DAO
                 values ( @serviceId , @name , @description , @status , @categoryId , @price , @image )";
 
             Guid newServiceId = Guid.NewGuid();
+            if (image is null)
+            {
+                image = new byte[0];
+            }
             List<object> parameters = new List<object> { 
                 newServiceId, name, description, status, categoryId, price, image 
             };
@@ -100,6 +104,10 @@ namespace DesktopApp.DAO
                     CategoryId = @categoryId , Price = @price , Image = @image 
                 where ServiceId = @serviceId";
 
+            if (image is null)
+            {
+                image = new byte[0];
+            }
             List<object> parameters = new List<object> { 
                 name, description, status, categoryId, price, image, serviceId 
             };

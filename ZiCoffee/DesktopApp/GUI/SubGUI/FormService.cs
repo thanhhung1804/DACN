@@ -122,9 +122,9 @@ namespace DesktopApp.GUI.SubGUI
                 cbCategorySelector.SelectedIndex = cbCategorySelector.FindString(currentSelectedService.CategoryName);
                 nudPrice.Value = (decimal)currentSelectedService.Price;
                 picImage.Image = Properties.Resources.Drink;
-                if (currentSelectedService.Image == null)
+                if (currentSelectedService.Image == null || currentSelectedService.Image.Length == 0)
                 {
-                    picImage.Image = Properties.Resources.Avatar;
+                    picImage.Image = Properties.Resources.Drink;
                 }
                 else
                 {
@@ -190,7 +190,7 @@ namespace DesktopApp.GUI.SubGUI
                 return;
             }
 
-            byte[] image = null;
+            byte[] image = currentSelectedService.Image;
             if (picImage.Tag != null)
             {
                 image = File.ReadAllBytes(path: picImage.Tag.ToString());

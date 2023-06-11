@@ -65,7 +65,7 @@ namespace DesktopApp.GUI
 
         private void LoadUserInfo()
         {
-            if (currentUser.Avatar == null)
+            if (currentUser.Avatar == null || currentUser.Avatar.Length == 0)
             {
                 picAvatar.Image = Properties.Resources.Avatar;
             }

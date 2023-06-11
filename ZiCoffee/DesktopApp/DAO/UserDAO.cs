@@ -76,6 +76,10 @@ namespace DesktopApp.DAO
             Guid userId = Guid.NewGuid();
             string defaultPassword = "P@$$w0rd";
             DateTime birthdayDateOnly = new DateTime(birthday.Year, birthday.Month, birthday.Day);
+            if (avatar is null)
+            {
+                avatar = new byte[0];
+            }
             List<object> parameters = new List<object>
             {
                 userId, username, defaultPassword, name, address, citizenId, phone,
@@ -113,6 +117,10 @@ namespace DesktopApp.DAO
                 where UserId = @userId";
 
             DateTime birthdayDateOnly = new DateTime(birthday.Year, birthday.Month, birthday.Day);
+            if (avatar is null)
+            {
+                avatar = new byte[0];
+            }
             List<object> parameters = new List<object>
             {
                 name, address, citizenId, phone, birthdayDateOnly, roleId, email, gender, avatar, userId

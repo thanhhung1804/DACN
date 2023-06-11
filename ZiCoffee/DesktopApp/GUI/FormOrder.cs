@@ -146,7 +146,7 @@ namespace DesktopApp.GUI
             foreach (ServiceDTO service in services)
             {
                 UserControlService btnService = new UserControlService();
-                if (service.Image == null)
+                if (service.Image == null || service.Image.Length == 0)
                 {
                     btnService.picService.Image = Properties.Resources.Drink;
                 }
