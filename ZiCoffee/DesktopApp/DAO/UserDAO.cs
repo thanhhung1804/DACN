@@ -135,13 +135,13 @@ namespace DesktopApp.DAO
                 select u.UserId, u.Username, u.Password, u.Avatar, u.Name, u.Gender, u.Birthday, 
                     u.Address, u.CitizenId, u.Phone, u.Email, u.RoleId, r.Name as RoleName 
                 from dbo.[User] as u, dbo.[Role] as r 
-                where u.RoleId = r.RoleId and u.Username = @username";
+                where u.RoleId = r.RoleId and u.Username COLLATE SQL_Latin1_General_CP1_CS_AS = @username";
 
             List<object> parameters = new List<object> { username };
 
             if (password != null)
             {
-                query += " and u.Password = @password";
+                query += " and u.Password COLLATE SQL_Latin1_General_CP1_CS_AS = @password";
                 parameters.Add(password);
             }
 
