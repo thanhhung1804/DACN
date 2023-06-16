@@ -159,6 +159,7 @@ namespace DesktopApp.GUI
                 {
                     btnService.BackColor = Color.FromArgb(140, 209, 255);
                     btnService.ForeColor = Color.Black;
+                    btnService.KeyDown += btnService_KeyDown;
                 }
                 else if (service.Status == ServiceStatus.Unavailable)
                 {
@@ -167,7 +168,6 @@ namespace DesktopApp.GUI
                 }
                 btnService.Tag = service;
                 btnService.UserControlClick += btnService_UserControlClick;
-                btnService.KeyDown += btnService_KeyDown;
                 fpnlService.Controls.Add(btnService);
             }
         }
