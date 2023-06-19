@@ -7,7 +7,9 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace DesktopApp.GUI.SubGUI
 {
@@ -136,10 +138,69 @@ namespace DesktopApp.GUI.SubGUI
             //valid datafield
             if (currentSelectedUser == null)
             {
+                Regex specialChars = new Regex(@"[!@#$%^&*()_+\-=[\]{}\\|;':"",./<>?]");
+                Regex unicodeChars = new Regex(@"^(?!^[\p{IsBasicLatin}]+$)\p{L}+$");
+                if (txbUsername.Text.Length>20 || txbUsername.Text.Length<=0)
+                {
+                    lbUsernameError.Visible = true;
+                    lbUsernameError.Text = "Username only allow to have character from 1 to 20!!!";
+                    return;
+                }
+                else if (txbUsername.Text.Contains(" "))
+                {
+                    lbUsernameError.Visible = true;
+                    lbUsernameError.Text = "Username isn't allowed to have whitespace";
+                    return;
+                }
+                else if (specialChars.IsMatch(txbUsername.Text))
+                {
+                    lbUsernameError.Visible = true;
+                    lbUsernameError.Text = "Username isn't allowed to have special character";
+                    return;
+                }
+                else if (unicodeChars.IsMatch(txbUsername.Text))
+                {
+                    lbUsernameError.Visible = true;
+                    lbUsernameError.Text = "Username can't contain unicode chars";
+                    return;
+                }
+                else
+                {
+                    lbUsernameError.Visible = false;
+                }
+
+                if (txbName.Text.Length > 40 || txbName.Text.Length <= 0)
+                {
+                    lbNameError.Visible = true;
+                    lbNameError.Text = "Name has to contain character between 1 and 40!!!";
+                    return;
+                }
+                else if (specialChars.IsMatch(txbName.Text))
+                {
+                    lbNameError.Visible = true;
+                    lbNameError.Text = "Name isn't allowed to have special character";
+                    return;
+                }
+                else
+                {
+                    lbNameError.Visible = false;
+                }
+
+                if(dtpBirthday.Value.Year < DateTime.Now.Year - 100 || dtpBirthday.Value.Year > DateTime.Now.Year - 15)
+                {
+                    lbBirthdayError.Visible = true;
+                    lbBirthdayError.Text = "Birthday only has between 1923 and 2008";
+                    return;
+                }
+                else
+                {
+                    lbBirthdayError.Visible = false;
+                }
                 CreateUser();
             }
             else
             {
+                
                 UpdateUser();
             }
             LoadData();
