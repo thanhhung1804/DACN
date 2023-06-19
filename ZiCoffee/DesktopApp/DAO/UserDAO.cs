@@ -163,5 +163,17 @@ namespace DesktopApp.DAO
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;
         }
+
+        public bool IsExistUsername(string username)
+        {
+            string query = @"select * from dbo.[User] where Username COLLATE SQL_Latin1_General_CP1_CS_AS = @username";
+            List<object> parameters = new List<object> { username };
+            DataTable result = database.ExecuteQuery(query, parameters);
+            if (result.Rows.Count <= 0)
+            { 
+                return false;
+            }
+            return true;
+        }
     }
 }

@@ -6,8 +6,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace DesktopApp.GUI.SubGUI
 {
@@ -80,7 +84,6 @@ namespace DesktopApp.GUI.SubGUI
         private void picNew_Click(object sender, EventArgs e)
         {
             currentSelectedUser = null;
-
             pnlDetail.Visible = true;
             btnDone.Text = "Add";
             txbUsername.ReadOnly = false;
@@ -93,6 +96,14 @@ namespace DesktopApp.GUI.SubGUI
                 }
             }
             picAvatar.Image = Properties.Resources.Avatar;
+
+            foreach (Control control in pnlDetail.Controls)
+            {
+                if (control is Label && (control as Label).Name.EndsWith("Error"))
+                { 
+                    (control as Label).Visible = false;
+                }
+            }
         }
 
         private void dgUser_SelectionChanged(object sender, EventArgs e)
@@ -128,22 +139,221 @@ namespace DesktopApp.GUI.SubGUI
                     Image image = Image.FromStream(ms);
                     picAvatar.Image = image;
                 }
+
+                foreach (Control control in pnlDetail.Controls)
+                {
+                    if (control is Label && (control as Label).Name.EndsWith("Error"))
+                    {
+                        (control as Label).Visible = false;
+                    }
+                }
             }
         }
 
         private void btnDone_Click(object sender, EventArgs e)
         {
-            //valid datafield
+            Regex specialChars = new Regex(@"[!@#$%^&*()_+\-=[\]{}\\|;':"",./<>?]");
+            Regex unicodeChars = new Regex(@"^(?!^[\p{IsBasicLatin}]+$)\p{L}+$");
             if (currentSelectedUser == null)
             {
-                CreateUser();
+                if (ValidateUsername(specialChars, unicodeChars) && 
+                    ValidateName(specialChars) && 
+                    ValidateBirthday() && 
+                    ValidateCitizenId() &&
+                    ValidateAddress() &&
+                    ValidatePhone() &&
+                    ValidateEmail())
+                {
+                    CreateUser();
+                }
+                else
+                {
+                    return;
+                }
             }
             else
             {
-                UpdateUser();
+                if (ValidateName(specialChars) &&
+                    ValidateBirthday() &&
+                    ValidateCitizenId() &&
+                    ValidateAddress() &&
+                    ValidatePhone() &&
+                    ValidateEmail())
+                {
+                    UpdateUser();
+                }
+                else
+                {
+                    return;
+                }
             }
             LoadData();
             pnlDetail.Visible = false;
+        }
+
+        private bool ValidateEmail()
+        {
+            if (txbEmail.Text.Length > 40 || txbPhone.Text.Length <=0)
+            {
+                lbEmailError.Visible = true;
+                lbEmailError.Text = "Email has to contain character between 1 and 40!!!";
+                return false;
+            }
+            else if (txbEmail.Text.Contains(" "))
+            {
+                lbEmailError.Visible = true;
+                lbEmailError.Text = "Email isn't allowed to have whitespace";
+                return false;
+            }
+            else
+            { 
+                lbEmailError.Visible = false;
+            }
+
+            try
+            {
+                MailAddress email = new MailAddress(txbEmail.Text);
+                lbEmailError.Visible = false;
+                return true;
+            }
+            catch (FormatException)
+            {
+                lbEmailError.Visible = true;
+                lbEmailError.Text = "Email is not valid format!!!";
+                return false;
+            }
+        }
+
+        private bool ValidatePhone()
+        {
+            if (txbPhone.Text.Length < 10 || txbPhone.Text.Length > 11)
+            {
+                lbPhoneError.Visible = true;
+                lbPhoneError.Text = "Phone has to contain least 10 characters to 11 character!!!";
+                return false;
+            }
+            else if (!Regex.IsMatch(txbPhone.Text, @"^[0-9]+$"))
+            {
+                lbPhoneError.Visible = true;
+                lbPhoneError.Text = "Phone must contain only numeric characters!";
+                return false;
+            }
+            else
+            {
+                lbPhoneError.Visible = false;
+                return true;
+            }
+        }
+
+        private bool ValidateAddress()
+        {
+            if (txbAddress.Text.Length > 100 || txbAddress.Text.Length <= 0)
+            {
+                lbAddressError.Visible = true;
+                lbAddressError.Text = "Adress has to contain character between 1 and 100!!!";
+                return false;
+            }
+            else
+            {
+                lbAddressError.Visible = false;
+                return true;
+            }
+        }
+
+        private bool ValidateCitizenId()
+        {
+            if (txbCitizenId.Text.Length != 12)
+            {
+                lbCitizenIdError.Visible = true;
+                lbCitizenIdError.Text = "CitizenId has to contain 12 characters!!!";
+                return false;
+            }
+            else if (!Regex.IsMatch(txbCitizenId.Text, @"^[0-9]+$"))
+            {
+                lbCitizenIdError.Visible = true;
+                lbCitizenIdError.Text = "CitizenId must contain only numeric characters!";
+                return false;
+            }
+            else
+            {
+                lbCitizenIdError.Visible = false;
+                return true;
+            }
+        }
+
+        private bool ValidateBirthday()
+        {
+            if (dtpBirthday.Value.Year < DateTime.Now.Year - 100 || dtpBirthday.Value.Year > DateTime.Now.Year - 15)
+            {
+                lbBirthdayError.Visible = true;
+                lbBirthdayError.Text = "Birthday only has between 1923 and 2008";
+                return false;
+            }
+            else
+            {
+                lbBirthdayError.Visible = false;
+                return true;
+            }
+        }
+
+        private bool ValidateName(Regex specialChars)
+        {
+            if (txbName.Text.Length > 40 || txbName.Text.Length <= 0)
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name has to contain character between 1 and 40!!!";
+                return false;
+            }
+            else if (specialChars.IsMatch(txbName.Text))
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name isn't allowed to have special character";
+                return false;
+            }
+            else
+            {
+                lbNameError.Visible = false;
+                return true;
+            }
+        }
+
+        private bool ValidateUsername(Regex specialChars, Regex unicodeChars)
+        {
+            if (txbUsername.Text.Length > 20 || txbUsername.Text.Length <= 0)
+            {
+                lbUsernameError.Visible = true;
+                lbUsernameError.Text = "Username only allow to have character from 1 to 20!!!";
+                return false;
+            }
+            else if (txbUsername.Text.Contains(" "))
+            {
+                lbUsernameError.Visible = true;
+                lbUsernameError.Text = "Username isn't allowed to have whitespace";
+                return false;
+            }
+            else if (specialChars.IsMatch(txbUsername.Text))
+            {
+                lbUsernameError.Visible = true;
+                lbUsernameError.Text = "Username isn't allowed to have special character";
+                return false;
+            }
+            else if (unicodeChars.IsMatch(txbUsername.Text))
+            {
+                lbUsernameError.Visible = true;
+                lbUsernameError.Text = "Username can't contain unicode chars";
+                return false;
+            }
+            else if (new UserDAO().IsExistUsername(username: txbUsername.Text))
+            { 
+                lbUsernameError.Visible = true;
+                lbUsernameError.Text = "Username is existed";
+                return false;
+            }
+            else
+            {
+                lbUsernameError.Visible = false;
+                return true;
+            }
         }
 
         private void CreateUser()
