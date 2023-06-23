@@ -54,6 +54,7 @@
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgTable = new System.Windows.Forms.DataGridView();
+            this.lbDescriptionError = new System.Windows.Forms.Label();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlHeader.SuspendLayout();
@@ -68,6 +69,7 @@
             // 
             this.pnlDetail.AutoScroll = true;
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlDetail.Controls.Add(this.lbDescriptionError);
             this.pnlDetail.Controls.Add(this.btnDone);
             this.pnlDetail.Controls.Add(this.rtxbDescription);
             this.pnlDetail.Controls.Add(this.lbDescription);
@@ -98,7 +100,7 @@
             this.btnDone.FlatAppearance.BorderSize = 3;
             this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.Location = new System.Drawing.Point(14, 483);
+            this.btnDone.Location = new System.Drawing.Point(13, 502);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(374, 50);
             this.btnDone.TabIndex = 8;
@@ -406,6 +408,18 @@
             this.dgTable.TabIndex = 0;
             this.dgTable.SelectionChanged += new System.EventHandler(this.dgTable_SelectionChanged);
             // 
+            // lbDescriptionError
+            // 
+            this.lbDescriptionError.AutoSize = true;
+            this.lbDescriptionError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescriptionError.ForeColor = System.Drawing.Color.Red;
+            this.lbDescriptionError.Location = new System.Drawing.Point(10, 480);
+            this.lbDescriptionError.Name = "lbDescriptionError";
+            this.lbDescriptionError.Size = new System.Drawing.Size(117, 19);
+            this.lbDescriptionError.TabIndex = 1;
+            this.lbDescriptionError.Text = "Error message";
+            this.lbDescriptionError.Visible = false;
+            // 
             // formTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -464,5 +478,6 @@
         private System.Windows.Forms.ComboBox cbStatusFilter;
         private System.Windows.Forms.Label lbStatusFilter;
         private System.Windows.Forms.Label lbAreaFilter;
+        private System.Windows.Forms.Label lbDescriptionError;
     }
 }

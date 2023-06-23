@@ -3,9 +3,11 @@ using DesktopApp.DAO;
 using DesktopApp.DTO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace DesktopApp.GUI.SubGUI
@@ -93,6 +95,14 @@ namespace DesktopApp.GUI.SubGUI
                 }
             }
             rtxbDescription.Text = string.Empty;
+
+            foreach (Control control in pnlDetail.Controls)
+            {
+                if (control is Label && (control as Label).Name.EndsWith("Error"))
+                {
+                    (control as Label).Visible = false;
+                }
+            }
         }
 
         private void dgTable_SelectionChanged(object sender, EventArgs e)
@@ -112,22 +122,74 @@ namespace DesktopApp.GUI.SubGUI
                 rtxbDescription.Text = currentSelectedTable.Description;
                 cbStatusSelector.SelectedIndex = cbStatusSelector.FindString(currentSelectedTable.Status.ToString());
                 cbAreaSelector.SelectedIndex = cbAreaSelector.FindString(currentSelectedTable.AreaName);
+
+                foreach (Control control in pnlDetail.Controls)
+                {
+                    if (control is Label && (control as Label).Name.EndsWith("Error"))
+                    {
+                        (control as Label).Visible = false;
+                    }
+                }
             }
         }
 
         private void btnDone_Click(object sender, EventArgs e)
         {
-            //validate field
             if (currentSelectedTable == null)
             {
-                CreateTable();
+                if(ValidateName() && ValidateDescription())
+                {
+                    CreateTable();
+                }
+                else
+                {
+                    return;
+                }
             }
             else
             {
-                UpdateTable();
+                if (ValidateName() && ValidateDescription())
+                {
+                    UpdateTable();
+                }
+                else
+                {
+                    return;
+                }
+                
             }
             LoadData();
             pnlDetail.Visible = false;
+        }
+
+        private bool ValidateDescription()
+        {
+            if (rtxbDescription.Text.Length >100)
+            {
+                lbDescriptionError.Visible = true;
+                lbDescriptionError.Text = "Description has to contain maximum 100 characters!!!";
+                return false;
+            }
+            else
+            {
+                lbDescriptionError.Visible = false;
+                return true;
+            }
+        }
+
+        private bool ValidateName()
+        {
+            if (txbName.Text.Length > 40 || txbName.Text.Length <= 0)
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name has to contain character between 1 and 40!!!";
+                return false;
+            }
+            else
+            {
+                lbNameError.Visible = false;
+                return true;
+            }
         }
 
         private void CreateTable()
