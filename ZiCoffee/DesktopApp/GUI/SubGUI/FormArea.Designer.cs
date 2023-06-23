@@ -42,6 +42,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picNew = new System.Windows.Forms.PictureBox();
+            this.lbDescriptionError = new System.Windows.Forms.Label();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlBody.SuspendLayout();
@@ -54,6 +55,7 @@
             // pnlDetail
             // 
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlDetail.Controls.Add(this.lbDescriptionError);
             this.pnlDetail.Controls.Add(this.picClose);
             this.pnlDetail.Controls.Add(this.btnDone);
             this.pnlDetail.Controls.Add(this.rtxbDescription);
@@ -91,7 +93,7 @@
             this.btnDone.FlatAppearance.BorderSize = 3;
             this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.Location = new System.Drawing.Point(16, 333);
+            this.btnDone.Location = new System.Drawing.Point(16, 352);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(372, 50);
             this.btnDone.TabIndex = 3;
@@ -245,6 +247,18 @@
             this.picNew.TabStop = false;
             this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
+            // lbDescriptionError
+            // 
+            this.lbDescriptionError.AutoSize = true;
+            this.lbDescriptionError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescriptionError.ForeColor = System.Drawing.Color.Red;
+            this.lbDescriptionError.Location = new System.Drawing.Point(12, 330);
+            this.lbDescriptionError.Name = "lbDescriptionError";
+            this.lbDescriptionError.Size = new System.Drawing.Size(117, 19);
+            this.lbDescriptionError.TabIndex = 0;
+            this.lbDescriptionError.Text = "Error message";
+            this.lbDescriptionError.Visible = false;
+            // 
             // formArea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -287,5 +301,6 @@
         private System.Windows.Forms.PictureBox picDelete;
         private System.Windows.Forms.PictureBox picNew;
         private System.Windows.Forms.PictureBox picClose;
+        private System.Windows.Forms.Label lbDescriptionError;
     }
 }
