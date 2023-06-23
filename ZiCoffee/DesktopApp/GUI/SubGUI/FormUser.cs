@@ -310,6 +310,12 @@ namespace DesktopApp.GUI.SubGUI
                 lbNameError.Text = "Name isn't allowed to have special character";
                 return false;
             }
+            else if (string.IsNullOrWhiteSpace(txbName.Text))
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name can not contain only whitespace!!!";
+                return false;
+            }
             else
             {
                 lbNameError.Visible = false;

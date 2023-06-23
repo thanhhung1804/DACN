@@ -39,35 +39,36 @@
             this.txbName = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.picImage = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
             this.lbDescription = new System.Windows.Forms.Label();
             this.lbPriceError = new System.Windows.Forms.Label();
             this.nudPrice = new System.Windows.Forms.NumericUpDown();
             this.lbPrice = new System.Windows.Forms.Label();
+            this.picClose = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.lbStatusFilter = new System.Windows.Forms.Label();
             this.lbCategoryFilter = new System.Windows.Forms.Label();
             this.cbStatusFilter = new System.Windows.Forms.ComboBox();
+            this.picDelete = new System.Windows.Forms.PictureBox();
+            this.picNew = new System.Windows.Forms.PictureBox();
+            this.picSearch = new System.Windows.Forms.PictureBox();
             this.cbCategoryFilter = new System.Windows.Forms.ComboBox();
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgService = new System.Windows.Forms.DataGridView();
-            this.picDelete = new System.Windows.Forms.PictureBox();
-            this.picNew = new System.Windows.Forms.PictureBox();
-            this.picSearch = new System.Windows.Forms.PictureBox();
-            this.picImage = new System.Windows.Forms.PictureBox();
-            this.picClose = new System.Windows.Forms.PictureBox();
+            this.lbDescriptionError = new System.Windows.Forms.Label();
             this.pnlDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlHeader.SuspendLayout();
-            this.pnlBody.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgService)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
+            this.pnlBody.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgService)).BeginInit();
             this.SuspendLayout();
             // 
             // lbCategoryError
@@ -175,6 +176,7 @@
             // 
             this.pnlDetail.AutoScroll = true;
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlDetail.Controls.Add(this.lbDescriptionError);
             this.pnlDetail.Controls.Add(this.picImage);
             this.pnlDetail.Controls.Add(this.btnDone);
             this.pnlDetail.Controls.Add(this.rtxbDescription);
@@ -200,6 +202,19 @@
             this.pnlDetail.TabIndex = 0;
             this.pnlDetail.Visible = false;
             // 
+            // picImage
+            // 
+            this.picImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picImage.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picImage.Image = global::DesktopApp.Properties.Resources.User;
+            this.picImage.Location = new System.Drawing.Point(237, 397);
+            this.picImage.Name = "picImage";
+            this.picImage.Size = new System.Drawing.Size(150, 150);
+            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picImage.TabIndex = 0;
+            this.picImage.TabStop = false;
+            this.picImage.Click += new System.EventHandler(this.picImage_Click);
+            // 
             // btnDone
             // 
             this.btnDone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -209,7 +224,7 @@
             this.btnDone.FlatAppearance.BorderSize = 3;
             this.btnDone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDone.Location = new System.Drawing.Point(13, 553);
+            this.btnDone.Location = new System.Drawing.Point(13, 572);
             this.btnDone.Name = "btnDone";
             this.btnDone.Size = new System.Drawing.Size(374, 50);
             this.btnDone.TabIndex = 9;
@@ -273,6 +288,19 @@
             this.lbPrice.TabIndex = 0;
             this.lbPrice.Text = "Price";
             // 
+            // picClose
+            // 
+            this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
+            this.picClose.Location = new System.Drawing.Point(358, 13);
+            this.picClose.Name = "picClose";
+            this.picClose.Size = new System.Drawing.Size(30, 30);
+            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picClose.TabIndex = 0;
+            this.picClose.TabStop = false;
+            this.picClose.Click += new System.EventHandler(this.picClose_Click);
+            // 
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
@@ -324,6 +352,45 @@
             this.cbStatusFilter.TabIndex = 3;
             this.cbStatusFilter.SelectedValueChanged += new System.EventHandler(this.cbStatusFilter_SelectedValueChanged);
             // 
+            // picDelete
+            // 
+            this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picDelete.Image = global::DesktopApp.Properties.Resources.Remove;
+            this.picDelete.Location = new System.Drawing.Point(664, 12);
+            this.picDelete.Name = "picDelete";
+            this.picDelete.Size = new System.Drawing.Size(30, 30);
+            this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picDelete.TabIndex = 0;
+            this.picDelete.TabStop = false;
+            this.picDelete.Click += new System.EventHandler(this.picDelete_Click);
+            // 
+            // picNew
+            // 
+            this.picNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picNew.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picNew.Image = global::DesktopApp.Properties.Resources.Plus;
+            this.picNew.Location = new System.Drawing.Point(628, 12);
+            this.picNew.Name = "picNew";
+            this.picNew.Size = new System.Drawing.Size(30, 30);
+            this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picNew.TabIndex = 0;
+            this.picNew.TabStop = false;
+            this.picNew.Click += new System.EventHandler(this.picNew_Click);
+            // 
+            // picSearch
+            // 
+            this.picSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picSearch.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picSearch.Image = global::DesktopApp.Properties.Resources.Search;
+            this.picSearch.Location = new System.Drawing.Point(454, 13);
+            this.picSearch.Name = "picSearch";
+            this.picSearch.Size = new System.Drawing.Size(30, 30);
+            this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picSearch.TabIndex = 0;
+            this.picSearch.TabStop = false;
+            this.picSearch.Click += new System.EventHandler(this.picSearch_Click);
+            // 
             // cbCategoryFilter
             // 
             this.cbCategoryFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -372,7 +439,7 @@
             this.dgService.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Highlight;
@@ -401,70 +468,17 @@
             this.dgService.TabIndex = 0;
             this.dgService.SelectionChanged += new System.EventHandler(this.dgService_SelectionChanged);
             // 
-            // picDelete
+            // lbDescriptionError
             // 
-            this.picDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picDelete.Image = global::DesktopApp.Properties.Resources.Remove;
-            this.picDelete.Location = new System.Drawing.Point(664, 12);
-            this.picDelete.Name = "picDelete";
-            this.picDelete.Size = new System.Drawing.Size(30, 30);
-            this.picDelete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picDelete.TabIndex = 0;
-            this.picDelete.TabStop = false;
-            this.picDelete.Click += new System.EventHandler(this.picDelete_Click);
-            // 
-            // picNew
-            // 
-            this.picNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picNew.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picNew.Image = global::DesktopApp.Properties.Resources.Plus;
-            this.picNew.Location = new System.Drawing.Point(628, 12);
-            this.picNew.Name = "picNew";
-            this.picNew.Size = new System.Drawing.Size(30, 30);
-            this.picNew.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picNew.TabIndex = 0;
-            this.picNew.TabStop = false;
-            this.picNew.Click += new System.EventHandler(this.picNew_Click);
-            // 
-            // picSearch
-            // 
-            this.picSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picSearch.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picSearch.Image = global::DesktopApp.Properties.Resources.Search;
-            this.picSearch.Location = new System.Drawing.Point(454, 13);
-            this.picSearch.Name = "picSearch";
-            this.picSearch.Size = new System.Drawing.Size(30, 30);
-            this.picSearch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picSearch.TabIndex = 0;
-            this.picSearch.TabStop = false;
-            this.picSearch.Click += new System.EventHandler(this.picSearch_Click);
-            // 
-            // picImage
-            // 
-            this.picImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picImage.Image = global::DesktopApp.Properties.Resources.User;
-            this.picImage.Location = new System.Drawing.Point(237, 397);
-            this.picImage.Name = "picImage";
-            this.picImage.Size = new System.Drawing.Size(150, 150);
-            this.picImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picImage.TabIndex = 0;
-            this.picImage.TabStop = false;
-            this.picImage.Click += new System.EventHandler(this.picImage_Click);
-            // 
-            // picClose
-            // 
-            this.picClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picClose.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picClose.Image = global::DesktopApp.Properties.Resources.Quit;
-            this.picClose.Location = new System.Drawing.Point(358, 13);
-            this.picClose.Name = "picClose";
-            this.picClose.Size = new System.Drawing.Size(30, 30);
-            this.picClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picClose.TabIndex = 0;
-            this.picClose.TabStop = false;
-            this.picClose.Click += new System.EventHandler(this.picClose_Click);
+            this.lbDescriptionError.AutoSize = true;
+            this.lbDescriptionError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescriptionError.ForeColor = System.Drawing.Color.Red;
+            this.lbDescriptionError.Location = new System.Drawing.Point(10, 550);
+            this.lbDescriptionError.Name = "lbDescriptionError";
+            this.lbDescriptionError.Size = new System.Drawing.Size(117, 19);
+            this.lbDescriptionError.TabIndex = 0;
+            this.lbDescriptionError.Text = "Error message";
+            this.lbDescriptionError.Visible = false;
             // 
             // formService
             // 
@@ -485,16 +499,16 @@
             this.SizeChanged += new System.EventHandler(this.formService_SizeChanged);
             this.pnlDetail.ResumeLayout(false);
             this.pnlDetail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
-            this.pnlBody.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgService)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
+            this.pnlBody.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgService)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -529,5 +543,6 @@
         private System.Windows.Forms.TextBox txbSearch;
         private System.Windows.Forms.Panel pnlBody;
         private System.Windows.Forms.DataGridView dgService;
+        private System.Windows.Forms.Label lbDescriptionError;
     }
 }

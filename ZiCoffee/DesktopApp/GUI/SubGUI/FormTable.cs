@@ -156,7 +156,6 @@ namespace DesktopApp.GUI.SubGUI
                 {
                     return;
                 }
-                
             }
             LoadData();
             pnlDetail.Visible = false;
@@ -183,6 +182,12 @@ namespace DesktopApp.GUI.SubGUI
             {
                 lbNameError.Visible = true;
                 lbNameError.Text = "Name has to contain character between 1 and 40!!!";
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txbName.Text))
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name can not contain only whitespace!!!";
                 return false;
             }
             else

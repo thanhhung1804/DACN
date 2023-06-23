@@ -96,6 +96,14 @@ namespace DesktopApp.GUI.SubGUI
             picImage.Image = Properties.Resources.User;
             rtxbDescription.Text = string.Empty;
             nudPrice.Value = 0;
+
+            foreach (Control control in pnlDetail.Controls)
+            {
+                if (control is Label && (control as Label).Name.EndsWith("Error"))
+                {
+                    (control as Label).Visible = false;
+                }
+            }
         }
 
         private void dgService_SelectionChanged(object sender, EventArgs e)
@@ -117,6 +125,7 @@ namespace DesktopApp.GUI.SubGUI
                 cbCategorySelector.SelectedIndex = cbCategorySelector.FindString(currentSelectedService.CategoryName);
                 nudPrice.Value = (decimal)currentSelectedService.Price;
                 picImage.Image = Properties.Resources.Drink;
+
                 if (currentSelectedService.Image == null || currentSelectedService.Image.Length == 0)
                 {
                     picImage.Image = Properties.Resources.Drink;
@@ -127,22 +136,79 @@ namespace DesktopApp.GUI.SubGUI
                     Image image = Image.FromStream(ms);
                     picImage.Image = image;
                 }
+
+                foreach (Control control in pnlDetail.Controls)
+                {
+                    if (control is Label && (control as Label).Name.EndsWith("Error"))
+                    {
+                        (control as Label).Visible = false;
+                    }
+                }
             }
         }
 
         private void btnDone_Click(object sender, EventArgs e)
         {
-            //valid datafield
             if (currentSelectedService == null)
             {
-                CreateService();
+                if (ValidateName() && ValidateDescription())
+                {
+                    CreateService();
+                }
+                else
+                {
+                    return;
+                }
             }
             else
             {
-                UpdateService();
+                if (ValidateName() && ValidateDescription())
+                {
+                    UpdateService();
+                }
+                else
+                {
+                    return;
+                }
             }
             LoadData();
             pnlDetail.Visible = false;
+        }
+
+        private bool ValidateDescription()
+        {
+            if (rtxbDescription.Text.Length > 100)
+            {
+                lbDescriptionError.Visible = true;
+                lbDescriptionError.Text = "Description has to contain maximum 100 characters!!!";
+                return false;
+            }
+            else
+            {
+                lbDescriptionError.Visible = false;
+                return true;
+            }
+        }
+
+        private bool ValidateName()
+        {
+            if (txbName.Text.Length > 20 || txbName.Text.Length <= 0)
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name has to contain character between 1 and 20!!!";
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txbName.Text))
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name can not contain only whitespace!!!";
+                return false;
+            }
+            else
+            {
+                lbNameError.Visible = false;
+                return true;
+            }
         }
 
         private void CreateService()
