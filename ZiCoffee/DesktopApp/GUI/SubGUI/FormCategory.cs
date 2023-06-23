@@ -112,12 +112,13 @@ namespace DesktopApp.GUI.SubGUI
             if (currentSelectedCategory == null)
             {
                 CreateCategory();
+                LoadData(descSortByCreatedDate: true);
             }
             else
             {
                 UpdateCategory();
+                LoadData();
             }
-            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -267,9 +268,9 @@ namespace DesktopApp.GUI.SubGUI
             pnlDetail.Visible = false;
         }
 
-        private void LoadData()
+        private void LoadData(bool descSortByCreatedDate = false)
         {
-            List<CategoryDTO> categories = new CategoryDAO().GetAll();
+            List<CategoryDTO> categories = new CategoryDAO().GetAll(descSortByCreatedDate: descSortByCreatedDate);
             dgCategory.DataSource = categories;
 
             dgCategory.AutoGenerateColumns = false;
@@ -290,6 +291,11 @@ namespace DesktopApp.GUI.SubGUI
             descriptionColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             descriptionColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgCategory.Columns.Add(descriptionColumn);
+        }
+
+        private void picReLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

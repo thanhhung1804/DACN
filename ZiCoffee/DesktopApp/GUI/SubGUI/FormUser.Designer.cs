@@ -61,6 +61,7 @@
             this.lbUsername = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.picReLoad = new System.Windows.Forms.PictureBox();
             this.lbGenderFilter = new System.Windows.Forms.Label();
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picNew = new System.Windows.Forms.PictureBox();
@@ -73,6 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picReLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).BeginInit();
@@ -466,6 +468,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlHeader.Controls.Add(this.picReLoad);
             this.pnlHeader.Controls.Add(this.lbGenderFilter);
             this.pnlHeader.Controls.Add(this.picDelete);
             this.pnlHeader.Controls.Add(this.picNew);
@@ -478,6 +481,19 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(700, 119);
             this.pnlHeader.TabIndex = 0;
+            // 
+            // picReLoad
+            // 
+            this.picReLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picReLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picReLoad.Image = global::DesktopApp.Properties.Resources.Reload;
+            this.picReLoad.Location = new System.Drawing.Point(592, 12);
+            this.picReLoad.Name = "picReLoad";
+            this.picReLoad.Size = new System.Drawing.Size(30, 30);
+            this.picReLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picReLoad.TabIndex = 3;
+            this.picReLoad.TabStop = false;
+            this.picReLoad.Click += new System.EventHandler(this.picReLoad_Click);
             // 
             // lbGenderFilter
             // 
@@ -628,6 +644,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picReLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).EndInit();
@@ -679,5 +696,6 @@
         private System.Windows.Forms.PictureBox picAvatar;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.Label lbGenderFilter;
+        private System.Windows.Forms.PictureBox picReLoad;
     }
 }

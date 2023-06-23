@@ -16,10 +16,15 @@ namespace DesktopApp.DAO
             database = new SqlServerDatabase(Constants.CONNECTION_STRING);
         }
 
-        public List<AreaDTO> GetAll(bool ascSortByName = true)
+        public List<AreaDTO> GetAll(bool ascSortByName = true, bool descSortByCreatedDate = false)
         {
             string query = "select * from dbo.[Area]";
-            if (ascSortByName)
+
+            if (descSortByCreatedDate)
+            {
+                query += " order by CreatedDate desc";
+            }
+            else if (ascSortByName)
             {
                 query += " order by Name";
             }

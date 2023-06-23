@@ -156,13 +156,14 @@ namespace DesktopApp.GUI.SubGUI
 
             if (currentSelectedService == null)
             {
-               CreateService();
+                CreateService();
+                LoadData(descSortByCreatedDate: true);
             }
             else
             {
                 UpdateService();
+                LoadData();
             }
-            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -364,7 +365,7 @@ namespace DesktopApp.GUI.SubGUI
             }
         }
 
-        private void LoadData()
+        private void LoadData(bool descSortByCreatedDate = false)
         {
             Guid categoryId = Guid.Empty;
             if (cbCategoryFilter.SelectedItem != null)
@@ -381,7 +382,8 @@ namespace DesktopApp.GUI.SubGUI
             List<ServiceDTO> services = new ServiceDAO().GetAll(
                 categoryId: categoryId,
                 keyword: txbSearch.Text,
-                status: status
+                status: status,
+                descSortByCreatedDate: descSortByCreatedDate
             );
             dgService.DataSource = services;
 
@@ -427,6 +429,11 @@ namespace DesktopApp.GUI.SubGUI
             categoryNameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             categoryNameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgService.Columns.Add(categoryNameColumn);
+        }
+
+        private void picReLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

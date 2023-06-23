@@ -18,6 +18,7 @@ namespace DesktopApp.DTO
         public string Phone { get; set; }
         public string Email { get; set; }
         public Guid RoleId { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public string RoleName { get; set; }
 
@@ -50,6 +51,7 @@ namespace DesktopApp.DTO
             Email = row["Email"].ToString();
             RoleId = Guid.Parse(row["RoleId"].ToString());
             RoleName = row["RoleName"].ToString();
+            CreatedDate = DateTime.Parse(row["CreatedDate"].ToString());
         }
     }
 }

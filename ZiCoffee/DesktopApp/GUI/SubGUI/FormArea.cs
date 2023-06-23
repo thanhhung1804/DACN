@@ -112,12 +112,13 @@ namespace DesktopApp.GUI.SubGUI
             if (currentSelectedArea == null)
             {
                 CreateArea();
+                LoadData(descSortByCreatedDate: true);
             }
             else
             {
                 UpdateArea();
+                LoadData();
             }
-            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -265,9 +266,9 @@ namespace DesktopApp.GUI.SubGUI
             pnlDetail.Visible = false;
         }
 
-        private void LoadData()
+        private void LoadData(bool descSortByCreatedDate = false)
         {
-            List<AreaDTO> areas = new AreaDAO().GetAll();
+            List<AreaDTO> areas = new AreaDAO().GetAll(descSortByCreatedDate: descSortByCreatedDate);
             dgArea.DataSource = areas;
 
             dgArea.AutoGenerateColumns = false;
@@ -288,6 +289,11 @@ namespace DesktopApp.GUI.SubGUI
             descriptionColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             descriptionColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgArea.Columns.Add(descriptionColumn);
+        }
+
+        private void picReLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.lbDescriptionError = new System.Windows.Forms.Label();
             this.btnDone = new System.Windows.Forms.Button();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
             this.lbDescription = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.lbName = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.picReLoad = new System.Windows.Forms.PictureBox();
             this.lbStatusFilter = new System.Windows.Forms.Label();
             this.lbAreaFilter = new System.Windows.Forms.Label();
             this.cbStatusFilter = new System.Windows.Forms.ComboBox();
@@ -54,10 +56,10 @@
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgTable = new System.Windows.Forms.DataGridView();
-            this.lbDescriptionError = new System.Windows.Forms.Label();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picReLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).BeginInit();
@@ -90,6 +92,18 @@
             this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
             this.pnlDetail.Visible = false;
+            // 
+            // lbDescriptionError
+            // 
+            this.lbDescriptionError.AutoSize = true;
+            this.lbDescriptionError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescriptionError.ForeColor = System.Drawing.Color.Red;
+            this.lbDescriptionError.Location = new System.Drawing.Point(10, 480);
+            this.lbDescriptionError.Name = "lbDescriptionError";
+            this.lbDescriptionError.Size = new System.Drawing.Size(117, 19);
+            this.lbDescriptionError.TabIndex = 1;
+            this.lbDescriptionError.Text = "Error message";
+            this.lbDescriptionError.Visible = false;
             // 
             // btnDone
             // 
@@ -245,6 +259,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlHeader.Controls.Add(this.picReLoad);
             this.pnlHeader.Controls.Add(this.lbStatusFilter);
             this.pnlHeader.Controls.Add(this.lbAreaFilter);
             this.pnlHeader.Controls.Add(this.cbStatusFilter);
@@ -259,6 +274,19 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(700, 131);
             this.pnlHeader.TabIndex = 0;
+            // 
+            // picReLoad
+            // 
+            this.picReLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picReLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picReLoad.Image = global::DesktopApp.Properties.Resources.Reload;
+            this.picReLoad.Location = new System.Drawing.Point(592, 12);
+            this.picReLoad.Name = "picReLoad";
+            this.picReLoad.Size = new System.Drawing.Size(30, 30);
+            this.picReLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picReLoad.TabIndex = 0;
+            this.picReLoad.TabStop = false;
+            this.picReLoad.Click += new System.EventHandler(this.picReLoad_Click);
             // 
             // lbStatusFilter
             // 
@@ -408,18 +436,6 @@
             this.dgTable.TabIndex = 0;
             this.dgTable.SelectionChanged += new System.EventHandler(this.dgTable_SelectionChanged);
             // 
-            // lbDescriptionError
-            // 
-            this.lbDescriptionError.AutoSize = true;
-            this.lbDescriptionError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescriptionError.ForeColor = System.Drawing.Color.Red;
-            this.lbDescriptionError.Location = new System.Drawing.Point(10, 480);
-            this.lbDescriptionError.Name = "lbDescriptionError";
-            this.lbDescriptionError.Size = new System.Drawing.Size(117, 19);
-            this.lbDescriptionError.TabIndex = 1;
-            this.lbDescriptionError.Text = "Error message";
-            this.lbDescriptionError.Visible = false;
-            // 
             // formTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -442,6 +458,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.pnlHeader.ResumeLayout(false);
             this.pnlHeader.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picReLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSearch)).EndInit();
@@ -479,5 +496,6 @@
         private System.Windows.Forms.Label lbStatusFilter;
         private System.Windows.Forms.Label lbAreaFilter;
         private System.Windows.Forms.Label lbDescriptionError;
+        private System.Windows.Forms.PictureBox picReLoad;
     }
 }

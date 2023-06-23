@@ -16,9 +16,22 @@ namespace DesktopApp.DAO
             database = new SqlServerDatabase(Constants.CONNECTION_STRING);
         }
 
-        public List<RoleDTO> GetAll()
+        public List<RoleDTO> GetAll(bool ascSortByName = true, bool descSortByCreatedDate = false)
         {
             string query = "select * from dbo.[Role]";
+
+            if (descSortByCreatedDate)
+            {
+                query += " order by CreatedDate desc";
+            }
+            else if (ascSortByName)
+            {
+                query += " order by Name";
+            }
+            else
+            {
+                query += " order by Name desc";
+            }
 
             List<RoleDTO> roles = new List<RoleDTO>();
             DataTable dataTable = database.ExecuteQuery(query);
@@ -39,18 +52,18 @@ namespace DesktopApp.DAO
             return Tuple.Create(result, roleId);
         }
 
-        public bool Delete(Guid roleId)
-        {
-            string query = @"delete from dbo.[Role] where RoleId = @roleId";
-            List<object> parameters = new List<object> { roleId };
-            bool result = database.ExecuteNoneQuery(query, parameters);
-            return result;
-        }
-
         public bool Update(Guid roleId, string name, string description = null)
         {
             string query = @"update dbo.[Role] set Name = @name , Description = @description where RoleId = @roleId";
             List<object> parameters = new List<object> { name, description, roleId };
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
+        }
+
+        public bool Delete(Guid roleId)
+        {
+            string query = @"delete from dbo.[Role] where RoleId = @roleId";
+            List<object> parameters = new List<object> { roleId };
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;
         }

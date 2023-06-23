@@ -282,6 +282,7 @@
     <Content Include="GUI\Assets\Icon\Password.png" />
     <Content Include="GUI\Assets\Icon\Plus.png" />
     <Content Include="GUI\Assets\Icon\Quit.png" />
+    <Content Include="GUI\Assets\Icon\Reload.png" />
     <Content Include="GUI\Assets\Icon\Remove.png" />
     <Content Include="GUI\Assets\Icon\Search.png" />
     <Content Include="GUI\Assets\Icon\show.png" />

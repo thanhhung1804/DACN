@@ -172,12 +172,13 @@ namespace DesktopApp.GUI.SubGUI
                     return;
                 }
                 CreateUser();
+                LoadData(descSortByCreatedDate: true);
             }
             else
             {
                 UpdateUser();
+                LoadData();
             }
-            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -510,11 +511,12 @@ namespace DesktopApp.GUI.SubGUI
             }
         }
 
-        private void LoadData()
+        private void LoadData(bool descSortByCreatedDate = false)
         {
             List<UserDTO> users = new UserDAO().GetAll(
                 keyword: txbSearch.Text, 
-                gender: (Gender)cbGenderFilter.SelectedIndex
+                gender: (Gender)cbGenderFilter.SelectedIndex,
+                descSortByCreatedDate: descSortByCreatedDate
             );
             dgUser.DataSource = users;
 
@@ -576,6 +578,11 @@ namespace DesktopApp.GUI.SubGUI
             roleNameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             roleNameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgUser.Columns.Add(roleNameColumn);
+        }
+
+        private void picReLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlDetail = new System.Windows.Forms.Panel();
+            this.lbDescriptionError = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.btnDone = new System.Windows.Forms.Button();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
@@ -38,14 +39,15 @@
             this.txbName = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.picReLoad = new System.Windows.Forms.PictureBox();
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picNew = new System.Windows.Forms.PictureBox();
             this.pnlBody = new System.Windows.Forms.Panel();
             this.dgCategory = new System.Windows.Forms.DataGridView();
-            this.lbDescriptionError = new System.Windows.Forms.Label();
             this.pnlDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picReLoad)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).BeginInit();
             this.pnlBody.SuspendLayout();
@@ -70,6 +72,18 @@
             this.pnlDetail.Size = new System.Drawing.Size(400, 647);
             this.pnlDetail.TabIndex = 0;
             this.pnlDetail.Visible = false;
+            // 
+            // lbDescriptionError
+            // 
+            this.lbDescriptionError.AutoSize = true;
+            this.lbDescriptionError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescriptionError.ForeColor = System.Drawing.Color.Red;
+            this.lbDescriptionError.Location = new System.Drawing.Point(12, 325);
+            this.lbDescriptionError.Name = "lbDescriptionError";
+            this.lbDescriptionError.Size = new System.Drawing.Size(117, 19);
+            this.lbDescriptionError.TabIndex = 0;
+            this.lbDescriptionError.Text = "Error message";
+            this.lbDescriptionError.Visible = false;
             // 
             // picClose
             // 
@@ -157,6 +171,7 @@
             // pnlHeader
             // 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlHeader.Controls.Add(this.picReLoad);
             this.pnlHeader.Controls.Add(this.picDelete);
             this.pnlHeader.Controls.Add(this.picNew);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
@@ -165,6 +180,19 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(700, 59);
             this.pnlHeader.TabIndex = 0;
+            // 
+            // picReLoad
+            // 
+            this.picReLoad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picReLoad.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picReLoad.Image = global::DesktopApp.Properties.Resources.Reload;
+            this.picReLoad.Location = new System.Drawing.Point(586, 12);
+            this.picReLoad.Name = "picReLoad";
+            this.picReLoad.Size = new System.Drawing.Size(30, 30);
+            this.picReLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picReLoad.TabIndex = 0;
+            this.picReLoad.TabStop = false;
+            this.picReLoad.Click += new System.EventHandler(this.picReLoad_Click);
             // 
             // picDelete
             // 
@@ -246,18 +274,6 @@
             this.dgCategory.TabIndex = 0;
             this.dgCategory.SelectionChanged += new System.EventHandler(this.dgCategory_SelectionChanged);
             // 
-            // lbDescriptionError
-            // 
-            this.lbDescriptionError.AutoSize = true;
-            this.lbDescriptionError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescriptionError.ForeColor = System.Drawing.Color.Red;
-            this.lbDescriptionError.Location = new System.Drawing.Point(12, 325);
-            this.lbDescriptionError.Name = "lbDescriptionError";
-            this.lbDescriptionError.Size = new System.Drawing.Size(117, 19);
-            this.lbDescriptionError.TabIndex = 0;
-            this.lbDescriptionError.Text = "Error message";
-            this.lbDescriptionError.Visible = false;
-            // 
             // formCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
@@ -279,6 +295,7 @@
             this.pnlDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).EndInit();
             this.pnlHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picReLoad)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picNew)).EndInit();
             this.pnlBody.ResumeLayout(false);
@@ -303,5 +320,6 @@
         private System.Windows.Forms.Panel pnlBody;
         private System.Windows.Forms.DataGridView dgCategory;
         private System.Windows.Forms.Label lbDescriptionError;
+        private System.Windows.Forms.PictureBox picReLoad;
     }
 }

@@ -19,10 +19,12 @@ namespace DesktopApp.DAO
         public List<ServiceDTO> GetAll(
             Guid categoryId,
             string keyword = null,
-            ServiceStatus status = ServiceStatus.All)
+            ServiceStatus status = ServiceStatus.All,
+            bool ascSortByName = true, 
+            bool descSortByCreatedDate = false)
         {
             string query = @"
-                select s.ServiceId, s.Name, s.Description, s.Status, s.Price, s.Image, s.CategoryId, c.Name as CategoryName
+                select s.ServiceId, s.Name, s.Description, s.Status, s.Price, s.Image, s.CategoryId, s.CreatedDate, c.Name as CategoryName
                 from dbo.[Service] as s, dbo.[Category] as c
                 where s.CategoryId = c.CategoryId";
 
@@ -49,6 +51,19 @@ namespace DesktopApp.DAO
             {
                 query += " and s.Status = @status";
                 parameters.Add(status);
+            }
+
+            if (descSortByCreatedDate)
+            {
+                query += " order by s.CreatedDate desc";
+            }
+            else if (ascSortByName)
+            {
+                query += " order by s.Name";
+            }
+            else
+            {
+                query += " order by s.Name desc";
             }
 
             List<ServiceDTO> services = new List<ServiceDTO>();

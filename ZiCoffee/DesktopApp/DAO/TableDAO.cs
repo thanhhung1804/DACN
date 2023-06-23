@@ -20,10 +20,11 @@ namespace DesktopApp.DAO
             Guid areaId, 
             string keyword = null, 
             TableStatus status = TableStatus.All,
-            bool ascSortByName = true)
+            bool ascSortByName = true,
+            bool descSortByCreatedDate = false)
         {
             string query = @"
-                select t.TableId, t.Name, t.Description, t.Status, t.AreaId, a.Name as AreaName 
+                select t.TableId, t.Name, t.Description, t.Status, t.AreaId, t.CreatedDate, a.Name as AreaName 
                 from dbo.[Table] as t, dbo.[Area] as a 
                 where t.AreaId = a.AreaId";
 
@@ -51,7 +52,12 @@ namespace DesktopApp.DAO
                 query += " and t.Status = @status";
                 parameters.Add(status);
             }
-            if (ascSortByName)
+
+            if (descSortByCreatedDate)
+            {
+                query += " order by t.CreatedDate desc";
+            }
+            else if (ascSortByName)
             {
                 query += " order by t.Name";
             }

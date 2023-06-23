@@ -143,12 +143,13 @@ namespace DesktopApp.GUI.SubGUI
             if (currentSelectedTable == null)
             {
                 CreateTable();
+                LoadData(descSortByCreatedDate: true);
             }
             else
             {
                 UpdateTable();
+                LoadData();
             }
-            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -321,7 +322,7 @@ namespace DesktopApp.GUI.SubGUI
             LoadData();
         }
 
-        private void LoadData()
+        private void LoadData(bool descSortByCreatedDate = false)
         {
             Guid areaId = Guid.Empty;
             if (cbAreaFilter.SelectedItem != null)
@@ -338,7 +339,8 @@ namespace DesktopApp.GUI.SubGUI
             List<TableDTO> tables = new TableDAO().GetAll(
                 areaId: areaId,
                 keyword: txbSearch.Text,
-                status: status
+                status: status,
+                descSortByCreatedDate: descSortByCreatedDate
             );
             dgTable.DataSource = tables;
 
@@ -376,6 +378,11 @@ namespace DesktopApp.GUI.SubGUI
             areaNameColumn.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             areaNameColumn.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dgTable.Columns.Add(areaNameColumn);
+        }
+
+        private void picReLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

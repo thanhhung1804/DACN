@@ -16,9 +16,22 @@ namespace DesktopApp.DAO
             database = new SqlServerDatabase(Constants.CONNECTION_STRING);
         }
 
-        public List<CategoryDTO> GetAll()
+        public List<CategoryDTO> GetAll(bool ascSortByName = true, bool descSortByCreatedDate = false)
         {
             string query = "select * from dbo.[Category]";
+
+            if (descSortByCreatedDate)
+            {
+                query += " order by CreatedDate desc";
+            }
+            else if (ascSortByName)
+            {
+                query += " order by Name";
+            }
+            else
+            {
+                query += " order by Name desc";
+            }
 
             List<CategoryDTO> categories = new List<CategoryDTO>();
             DataTable dataTable = database.ExecuteQuery(query);

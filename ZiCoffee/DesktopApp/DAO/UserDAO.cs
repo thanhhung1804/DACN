@@ -16,11 +16,13 @@ namespace DesktopApp.DAO
             database = new SqlServerDatabase(Constants.CONNECTION_STRING);
         }
 
-        public List<UserDTO> GetAll(string keyword = null, Gender gender = Gender.All)
+        public List<UserDTO> GetAll(
+            string keyword = null, Gender gender = Gender.All, 
+            bool ascSortByName = true, bool descSortByCreatedDate = false)
         {
             string query = @"
                 select u.UserId, u.Username, u.Password, u.Avatar, u.Name, u.Gender, u.Birthday, 
-                    u.Address, u.CitizenId, u.Phone, u.Email, u.RoleId, r.Name as RoleName 
+                    u.Address, u.CitizenId, u.Phone, u.Email, u.RoleId, u.CreatedDate, r.Name as RoleName 
                 from dbo.[User] as u, dbo.[Role] as r 
                 where u.RoleId = r.RoleId";
 
@@ -48,6 +50,19 @@ namespace DesktopApp.DAO
                 parameters.Add(gender);
             }
 
+            if (descSortByCreatedDate)
+            {
+                query += " order by u.CreatedDate desc";
+            }
+            else if (ascSortByName)
+            {
+                query += " order by u.Username";
+            }
+            else
+            {
+                query += " order by u.Username desc";
+            }
+
             List<UserDTO> users = new List<UserDTO>();
             DataTable dataTable = database.ExecuteQuery(query, parameters);
             foreach (DataRow row in dataTable.Rows)
@@ -56,6 +71,31 @@ namespace DesktopApp.DAO
                 users.Add(user);
             }
             return users;
+        }
+
+        public UserDTO GetUser(string username, string password = null)
+        {
+            string query = @"
+                select u.UserId, u.Username, u.Password, u.Avatar, u.Name, u.Gender, u.Birthday, 
+                    u.Address, u.CitizenId, u.Phone, u.Email, u.RoleId, u.CreatedDate, r.Name as RoleName 
+                from dbo.[User] as u, dbo.[Role] as r 
+                where u.RoleId = r.RoleId and u.Username COLLATE SQL_Latin1_General_CP1_CS_AS = @username";
+
+            List<object> parameters = new List<object> { username };
+
+            if (password != null)
+            {
+                query += " and u.Password COLLATE SQL_Latin1_General_CP1_CS_AS = @password";
+                parameters.Add(password);
+            }
+
+            DataTable dataTable = database.ExecuteQuery(query, parameters);
+            if (dataTable == null || dataTable.Rows.Count <= 0)
+            {
+                return null;
+            }
+            UserDTO user = new UserDTO(dataTable.Rows[0]);
+            return user;
         }
 
         public bool Create(
@@ -85,14 +125,6 @@ namespace DesktopApp.DAO
                 birthdayDateOnly, roleId, email, gender, avatar
             };
 
-            bool result = database.ExecuteNoneQuery(query, parameters);
-            return result;
-        }
-
-        public bool Delete(Guid userId)
-        {
-            string query = @"delete from dbo.[User] where UserId = @userId";
-            List<object> parameters = new List<object> { userId };
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;
         }
@@ -129,29 +161,12 @@ namespace DesktopApp.DAO
             return result;
         }
 
-        public UserDTO GetUser(string username, string password = null)
+        public bool Delete(Guid userId)
         {
-            string query = @"
-                select u.UserId, u.Username, u.Password, u.Avatar, u.Name, u.Gender, u.Birthday, 
-                    u.Address, u.CitizenId, u.Phone, u.Email, u.RoleId, r.Name as RoleName 
-                from dbo.[User] as u, dbo.[Role] as r 
-                where u.RoleId = r.RoleId and u.Username COLLATE SQL_Latin1_General_CP1_CS_AS = @username";
-
-            List<object> parameters = new List<object> { username };
-
-            if (password != null)
-            {
-                query += " and u.Password COLLATE SQL_Latin1_General_CP1_CS_AS = @password";
-                parameters.Add(password);
-            }
-
-            DataTable dataTable = database.ExecuteQuery(query, parameters);
-            if (dataTable == null || dataTable.Rows.Count <= 0)
-            {
-                return null;
-            }
-            UserDTO user = new UserDTO(dataTable.Rows[0]);
-            return user;
+            string query = @"delete from dbo.[User] where UserId = @userId";
+            List<object> parameters = new List<object> { userId };
+            bool result = database.ExecuteNoneQuery(query, parameters);
+            return result;
         }
 
         public bool SetPassword(Guid userId, string password)

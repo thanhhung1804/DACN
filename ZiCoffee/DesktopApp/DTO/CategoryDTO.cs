@@ -8,12 +8,14 @@ namespace DesktopApp.DTO
         public Guid CategoryId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public CategoryDTO(DataRow row)
         {
             CategoryId = Guid.Parse(row["CategoryId"].ToString());
             Name = row["Name"].ToString();
             Description = row["Description"].ToString();
+            CreatedDate = DateTime.Parse(row["CreatedDate"].ToString());
         }
 
         public CategoryDTO(string name)
@@ -21,6 +23,7 @@ namespace DesktopApp.DTO
             CategoryId = Guid.Empty;
             Name = name;
             Description = null;
+            CreatedDate = DateTime.Now;
         }
     }
 }

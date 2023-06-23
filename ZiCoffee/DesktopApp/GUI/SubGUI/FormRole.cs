@@ -114,12 +114,13 @@ namespace DesktopApp.GUI.SubGUI
             if (currentSelectedRole == null)
             {   
                 CreateRole();
+                LoadData(descSortByCreatedDate: true);
             }
             else
             {
                 UpdateRole();
+                LoadData();
             }
-            LoadData();
             pnlDetail.Visible = false;
         }
 
@@ -347,9 +348,9 @@ namespace DesktopApp.GUI.SubGUI
             pnlDetail.Visible = false;
         }
 
-        private void LoadData()
+        private void LoadData(bool descSortByCreatedDate = false)
         {
-            List<RoleDTO> roles = new RoleDAO().GetAll();
+            List<RoleDTO> roles = new RoleDAO().GetAll(descSortByCreatedDate: descSortByCreatedDate);
             dgRole.DataSource = roles;
 
             dgRole.AutoGenerateColumns = false;
@@ -402,6 +403,11 @@ namespace DesktopApp.GUI.SubGUI
                 ckb.Tag = action;
                 fpnlActions.Controls.Add(ckb);
             }
+        }
+
+        private void picReLoad_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }
