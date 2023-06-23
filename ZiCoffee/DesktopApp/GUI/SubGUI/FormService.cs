@@ -148,28 +148,19 @@ namespace DesktopApp.GUI.SubGUI
         }
 
         private void btnDone_Click(object sender, EventArgs e)
-        {
+        {   
+            if (!ValidateName() || !ValidateDescription())
+            {
+                return;
+            }
+
             if (currentSelectedService == null)
             {
-                if (ValidateName() && ValidateDescription())
-                {
-                    CreateService();
-                }
-                else
-                {
-                    return;
-                }
+               CreateService();
             }
             else
             {
-                if (ValidateName() && ValidateDescription())
-                {
-                    UpdateService();
-                }
-                else
-                {
-                    return;
-                }
+                UpdateService();
             }
             LoadData();
             pnlDetail.Visible = false;

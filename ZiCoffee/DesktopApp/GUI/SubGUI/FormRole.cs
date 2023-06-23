@@ -66,8 +66,15 @@ namespace DesktopApp.GUI.SubGUI
 
             txbName.Text = string.Empty;
             rtxbDescription.Text = string.Empty;
-
             LoadActions();
+
+            foreach (Control control in pnlDetail.Controls)
+            {
+                if (control is Label && (control as Label).Name.EndsWith("Error"))
+                {
+                    (control as Label).Visible = false;
+                }
+            }
         }
 
         private void dgRole_SelectionChanged(object sender, EventArgs e)
@@ -86,14 +93,26 @@ namespace DesktopApp.GUI.SubGUI
                 txbName.Text = currentSelectedRole.Name;
                 rtxbDescription.Text = currentSelectedRole.Description;
                 LoadActions();
+
+                foreach (Control control in pnlDetail.Controls)
+                {
+                    if (control is Label && (control as Label).Name.EndsWith("Error"))
+                    {
+                        (control as Label).Visible = false;
+                    }
+                }
             }
         }
 
         private void btnDone_Click(object sender, EventArgs e)
-        {
-            //validate fields
-            if (currentSelectedRole == null)
+        { 
+            if (!ValidateName() || !ValidateDescription())
             {
+                return;
+            }
+
+            if (currentSelectedRole == null)
+            {   
                 CreateRole();
             }
             else
@@ -102,6 +121,42 @@ namespace DesktopApp.GUI.SubGUI
             }
             LoadData();
             pnlDetail.Visible = false;
+        }
+
+        private bool ValidateDescription()
+        {
+            if (rtxbDescription.Text.Length > 100)
+            {
+                lbDescriptionError.Visible = true;
+                lbDescriptionError.Text = "Description has to contain maximum 100 characters!!!";
+                return false;
+            }
+            else
+            {
+                lbDescriptionError.Visible = false;
+                return true;
+            }
+        }
+
+        private bool ValidateName()
+        {
+            if (txbName.Text.Length > 20 || txbName.Text.Length <= 0)
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name has to contain character between 1 and 20!!!";
+                return false;
+            }
+            else if (string.IsNullOrWhiteSpace(txbName.Text))
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Name can not contain only whitespace!!!";
+                return false;
+            }
+            else
+            {
+                lbNameError.Visible = false;
+                return true;
+            }
         }
 
         private void CreateRole()

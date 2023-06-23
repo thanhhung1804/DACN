@@ -154,38 +154,28 @@ namespace DesktopApp.GUI.SubGUI
         {
             Regex specialChars = new Regex(@"[!@#$%^&*()_+\-=[\]{}\\|;':"",./<>?]");
             Regex unicodeChars = new Regex(@"^(?!^[\p{IsBasicLatin}]+$)\p{L}+$");
+
+            if (!ValidateName(specialChars) ||
+                !ValidateBirthday() ||
+                !ValidateCitizenId() ||
+                !ValidateAddress() ||
+                !ValidatePhone() ||
+                !ValidateEmail())
+            {
+                return;
+            }
+
             if (currentSelectedUser == null)
             {
-                if (ValidateUsername(specialChars, unicodeChars) && 
-                    ValidateName(specialChars) && 
-                    ValidateBirthday() && 
-                    ValidateCitizenId() &&
-                    ValidateAddress() &&
-                    ValidatePhone() &&
-                    ValidateEmail())
-                {
-                    CreateUser();
-                }
-                else
+                if (!ValidateUsername(specialChars, unicodeChars))
                 {
                     return;
                 }
+                CreateUser();
             }
             else
             {
-                if (ValidateName(specialChars) &&
-                    ValidateBirthday() &&
-                    ValidateCitizenId() &&
-                    ValidateAddress() &&
-                    ValidatePhone() &&
-                    ValidateEmail())
-                {
-                    UpdateUser();
-                }
-                else
-                {
-                    return;
-                }
+                UpdateUser();
             }
             LoadData();
             pnlDetail.Visible = false;

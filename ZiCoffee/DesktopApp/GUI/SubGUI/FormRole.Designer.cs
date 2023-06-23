@@ -32,6 +32,7 @@
             this.pnlDetail = new System.Windows.Forms.Panel();
             this.btnDone = new System.Windows.Forms.Button();
             this.fpnlActions = new System.Windows.Forms.FlowLayoutPanel();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.lbActions = new System.Windows.Forms.Label();
             this.picClose = new System.Windows.Forms.PictureBox();
             this.rtxbDescription = new System.Windows.Forms.RichTextBox();
@@ -44,7 +45,7 @@
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picNew = new System.Windows.Forms.PictureBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.lbDescriptionError = new System.Windows.Forms.Label();
             this.pnlDetail.SuspendLayout();
             this.fpnlActions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picClose)).BeginInit();
@@ -59,6 +60,7 @@
             // 
             this.pnlDetail.AutoScroll = true;
             this.pnlDetail.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.pnlDetail.Controls.Add(this.lbDescriptionError);
             this.pnlDetail.Controls.Add(this.btnDone);
             this.pnlDetail.Controls.Add(this.fpnlActions);
             this.pnlDetail.Controls.Add(this.lbActions);
@@ -101,16 +103,26 @@
             this.fpnlActions.AutoScroll = true;
             this.fpnlActions.Controls.Add(this.checkBox1);
             this.fpnlActions.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.fpnlActions.Location = new System.Drawing.Point(13, 306);
+            this.fpnlActions.Location = new System.Drawing.Point(13, 325);
             this.fpnlActions.Name = "fpnlActions";
-            this.fpnlActions.Size = new System.Drawing.Size(374, 182);
+            this.fpnlActions.Size = new System.Drawing.Size(374, 163);
             this.fpnlActions.TabIndex = 0;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(3, 3);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(127, 27);
+            this.checkBox1.TabIndex = 0;
+            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // lbActions
             // 
             this.lbActions.AutoSize = true;
             this.lbActions.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbActions.Location = new System.Drawing.Point(9, 280);
+            this.lbActions.Location = new System.Drawing.Point(12, 302);
             this.lbActions.Name = "lbActions";
             this.lbActions.Size = new System.Drawing.Size(74, 23);
             this.lbActions.TabIndex = 0;
@@ -274,15 +286,17 @@
             this.picNew.TabStop = false;
             this.picNew.Click += new System.EventHandler(this.picNew_Click);
             // 
-            // checkBox1
+            // lbDescriptionError
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(3, 3);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(127, 27);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.lbDescriptionError.AutoSize = true;
+            this.lbDescriptionError.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDescriptionError.ForeColor = System.Drawing.Color.Red;
+            this.lbDescriptionError.Location = new System.Drawing.Point(12, 280);
+            this.lbDescriptionError.Name = "lbDescriptionError";
+            this.lbDescriptionError.Size = new System.Drawing.Size(117, 19);
+            this.lbDescriptionError.TabIndex = 0;
+            this.lbDescriptionError.Text = "Error message";
+            this.lbDescriptionError.Visible = false;
             // 
             // formRole
             // 
@@ -331,5 +345,6 @@
         private System.Windows.Forms.FlowLayoutPanel fpnlActions;
         private System.Windows.Forms.Button btnDone;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label lbDescriptionError;
     }
 }

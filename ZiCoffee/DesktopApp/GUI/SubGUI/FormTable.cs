@@ -135,27 +135,18 @@ namespace DesktopApp.GUI.SubGUI
 
         private void btnDone_Click(object sender, EventArgs e)
         {
+            if (!ValidateName() || !ValidateDescription())
+            {
+                return;
+            }
+            
             if (currentSelectedTable == null)
             {
-                if(ValidateName() && ValidateDescription())
-                {
-                    CreateTable();
-                }
-                else
-                {
-                    return;
-                }
+                CreateTable();
             }
             else
             {
-                if (ValidateName() && ValidateDescription())
-                {
-                    UpdateTable();
-                }
-                else
-                {
-                    return;
-                }
+                UpdateTable();
             }
             LoadData();
             pnlDetail.Visible = false;
