@@ -122,7 +122,7 @@ namespace DesktopApp.GUI.SubGUI
                 txbName.Text = currentSelectedService.Name;
                 rtxbDescription.Text = currentSelectedService.Description;
                 cbStatusSelector.SelectedIndex = cbStatusSelector.FindString(currentSelectedService.Status.ToString());
-                cbCategorySelector.SelectedIndex = cbCategorySelector.FindString(currentSelectedService.CategoryName);
+                cbCategorySelector.SelectedIndex = cbCategorySelector.FindStringExact(currentSelectedService.CategoryName);
                 nudPrice.Value = (decimal)currentSelectedService.Price;
                 picImage.Image = Properties.Resources.Drink;
 

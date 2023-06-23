@@ -54,5 +54,17 @@ namespace DesktopApp.DAO
             bool result = database.ExecuteNoneQuery(query, parameters);
             return result;
         }
+
+        public bool IsExistName(string name)
+        {
+            string query = @"select * from dbo.[Role] where Name = @name";
+            List<object> parameters = new List<object> { name };
+            DataTable result = database.ExecuteQuery(query, parameters);
+            if (result.Rows.Count <= 0)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

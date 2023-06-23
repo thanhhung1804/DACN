@@ -152,6 +152,12 @@ namespace DesktopApp.GUI.SubGUI
                 lbNameError.Text = "Name can not contain only whitespace!!!";
                 return false;
             }
+            else if (new RoleDAO().IsExistName(name: txbName.Text))
+            {
+                lbNameError.Visible = true;
+                lbNameError.Text = "Role is existed!!!";
+                return false;
+            }
             else
             {
                 lbNameError.Visible = false;

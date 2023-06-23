@@ -128,7 +128,7 @@ namespace DesktopApp.GUI.SubGUI
                 txbEmail.Text = currentSelectedUser.Email;
                 dtpBirthday.Value = currentSelectedUser.Birthday;
                 cbGenderSelector.SelectedIndex = cbGenderSelector.FindString(currentSelectedUser.Gender.ToString());
-                cbRole.SelectedIndex = cbRole.FindString(currentSelectedUser.RoleName);
+                cbRole.SelectedIndex = cbRole.FindStringExact(currentSelectedUser.RoleName);
                 if (currentSelectedUser.Avatar == null || currentSelectedUser.Avatar.Length == 0)
                 {
                     picAvatar.Image = Properties.Resources.Avatar;
