@@ -112,7 +112,17 @@ namespace DesktopApp.GUI.SubGUI
             }
 
             if (currentSelectedRole == null)
-            {   
+            {
+                if (new RoleDAO().IsExistName(txbName.Text))
+                {
+                    lbNameError.Visible = true;
+                    lbNameError.Text = "Name is existed!!!";
+                    return;
+                }
+                else
+                { 
+                    lbNameError.Visible = false;
+                }
                 CreateRole();
                 LoadData(descSortByCreatedDate: true);
             }
@@ -151,12 +161,6 @@ namespace DesktopApp.GUI.SubGUI
             {
                 lbNameError.Visible = true;
                 lbNameError.Text = "Name can not contain only whitespace!!!";
-                return false;
-            }
-            else if (new RoleDAO().IsExistName(name: txbName.Text))
-            {
-                lbNameError.Visible = true;
-                lbNameError.Text = "Role is existed!!!";
                 return false;
             }
             else

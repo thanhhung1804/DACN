@@ -111,6 +111,16 @@ namespace DesktopApp.GUI.SubGUI
 
             if (currentSelectedArea == null)
             {
+                if(new AreaDAO().IsExistName(txbName.Text))
+                {
+                    lbNameError.Visible = true;
+                    lbNameError.Text = "Name is existed!!!";
+                    return;
+                }
+                else
+                {
+                    lbNameError.Visible = false;
+                }
                 CreateArea();
                 LoadData(descSortByCreatedDate: true);
             }
@@ -149,12 +159,6 @@ namespace DesktopApp.GUI.SubGUI
             {
                 lbNameError.Visible = true;
                 lbNameError.Text = "Name can not contain only whitespace!!!";
-                return false;
-            }
-            else if (new AreaDAO().IsExistName(name: txbName.Text))
-            {
-                lbNameError.Visible = true;
-                lbNameError.Text = "Name is existed!!!";
                 return false;
             }
             else
